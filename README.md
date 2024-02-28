@@ -24,6 +24,13 @@ Para descargar este proyecto, siga los siguientes pasos:
 1. Abra la terminal y ejecuta el siguiente comando para clonar el repositorio: git clone https://github.com/nachomi24/DREAMLab-x-DevSpace
 2. Asegurar que el proyecto este conectado al internet
 
+<h3>Software de Desarrollo</h3>
+- React
+- Three.js
+- FastAPI
+- Asure (Host de servidores)
+- MySQL
+
 <h3>Imagenes del prototipo de la aplicación</h3>
 ![image](https://github.com/nachomi24/DREAMLab-x-DevSpace/assets/66391621/c9ee3698-e0e9-470e-aa5f-e0c2f5e4c7bb)
 
