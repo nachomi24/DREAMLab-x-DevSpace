@@ -9,6 +9,13 @@ Bienvenido al desarrollo del software del D.R.E.A.M Lab diseñado por y para est
 -  Explorar Talleres: Los estudiantes pueden descubrir talleres fascinantes sobre una variedad de temas de innovación tecnológica y regístrate fácilmente para participar en ellos.<br>
 -  Conocer el Espacio: Los estudiantes puede obtener información detallada sobre las instalaciones del laboratorio, los equipos disponibles y los servicios ofrecidos para garantizar una experiencia óptima en D.R.E.A.M Lab.
 
+## Equipo de Desarrollo
+* Eugenio Turcott Estrada - Fullstack Developer - 
+* Karen Gutiérrez Solís - Frontend Developer - 
+* Nahomi Daniela Plata Ulate - Fullstack Developer - 
+* Cristina Ríos Olaiz - Backend Developer - 
+* Roberta Giovanna González Canavati - Frontend Developer -
+  
 <h3>Contribuciones y Soporte</h3>
 ¡Agradecemos tus comentarios! Si quieres apoyar en la mejora continua de nuestro software o si tienes sugerencias, problemas o quieres contribuir de alguna manera, no dudes en abrir un issue o enviar una pull request.
 
@@ -19,4 +26,7 @@ Para descargar este proyecto, siga los siguientes pasos:
 
 <h3>Imagenes del prototipo de la aplicación</h3>
 ![image](https://github.com/nachomi24/DREAMLab-x-DevSpace/assets/66391621/c9ee3698-e0e9-470e-aa5f-e0c2f5e4c7bb)
+
+<h3>Wiki</h3>
+CUalquier cuestión técnica del sistema, consultar la página wiki de este repositorio. 
 
