@@ -28,5 +28,5 @@ Para descargar este proyecto, siga los siguientes pasos:
 ![image](https://github.com/nachomi24/DREAMLab-x-DevSpace/assets/66391621/c9ee3698-e0e9-470e-aa5f-e0c2f5e4c7bb)
 
 <h3>Wiki</h3>
-CUalquier cuestión técnica del sistema, consultar la página wiki de este repositorio. 
+Cualquier cuestión técnica del sistema, consultar la página wiki de este repositorio. 
 
