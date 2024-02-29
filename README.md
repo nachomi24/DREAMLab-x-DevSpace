@@ -1,4 +1,4 @@
-# DREAMLab-x-DevSpace
+# D.R.E.A.M. LAB x DevSpace Co.
 Desarrollo de software para D.R.E.A.M lab
 
 <h3>Descripción</h3>
