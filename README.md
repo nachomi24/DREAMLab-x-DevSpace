@@ -13,7 +13,7 @@ Bienvenido al desarrollo del software del D.R.E.A.M Lab diseñado por y para est
 -  React
 -  Three.js
 -  FastAPI
--  Asure (Host de servidores)
+-  Azure (Host de servidores)
 -  MySQL
 
 ## Equipo de Desarrollo
