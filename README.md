@@ -10,10 +10,10 @@ Bienvenido al desarrollo del software del D.R.E.A.M Lab diseñado por y para est
 -  Conocer el Espacio: Los estudiantes puede obtener información detallada sobre las instalaciones del laboratorio, los equipos disponibles y los servicios ofrecidos para garantizar una experiencia óptima en D.R.E.A.M Lab.
 
 <h3>Software de Desarrollo</h3>
--  React
--  Three.js
--  FastAPI
--  Azure (Host de servidores)
+-  HTML/CSS
+-  Javascript
+-  FastAPI 
+-  Flask
 -  MySQL
 
 ## Equipo de Desarrollo
@@ -24,18 +24,13 @@ Bienvenido al desarrollo del software del D.R.E.A.M Lab diseñado por y para est
 * Roberta Giovanna González Canavati - Frontend Developer -
   
 <h3>Contribuciones y Soporte</h3>
-¡Agradecemos tus comentarios! Si quieres apoyar en la mejora continua de nuestro software o si tienes sugerencias, problemas o quieres contribuir de alguna manera, no dudes en abrir un issue o enviar una pull request.
+¡Agradecemos tus comentarios! Si quieres apoyar en la mejora continua de nuestro software o si tienes sugerencias, problemas o quieres contribuir de alguna manera, no dudes en abrir un issue o enviar una pull request. Donaciones por medio de Paypal. Buy us a coffee!
 
 <h3>Instalación</h3>
-Para descargar este proyecto, siga los siguientes pasos:
-1. Abra la terminal y ejecuta el siguiente comando para clonar el repositorio: git clone https://github.com/nachomi24/DREAMLab-x-DevSpace
-2. Asegurar que el proyecto este conectado al internet
-
-
+Para descargar este proyecto hacer referencia la wiki anexada en este repositorio. 
 
 <h3>Imagenes del prototipo de la aplicación</h3>
 ![image](https://github.com/nachomi24/DREAMLab-x-DevSpace/assets/66391621/c9ee3698-e0e9-470e-aa5f-e0c2f5e4c7bb)
 
-<h3>Wiki</h3>
-Cualquier cuestión técnica del sistema, consultar la página wiki de este repositorio. 
+
 
