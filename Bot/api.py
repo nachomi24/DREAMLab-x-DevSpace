@@ -12,13 +12,23 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
-    # Renderiza el archivo home.html
+    # Renderiza el archivo bot.html
     return render_template('bot.html')
 
 @app.route('/congrats')
 def congrats():
-    # Renderiza el archivo home.html
+    # Renderiza el archivo congrats.html
     return render_template('congrats.html')
+
+@app.route('/inicio')
+def inicio():
+    # Renderiza el archivo inicio.html
+    return render_template('inicio.html')
+
+@app.route('/secciones')
+def secciones():
+    # Renderiza el archivo bot.html
+    return render_template('secciones.html')
 
 @app.route('/api/new_chat/<string:query>', methods=['GET', 'POST'])
 def query_new_chat(query):
