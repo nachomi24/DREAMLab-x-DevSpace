@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations!</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logoesq.png') }}" alt="Logo del dream">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/" class="mina-bold">INICIO</a></li>
+                <li><a href="/" class="mina-bold">RESERVAR</a></li>
+                <li><a href="/" class="mina-bold">SECCIONES</a></li>
+            </ul>
+        </nav>
+        <div class="karen">
+            <img src="{{ url_for('static', filename='searcico2.png') }}" alt="icono busq">
+            <img src="{{ url_for('static', filename='karen.png') }}" alt="foto usuario">
+        </div>
+    </header>
+    <div class="dreamybot">
+        <img style="z-index: 0;" src="{{ url_for('static', filename='dreamy.png') }}" class="dreamybot">
+    </div>
+    <div class="chat_window">
+        <div class="top_menu">
+            <div class="title">FELICIDADES</div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
