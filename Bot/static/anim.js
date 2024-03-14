@@ -504,3 +504,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     sendMessage('¡Hola soy Dreamy, tu acompañante en esta aventura! Por favor dime, ¿en qué te puedo ayudar?');
 });
+
+document.getElementById('toggleButton').addEventListener('click', function () {
+    var input = document.getElementById('conversation_query');
+    if (input.classList.contains('hidden')) {
+        input.classList.remove('hidden');
+    } else {
+        input.classList.add('hidden');
+    }
+});

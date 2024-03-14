@@ -22,15 +22,17 @@
             </ul>
         </nav>
         <div class="karen">
-            <img src="{{ url_for('static', filename='searcico2.png') }}" alt="icono busq">
-            <img src="{{ url_for('static', filename='karen.png') }}" alt="foto usuario">
+            <input style="resize: none; margin-right: 10px;" id="conversation_query" class="message_input hidden" placeholder="Escribe aquí...">
+            <button style="border: none; background: none; cursor: pointer; margin-right: 10px;" id="toggleButton"><img src="{{ url_for('static', filename='searcico2.png') }}" alt="icono busq"></button>
+            <a href="/perfil"><img src="{{ url_for('static', filename='karen.png') }}" alt="foto usuario"></a>
         </div>
     </header>
 
-    <h1>SECCIONES</h1>
-
+    <div>
+        <h1>SECCIONES</h1>
+    </div>
     
-
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='anim.js') }}"></script>  
 </body>
 </html>
