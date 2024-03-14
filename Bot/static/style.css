@@ -311,12 +311,40 @@ nav ul li a:hover {
     text-align: left;
     font-size: 18px;
     line-height: 25px;
-    padding-top: 15px;
+    padding-top: 12px;
     
   }
 
   .message_input::-webkit-scrollbar {
     width: 0; /* oculta la barra de desplazamiento */
+}
+
+.karen {
+  width: 300px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.karen .message_input {
+  border: none;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  width: 300px;
+  outline-width: 0;
+  color:#363968;
+  font-family: "Mina", sans-serif;
+  float: left;
+  text-align: left;
+  font-size: 18px;
+  line-height: 25px;
+  padding-top: 5px;
+  padding-left: 10px;
 }
 
   .bottom_wrapper .send_message {
