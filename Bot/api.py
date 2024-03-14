@@ -30,6 +30,11 @@ def secciones():
     # Renderiza el archivo bot.html
     return render_template('secciones.html')
 
+@app.route('/perfil')
+def perfil():
+    # Renderiza el archivo perfil.html
+    return render_template('perfil.html')
+
 @app.route('/api/new_chat/<string:query>', methods=['GET', 'POST'])
 def query_new_chat(query):
     if request.method == 'POST':
