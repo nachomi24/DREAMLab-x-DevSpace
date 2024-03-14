@@ -30,7 +30,7 @@ Bienvenido al desarrollo del software del D.R.E.A.M Lab diseñado por y para est
 Para descargar este proyecto hacer referencia la wiki anexada en este repositorio. 
 
 <h3>Imagenes del prototipo de la aplicación</h3>
-![image](https://github.com/nachomi24/DREAMLab-x-DevSpace/assets/66391621/c9ee3698-e0e9-470e-aa5f-e0c2f5e4c7bb)
+![image](https://github.com/nachomi24/DREAMLab-x-DevSpace/assets/66391621/b21418cc-4cdf-4b93-af49-b91722dea0b9)
 
 
 
