@@ -1,8 +1,10 @@
 from flask import Flask, render_template, jsonify, send_from_directory, request
 from flask_mysqldb import MySQL
+from flask_mail import Mail, Message
 import requests, os, json
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
+mail = Mail(app)
 
 app.config['MYSQL_HOST'] = '172.191.21.164'
 app.config['MYSQL_USER'] = 'devspacenet'
@@ -35,11 +37,16 @@ def perfil():
     # Renderiza el archivo perfil.html
     return render_template('perfil.html')
 
+@app.route('/perfil/<string:matricula>')
+def perfil_especifico(matricula):
+    # Renderiza el archivo perfil.html
+    return render_template('perfil_template.html', matricula=matricula)
+
 @app.route('/api/new_chat/<string:query>', methods=['GET', 'POST'])
 def query_new_chat(query):
     if request.method == 'POST':
-        ID = "cltrjxo810008o98iv3fp4mp7"
-        TOKEN = "04fd6942-b29d-41ee-84fb-f25414312c2a"
+        ID = "clts78yhx007ro98iwmxb43gz"
+        TOKEN = "09942a07-4d7d-4cce-a166-f15f04a66605"
         DREAMY_API = f"https://api.chaindesk.ai/agents/{ID}/query"
 
         payload = {
@@ -61,8 +68,8 @@ def query_new_chat(query):
 @app.route('/api/existing_chat/<string:conversationId>/<string:query>', methods=['GET', 'POST'])
 def query_existing_chat(conversationId, query):
     if request.method == 'POST':
-        ID = "cltrjxo810008o98iv3fp4mp7"
-        TOKEN = "04fd6942-b29d-41ee-84fb-f25414312c2a"
+        ID = "clts78yhx007ro98iwmxb43gz"
+        TOKEN = "09942a07-4d7d-4cce-a166-f15f04a66605"
         DREAMY_API = f"https://api.chaindesk.ai/agents/{ID}/query"
 
         payload = {
@@ -132,6 +139,57 @@ def consulta():
 
     # Devolver los resultados como JSON
     return jsonify(results)
+
+@app.route('/api/consulta/<string:matricula>', methods=['GET'])
+def consulta_especifica(matricula):
+    # Ejemplo de consulta a la base de datos
+    cur = mysql.connection.cursor()
+    cur.execute('''
+        SELECT r.*, u.Nombre, u.Carrera 
+        FROM Reservacion r 
+        JOIN Usuario u ON r.Matricula = u.Matricula 
+        WHERE r.Matricula = %s;
+                ''', (matricula,))
+    data = cur.fetchall()
+    cur.close()
+
+    # Crear una lista de diccionarios para los resultados
+    results = []
+    for row in data:
+        result = {
+            'ID': row[0],
+            'Matricula': row[1],
+            'IDSala': row[2],
+            'Dia': row[3].strftime('%Y-%m-%d'),  # Convertir a formato de fecha ISO
+            'HoraInicio': str(row[4]),  # Convertir a formato de cadena
+            'HoraFin': str(row[5]),  # Convertir a formato de cadena
+            'Recursos': row[6],
+            'Personas': row[7],
+            'Nombre': row[8],
+            'Carrera': row[9]
+        }
+        results.append(result)
+
+    # Devolver los resultados como JSON
+    return jsonify(results)
+
+@app.route('/api/enviar-correo/<string:matricula>', methods=['POST'])
+def enviar_correo(matricula):
+    data = request.json
+
+    # Extraer el contenido del correo desde los datos recibidos
+    contenido_correo = data['contenido_correo']
+
+    # Construir el mensaje de correo
+    mensaje = Message(subject="RESERVACIÓN",
+                      sender="dreamy@dreamlab.com",
+                      recipients=[f"{matricula}@tec.mx"],
+                      body=contenido_correo)
+
+    # Enviar el correo
+    mail.send(mensaje)
+
+    return jsonify({"mensaje": "Correo enviado correctamente"})
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -5,10 +5,7 @@
   body {
     background-image:url('FONDODONA.png');
     background-size: cover;
-    font-family: "Mina", sans-serif;
-   
-    overflow: hidden; 
-      
+    font-family: "Mina", sans-serif;    
   }
 
 h1 {
@@ -17,6 +14,15 @@ h1 {
     text-align: center;
     color: #363968;
     font-size: 100px;
+  }
+
+  h3 {
+    font-family: "Mina", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #363968;
+    margin-top: -70px;
+    font-size: 40px;
   }
 
   header {
@@ -111,6 +117,7 @@ h1 {
   font-size: 20px;
   font-weight: bolder;
   line-height: 10px;
+  padding-bottom: 10px;
 }
 
 nav ul {

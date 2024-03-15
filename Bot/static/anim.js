@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Variable global para almacenar el conversationId
     let conversationId = null;
 
+    let matriculaRegex = /[AL]0\d{7}/;
+    let salaRegex = /sala (\w+)/i;
+    let diaRegex = /día (\d+ de [a-z]+ de \d{4})/i;
+    let horasRegex = /desde las (\d+(?:am|pm)) hasta las (\d+(?:am|pm))/i;
+    let recursosRegex = /recursos de (.+?) y con (\d+) personas/i;
+
     let matricula = '';
     let idSala = '';
     let dia = '';
@@ -18,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let horaSalida = '';
     let recursos = '';
     let personas = '';
-    let tempPersonas = '';
 
     let postMatricula = '';
     let postIdSala = '';
@@ -27,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let postHoraSalida = '';
     let postRecursos = '';
     let postPersonas = '';
+
+    let answerMail = '';
 
     window.fetchConversationInfo = function () {
         var query = document.getElementById("conversation_query").value;
@@ -59,41 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Analizar la consulta para detectar palabras clave y asignar valores a las variables correspondientes
             if (query.toLowerCase().includes('matrícula es')) {
-                matricula = obtenerValor(query, 'matrícula es');
-            }
-            if (query.toLowerCase().includes('sala')) {
-                idSala = obtenerValor(query, 'sala');
-            }
-            if (query.toLowerCase().includes('día sea')) {
-                dia = obtenerFechaSQL(query, 'día sea');
-            }
-            if (query.toLowerCase().includes('hora de inicio a las')) {
-                horaInicio = obtenerHoraSQL(query, 'hora de inicio a las');
-            }
-            if (query.toLowerCase().includes('hora de salida a las')) {
-                horaSalida = obtenerHoraSQL(query, 'hora de salida a las');
-            }
-            if (query.toLowerCase().includes('recursos son')) {
-                recursos = obtenerValor(query, 'recursos son');
-            }
-            if (query.toLowerCase().includes('personas')) {
-                tempPersonas = query;
-                personas = obtenerNumeroPersonas(query, 'personas');
-            }
-
-            // Detectar la frase "terminar la conversación"
-            if (query.toLowerCase().includes("terminar la conversación") || query.toLowerCase().includes("terminar esta conversación") || query.toLowerCase().includes("terminar esta reservación") || query.toLowerCase().includes("terminar la conversación")) {
-                setTimeout(() => {
-                    // Ocultar el div con clase "message_input_wrapper"
-                    document.querySelector(".message_input_wrapper").style.display = "none";
-
-                    // Cambiar el texto del div con id "send_button" a "Ver Detalles"
-                    var sendButton = document.getElementById("send_button");
-                    sendButton.textContent = "Ver Detalles";
-
-                    // Cambiar el evento onclick a "viewDetails()"
-                    sendButton.onclick = viewDetails;
-                }, 300);
+                matricula = query.match(matriculaRegex)[0];
             }
 
             // Esperar un segundo antes de agregar el mensaje de carga
@@ -125,6 +98,30 @@ document.addEventListener("DOMContentLoaded", function () {
                         // Reproducir un sonido
                         var audio = new Audio('/static/notificacion_dreamy_3.mp3');
                         audio.play();
+
+                        if (data.answer.startsWith("Muchas gracias,") && data.answer.includes("Consulta los detalles para ver tu resumen de reserva.")) {
+                            idSala = data.answer.match(salaRegex)[1];
+                            dia = data.answer.match(diaRegex)[1];
+                            horaInicio = data.answer.match(horasRegex)[1];
+                            horaSalida = data.answer.match(horasRegex)[2];
+                            let recursosMatch = data.answer.match(recursosRegex);
+                            recursos = recursosMatch[1];
+                            personas = recursosMatch[2];
+
+                            answerMail = data.answer;
+
+                            setTimeout(() => {
+                                // Ocultar el div con clase "message_input_wrapper"
+                                document.querySelector(".message_input_wrapper").style.display = "none";
+
+                                // Cambiar el texto del div con id "send_button" a "Ver Detalles"
+                                var sendButton = document.getElementById("send_button");
+                                sendButton.textContent = "Ver Detalles";
+
+                                // Cambiar el evento onclick a "viewDetails()"
+                                sendButton.onclick = viewDetails;
+                            }, 300);
+                        }
 
                         // Actualizar el mensaje de carga y mostrar la respuesta del bot
                         updateBotMessage(data.answer);
@@ -198,28 +195,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         reservarTodoDiv.onclick = '';
 
-        // Analizar la consulta para detectar palabras clave y asignar valores a las variables correspondientes
-        if (!matricula.toLowerCase().includes('matrícula es')) {
-            postMatricula = matricula;
-        }
-        if (!idSala.toLowerCase().includes('sala')) {
-            postIdSala = idSala;
-        }
-        if (!dia.toLowerCase().includes('día sea')) {
-            postDia = obtenerFechaSQL2(dia);
-        }
-        if (!horaInicio.toLowerCase().includes('hora de inicio a las')) {
-            postHoraInicio = obtenerHoraSQL2(horaInicio);
-        }
-        if (!horaSalida.toLowerCase().includes('hora de salida a las')) {
-            postHoraSalida = obtenerHoraSQL2(horaSalida);
-        }
-        if (!recursos.toLowerCase().includes('recursos son')) {
-            postRecursos = recursos;
-        }
-        if (tempPersonas.toLowerCase().includes('personas')) {
-            postPersonas = obtenerNumeroPersonas(tempPersonas, 'personas');
-        }
+        postMatricula = matricula;
+        postIdSala = idSala;
+        postDia = obtenerFechaSQL2(dia);
+        postHoraInicio = obtenerHoraSQL2(horaInicio);
+        postHoraSalida = obtenerHoraSQL2(horaSalida);
+        postRecursos = recursos;
+        postPersonas = personas;
 
         // Crear un elemento de imagen
         var imagen = document.createElement("img");
@@ -257,12 +239,30 @@ document.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify(data) // Convierte los datos a JSON y los establece como cuerpo de la solicitud
         };
 
+        // Enviar el correo
+        const correoData = {
+            "contenido_correo": answerMail
+        };
+
+        fetch(`/api/enviar-correo/${matricula}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(correoData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.error('Error enviando el correo:', error));
+
         // Realiza la solicitud HTTP
         fetch(url, requestOptions)
             .then(response => response.json()) // Convierte la respuesta a JSON
             .then(data => {
                 console.log(data)
-                window.location.href = `/congrats`;
+                window.location.href = `/perfil/${matricula}`;
             }) // Muestra los datos recibidos en la consola
             .catch(error => console.error('Error:', error));
     };
@@ -456,9 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("conversation_query").addEventListener("keypress", function (event) {
         // Verifica si la tecla presionada es "Enter"
         if (event.key === "Enter") {
-            // Reproducir un sonido
-            var audio = new Audio('/static/envio_dreamy.mp3');
-            audio.play();
             // Ejecuta la función fetchConversationInfo
             fetchConversationInfo();
         }
@@ -525,5 +522,5 @@ document.addEventListener("DOMContentLoaded", function () {
             audio.play();
         }
     });
-    sendMessage('¡Hola soy Dreamy, tu acompañante en esta aventura! Por favor dime, ¿en qué te puedo ayudar?');
+    sendMessage('¡Hola soy Dreamy, tu acompañante en esta aventura! Para reservar, proporciona tu matrícula, el ID de la sala que deseas reservar, el día, hora de inicio y hora de salida, los recursos que ocupas y la cantidad de personas que estarán en la sala. Para más información, pregúntame lo que quieras.');
 });
