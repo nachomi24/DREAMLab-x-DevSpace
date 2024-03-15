@@ -38,8 +38,8 @@ def perfil():
 @app.route('/api/new_chat/<string:query>', methods=['GET', 'POST'])
 def query_new_chat(query):
     if request.method == 'POST':
-        ID = "cltn180pz001co98iq6fe846o"
-        TOKEN = "bd995685-2c7a-403d-9f85-b1236c972aa3"
+        ID = "cltrjxo810008o98iv3fp4mp7"
+        TOKEN = "04fd6942-b29d-41ee-84fb-f25414312c2a"
         DREAMY_API = f"https://api.chaindesk.ai/agents/{ID}/query"
 
         payload = {
@@ -61,8 +61,8 @@ def query_new_chat(query):
 @app.route('/api/existing_chat/<string:conversationId>/<string:query>', methods=['GET', 'POST'])
 def query_existing_chat(conversationId, query):
     if request.method == 'POST':
-        ID = "cltn180pz001co98iq6fe846o"
-        TOKEN = "bd995685-2c7a-403d-9f85-b1236c972aa3"
+        ID = "cltrjxo810008o98iv3fp4mp7"
+        TOKEN = "04fd6942-b29d-41ee-84fb-f25414312c2a"
         DREAMY_API = f"https://api.chaindesk.ai/agents/{ID}/query"
 
         payload = {

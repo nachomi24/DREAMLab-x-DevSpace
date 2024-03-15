@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('toggleButton').addEventListener('click', function () {
+        var input = document.getElementById('search');
+        if (input.classList.contains('hidden')) {
+            input.classList.remove('hidden');
+        } else {
+            input.classList.add('hidden');
+        }
+    });
+
     // Variable global para almacenar el conversationId
     let conversationId = null;
 
@@ -112,6 +121,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                         console.log(data);
                         console.log(conversationId);
+
+                        // Reproducir un sonido
+                        var audio = new Audio('/static/notificacion_dreamy_3.mp3');
+                        audio.play();
+
                         // Actualizar el mensaje de carga y mostrar la respuesta del bot
                         updateBotMessage(data.answer);
                         console.log(matricula, idSala, dia, horaInicio, horaSalida, recursos, personas);
@@ -442,6 +456,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("conversation_query").addEventListener("keypress", function (event) {
         // Verifica si la tecla presionada es "Enter"
         if (event.key === "Enter") {
+            // Reproducir un sonido
+            var audio = new Audio('/static/envio_dreamy.mp3');
+            audio.play();
             // Ejecuta la función fetchConversationInfo
             fetchConversationInfo();
         }
@@ -493,6 +510,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $('.send_message').click(function (e) {
         var messageText = getMessageText();
         sendMessage(messageText); // Envía el mensaje del usuario al chat
+        // Reproducir un sonido
+        var audio = new Audio('/static/envio_dreamy.mp3');
+        audio.play();
     });
 
     $('.message_input').keyup(function (e) {
@@ -500,16 +520,10 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault(); // Evita que se envíe el formulario cuando se presiona Enter
             var messageText = getMessageText();
             sendMessage(messageText); // Envía el mensaje del usuario al chat
+            // Reproducir un sonido
+            var audio = new Audio('/static/envio_dreamy.mp3');
+            audio.play();
         }
     });
     sendMessage('¡Hola soy Dreamy, tu acompañante en esta aventura! Por favor dime, ¿en qué te puedo ayudar?');
-});
-
-document.getElementById('toggleButton').addEventListener('click', function () {
-    var input = document.getElementById('conversation_query');
-    if (input.classList.contains('hidden')) {
-        input.classList.remove('hidden');
-    } else {
-        input.classList.add('hidden');
-    }
 });
