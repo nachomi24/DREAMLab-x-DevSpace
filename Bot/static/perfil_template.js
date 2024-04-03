@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const carrera = data[0].Carrera;
 
             // Cambiar el texto del <h1> al nombre obtenido
-            document.querySelector("h1").textContent = nombre;
-            const nombreUsuario = document.querySelector("h1");
+            document.querySelector("h2").textContent = nombre;
+            const nombreUsuario = document.querySelector("h2");
 
             nombreUsuario.style.display = 'flex';
 
@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Crea una tabla HTML
             let table = document.createElement("table");
 
+            
+
             // Crea la fila de encabezados de la tabla
             let headerRow = table.insertRow();
             for (let key in data[0]) {
@@ -37,8 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     let headerCell = document.createElement("th");
                     headerCell.textContent = key;
                     headerCell.style.fontSize = '22px';
-                    headerCell.style.border = '2px solid black';
-                    headerCell.style.padding = '5px';
+                    headerCell.style.padding = '10px';
+                    headerCell.style.borderRadius = '10px';
+                    headerCell.style.background = '#363968';
+                    headerCell.style.color = 'white';
                     headerRow.appendChild(headerCell);
                 }
             }
@@ -52,8 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         let cell = row.insertCell();
                         cell.textContent = item[key];
                         cell.style.fontSize = '25px';
-                        cell.style.border = '2px solid black';
-                        cell.style.padding = '5px';
+                        cell.style.padding = '10px';
+                        cell.style.background = '#D7D9F1';
+                        cell.style.color = '#363968';
+                        cell.style.borderRadius = '10px';
+                        cell.style.textAlign = 'center'
                     }
                 }
             });

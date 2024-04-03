@@ -16,6 +16,15 @@ h1 {
     font-size: 100px;
   }
 
+h2 {
+  font-family: "Mina", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #363968;
+  font-size: 60px;
+  line-height: 1.2;
+}
+
   h3 {
     font-family: "Mina", sans-serif;
     font-weight: bold;
