@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Crea una tabla HTML
             let table = document.createElement("table");
 
-            
+
 
             // Crea la fila de encabezados de la tabla
             let headerRow = table.insertRow();
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     headerCell.textContent = key;
                     headerCell.style.fontSize = '22px';
                     headerCell.style.padding = '10px';
+                    headerCell.style.border = '2px solid black';
                     headerCell.style.borderRadius = '10px';
                     headerCell.style.background = '#363968';
                     headerCell.style.color = 'white';
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         cell.style.background = '#D7D9F1';
                         cell.style.color = '#363968';
                         cell.style.borderRadius = '10px';
+                        cell.style.border = '2px solid black';
                         cell.style.textAlign = 'center'
                     }
                 }

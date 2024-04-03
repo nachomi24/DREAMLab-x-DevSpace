@@ -4,6 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
@@ -12,8 +13,9 @@
 </head>
 <body>
     <header>
-        <div class="logo">
+        <div style="display: flex; align-items: center;" class="logo">
             <img src="{{ url_for('static', filename='logoesq.png') }}" alt="Logo del dream">
+            <h1 style="margin-left: 20px; font-family: 'Unbounded', sans-serif; font-size: 30px;">D.R.E.A.M. LAB</h1>
         </div>
         <nav>
             <ul>
@@ -35,7 +37,7 @@
         <h3 style="display: none; justify-content: center; align-items: center;" id="carrera">CARRERA</h3>
     </div>
     
-    <div style="display: flex; justify-content: center; align-items: center;" id="tabla-resultados">
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 35px;" id="tabla-resultados">
 
     </div>
 

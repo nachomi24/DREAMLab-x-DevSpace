@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let salaRegex = /sala (\w+)/i;
     let diaRegex = /día (\d+ de [a-z]+ de \d{4})/i;
     let horasRegex = /desde las (\d+(?:am|pm)) hasta las (\d+(?:am|pm))/i;
-    let recursosRegex = /recursos de (.+?) y con (\d+) personas/i;
+    let recursosRegex = /recursos de (.+?),? y con (\d+) personas/i;
 
     let matricula = '';
     let idSala = '';
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         var audio = new Audio('/static/notificacion_dreamy_3.mp3');
                         audio.play();
 
-                        if (data.answer.startsWith("Muchas gracias,") && data.answer.includes("Consulta los detalles para ver tu resumen de reserva.")) {
+                        if (data.answer.includes("Consulta los detalles para ver tu resumen de reserva.")) {
                             idSala = data.answer.match(salaRegex)[1];
                             dia = data.answer.match(diaRegex)[1];
                             horaInicio = data.answer.match(horasRegex)[1];
