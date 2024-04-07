@@ -1,0 +1,9 @@
+.container {
+  background-image: url(bghome.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh; 
+  /* no se pq se pone un cuadro balnco y la foto no se ve completa ayuda */
+
+}
