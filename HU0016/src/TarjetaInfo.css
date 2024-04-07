@@ -1,0 +1,32 @@
+.tarjeta-info {
+  background-color: #D9D9D9; 
+  border-radius: 18px; 
+  font-size: 14px; 
+  z-index: 1; /*Layering de la capa de fondo por encima de la imagen */
+  position: relative; /* para que z-index tenga efecto */
+  padding: 2%;
+  padding-bottom: 0%;
+}
+
+.tarjeta img {
+  position: relative;
+  z-index: 0;
+  margin-bottom: -40px;
+}
+
+.tarjeta-info h2 {
+  margin: 0;
+  text-align: left;
+  padding-left: 5%;
+  margin-bottom: 0px;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: -10px; 
+}
+
