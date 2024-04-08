@@ -14,9 +14,9 @@ function Navbar(){
        </div>
       <div className="center">
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Reservar</a></li>
-          <li><a href="#">Secciones</a></li>
+          <li><a href="#">INICIO</a></li>
+          <li><a href="#">RESERVAR</a></li>
+          <li><a href="#">SECCIONES</a></li>
         </ul>
       </div>
       <div className="right">

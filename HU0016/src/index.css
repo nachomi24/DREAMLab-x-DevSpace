@@ -15,6 +15,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.mina-regular {
+  font-family: "Mina", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mina-bold {
+  font-family: "Mina", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
 a {
   font-family: "Mina", sans-serif;
     font-weight: bold;
