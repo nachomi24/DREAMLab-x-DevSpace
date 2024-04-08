@@ -9,14 +9,14 @@
     width: 80%; 
     height: 54%;
     background-color: #d9d9d96d; 
-    border-radius: 20px; 
     padding: 50px; 
+    border-radius: 20px;
 
   }
   
   
   .tarjeta {
-    margin: 0 120px 0px 0;
+    margin: 0 120px 0px 0;    
   }
   
   .menu {

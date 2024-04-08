@@ -5,6 +5,7 @@ import './App.css'
 import Navbar from './Navbar';
 import Tarjetas from './TarjetasT'; 
 import foto1 from './tallerIA.png';
+import { Helmet } from 'react-helmet';
 
 const datosEjemplo = [
   {
@@ -34,9 +35,14 @@ function App() {
 
   return (  
     <div className="container">
-    <Navbar/>
+    <Helmet>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap" rel="stylesheet" />
+    </Helmet>
+    <Navbar />
     <Tarjetas datos={datosEjemplo} />
-    </div>
+  </div>
   );
 }
 

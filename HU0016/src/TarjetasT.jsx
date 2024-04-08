@@ -3,7 +3,7 @@ import './Tarjetas.css';
 import './TarjetaInfo.css';
 
 const Tarjeta = ({ imagen, titulo, nombre, hora }) => (
-  <a href="#" className="tarjeta"> {/* Enlace que envuelve la tarjeta */}
+  <a href="#" className="tarjeta"> 
     <img src={imagen} alt={titulo} />
     <div className="tarjeta-info"> 
       <h2>{titulo}</h2>
@@ -19,8 +19,8 @@ const ContenedorTarjetas = ({ datos }) => (
   <div>
     <div className="menu">
       <ul>
-        <li><a href="#">Talleres</a></li>
-        <li><a href="#">Salas</a></li>
+        <li><a href="#">TALLERES</a></li>
+        <li><a href="#">SALAS</a></li>
       </ul>
     </div>
     <div className="contenedor-tarjetas">
