@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Navbar';
 import Tarjetas from './TarjetasT'; 
@@ -25,9 +22,9 @@ const datosEjemplo = [
   {
     id: 3,
     imagen: foto1,
-    titulo: 'Título 2',
+    titulo: 'Título 3',
     nombre: 'Nombre 2',
-    hora: '2:30 PM',
+    hora: '11:45 AM',
   },
 ];
 
