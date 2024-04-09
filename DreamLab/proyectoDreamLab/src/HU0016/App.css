@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
+
+
 .container {
   background-image: url(bghome.jpg);
   background-size: cover;
@@ -7,5 +10,3 @@
   /* no se pq se pone un cuadro balnco y la foto no se ve completa ayuda */
 
 }
-
-@import url('./fonts.css');
