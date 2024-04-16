@@ -1,0 +1,12 @@
+.descripcion{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #363968;
+}
+
+.boxd {
+    display: flex;
+    justify-content: center;
+    background-color: #D5D7F0;
+}
