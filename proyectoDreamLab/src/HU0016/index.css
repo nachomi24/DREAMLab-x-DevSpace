@@ -1,9 +1,15 @@
 :root {
   font-family: "Mina", sans-serif;
+    background-image: url(bghome.jpg);
+    background-image: url(bghome.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     font-weight: bold;
     text-align: center;
     color: #363968;
     font-size: 30px;
+    
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);

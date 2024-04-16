@@ -1,7 +1,10 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Navbar';
 import Tarjetas from './TarjetasT'; 
-import foto1 from './tallerIA.png';
+import foto1 from './iaia.png';
 import { Helmet } from 'react-helmet';
 
 const datosEjemplo = [
@@ -22,10 +25,38 @@ const datosEjemplo = [
   {
     id: 3,
     imagen: foto1,
-    titulo: 'Título 3',
+    titulo: 'Título 2',
     nombre: 'Nombre 2',
-    hora: '11:45 AM',
+    hora: '2:30 PM',
   },
+  {
+    id: 4,
+    imagen: foto1,
+    titulo: 'Título 2',
+    nombre: 'Nombre 2',
+    hora: '2:30 PM',
+  },
+  // {
+  //   id: 5,
+  //   imagen: foto1,
+  //   titulo: 'Título 2',
+  //   nombre: 'Nombre 2',
+  //   hora: '2:30 PM',
+  // },
+  // {
+  //   id: 6,
+  //   imagen: foto1,
+  //   titulo: 'Título 2',
+  //   nombre: 'Nombre 2',
+  //   hora: '2:30 PM',
+  // },
+  // {
+  //   id: 7,
+  //   imagen: foto1,
+  //   titulo: 'Título 2',
+  //   nombre: 'Nombre 2',
+  //   hora: '2:30 PM',
+  // },
 ];
 
 function App() {
