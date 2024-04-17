@@ -1,8 +1,9 @@
-import React from 'react';
 import './Tarjetas.css';
 import './TarjetaInfo.css';
+import Menu from '../Menu/Menu'; 
 
 const Tarjeta = ({ imagen, titulo, nombre, hora }) => (
+
   <a href="#" className="tarjeta"> 
     <img src={imagen} alt={titulo} />
     <div className="tarjeta-info"> 
@@ -16,17 +17,14 @@ const Tarjeta = ({ imagen, titulo, nombre, hora }) => (
 );
 
 const ContenedorTarjetas = ({ datos }) => (
-  <div>
-    <div className="menu">
-      <ul>
-        <li><a href="#">TALLERES</a></li>
-        <li><a href="#">SALAS</a></li>
-      </ul>
-    </div>
-    <div className="contenedor-tarjetas">
-      {datos.map((dato) => (
-        <Tarjeta key={dato.id} {...dato} />
-      ))}
+  <div className='contenedor-tarjeta-general'>
+    <Menu />
+    <div className='contenedor-principal-tarjetas'>
+      <div className="contenedor-tarjetas">
+        {datos.map((dato) => (
+          <Tarjeta key={dato.id} {...dato} />
+        ))}
+      </div>
     </div>
   </div>
 );

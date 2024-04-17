@@ -1,7 +1,7 @@
 .Header {
     width: 100%;
     min-height: 110vh;
-    background: url(../../assets/fondo6.0.png) no-repeat center center/cover;
+    background: url(../../../assets/fondo6.0.png) no-repeat center center/cover;
     background-size: cover;
     background-position: center;
     color: #363968;
@@ -13,12 +13,16 @@
 
 .Header-text{
     text-align: center;
-    max-width: 800px;
+    margin-top: 12vh;
+    margin-bottom: 10vh;
 }
 
 .Header-text h1{
-    font-size: 170px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10vw;
     font-weight: bolder;
+    line-height: 1;
+    margin-bottom: 10vh;
 }
 
 /* Media query para pantallas pequeñas */

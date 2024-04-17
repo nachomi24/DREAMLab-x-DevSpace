@@ -1,5 +1,5 @@
 import React from 'react'
-import boton from '../../assets/boton.png'
+import boton from '../../../assets/boton.png'
 
 const Boton = () => {
   return (

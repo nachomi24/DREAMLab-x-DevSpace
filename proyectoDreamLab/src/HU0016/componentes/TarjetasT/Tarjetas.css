@@ -1,0 +1,36 @@
+.contenedor-tarjeta-general {
+    position: relative;
+    z-index: 1;
+    top: 20vh;
+    left: 0;
+}
+
+.contenedor-principal-tarjetas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  width: 80%;
+  height: 75vh; /* Cambiado a unidades relativas */
+  background-color: #d9d9d96d;
+  padding: 5vh; /* Cambiado a unidades relativas */
+  border-radius: 4vw; /* Cambiado a unidades relativas */
+  box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.082); /* Cambiado a unidades relativas */
+  overflow: auto; /* Cambiado a 'auto' */
+  overflow-x: hidden;
+  margin-bottom: 4vh;
+}
+
+.tarjeta {
+  margin-bottom: 3vh;
+  margin-left: 2vh;
+  margin-right: 2vh;
+  width: 25%; /* Cambiado para que sea responsivo */
+  line-height: 1.75;
+}

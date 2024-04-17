@@ -1,14 +1,19 @@
 .box {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: end;
-    height: 150vh; 
+    height: 100vh; 
     background-color: #D5D7F0;
 }
 
 .OS {
-    width: 100%; 
+    width: 65%; 
     max-width: 1300px; 
     position: relative;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

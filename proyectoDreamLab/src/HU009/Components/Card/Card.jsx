@@ -71,7 +71,7 @@ const Card = () => {
     <div className='box1'>
       <div className='Card'>
         <button className='prev_next' onClick={prevCard}>{"<"}</button>
-        <div>
+        <div className='card-margin'>
           <h2>{cards[currentCard].title}</h2>
           <p>{cards[currentCard].description}</p>
         </div>
