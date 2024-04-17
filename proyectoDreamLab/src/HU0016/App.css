@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
+
+
+.container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh; 
+  /* no se pq se pone un cuadro balnco y la foto no se ve completa ayuda */
+
+}

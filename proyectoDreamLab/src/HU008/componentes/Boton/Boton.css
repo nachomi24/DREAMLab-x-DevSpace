@@ -1,0 +1,6 @@
+.botonnav{
+    width: 60px;
+    align-items: end;
+    justify-content: center;
+    display: flex;
+}
