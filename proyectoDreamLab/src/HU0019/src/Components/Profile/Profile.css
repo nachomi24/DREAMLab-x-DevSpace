@@ -1,0 +1,42 @@
+.image-container {
+    max-width: 300px;
+    float: left;
+    margin-top: 90px;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+}
+.matricula-text {
+    
+    font-size: 5ex;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: #000000;
+    text-align: center;
+}
+.descripcion-text {
+    
+    font-size: 4ex;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: #000000;
+    text-align: center;
+}
+.puntos-text {
+    
+    font-size: 3ex;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: #ffffff;
+    text-align: center;
+}
+.puntos {
+    
+    font-size: 5ex;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: #9AFFC9;
+    text-align: center;
+}

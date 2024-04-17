@@ -5,12 +5,12 @@ import Menu from '../Menu/Menu';
 const Tarjeta = ({ imagen, titulo, nombre, hora }) => (
 
   <a href="#" className="tarjeta"> 
-    <img src={imagen} alt={titulo} />
+    <img src={iaia} alt={nombre} />
     <div className="tarjeta-info"> 
-      <h2>{titulo}</h2>
+      <h2>{nombre}</h2>
       <div className="info-container">
-        <p>{nombre}</p>
-        <p>{hora}</p>
+        <p>{ubicacion}</p>
+        <p>{hora_inicio}</p>
       </div>
     </div>
   </a>
