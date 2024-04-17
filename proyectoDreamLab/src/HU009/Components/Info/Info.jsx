@@ -1,6 +1,6 @@
 import React from 'react'
 import './Info.css'
-import Garage from '../../assets/Garage.png'
+import Garage from '../../../assets/Garage.png'
 import Card from '../Card/Card'
 
 const Info = () => {

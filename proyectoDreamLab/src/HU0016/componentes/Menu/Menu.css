@@ -1,0 +1,25 @@
+.menu {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 25px;
+    padding-left: 10vw;
+}
+
+.menu-row {
+    display: flex;
+    list-style-type: none;
+}
+
+.menu-row-element {
+    margin: 0 2.5vw;
+}
+
+.menu-row-element.active a {
+    color: rgb(141, 141, 141); /* Cambia este color al que prefieras */
+}
+
+.menu-row-element a {
+    font-weight: bolder;
+    font-size: 3.5vh;
+    transition: color 0.3s;
+}
