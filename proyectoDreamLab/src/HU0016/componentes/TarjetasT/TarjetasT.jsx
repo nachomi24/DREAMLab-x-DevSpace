@@ -1,16 +1,17 @@
 import './Tarjetas.css';
 import './TarjetaInfo.css';
 import Menu from '../Menu/Menu'; 
+import iaia from '../../../assets/iaia.png';
 
 const Tarjeta = ({ imagen, titulo, nombre, hora }) => (
 
   <a href="#" className="tarjeta"> 
-    <img src={iaia} alt={nombre} />
+    <img src={imagen} alt={nombre} />
     <div className="tarjeta-info"> 
       <h2>{nombre}</h2>
       <div className="info-container">
-        <p>{ubicacion}</p>
-        <p>{hora_inicio}</p>
+        <p>{titulo}</p>
+        <p>{hora}</p>
       </div>
     </div>
   </a>

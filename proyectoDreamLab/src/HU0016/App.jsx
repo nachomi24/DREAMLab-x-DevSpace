@@ -59,21 +59,7 @@ const datosEjemplo = [
 ];
 
 function App() {
-  const [datos, setDatos] = useState([]);
-  //conseguir datos del API
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/talleres', {
-  mode: 'no-cors'})
-      .then((res) => {
-        setDatos(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-
-
+  
   return (  
 
     <>
