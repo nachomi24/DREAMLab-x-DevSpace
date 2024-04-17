@@ -1,15 +1,15 @@
 import React from 'react';
 import './Tarjetas.css';
 import './TarjetaInfo.css';
-
-const Tarjeta = ({ imagen, titulo, nombre, hora }) => (
+import iaia from './iaia.png';
+const Tarjeta = ({ tallerID, nomina_profesor, UFID, nombre, cupo, ubicacion, hora_inicio, hora_fin, fecha, creado_en}) => (
   <a href="#" className="tarjeta"> 
-    <img src={imagen} alt={titulo} />
+    <img src={iaia} alt={nombre} />
     <div className="tarjeta-info"> 
-      <h2>{titulo}</h2>
+      <h2>{nombre}</h2>
       <div className="info-container">
-        <p>{nombre}</p>
-        <p>{hora}</p>
+        <p>{ubicacion}</p>
+        <p>{hora_inicio}</p>
       </div>
     </div>
   </a>

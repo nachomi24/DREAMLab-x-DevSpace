@@ -1,77 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import axios from 'axios';
 import Navbar from './Navbar';
-import Tarjetas from './TarjetasT'; 
-import foto1 from './iaia.png';
+import Tarjetas from './TarjetasT';
 import { Helmet } from 'react-helmet';
 
-const datosEjemplo = [
-  {
-    id: 1,
-    imagen: foto1,
-    titulo: 'Taller IA',
-    nombre: 'Lego Room',
-    hora: '10:00 AM',
-  },
-  {
-    id: 2,
-    imagen: foto1,
-    titulo: 'Título 2',
-    nombre: 'Nombre 2',
-    hora: '2:30 PM',
-  },
-  {
-    id: 3,
-    imagen: foto1,
-    titulo: 'Título 2',
-    nombre: 'Nombre 2',
-    hora: '2:30 PM',
-  },
-  {
-    id: 4,
-    imagen: foto1,
-    titulo: 'Título 2',
-    nombre: 'Nombre 2',
-    hora: '2:30 PM',
-  },
-  // {
-  //   id: 5,
-  //   imagen: foto1,
-  //   titulo: 'Título 2',
-  //   nombre: 'Nombre 2',
-  //   hora: '2:30 PM',
-  // },
-  // {
-  //   id: 6,
-  //   imagen: foto1,
-  //   titulo: 'Título 2',
-  //   nombre: 'Nombre 2',
-  //   hora: '2:30 PM',
-  // },
-  // {
-  //   id: 7,
-  //   imagen: foto1,
-  //   titulo: 'Título 2',
-  //   nombre: 'Nombre 2',
-  //   hora: '2:30 PM',
-  // },
-];
-
 function App() {
+  const [datos, setDatos] = useState([]);
+  //conseguir datos del API
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/api/talleres', {
+  mode: 'no-cors'})
+      .then((res) => {
+        setDatos(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+
 
   return (  
     <div className="container">
-    <Helmet>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap" rel="stylesheet" />
-    </Helmet>
-    <Navbar />
-    <Tarjetas datos={datosEjemplo} />
-  </div>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link href="https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap" rel="stylesheet" />
+      </Helmet>
+      <Navbar />
+      <Tarjetas datos={datos} />
+    </div>
   );
 }
 
-export default App
+export default App;
