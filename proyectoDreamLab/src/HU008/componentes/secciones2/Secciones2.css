@@ -1,15 +1,20 @@
 .box2 {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: end;
-    height: 150vh; 
+    height: 100vh; 
     background-image: linear-gradient(to top, #585ca7, #777aba, #9699cd, #b6b8df, #d7d9f1);
     /* background-image: linear-gradient(to top, #585ca7, #777aba, #9699cd, #b6b8df, #d7d9f1); */
 }
 
 .GV {
-    width: 100%; 
+    width: 65%; 
     max-width: 1300px; 
     position: relative;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

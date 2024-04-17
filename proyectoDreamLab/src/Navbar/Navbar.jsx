@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css'
-import logo from '../../assets/logo1.0.png'
-import perfil from '../../assets/perfil.png'
+import logo from '../assets/logo1.0.png'
+import perfil from '../assets/perfil.png'
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);

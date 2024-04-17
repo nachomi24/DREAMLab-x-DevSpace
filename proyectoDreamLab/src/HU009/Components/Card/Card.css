@@ -16,12 +16,13 @@
     text-align: center;
     background: rgba(217, 217, 217, 0.4);
     width: 100%; 
-    max-width: 600px; 
+    max-width: 50vw; 
     height: auto; 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    transition: max-width 0.1s;
 }
 
 .Card h2 {
@@ -73,6 +74,10 @@
     box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
 }
 
+.card-margin {
+    margin: 0 2vw;
+}
+
 .ReservarAhora:hover {
     color: rgba(255, 255, 255, 1) !important;
     box-shadow: 0 4px 16px rgb(46, 17, 68);
@@ -91,6 +96,10 @@
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 850px) {
+    .Card {
+        max-width: 75vw; 
+    }
+    
     .prev_next{
         font-size: 8vw; 
     }
@@ -113,5 +122,11 @@
 
     .ReservarAhora {
         width: 45%; 
+    }
+}
+
+@media (max-width: 650px) {
+    .Card {
+        max-width: 90vw; 
     }
 }
