@@ -7,7 +7,7 @@ import foto3 from '../assets/vrvr.png';
 import foto4 from '../assets/construye.png';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-const apiURL = "http://localhost:8000/api/info_talleres";
+const apiURL = "https://devspaceapi.azurewebsites.net/api/info_talleres";
 
 function App() {
   const [talleres, setTalleres] = useState([]);
