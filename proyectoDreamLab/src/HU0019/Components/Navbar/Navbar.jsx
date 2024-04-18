@@ -1,8 +1,8 @@
 import React from 'react'
 import './Navbar.css'
-import logo from '../../assets/logo1.0.png'
-import perfil from '../../assets/perfil.png'
-import search from '../../assets/search.png'
+import logo from '../../../assets/logo1.0.png'
+import perfil from '../../../assets/perfil.png'
+import search from '../../../assets/search.png'
 
 const Navbar = () => {
   return (

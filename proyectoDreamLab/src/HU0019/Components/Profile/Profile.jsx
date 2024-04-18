@@ -1,6 +1,7 @@
-import React from 'react'
 import './Profile.css'
-import karenProfile from '../../assets/karenFoto.png'
+import karenProfile from '../../../assets/karenFoto.png'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 const Profile = () => {
     return (
         <div class="image-container">
