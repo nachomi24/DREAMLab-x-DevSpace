@@ -28,9 +28,17 @@
 }
 
 .tarjeta {
-  margin-bottom: 3vh;
+  margin-bottom: 7vh;
   margin-left: 2vh;
   margin-right: 2vh;
   width: 25%; /* Cambiado para que sea responsivo */
   line-height: 1.75;
+  cursor: pointer;
+  border-radius: 25px;
+  box-shadow: 3px 10px rgba(56, 56, 56, 0.384);
+  transition: box-shadow 0.3s;
+}
+
+.tarjeta:hover {
+  box-shadow: 2px 5px rgba(56, 56, 56, 0.384);
 }
