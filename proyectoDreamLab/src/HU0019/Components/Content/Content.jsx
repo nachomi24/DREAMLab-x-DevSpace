@@ -1,20 +1,23 @@
 import React from 'react'
 import './Content.css'
-import Card from '../Card/Card'
 import Profile from '../Profile/Profile'
 import Tabla from '../Tabla/Tabla'
 
 const Content = () => {
   return (
-    <div className="content-container">
-      <table className="content-table">
+    <div className="table-container">
+      <table>
         <tbody>
           <tr>
-            <td className="content-column">
-              <Profile></Profile>
+            <td>
+              <div className="profile-container">
+                <Profile />
+              </div>
             </td>
             <td>
-              <Tabla />
+              <div className="tabla-container">
+                <Tabla />
+              </div>
             </td>
           </tr>
         </tbody>
