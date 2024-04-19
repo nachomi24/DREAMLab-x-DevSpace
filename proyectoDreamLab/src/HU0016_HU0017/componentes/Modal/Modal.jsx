@@ -1,4 +1,3 @@
-import React from 'react';
 import './Modal.css';
 
 const Modal = ({ data, onClose, imagen }) => {
@@ -18,19 +17,43 @@ const Modal = ({ data, onClose, imagen }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div style={{backgroundImage: `url(${imagen})`}} className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div>
-            <h2>{nombre}</h2>
+      <div style={{background: `url(${imagen}) no-repeat center center/cover`}} className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className='modal-content-inside'>
+          <div className='modal-content-inside-header'>
+            <h2 className='titulito-header'>{nombre}</h2>
+          </div>
+          <div className='modal-content-inside-body'>
+            <div className='modal-content-inside-body-content'>
+              <div className='modal-content-inside-body-content-ubi'>
+                <p>📍 {ubicacion} 📍</p>
+              </div>
+              <div className='modal-content-inside-body-content-uf'>
+                <p className='uniforma'>{UFID} - {nombre_UF}</p>
+                <p>Profesor(a): {nombre_completo}</p>
+              </div>
+              <div className='modal-content-inside-body-content-fecha'>
+                <p>{fecha}</p>
+                <p className='horarie'>{hora_inicio} a {hora_fin}</p>
+              </div>
+              <div className='modal-content-inside-body-content-detalles'>
+                <div className='modal-content-inside-body-content-detalles-creado'>
+                  <p>Creado en:</p>
+                  <p className='creadito'>{creado_en}</p>
+                </div>
+                <div className='modal-content-inside-body-content-detalles-cupo'>
+                  <p>Cupo:</p>
+                  <p className='cupito'>{cupo}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='modal-content-inside-body-content-boton'>
+            <div className='modal-content-inside-body-content-boton-content'>
+              <a href="/reservar" className='botoncito2'>Reservar</a>
+              <button className='botoncito1' onClick={onClose}>Cerrar</button>
+            </div>
+          </div>
         </div>
-        <p>Profesor: {nombre_completo}</p>
-        <p>UF: {UFID} - {nombre_UF}</p>
-        <p>Cupo: {cupo}</p>
-        <p>Ubicación: {ubicacion}</p>
-        <p>Hora de inicio: {hora_inicio}</p>
-        <p>Hora de fin: {hora_fin}</p>
-        <p>Fecha: {fecha}</p>
-        <p>Creado en: {creado_en}</p>
-        <button onClick={onClose}>Cerrar</button>
       </div>
     </div>
   );

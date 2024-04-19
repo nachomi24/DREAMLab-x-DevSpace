@@ -1,8 +1,8 @@
 .contenedor-tarjeta-general {
-    position: relative;
-    z-index: 1;
-    top: 20vh;
-    left: 0;
+  position: relative;
+  z-index: 1;
+  top: 20vh;
+  left: 0;
 }
 
 .contenedor-principal-tarjetas {
