@@ -17,7 +17,7 @@ const Navbar = () => {
         
          
         <div className='search-icon'> 
-          <img xlassName ='search-icon'src={search} />
+          <img className ='search-icon'src={search} />
         </div>
 
         
