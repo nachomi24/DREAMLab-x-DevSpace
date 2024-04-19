@@ -4,25 +4,29 @@
     width: 100%;
     display: flex;
     justify-content: center;
-  }
+    padding-top: 10%;
+}
   
-  .table-container table {
-    width: 100%;
-  }
+.table-container table {
+    width: 90%;
+    border-collapse: collapse;
+    border-radius: 25px;
+}
   
-  .profile-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10%;
-
-  }
-  
-  .tabla-container {
+.profile-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10%;
+    align-items: start;
+    padding: 0 10%;
+}
+  
+.tabla-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-right: 50px;
+    margin-bottom: 35px;
 }
 
 .Content{
@@ -35,7 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; ;
+    flex-direction: column;
 }
 
 .Content-text{

@@ -14,7 +14,7 @@
 .contenedor-tarjetas {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: start;
   width: 80%;
   height: 75vh; /* Cambiado a unidades relativas */
@@ -29,9 +29,9 @@
 
 .tarjeta {
   margin-bottom: 7vh;
-  margin-left: 2vh;
-  margin-right: 2vh;
-  width: 25%; /* Cambiado para que sea responsivo */
+  margin-left: 5vh;
+  margin-right: 5vh;
+  width: 27%; /* Cambiado para que sea responsivo */
   line-height: 1.75;
   cursor: pointer;
   border-radius: 25px;

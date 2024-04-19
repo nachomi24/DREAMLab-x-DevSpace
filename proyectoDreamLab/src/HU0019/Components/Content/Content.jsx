@@ -4,9 +4,6 @@ import Profile from '../Profile/Profile'
 import Tabla from '../Tabla/Tabla'
 import axios from 'axios';
 
-
-
-
 const Content = ({matricula}) => {
   const apiURLPerfil = "https://devspaceapi.azurewebsites.net/api/perfil/" + matricula;
   const apiURLPerfilCarrera = "https://devspaceapi.azurewebsites.net/api/perfil/carrera/" + matricula;
@@ -66,13 +63,22 @@ const Content = ({matricula}) => {
       <table>
         <tbody>
           <tr>
-            <td>
+            <td style={{ display: 'flex', alignItems: 'start', margin: '0 20px' }}>
               <div className="profile-container">
                 <Profile matricula={matricula} Carrera={Carrera} totalPuntos={totalPuntos}/>
-                
               </div>
             </td>
-            
+            <td>
+              <div className="tabla-container">
+                <Tabla
+                  Nombre={Nombre}
+                  totalUF={totalUF}
+                  reservacionesPendientes={ReservacionesPendientes}
+                  reservacionesAprobadas={ReservacionesAprobadas}
+                  matricula={matricula}
+                />
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -80,10 +86,4 @@ const Content = ({matricula}) => {
   )
 }
   
-
-  
-  
-  
-
-
 export default Content
