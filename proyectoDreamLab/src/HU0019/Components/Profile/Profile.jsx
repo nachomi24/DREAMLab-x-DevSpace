@@ -1,15 +1,18 @@
 import './Profile.css'
 import karenProfile from '../../../assets/karenFoto.png'
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-const Profile = () => {
+
+
+
+
+
+function Profile ({matricula, Carrera, totalPuntos}) {
     return (
-        <div class="image-container">
-            <img class="image-container" src={karenProfile} alt="karenProfile" border="0" className='Profile container' />
-            <p class="matricula-text">A00835268</p>
-            <p class="descripcion-text">Estudiante - ITC</p>
-            <p class="puntos-text">Puntos de prioridad</p>
-            <p class="puntos">82</p>
+        <div className="image-container">
+            <img className="image-container" src={karenProfile} alt="karenProfile" border="0" />
+            <p className="matricula-text">{matricula}</p>
+            <p className="descripcion-text">Estudiante - {Carrera}</p>
+            <p className="puntos-text">Puntos de prioridad</p>
+            <p className="puntos">{totalPuntos}</p>
         </div>
     )
 }
