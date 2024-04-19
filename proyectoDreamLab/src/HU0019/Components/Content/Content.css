@@ -5,11 +5,11 @@
     min-height: 110vh;
     background: url(../../assets/fondo6.0.png) no-repeat center center/cover;
     background-size: cover;
-    background-position: center;
+    background-position: left;
     color: #363968;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     flex-direction: column; ;
 }
 
