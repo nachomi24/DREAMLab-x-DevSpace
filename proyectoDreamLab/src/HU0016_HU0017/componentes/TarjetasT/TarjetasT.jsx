@@ -64,7 +64,7 @@ const Tarjeta = ({
   return (
     <>
       <div onClick={handleOpenModal} className="tarjeta"> 
-        <div className='tarjeta-img'>
+        <div>
           <img className='tarjeta-img-inside' src={imagenAleatoria} alt={ubicacion} />
         </div>
         <div className="tarjeta-info"> 
