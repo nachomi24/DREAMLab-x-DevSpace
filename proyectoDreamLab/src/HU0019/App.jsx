@@ -19,8 +19,7 @@ function App({ matricula}) {
   return (
     <div>
       <Navbar />
-      <Content />
-      
+      <Content />      
     </div>
   )
 }

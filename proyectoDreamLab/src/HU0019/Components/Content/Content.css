@@ -1,5 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Mina&display=swap');
 
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .table-container table {
+    width: 100%;
+  }
+  
+  .profile-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10%;
+
+  }
+  
+  .tabla-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10%;
+}
+
 .Content{
     width: 100%;
     min-height: 110vh;

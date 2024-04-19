@@ -1,12 +1,14 @@
 .image-container {
     max-width: 300px;
-    float: left;
+    float: center;
     margin-top: 90px;
+    align-self: center;
+    align-items: center;
 }
 .image-container img {
     width: 100%;
     height: auto;
-    border-radius: 10%;
+    border-radius: 20%;
 }
 .matricula-text {
     
