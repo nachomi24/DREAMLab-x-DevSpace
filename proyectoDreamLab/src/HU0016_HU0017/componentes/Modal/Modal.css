@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -12,7 +14,152 @@
 }
   
 .modal-content {
-    padding: 25px;
+    width: 600px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 }
-  
+
+.modal-content-inside {
+    border-radius: 15px;
+}
+
+.modal-content-inside-header {
+    width: 100%;
+    color: #363968;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #d7d9f1;
+    border-radius: 10px;
+    padding: 7.5px;
+}
+
+.modal-content-inside-header .titulito-header {
+    font-family: 'Unbounded', sans-serif;
+}
+
+.modal-content-inside-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-content-inside-body-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.651);
+    color: #d7d9f1;
+    padding: 15px 35px;
+    width: 100%;
+}
+
+.modal-content-inside-body-content-ubi {
+    padding: 5px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 4.5vh;
+}
+
+.modal-content-inside-body-content-uf {
+    padding: 5px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2.5vh;
+}
+
+.uniforma {
+    font-size: 2vh;
+}
+
+.modal-content-inside-body-content-fecha {
+    padding: 10px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 4vh;
+}
+
+.modal-content-inside-body-content-fecha .horarie {
+    padding: 3px;
+    text-align: center;
+    font-size: 2.5vh;
+}
+
+.modal-content-inside-body-content-detalles {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2vh;
+}
+
+.modal-content-inside-body-content-detalles-creado {
+    text-align: left;
+}
+
+.modal-content-inside-body-content-detalles-creado .creadito {
+    font-size: 3vh;
+}
+
+.modal-content-inside-body-content-detalles-cupo {
+    text-align: right;
+}
+
+.modal-content-inside-body-content-detalles-cupo .cupito {
+    font-size: 3vh;
+}
+
+.modal-content-inside-body-content-boton {
+    width: 100%;
+    color: #363968;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #d7d9f1;
+    border-radius: 10px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content-inside-body-content-boton-content {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.botoncito1 {
+    padding: 7px;
+    font-size: 3vh;
+    background-color: #6d1951;
+    color: #eff0ff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    transition: box-shadow 0.3s;
+}
+
+.botoncito1:hover {
+    box-shadow: 0px 0px rgb(185, 185, 185);
+}
+
+.botoncito2 {
+    padding: 7px;
+    font-size: 3vh;
+    background-color: #363968;
+    color: #eff0ff;
+    border-radius: 10px;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    transition: box-shadow 0.3s;
+}
+
+.botoncito2:hover {
+    box-shadow: 0px 0px rgb(185, 185, 185);
+}
