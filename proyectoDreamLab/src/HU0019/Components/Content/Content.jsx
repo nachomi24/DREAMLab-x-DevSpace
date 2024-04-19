@@ -15,14 +15,14 @@ const Content = ({matricula}) => {
   const [totalPuntos, setPuntos] = useState(0);
   const [Nombre, setNombre] = useState('');
   const [totalUF, setUfCursando] = useState(0);
-  const [Reservaciones, setReservaciones] = useState([]);
+  const [ReservacionesAprobadas, setReservacionesAprobadas] = useState([]);
+  const [ReservacionesPendientes, setReservacionesPendientes] = useState([]);
 
   const obtenerPerfilCarrerayNombre = async () => {
     try {
       const response = await axios.get(apiURLPerfilCarrera);
       setCarrera(response.data['Carrera']);
       setNombre(response.data['Nombre']);
-      console.log(response.data['Carrera']);
     } catch (error) {
       console.error('Error al obtener perfil:', error);
     }
@@ -36,9 +36,29 @@ const Content = ({matricula}) => {
       console.error('Error al obtener perfil:', error);
     }
   };
+  const obtenerDatos = async () => {
+    try {
+        const response = await axios.get(apiURLReservaciones);
+        const data = response.data;
+
+        // Separar los datos en ReservacionesAprobadas y ReservacionesPendientes
+        const aprobadas = data[0];
+        const pendientes = data[1];
+
+        // Asignar los datos a los hooks correspondientes
+        setReservacionesAprobadas(aprobadas);
+        setReservacionesPendientes(pendientes);
+        console.log(response.data);
+        console.log(aprobadas);
+        console.log(pendientes);
+    } catch (error) {
+        console.error('Error al obtener los datos:', error);
+    }
+  };
   useEffect(() => {
     obtenerPerfilCarrerayNombre();
     obtenerPerfilPuntosyUfCursando();
+    obtenerDatos();
   }, []);
   
   return (
@@ -49,6 +69,7 @@ const Content = ({matricula}) => {
             <td>
               <div className="profile-container">
                 <Profile matricula={matricula} Carrera={Carrera} totalPuntos={totalPuntos}/>
+                
               </div>
             </td>
             
