@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
         <ul className='links'>
           <li><a href="/inicio" className="mina-bold">INICIO</a></li>
-          <li><a href="/" className="mina-bold">RESERVAR</a></li>
+          <li><a href="/bot" className="mina-bold">RESERVAR</a></li>
           <li><a href="/secciones" className="mina-bold">SECCIONES</a></li>
         </ul>
         <div className="karen">

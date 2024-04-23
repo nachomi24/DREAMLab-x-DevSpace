@@ -1,0 +1,15 @@
+ /*
+.bot-container {
+    width: 50%;
+    height: 100vh;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+.bot-container img {
+    max-width: 90%;
+    max-height: 100%;
+}

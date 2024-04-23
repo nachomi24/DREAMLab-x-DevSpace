@@ -1,0 +1,331 @@
+/* todo el contenedor del chat */
+.chat_window {
+    width: 40%;
+    height: 100vh;
+    float: right;
+    display: flex;
+    flex-direction: column;
+}
+
+/* titulo de reserva tu lugar */
+.top_menu {
+  background-color: transparent;
+  width: 100%;
+  padding: 20px 0 15px;
+}
+
+@keyframes fade-up{
+  0%{
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+
+  }
+}
+
+.fade-in {
+  animation: fade-up 0.5s;
+}
+
+.detail .title {
+  text-align: center;
+  color: #363968;
+  font-size: 40px;
+  font-weight: bolder;
+  line-height: 50px;
+  margin-top: 10px;
+}
+
+.top_menu .title {
+  text-align: center;
+  color: #363968;
+  font-size: 60px;
+  font-weight: bolder;
+  line-height: 50px;
+}
+
+.error .title {
+  text-align: center;
+  color: rgb(207, 58, 58);
+  font-size: 20px;
+  font-weight: bolder;
+  line-height: 10px;
+  padding-bottom: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+
+}
+
+nav ul li a {
+    color: #363968;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+  
+  .chat_window {
+    position: absolute;
+    width: calc(50% - 10px); 
+    max-width: 700px; 
+    height: 550px;
+    border-radius: 10px;
+    background-color: transparent;
+    left: 50%; 
+    top: 60%; 
+    transform: translateY(-50%);
+    overflow: hidden;
+    font-family: "Mina", sans-serif;
+    
+  }
+
+  .detail {
+    width: 350px; 
+    height: 475px;
+    border-radius: 25px;
+    background-color: rgba(161, 219, 255, 0.703); 
+    z-index: 1; 
+    position: absolute;
+    margin-left: 400px;
+    border: 1px solid black;
+  }
+
+
+
+  .inter-text {
+    font-family: "Mina", sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    height: 295px;
+    overflow-y: scroll;
+  }
+
+  .column-name {
+    font-size: 18px; /* Tamaño de fuente más pequeño */
+  }
+  
+  .messages {
+    position: relative;
+    list-style: none;
+    padding: 20px 10px 0 10px;
+    margin: 0;
+    height: 380px;
+    overflow-y: scroll;
+  }
+
+  .messages::-webkit-scrollbar {
+    width: 0; /* oculta la barra de desplazamiento */
+}
+
+  .messages .message {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: all 0.5s linear;
+    opacity: 0;
+  }
+  .messages .message.left .avatar {
+    background-image: url('botICON.png');
+    background-size: cover;
+    float: left;
+  }
+  .messages .message.left .text_wrapper {
+    background-color: white;
+    margin-left: 20px;
+  }
+  .messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
+    right: 100%;
+    border-right-color: white;
+  }
+  .messages .message.left .text {
+    color: #363968;
+  }
+  .messages .message.right .avatar {
+    background-image: url('karen.png');
+    background-size: cover;
+    float: right;
+  }
+  .messages .message.right .text_wrapper {
+    background-color: #363968;
+    margin-right: 20px;
+    float: right;
+  }
+  .messages .message.right .text_wrapper::after, .messages .message.right .text_wrapper::before {
+    left: 100%;
+    border-left-color: #363968;
+  }
+  .messages .message.right .text {
+    color: white;
+  }
+  .messages .message.appeared {
+    opacity: 1;
+  }
+  .messages .message .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .messages .message .text_wrapper {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 6px;
+    width: calc(100% - 85px);
+    min-width: 100px;
+    position: relative;
+  }
+  .messages .message .text_wrapper::after, .messages .message .text_wrapper:before {
+    top: 18px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .messages .message .text_wrapper::after {
+    border-width: 13px;
+    margin-top: 0px;
+  }
+  .messages .message .text_wrapper::before {
+    border-width: 15px;
+    margin-top: -2px;
+  }
+  .messages .message .text_wrapper .text {
+    font-size: 18px;
+    font-weight: 300;
+  }
+  
+  .bottom_wrapper {
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+    padding: 20px 20px;
+    position: absolute;
+    bottom: 0;
+  }
+  .bottom_wrapper .message_input_wrapper {
+    display: inline-block;
+    height: 50px;
+    border-radius: 25px; 
+    background-color: white;
+    border: 1px solid #D9D9D9;
+    width: calc(100% - 160px);
+    position: relative;
+    padding: 0 20px;
+    margin-right: 10px;
+  }
+  
+  .bottom_wrapper .message_input_wrapper .message_input {
+    border: none;
+    height: 100%;
+    box-sizing: border-box;
+    /*border-radius: 50px; */
+    width: calc(100% - 40px);
+    position: absolute;
+    outline-width: 0;
+    color:#363968;
+    font-family: "Mina", sans-serif;
+    float: right;
+    text-align: left;
+    font-size: 18px;
+    line-height: 25px;
+    padding-top: 12px;
+    
+  }
+
+  .message_input::-webkit-scrollbar {
+    width: 0; /* oculta la barra de desplazamiento */
+}
+
+.karen {
+  width: 300px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.karen .search_input {
+  border: none;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  width: 300px;
+  outline-width: 0;
+  color:#363968;
+  font-family: "Mina", sans-serif;
+  float: left;
+  text-align: left;
+  font-size: 18px;
+  line-height: 25px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+  .bottom_wrapper .send_message {
+    width: 140px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 50px;
+    background-color: #363968;
+    border: 2px solid #363968;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    text-align: center;
+  }
+  .bottom_wrapper .send_message:hover {
+    color: white;
+    background-color: #15162A;
+  }
+  .bottom_wrapper .send_message .text {
+    font-size: 18px;
+    font-weight: 300;
+    display: inline-block;
+    line-height: 48px;
+  }
+
+  .detail .send_message {
+    width: 140px;
+    height: 50px;
+    margin-top: 7px;
+    display: inline-block;
+    border-radius: 50px;
+    background-color: #363968;
+    border: 2px solid #363968;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    text-align: center;
+  }
+  .detail .send_message:hover {
+    color: white;
+    background-color: #15162A;
+  }
+  .detail .send_message .text {
+    font-size: 18px;
+    font-weight: 300;
+    display: inline-block;
+    line-height: 48px;
+  }
+  
+  .message_template {
+    display: none;
+  }
