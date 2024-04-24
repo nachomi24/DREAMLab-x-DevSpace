@@ -25,7 +25,7 @@
 }
 
 .nombre_perfil {
-  font-family: 'Unbounded', sans-serif;
+  font-family: 'Mina', sans-serif;
   font-size: 3vw;
 }
 
@@ -37,7 +37,7 @@
 
 .uf_curso {
   font-size: 2.5vw;
-  font-family: 'Unbounded';
+  font-family: 'Mina';
   margin-right: 4vh;
   color: #363968;
 }
@@ -69,18 +69,22 @@
 
 .contenedor-tarjetas {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: left;
   align-items: start;
   width: 95%;
   height: 75vh; /* Cambiado a unidades relativas */
   background-color: #d9d9d96d;
   padding: 2.5vh; /* Cambiado a unidades relativas */
-  border-radius: 2.5vw; /* Cambiado a unidades relativas */
-  box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.082); /* Cambiado a unidades relativas */
+  border-radius: 1.5vw; /* Cambiado a unidades relativas */
+  box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.08); /* Cambiado a unidades relativas */
   overflow: auto; /* Cambiado a 'auto' */
   overflow-x: hidden;
   margin-bottom: 4vh;
+}
+
+.contenedor-tarjetas::-webkit-scrollbar{
+  display: none;
 }
 
 .tarjeta {
@@ -90,12 +94,12 @@
   line-height: 1.5;
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: 3px 10px rgba(56, 56, 56, 0.384);
+  box-shadow: 1px 4px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s;
 }
 
 .tarjeta:hover {
-  box-shadow: 2px 5px rgba(56, 56, 56, 0.384);
+  box-shadow: 2px 6px rgba(56, 56, 56, 0.384);
 }
 
 .tarjeta-info {
@@ -107,7 +111,7 @@
   padding-bottom: 0;
   max-width: 100%; 
   margin: 0 auto; 
-  border: 2px solid rgb(154, 154, 154);
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
 }
 
 .tarjeta-img-inside {
@@ -126,7 +130,7 @@
   text-align: left;
   padding-left: 5%;
   margin-bottom: 2vh;
-  font-family: 'Unbounded', sans-serif;
+  font-family: 'Mina', sans-serif;
 }
 
 .info-container {
@@ -141,11 +145,11 @@
 }
 
 .botoncito1 {
-  padding: 7px;
+  padding: 5px 15px 5px 15px;
   font-size: 3vh;
-  background-color: #6d1951;
+  background-color: #6d1919;
   color: #eff0ff;
-  border-radius: 10px;
+  border-radius: 25px;
   border: none;
   cursor: pointer;
   box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);

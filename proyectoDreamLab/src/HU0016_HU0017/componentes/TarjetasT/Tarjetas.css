@@ -14,31 +14,52 @@
 .contenedor-tarjetas {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   align-items: start;
   width: 80%;
   height: 75vh; /* Cambiado a unidades relativas */
   background-color: #d9d9d96d;
   padding: 5vh; /* Cambiado a unidades relativas */
-  border-radius: 4vw; /* Cambiado a unidades relativas */
-  box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.082); /* Cambiado a unidades relativas */
+  border-radius: 1.5vw; /* Cambiado a unidades relativas */
+  box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.08); /* Cambiado a unidades relativas */
   overflow: auto; /* Cambiado a 'auto' */
   overflow-x: hidden;
   margin-bottom: 4vh;
+}
+
+.contenedor-tarjetas::-webkit-scrollbar {
+  width: 12px; /* Ancho del scrollbar */
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.08); /* Color del scrollbar */
+  border-radius: 6px; /* Radio de los extremos del scrollbar */
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Color del scrollbar al pasar el mouse */
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0); /* Color del fondo del scrollbar */
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-corner {
+  background-color: rgba(0, 0, 0, 0); /* Color de la esquina del scrollbar */
 }
 
 .tarjeta {
   margin-bottom: 7vh;
   margin-left: 5vh;
   margin-right: 5vh;
-  width: 27%; /* Cambiado para que sea responsivo */
+  width: 25%; /* Cambiado para que sea responsivo */
   line-height: 1.75;
   cursor: pointer;
   border-radius: 25px;
-  box-shadow: 3px 10px rgba(56, 56, 56, 0.384);
+  box-shadow: 1px 4px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s;
 }
 
 .tarjeta:hover {
-  box-shadow: 2px 5px rgba(56, 56, 56, 0.384);
+  box-shadow: 2px 6px rgba(56, 56, 56, 0.384);
 }

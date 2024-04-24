@@ -29,8 +29,8 @@
 }
 
 .Content-text h1{
-    font-size: 11vw;
-    font-family: 'Unbounded', sans-serif;
+    font-size: 10vw;
+    font-family: 'Mina', sans-serif;
     font-weight: bolder;
     line-height: 1;
     transition: font-size 0.5s;
@@ -42,7 +42,7 @@
     }
 
     .Content-text h1 {
-        font-size: 9vw; 
+        font-size: 15vw; 
     }
 }
 
@@ -52,6 +52,6 @@
         min-height: 40vh;
     }
     .Content-text h1 {
-        font-size: 8vw; 
+        font-size: 15vw; 
     }
 }

@@ -51,7 +51,7 @@
     font-weight: bold;
     padding: 10px 10px;
     border: none;
-    border-radius: 14px;
+    border-radius: 100px;
     cursor: pointer;
     transition: 0.3s;
     background-color: rgba(217, 217, 217, 0.82);
@@ -61,6 +61,7 @@
     background-color: #15162A;
     color: white;
     font-size: 1.5vw;
+    font-weight: bold;
     padding: 15px 20px;
     border: none;
     border-radius: 5px;
@@ -68,7 +69,6 @@
     transition: background-color 0.3s ease;
     margin-top: 4.5vh; 
     margin-bottom: 5vh; 
-    width: 65%;
     border-radius: 75px;
     line-height: 1.1;
     box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);

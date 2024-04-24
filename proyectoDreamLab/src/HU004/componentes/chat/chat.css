@@ -42,9 +42,9 @@
 .top_menu .title {
   text-align: center;
   color: #363968;
-  font-size: 60px;
+  font-size: 4.5vw;
   font-weight: bolder;
-  line-height: 50px;
+  line-height: 1;
 }
 
 .error .title {
