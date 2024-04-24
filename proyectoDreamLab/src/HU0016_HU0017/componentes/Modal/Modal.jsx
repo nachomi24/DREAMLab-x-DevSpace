@@ -25,7 +25,7 @@ const Modal = ({ data, onClose, imagen }) => {
           <div className='modal-content-inside-body'>
             <div className='modal-content-inside-body-content'>
               <div className='modal-content-inside-body-content-ubi'>
-                <p>📍 {ubicacion} 📍</p>
+                <p>📍{ubicacion}</p>
               </div>
               <div className='modal-content-inside-body-content-uf'>
                 <p className='uniforma'>{UFID} - {nombre_UF}</p>
@@ -49,8 +49,8 @@ const Modal = ({ data, onClose, imagen }) => {
           </div>
           <div className='modal-content-inside-body-content-boton'>
             <div className='modal-content-inside-body-content-boton-content'>
-              <a href="/reservar" className='botoncito2'>Reservar</a>
-              <button className='botoncito1' onClick={onClose}>Cerrar</button>
+              <a href="/reservar" className='botoncito2'>RESERVAR</a>
+              <button className='botoncito1' onClick={onClose}>CERRAR</button>
             </div>
           </div>
         </div>

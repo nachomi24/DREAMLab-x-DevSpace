@@ -102,7 +102,7 @@ function Tabla({ Nombre, totalUF, reservacionesPendientes, reservacionesAprobada
             <div style={{display: 'flex', alignItems: 'center'}}>
               <p className='p_uf_curso'>UF en curso:</p>
               <p className='uf_curso'>{totalUF}</p>
-              <i style={{cursor: 'pointer'}} className={isEyeOpen ? `fa-solid fa-eye` : `fa-solid fa-eye-slash`} onClick={toggleEye}></i>
+              <i style={{cursor: 'pointer'}} className={isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-minus`} onClick={toggleEye}></i>
               {!isEyeOpen && ufIds.map((uf, index) => (
                 <>
                 <div style={{marginLeft: '4vh'}}>

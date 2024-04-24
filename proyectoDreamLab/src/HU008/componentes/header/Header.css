@@ -18,11 +18,11 @@
 }
 
 .Header-text h1{
-    font-family: 'Unbounded', sans-serif;
+    font-family: 'Mina', sans-serif;
     font-size: 10vw;
     font-weight: bolder;
     line-height: 1;
-    margin-bottom: 10vh;
+    margin-bottom: 15vh;
 }
 
 /* Media query para pantallas pequeñas */
@@ -31,7 +31,7 @@
         min-height: 100vh; 
     }
     .Header-text h1 {
-        font-size: 20vw; 
+        font-size: 15vw; 
     }
 }
 

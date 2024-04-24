@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mina&display=swap');
+
 
 .modal-overlay {
     position: fixed;
@@ -15,7 +17,6 @@
   
 .modal-content {
     width: 600px;
-    border: 2px solid white;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 }
@@ -26,16 +27,17 @@
 
 .modal-content-inside-header {
     width: 100%;
-    color: #363968;
+    color: #d7d9f1;
     text-align: center;
     font-size: 4vh;
-    background-color: #d7d9f1;
-    border-radius: 10px;
-    padding: 7.5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 25px 25px 10px 25px;
+    border-radius: 15px 15px 0 0;
+    line-height: 1;
 }
 
 .modal-content-inside-header .titulito-header {
-    font-family: 'Unbounded', sans-serif;
+    font-family: 'Mina' ;
 }
 
 .modal-content-inside-body {
@@ -50,34 +52,35 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.651);
+    background-color: rgba(0, 0, 0, 0.7);
     color: #d7d9f1;
     padding: 15px 35px;
     width: 100%;
 }
 
 .modal-content-inside-body-content-ubi {
-    padding: 5px;
     text-align: center;
     font-weight: bolder;
     font-size: 4.5vh;
+    padding-bottom: 10px;
 }
 
 .modal-content-inside-body-content-uf {
-    padding: 5px;
     text-align: center;
-    font-weight: bolder;
-    font-size: 2.5vh;
+    font-weight: bold;
+    font-size: 3vh;
 }
 
 .uniforma {
-    font-size: 2vh;
+    font-size: 2.5vh;
+    font-weight: normal;
+    padding-bottom: 10px;
 }
 
 .modal-content-inside-body-content-fecha {
     padding: 10px;
     text-align: center;
-    font-weight: bolder;
+    font-weight: bold;
     font-size: 4vh;
 }
 
@@ -92,7 +95,7 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
-    font-weight: bolder;
+    font-weight: normal;
     font-size: 2vh;
 }
 
@@ -101,7 +104,7 @@
 }
 
 .modal-content-inside-body-content-detalles-creado .creadito {
-    font-size: 3vh;
+    font-size: 2.5vh;
 }
 
 .modal-content-inside-body-content-detalles-cupo {
@@ -109,19 +112,18 @@
 }
 
 .modal-content-inside-body-content-detalles-cupo .cupito {
-    font-size: 3vh;
+    font-size: 2.5vh;
 }
 
 .modal-content-inside-body-content-boton {
     width: 100%;
-    color: #363968;
     text-align: center;
     font-size: 4vh;
-    background-color: #d7d9f1;
-    border-radius: 10px;
-    padding: 7px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0 0 10px 10px;
     display: flex;
     justify-content: center;
+    padding: 15px;
 }
 
 .modal-content-inside-body-content-boton-content {
@@ -132,34 +134,34 @@
 }
 
 .botoncito1 {
-    padding: 7px;
+    padding: 5px 15px 5px 15px;
     font-size: 3vh;
-    background-color: #6d1951;
+    background-color: #6d1919;
     color: #eff0ff;
-    border-radius: 10px;
+    border-radius: 25px;
     border: none;
     cursor: pointer;
-    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
     transition: box-shadow 0.3s;
 }
 
 .botoncito1:hover {
-    box-shadow: 0px 0px rgb(185, 185, 185);
+    box-shadow: 0px 0px rgb(0, 0, 0);
 }
 
 .botoncito2 {
-    padding: 7px;
+    padding: 5px 15px 5px 15px;
     font-size: 3vh;
     background-color: #363968;
     color: #eff0ff;
-    border-radius: 10px;
+    border-radius: 25px;
     border: none;
     line-height: 1.6;
     cursor: pointer;
-    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
     transition: box-shadow 0.3s;
 }
 
 .botoncito2:hover {
-    box-shadow: 0px 0px rgb(185, 185, 185);
+    box-shadow: 0px 0px rgb(0, 0, 0);
 }
