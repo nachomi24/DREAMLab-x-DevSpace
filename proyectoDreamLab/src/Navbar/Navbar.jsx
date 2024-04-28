@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import './Navbar.css'
-import logo from '../assets/logo1.0.png'
-import perfil from '../assets/perfil.png'
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
+import logo from "../assets/logo1.0.png";
+import perfil from "../assets/perfil.png";
 
-const Navbar = () => {
+const Navbar = ({ loggedIn }) => {
   const [scrolling, setScrolling] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  loggedIn = localStorage.getItem("loggedIn") === "true";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,16 +20,16 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   // Función para alternar la visibilidad del input de búsqueda
   const toggleSearch = () => {
-      setSearchVisible(!searchVisible);
+    setSearchVisible(!searchVisible);
   };
 
   const toggleMenu = () => {
@@ -36,34 +38,78 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className={`container ${scrolling ? 'scrolling' : ''}`}>
+      <nav className={`container ${scrolling ? "scrolling" : ""}`}>
         <div className="logo">
           <img src={logo} alt="Logo de D.R.E.A.M. Lab" />
-          <h1 className='logo-title'>D.R.E.A.M. LAB</h1>
+          <h1 className="logo-title">D.R.E.A.M. LAB</h1>
         </div>
-        <ul className='links'>
-          <li><a href="/inicio" className="mina-bold">INICIO</a></li>
-          <li><a href="/bot" className="mina-bold">RESERVAR</a></li>
-          <li><a href="/secciones" className="mina-bold">SECCIONES</a></li>
+        <ul className="links">
+          <li>
+            <a href="/inicio" className="mina-bold">
+              INICIO
+            </a>
+          </li>
+          <li>
+            <a href="/reservar" className="mina-bold">
+              RESERVAR
+            </a>
+          </li>
+          <li>
+            <a href="/secciones" className="mina-bold">
+              SECCIONES
+            </a>
+          </li>
         </ul>
         <div className="karen">
-          <i className={isMenuOpen ? `fa-solid fa-xmark bars-img` : `fa-solid fa-bars bars-img`} onClick={toggleMenu}></i>
-          <input id="search" className={`search_input ${searchVisible ? '' : 'hidden'}`} placeholder="Escribe aquí..." />
-          <a className='search-icon' onClick={toggleSearch}><i className="fa-solid fa-magnifying-glass search-img"></i></a>
-          <a style={{lineHeight: 0}} href="/perfil"><img src={perfil} alt="foto usuario" /></a>
+          <i
+            className={
+              isMenuOpen
+                ? `fa-solid fa-xmark bars-img`
+                : `fa-solid fa-bars bars-img`
+            }
+            onClick={toggleMenu}
+          ></i>
+          <input
+            id="search"
+            className={`search_input ${searchVisible ? "" : "hidden"}`}
+            placeholder="Escribe aquí..."
+          />
+          <a className="search-icon" onClick={toggleSearch}>
+            <i className="fa-solid fa-magnifying-glass search-img"></i>
+          </a>
+          {/* Oculta el perfil si el usuario no está logueado */}
+          {loggedIn && (
+            <a style={{ lineHeight: 0 }} href="/perfil">
+              <img src={perfil} alt="foto usuario" />
+            </a>
+          )}
         </div>
       </nav>
-      <div className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
-        <li><a href="/inicio" className="mina-bold-2">INICIO</a></li>
-        <li><a href="/" className="mina-bold-2">RESERVAR</a></li>
-        <li><a href="/secciones" className="mina-bold-2">SECCIONES</a></li>
+      <div className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
+        <li>
+          <a href="/inicio" className="mina-bold-2">
+            INICIO
+          </a>
+        </li>
+        <li>
+          <a href="/reservar" className="mina-bold-2">
+            RESERVAR
+          </a>
+        </li>
+        <li>
+          <a href="/secciones" className="mina-bold-2">
+            SECCIONES
+          </a>
+        </li>
         <li>
           <input className="search_input-2" placeholder="Escribe aquí..." />
-          <a className='search-icon-2'><i className="fa-solid fa-magnifying-glass search-img"></i></a>
+          <a className="search-icon-2">
+            <i className="fa-solid fa-magnifying-glass search-img"></i>
+          </a>
         </li>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
