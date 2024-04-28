@@ -1,15 +1,20 @@
-import Navbar from '../Navbar/Navbar'
-import Content from './Components/Content/Content'
+import { useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import Content from "./Components/Content/Content";
 
-const matriculaKaren = 'A00835268';
+let matricula = "";
+
+const storedMatricula = localStorage.getItem("matricula");
+
+matricula = storedMatricula;
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Content matricula={matriculaKaren}/>
+      <Content matricula={matricula} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

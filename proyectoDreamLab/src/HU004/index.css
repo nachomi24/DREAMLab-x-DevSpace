@@ -6,8 +6,9 @@
 }
 
 body {
-  background-image: url('../assets/bghome.jpg');
+  background-image: url('../assets/fond2.9.png');
   background-repeat: repeat-y;
+  background-position: center;
   background-size: cover;
   overflow: hidden;
 }
