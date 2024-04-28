@@ -10,11 +10,11 @@ Bienvenido al desarrollo del software del D.R.E.A.M Lab diseñado por y para est
 -  Conocer el Espacio: Los estudiantes puede obtener información detallada sobre las instalaciones del laboratorio, los equipos disponibles y los servicios ofrecidos para garantizar una experiencia óptima en D.R.E.A.M Lab.
 
 <h3>Software de Desarrollo</h3>
--  HTML/CSS
--  Javascript
+-  React
 -  FastAPI 
--  Flask
+-  OpenAI
 -  MySQL
+-  Azure 
 
 ## Equipo de Desarrollo
 * Eugenio Turcott Estrada - Fullstack Developer - 
