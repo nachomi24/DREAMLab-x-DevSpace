@@ -41,14 +41,9 @@ const ContenedorTarjetas = ({ datos, mostrarBotonCancel }) => {
 };
 
 const Tarjeta = ({
-  ID,
-  Matricula,
-  IDSala,
+  SalaID,
   Dia,
   HoraInicio,
-  HoraFin,
-  Recursos,
-  Personas,
   NombreSala,
   imagenAleatoria,
   mostrarBotonCancel,
@@ -65,7 +60,7 @@ const Tarjeta = ({
         </div>
         <div className="tarjeta-info">
           <h2>
-            {IDSala} - {NombreSala}
+            {SalaID} - {NombreSala}
           </h2>
           <div className="info-container">
             <p>{Dia}</p>
@@ -86,10 +81,10 @@ const Tarjeta = ({
 
 function Tabla({
   Nombre,
-  totalUF,
-  reservacionesPendientes,
-  reservacionesAprobadas,
-  matricula,
+  TotalUF,
+  ReservacionesPendientes,
+  ReservacionesAprobadas,
+  Matricula,
 }) {
   const [isEyeOpen, setIsEyeOpen] = useState(false);
   const [ufIds, setUfIds] = useState([]);
@@ -106,8 +101,8 @@ function Tabla({
   };
 
   useEffect(() => {
-    obtenerUF(matricula, setUfIds);
-  }, [matricula]);
+    obtenerUF(Matricula, setUfIds);
+  }, [Matricula]);
 
   const toggleEye = () => {
     setIsEyeOpen(!isEyeOpen); // Cambia el estado de isEyeOpen al opuesto
@@ -122,7 +117,7 @@ function Tabla({
               style={{ marginRight: "25px", color: "black" }}
               className={"fa-solid fa-user"}
             ></i>
-            {Nombre} - {matricula}
+            {Nombre} - {Matricula}
           </td>
         </tr>
         <tr>
@@ -133,7 +128,7 @@ function Tabla({
                 className={"fa-solid fa-spinner"}
               ></i>
               <p className="p_uf_curso">UF en curso:</p>
-              <p className="uf_curso">{totalUF}</p>
+              <p className="uf_curso">{TotalUF}</p>
               <i
                 style={{ cursor: "pointer" }}
                 className={
@@ -170,10 +165,10 @@ function Tabla({
                   Reservaciones Pendientes
                 </div>
                 <br />
-                {reservacionesPendientes &&
-                reservacionesPendientes.length !== 0 ? (
+                {ReservacionesPendientes &&
+                ReservacionesPendientes.length !== 0 ? (
                   <ContenedorTarjetas
-                    datos={reservacionesPendientes}
+                    datos={ReservacionesPendientes}
                     mostrarBotonCancel={false}
                   />
                 ) : (
@@ -203,11 +198,11 @@ function Tabla({
                   Reservaciones Futuras
                 </div>
                 <br />
-                {console.log(reservacionesAprobadas)}
-                {reservacionesAprobadas &&
-                reservacionesAprobadas.length !== 0 ? (
+                {console.log(ReservacionesAprobadas)}
+                {ReservacionesAprobadas &&
+                ReservacionesAprobadas.length !== 0 ? (
                   <ContenedorTarjetas
-                    datos={reservacionesAprobadas}
+                    datos={ReservacionesAprobadas}
                     mostrarBotonCancel={true}
                   />
                 ) : (

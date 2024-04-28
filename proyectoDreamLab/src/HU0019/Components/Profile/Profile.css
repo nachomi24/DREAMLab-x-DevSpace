@@ -13,11 +13,12 @@
 }
 
 .descripcion-text {
-    font-size: 1.15vw;
+    font-size: 1.5vw;
     font-family: 'Mina';
     font-weight: bolder;
     color: #000000;
     text-align: center;
+    margin-top: 3vh;
 }
 
 .puntos-perfil {
@@ -28,6 +29,7 @@
 }
 
 .puntos-text {
+    width: 50%;
     font-size: 1.5vw;
     font-family: 'Mina';
     font-weight: bolder;
@@ -36,10 +38,10 @@
 }
 
 .puntos {
-    width: 100%;
     font-size: 5vw;
     font-family: 'Mina';
     font-weight: bolder;
     color: #9AFFC9;
     text-align: center;
+    margin-right: 2vh;
 }

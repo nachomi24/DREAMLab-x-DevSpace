@@ -12,55 +12,51 @@ const Content = ({ matricula }) => {
   const apiURLReservaciones =
     "https://devspaceapi.azurewebsites.net/api/consulta-reservacion/" +
     matricula;
+  const apiURLUF =
+    "https://devspaceapi.azurewebsites.net/api/perfil_UF/" + matricula;
+
   const [Carrera, setCarrera] = useState("");
   const [totalPuntos, setPuntos] = useState(0);
   const [Nombre, setNombre] = useState("");
+  const [Foto, setFoto] = useState("");
   const [totalUF, setUfCursando] = useState(0);
   const [ReservacionesAprobadas, setReservacionesAprobadas] = useState([]);
   const [ReservacionesPendientes, setReservacionesPendientes] = useState([]);
 
-  const obtenerPerfilCarrerayNombre = async () => {
+  const obtencionDatosGlobal = async () => {
     try {
-      const response = await axios.get(apiURLPerfilCarrera);
-      setCarrera(response.data["Carrera"]);
-      setNombre(response.data["Nombre"]);
-    } catch (error) {
-      console.error("Error al obtener perfil:", error);
-    }
-  };
-  const obtenerPerfilPuntosyUfCursando = async () => {
-    try {
-      const response = await axios.get(apiURLPerfil);
-      setPuntos(response.data["totalPuntos"]);
-      setUfCursando(response.data["totalUF"]);
-    } catch (error) {
-      console.error("Error al obtener perfil:", error);
-    }
-  };
-  const obtenerDatos = async () => {
-    try {
-      const response = await axios.get(apiURLReservaciones);
-      const data = response.data;
+      // Realizar todas las solicitudes en paralelo utilizando Promise.all()
+      const [perfilCarrera, perfilPuntosUF, datosReservaciones] =
+        await Promise.all([
+          axios.get(apiURLPerfilCarrera),
+          axios.get(apiURLPerfil),
+          axios.get(apiURLReservaciones),
+          axios.get(apiURLUF),
+        ]);
 
-      // Separar los datos en ReservacionesAprobadas y ReservacionesPendientes
-      const aprobadas = data[0];
-      const pendientes = data[1];
+      // Manejar la respuesta de perfilCarrera
+      const { Carrera, Nombre, Foto } = perfilCarrera.data;
+      setCarrera(Carrera);
+      setNombre(Nombre);
+      setFoto(Foto);
 
-      // Asignar los datos a los hooks correspondientes
+      // Manejar la respuesta de perfilPuntosUF
+      const { TotalPuntos, TotalUF } = perfilPuntosUF.data;
+      setPuntos(TotalPuntos);
+      setUfCursando(TotalUF);
+
+      // Manejar la respuesta de datosReservaciones
+      const [aprobadas, pendientes] = datosReservaciones.data;
       setReservacionesAprobadas(aprobadas);
       setReservacionesPendientes(pendientes);
-      console.log(response.data);
-      console.log(aprobadas);
-      console.log(pendientes);
     } catch (error) {
       console.error("Error al obtener los datos:", error);
     }
   };
+
   useEffect(() => {
-    obtenerPerfilCarrerayNombre();
-    obtenerPerfilPuntosyUfCursando();
-    obtenerDatos();
-  }, []);
+    obtencionDatosGlobal();
+  });
 
   return (
     <div className="table-container">
@@ -72,9 +68,10 @@ const Content = ({ matricula }) => {
             >
               <div className="profile-container">
                 <Profile
-                  matricula={matricula}
+                  Matricula={matricula}
                   Carrera={Carrera}
-                  totalPuntos={totalPuntos}
+                  Foto={Foto}
+                  TotalPuntos={totalPuntos}
                 />
               </div>
             </td>
@@ -82,10 +79,10 @@ const Content = ({ matricula }) => {
               <div className="tabla-container">
                 <Tabla
                   Nombre={Nombre}
-                  totalUF={totalUF}
-                  reservacionesPendientes={ReservacionesPendientes}
-                  reservacionesAprobadas={ReservacionesAprobadas}
-                  matricula={matricula}
+                  TotalUF={totalUF}
+                  ReservacionesPendientes={ReservacionesPendientes}
+                  ReservacionesAprobadas={ReservacionesAprobadas}
+                  Matricula={matricula}
                 />
               </div>
             </td>
