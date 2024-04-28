@@ -12,8 +12,6 @@ const Content = ({ matricula }) => {
   const apiURLReservaciones =
     "https://devspaceapi.azurewebsites.net/api/consulta-reservacion/" +
     matricula;
-  const apiURLUF =
-    "https://devspaceapi.azurewebsites.net/api/perfil_UF/" + matricula;
 
   const [Carrera, setCarrera] = useState("");
   const [totalPuntos, setPuntos] = useState(0);
@@ -31,7 +29,6 @@ const Content = ({ matricula }) => {
           axios.get(apiURLPerfilCarrera),
           axios.get(apiURLPerfil),
           axios.get(apiURLReservaciones),
-          axios.get(apiURLUF),
         ]);
 
       // Manejar la respuesta de perfilCarrera
