@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import './Tarjetas.css';
-import './TarjetaInfo.css';
-import Menu from '../Menu/Menu';
-import Modal from '../Modal/Modal';
-import foto1 from '../../../assets/iaia.png';
-import foto2 from '../../../assets/itit.png';
-import foto3 from '../../../assets/vrvr.png';
-import foto4 from '../../../assets/construye.png';
+import { useState, useEffect } from "react";
+import "./Tarjetas.css";
+import "./TarjetaInfo.css";
+import Menu from "../Menu/Menu";
+import Modal from "../Modal/Modal";
+import foto1 from "../../../assets/iaia.png";
+import foto2 from "../../../assets/itit.png";
+import foto3 from "../../../assets/vrvr.png";
+import foto4 from "../../../assets/construye.png";
 
 const obtenerImagenAleatoria = () => {
   const imagenes = [foto1, foto2, foto3, foto4];
@@ -24,12 +24,16 @@ const ContenedorTarjetas = ({ datos }) => {
   }, [datos]);
 
   return (
-    <div className='contenedor-tarjeta-general'>
+    <div className="contenedor-tarjeta-general">
       <Menu />
-      <div className='contenedor-principal-tarjetas'>
+      <div className="contenedor-principal-tarjetas">
         <div className="contenedor-tarjetas">
           {datos.map((dato, index) => (
-            <Tarjeta key={dato.id} {...dato} imagenAleatoria={imagenesAleatorias[index]} />
+            <Tarjeta
+              key={dato.id}
+              {...dato}
+              imagenAleatoria={imagenesAleatorias[index]}
+            />
           ))}
         </div>
       </div>
@@ -38,18 +42,18 @@ const ContenedorTarjetas = ({ datos }) => {
 };
 
 const Tarjeta = ({
-  tallerID, 
-  nombre_completo,
+  TallerID,
+  NombreProfesor,
   UFID,
-  nombre_UF,
-  nombre,
-  cupo,
-  ubicacion,
-  hora_inicio,
-  hora_fin,
-  fecha,
-  creado_en,
-  imagenAleatoria // Pasar la imagen aleatoria como prop
+  NombreUF,
+  Nombre,
+  Cupo,
+  Ubicacion,
+  Fecha,
+  HoraInicio,
+  HoraFin,
+  HoraCreado,
+  imagenAleatoria, // Pasar la imagen aleatoria como prop
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -63,32 +67,36 @@ const Tarjeta = ({
 
   return (
     <>
-      <div onClick={handleOpenModal} className="tarjeta"> 
+      <div onClick={handleOpenModal} className="tarjeta">
         <div>
-          <img className='tarjeta-img-inside' src={imagenAleatoria} alt={ubicacion} />
+          <img
+            className="tarjeta-img-inside"
+            src={imagenAleatoria}
+            alt={Ubicacion}
+          />
         </div>
-        <div className="tarjeta-info"> 
-          <h2>{nombre}</h2>
+        <div className="tarjeta-info">
+          <h2>{Nombre}</h2>
           <div className="info-container">
-            <p>{ubicacion}</p>
-            <p>{hora_inicio}</p>
+            <p>{Ubicacion}</p>
+            <p>{HoraInicio}</p>
           </div>
         </div>
       </div>
       {modalOpen && (
         <Modal
           data={{
-            tallerID,
-            nombre_completo,
+            TallerID,
+            NombreProfesor,
             UFID,
-            nombre_UF,
-            nombre,
-            cupo,
-            ubicacion,
-            hora_inicio,
-            hora_fin,
-            fecha,
-            creado_en
+            NombreUF,
+            Nombre,
+            Cupo,
+            Ubicacion,
+            Fecha,
+            HoraInicio,
+            HoraFin,
+            HoraCreado,
           }}
           onClose={handleCloseModal}
           imagen={imagenAleatoria}

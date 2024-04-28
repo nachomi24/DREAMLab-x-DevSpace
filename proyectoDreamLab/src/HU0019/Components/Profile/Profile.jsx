@@ -1,19 +1,13 @@
 import "./Profile.css";
-import karenProfile from "../../../assets/karenFoto.png";
 
-function Profile({ matricula, Carrera, totalPuntos }) {
+function Profile({ Matricula, Carrera, Foto, TotalPuntos }) {
   return (
     <div className="image-container">
-      <img
-        className="image-container"
-        src={karenProfile}
-        alt="karenProfile"
-        border="0"
-      />
+      <img className="image-container" src={Foto} alt={Matricula} border="0" />
       <p className="descripcion-text">Estudiante - {Carrera}</p>
       <div className="puntos-perfil">
         <p className="puntos-text">Puntos de prioridad</p>
-        <p className="puntos">{totalPuntos}</p>
+        <p className="puntos">{TotalPuntos}</p>
       </div>
     </div>
   );

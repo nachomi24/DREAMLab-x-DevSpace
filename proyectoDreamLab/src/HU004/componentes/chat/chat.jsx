@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./chat.css";
+import loadingChat from "../../../assets/chat_loading_4.gif";
 
 const Chat = ({ setLoggedIn, setMatricula }) => {
   const [messages, setMessages] = useState(
@@ -15,13 +16,25 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
       setMessages((messages) => [...messages, newMessage]);
       setInputText("");
 
+      // Mostrar mensaje de carga
+      const loadingMessage = {
+        text: <img style={{ width: "50px" }} src={loadingChat} alt="Loading" />,
+        side: "left",
+      };
+      setMessages((messages) => [...messages, loadingMessage]);
+
       // Enviar solicitud a la API
       try {
         const response = await fetch(
           `https://devspaceapi.azurewebsites.net/api/chat_Matricula_OpenAI/${text}`
         );
         const data = await response.json();
-        setMessages((messages) => [...messages, { text: data, side: "left" }]);
+
+        // Eliminar mensaje de carga y agregar respuesta del bot
+        setMessages((messages) => [
+          ...messages.filter((msg) => msg !== loadingMessage),
+          { text: data, side: "left" },
+        ]);
 
         // Verificar si el mensaje contiene una matrícula
         const matriculaRegex = /(A0\d{7}|L0\d{7})/i;
@@ -89,6 +102,8 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
       setMessages([{ text: welcomeMessage, side: "left" }]);
     }
   }, [messages.length]);
+
+  // localStorage.clear();
 
   return (
     <div className="chat_window">

@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import logo from "../assets/logo1.0.png";
-import perfil from "../assets/perfil.png";
+import axios from "axios";
 
 const Navbar = ({ loggedIn }) => {
   const [scrolling, setScrolling] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [Foto, setFoto] = useState("");
+  const [Nombre, setNombre] = useState("");
 
   loggedIn = localStorage.getItem("loggedIn") === "true";
+  const matricula = localStorage.getItem("matricula");
+
+  const apiURLPerfilCarrera =
+    "https://devspaceapi.azurewebsites.net/api/perfil/carrera/" + matricula;
+
+  const obtencionFotoPerfil = async () => {
+    try {
+      // Realizar todas las solicitudes en paralelo utilizando Promise.all()
+      const [perfilCarrera] = await Promise.all([
+        axios.get(apiURLPerfilCarrera),
+      ]);
+
+      // Manejar la respuesta de perfilCarrera
+      const { Foto, Nombre } = perfilCarrera.data;
+      setFoto(Foto);
+      setNombre(Nombre);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +48,10 @@ const Navbar = ({ loggedIn }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    obtencionFotoPerfil();
+  });
 
   // Función para alternar la visibilidad del input de búsqueda
   const toggleSearch = () => {
@@ -80,7 +106,7 @@ const Navbar = ({ loggedIn }) => {
           {/* Oculta el perfil si el usuario no está logueado */}
           {loggedIn && (
             <a style={{ lineHeight: 0 }} href="/perfil">
-              <img src={perfil} alt="foto usuario" />
+              <img className="foto-perfil" src={Foto} alt={Nombre} />
             </a>
           )}
         </div>
