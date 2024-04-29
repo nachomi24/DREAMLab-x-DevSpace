@@ -13,8 +13,11 @@ const Content = ({ matricula }) => {
   const [Nombre, setNombre] = useState("");
   const [Foto, setFoto] = useState("");
   const [totalUF, setUfCursando] = useState(0);
-  const [ReservacionesAprobadas, setReservacionesAprobadas] = useState([]);
-  const [ReservacionesPendientes, setReservacionesPendientes] = useState([]);
+  const [ReservacionesConfirmadas, setReservacionesConfirmadas] = useState([]);
+  const [ReservacionesNoConfirmadas, setReservacionesNoConfirmadas] = useState(
+    []
+  );
+  const [ufIds, setUfIds] = useState([]);
 
   const obtencionDatosGlobal = async () => {
     try {
@@ -24,18 +27,27 @@ const Content = ({ matricula }) => {
       console.log(perfilCarrera.data);
 
       // Manejar la respuesta de perfilCarrera
-      const { Carrera, Nombre, Foto, TotalUF, TotalPuntos, Reservaciones } =
-        perfilCarrera.data;
+      const {
+        Carrera,
+        Nombre,
+        Foto,
+        TotalUF,
+        TotalPuntos,
+        UFID,
+        ReservacionesConfirmadas,
+        ReservacionesNoConfirmadas,
+      } = perfilCarrera.data;
       setCarrera(Carrera);
       setNombre(Nombre);
       setFoto(Foto);
       setPuntos(TotalPuntos);
       setUfCursando(TotalUF);
+      setUfIds(UFID);
+      setReservacionesConfirmadas(ReservacionesConfirmadas);
+      setReservacionesNoConfirmadas(ReservacionesNoConfirmadas);
 
-      // Manejar la respuesta de datosReservaciones
-      const [aprobadas, pendientes] = datosReservaciones.data;
-      setReservacionesAprobadas(aprobadas);
-      setReservacionesPendientes(pendientes);
+      console.log("Reservaciones aprobadas:", ReservacionesConfirmadas);
+      console.log("Reservaciones pendientes:", ReservacionesNoConfirmadas);
     } catch (error) {
       console.error("Error al obtener los datos:", error);
     }
@@ -67,9 +79,10 @@ const Content = ({ matricula }) => {
                 <Tabla
                   Nombre={Nombre}
                   TotalUF={totalUF}
-                  ReservacionesPendientes={ReservacionesPendientes}
-                  ReservacionesAprobadas={ReservacionesAprobadas}
+                  ReservacionesNoConfirmadas={ReservacionesNoConfirmadas}
+                  ReservacionesConfirmadas={ReservacionesConfirmadas}
                   Matricula={matricula}
+                  UfIds={ufIds}
                 />
               </div>
             </td>
