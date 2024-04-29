@@ -7,8 +7,9 @@
 
 body {
   background-image: url('../assets/bghome.jpg');
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: hidden;
 }
 
 a {
