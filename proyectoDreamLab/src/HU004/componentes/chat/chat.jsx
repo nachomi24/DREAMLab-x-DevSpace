@@ -18,7 +18,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
 
       // Mostrar mensaje de carga
       const loadingMessage = {
-        text: <img style={{ width: "50px" }} src={loadingChat} alt="Loading" />,
+        text: "Cargando...",
         side: "left",
       };
       setMessages((messages) => [...messages, loadingMessage]);
@@ -26,7 +26,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
       // Enviar solicitud a la API
       try {
         const response = await fetch(
-          `https://devspaceapi.azurewebsites.net/api/chat_Matricula_OpenAI/${text}`
+          `https://devspaceapi.azurewebsites.net/api/chat_OpenAI/${text}`
         );
         const data = await response.json();
 

@@ -7,11 +7,6 @@ import axios from "axios";
 const Content = ({ matricula }) => {
   const apiURLPerfil =
     "https://devspaceapi.azurewebsites.net/api/perfil/" + matricula;
-  const apiURLPerfilCarrera =
-    "https://devspaceapi.azurewebsites.net/api/perfil/carrera/" + matricula;
-  const apiURLReservaciones =
-    "https://devspaceapi.azurewebsites.net/api/consulta-reservacion/" +
-    matricula;
 
   const [Carrera, setCarrera] = useState("");
   const [totalPuntos, setPuntos] = useState(0);
@@ -24,21 +19,16 @@ const Content = ({ matricula }) => {
   const obtencionDatosGlobal = async () => {
     try {
       // Realizar todas las solicitudes en paralelo utilizando Promise.all()
-      const [perfilCarrera, perfilPuntosUF, datosReservaciones] =
-        await Promise.all([
-          axios.get(apiURLPerfilCarrera),
-          axios.get(apiURLPerfil),
-          axios.get(apiURLReservaciones),
-        ]);
+      const [perfilCarrera] = await Promise.all([axios.get(apiURLPerfil)]);
+
+      console.log(perfilCarrera.data);
 
       // Manejar la respuesta de perfilCarrera
-      const { Carrera, Nombre, Foto } = perfilCarrera.data;
+      const { Carrera, Nombre, Foto, TotalUF, TotalPuntos, Reservaciones } =
+        perfilCarrera.data;
       setCarrera(Carrera);
       setNombre(Nombre);
       setFoto(Foto);
-
-      // Manejar la respuesta de perfilPuntosUF
-      const { TotalPuntos, TotalUF } = perfilPuntosUF.data;
       setPuntos(TotalPuntos);
       setUfCursando(TotalUF);
 
