@@ -114,7 +114,7 @@ function Tabla({
         <tr>
           <td className="nombre_perfil" colSpan={2}>
             <i
-              style={{ marginRight: "25px", color: "black" }}
+              style={{ marginRight: "25px", color: "#ABACC4" }}
               className={"fa-solid fa-user"}
             ></i>
             {Nombre} - {Matricula}
@@ -124,18 +124,11 @@ function Tabla({
           <td className="uf_curso" colSpan={2}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <i
-                style={{ marginRight: "15px", color: "black" }}
+                style={{ marginRight: "15px", color: "#ABACC4" }}
                 className={"fa-solid fa-spinner"}
               ></i>
               <p className="p_uf_curso">UF en curso:</p>
               <p className="uf_curso">{TotalUF}</p>
-              <i
-                style={{ cursor: "pointer" }}
-                className={
-                  isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-minus`
-                }
-                onClick={toggleEye}
-              ></i>
               {!isEyeOpen &&
                 ufIds.map((uf, index) => (
                   <>
@@ -150,6 +143,13 @@ function Tabla({
                     </div>
                   </>
                 ))}
+              <i
+                style={{ cursor: "pointer" }}
+                className={
+                  isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-angle-left`
+                }
+                onClick={toggleEye}
+              ></i>
             </div>
           </td>
         </tr>
@@ -159,12 +159,11 @@ function Tabla({
               <div className="reservaciones-pend-fut-div">
                 <div className="reservaciones-pend-fut-div-title">
                   <i
-                    style={{ marginRight: "15px" }}
+                    style={{ marginRight: "15px", color: "#ABACC4" }}
                     className={"fa-solid fa-hourglass-half"}
                   ></i>
                   Reservaciones Pendientes
                 </div>
-                <br />
                 {ReservacionesPendientes &&
                 ReservacionesPendientes.length !== 0 ? (
                   <ContenedorTarjetas
@@ -182,7 +181,7 @@ function Tabla({
                       className="botoncito2"
                       href="/reservar"
                     >
-                      Reservar ahora
+                      RESERVAR AHORA
                     </a>
                   </div>
                 )}
@@ -192,12 +191,11 @@ function Tabla({
               <div className="reservaciones-pend-fut-div">
                 <div className="reservaciones-pend-fut-div-title">
                   <i
-                    style={{ marginRight: "15px" }}
+                    style={{ marginRight: "15px", color: "#ABACC4" }}
                     className={"fa-solid fa-clock-rotate-left"}
                   ></i>
                   Reservaciones Futuras
                 </div>
-                <br />
                 {console.log(ReservacionesAprobadas)}
                 {ReservacionesAprobadas &&
                 ReservacionesAprobadas.length !== 0 ? (
