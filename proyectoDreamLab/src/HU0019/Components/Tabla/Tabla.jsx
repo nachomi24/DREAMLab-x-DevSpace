@@ -40,69 +40,17 @@ const ContenedorTarjetas = ({ datos, mostrarBotonCancel }) => {
   );
 };
 
-const Tarjeta = ({
-  SalaID,
-  Dia,
-  HoraInicio,
-  NombreSala,
-  imagenAleatoria,
-  mostrarBotonCancel,
-}) => {
-  return (
-    <>
-      <div className="tarjeta">
-        <div>
-          <img
-            className="tarjeta-img-inside"
-            src={imagenAleatoria}
-            alt={NombreSala}
-          />
-        </div>
-        <div className="tarjeta-info">
-          <h2>
-            {SalaID} - {NombreSala}
-          </h2>
-          <div className="info-container">
-            <p>{Dia}</p>
-            <p>{HoraInicio}</p>
-          </div>
-          <div className="info-detail-cl-bt">
-            {mostrarBotonCancel ? (
-              <button className="botoncito1">Cancelar</button>
-            ) : (
-              <img className="relojcito" src={clockWait}></img>
-            )}
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+//aqui falta
 
 function Tabla({
   Nombre,
   TotalUF,
-  ReservacionesPendientes,
-  ReservacionesAprobadas,
+  ReservacionesNoConfirmadas,
+  ReservacionesConfirmadas,
   Matricula,
+  UfIds,
 }) {
   const [isEyeOpen, setIsEyeOpen] = useState(false);
-  const [ufIds, setUfIds] = useState([]);
-
-  const obtenerUF = async (matriculita, setUfis) => {
-    try {
-      const response = await axios.get(
-        `https://devspaceapi.azurewebsites.net/api/perfil_UF/${matriculita}`
-      );
-      setUfis(response.data["UFID"]);
-    } catch (error) {
-      console.error("Error al obtener las UF:", error);
-    }
-  };
-
-  useEffect(() => {
-    obtenerUF(Matricula, setUfIds);
-  }, [Matricula]);
 
   const toggleEye = () => {
     setIsEyeOpen(!isEyeOpen); // Cambia el estado de isEyeOpen al opuesto
@@ -114,7 +62,7 @@ function Tabla({
         <tr>
           <td className="nombre_perfil" colSpan={2}>
             <i
-              style={{ marginRight: "25px", color: "#ABACC4" }}
+              style={{ marginRight: "25px", color: "black" }}
               className={"fa-solid fa-user"}
             ></i>
             {Nombre} - {Matricula}
@@ -124,13 +72,20 @@ function Tabla({
           <td className="uf_curso" colSpan={2}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <i
-                style={{ marginRight: "15px", color: "#ABACC4" }}
+                style={{ marginRight: "15px", color: "black" }}
                 className={"fa-solid fa-spinner"}
               ></i>
               <p className="p_uf_curso">UF en curso:</p>
               <p className="uf_curso">{TotalUF}</p>
+              <i
+                style={{ cursor: "pointer" }}
+                className={
+                  isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-minus`
+                }
+                onClick={toggleEye}
+              ></i>
               {!isEyeOpen &&
-                ufIds.map((uf, index) => (
+                UfIds.map((uf, index) => (
                   <>
                     <div style={{ marginLeft: "4vh" }}>
                       <p
@@ -143,13 +98,6 @@ function Tabla({
                     </div>
                   </>
                 ))}
-              <i
-                style={{ cursor: "pointer" }}
-                className={
-                  isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-angle-left`
-                }
-                onClick={toggleEye}
-              ></i>
             </div>
           </td>
         </tr>
@@ -159,15 +107,16 @@ function Tabla({
               <div className="reservaciones-pend-fut-div">
                 <div className="reservaciones-pend-fut-div-title">
                   <i
-                    style={{ marginRight: "15px", color: "#ABACC4" }}
+                    style={{ marginRight: "15px" }}
                     className={"fa-solid fa-hourglass-half"}
                   ></i>
                   Reservaciones Pendientes
                 </div>
-                {ReservacionesPendientes &&
-                ReservacionesPendientes.length !== 0 ? (
+                <br />
+                {ReservacionesNoConfirmadas &&
+                ReservacionesNoConfirmadas.length !== 0 ? (
                   <ContenedorTarjetas
-                    datos={ReservacionesPendientes}
+                    datos={ReservacionesNoConfirmadas}
                     mostrarBotonCancel={false}
                   />
                 ) : (
@@ -181,7 +130,7 @@ function Tabla({
                       className="botoncito2"
                       href="/reservar"
                     >
-                      RESERVAR AHORA
+                      Reservar ahora
                     </a>
                   </div>
                 )}
@@ -191,16 +140,17 @@ function Tabla({
               <div className="reservaciones-pend-fut-div">
                 <div className="reservaciones-pend-fut-div-title">
                   <i
-                    style={{ marginRight: "15px", color: "#ABACC4" }}
+                    style={{ marginRight: "15px" }}
                     className={"fa-solid fa-clock-rotate-left"}
                   ></i>
                   Reservaciones Futuras
                 </div>
-                {console.log(ReservacionesAprobadas)}
-                {ReservacionesAprobadas &&
-                ReservacionesAprobadas.length !== 0 ? (
+                <br />
+                {console.log(ReservacionesConfirmadas)}
+                {ReservacionesConfirmadas &&
+                ReservacionesConfirmadas.length !== 0 ? (
                   <ContenedorTarjetas
-                    datos={ReservacionesAprobadas}
+                    datos={ReservacionesConfirmadas}
                     mostrarBotonCancel={true}
                   />
                 ) : (
