@@ -190,11 +190,11 @@
 }
 
 .botoncito2 {
-  padding: 7px;
+  padding: 5px 15px 5px 15px ;
   font-size: 3vh;
   background-color: #363968;
   color: #eff0ff;
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   line-height: 1.6;
   cursor: pointer;

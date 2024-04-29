@@ -33,15 +33,16 @@
     font-size: 1.5vw;
     font-family: 'Mina';
     font-weight: bolder;
-    color: #ffffff;
+    color: black;
     text-align: center;
+    line-height: 1;
 }
 
 .puntos {
     font-size: 5vw;
     font-family: 'Mina';
     font-weight: bolder;
-    color: #9AFFC9;
+    color: #363968;
     text-align: center;
     margin-right: 2vh;
 }
