@@ -99,7 +99,7 @@ function Tabla({
         <tr>
           <td className="nombre_perfil" colSpan={2}>
             <i
-              style={{ marginRight: "25px", color: "black" }}
+              style={{ marginRight: "25px", color: "#ABACC4" }}
               className={"fa-solid fa-user"}
             ></i>
             {Nombre} - {Matricula}
@@ -109,7 +109,7 @@ function Tabla({
           <td className="uf_curso" colSpan={2}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <i
-                style={{ marginRight: "15px", color: "black" }}
+                style={{ marginRight: "15px", color: "#ABACC4" }}
                 className={"fa-solid fa-spinner"}
               ></i>
               <p className="p_uf_curso">UF en curso:</p>
@@ -117,7 +117,7 @@ function Tabla({
               <i
                 style={{ cursor: "pointer" }}
                 className={
-                  isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-minus`
+                  isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-angle-left`
                 }
                 onClick={toggleEye}
               ></i>
@@ -144,7 +144,7 @@ function Tabla({
               <div className="reservaciones-pend-fut-div">
                 <div className="reservaciones-pend-fut-div-title">
                   <i
-                    style={{ marginRight: "15px" }}
+                    style={{ marginRight: "15px", color: "#ABACC4" }}
                     className={"fa-solid fa-hourglass-half"}
                   ></i>
                   Reservaciones Pendientes
@@ -177,7 +177,7 @@ function Tabla({
               <div className="reservaciones-pend-fut-div">
                 <div className="reservaciones-pend-fut-div-title">
                   <i
-                    style={{ marginRight: "15px" }}
+                    style={{ marginRight: "15px", color: "#ABACC4"  }}
                     className={"fa-solid fa-clock-rotate-left"}
                   ></i>
                   Reservaciones Futuras
