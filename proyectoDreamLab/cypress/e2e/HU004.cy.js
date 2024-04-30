@@ -1,3 +1,4 @@
+//Para probar inicio de sesión módulo HU004
 describe('template spec', () => {
     beforeEach(()=>{
         cy.visit('http://localhost:5173/')
