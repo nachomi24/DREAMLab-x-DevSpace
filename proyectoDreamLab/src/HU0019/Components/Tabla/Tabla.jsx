@@ -20,7 +20,7 @@ const ContenedorTarjetas = ({ datos, mostrarBotonCancel }) => {
     // Generar las imágenes aleatorias una vez al cargar la página
     const imagenes = datos.map(() => obtenerImagenAleatoria());
     setImagenesAleatorias(imagenes);
-  }, [datos]);
+  }, []); //DATOS 
 
   return (
     <div className="contenedor-tarjeta-general">
