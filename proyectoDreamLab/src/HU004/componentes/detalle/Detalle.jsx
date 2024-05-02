@@ -66,27 +66,30 @@ const PopUp = ({
           <div className="modal-content-inside-body">
             <div className="modal-content-inside-body-content">
               <div className="modal-content-inside-body-content-ubi">
-                <p>SALA: {SalaID}</p>
+                <p><strong>SALA:</strong> {SalaID}</p>
+
               </div>
               <div className="modal-content-inside-body-content-fecha">
-                <p>FECHA: {Dia}</p>
+                <p><strong>FECHA: </strong>{Dia}</p>
                 <div className="modal-content-inside-body-content-horarie">
                   <p>
-                    HORARIO: {HoraInicio} - {HoraFin}
+                  <strong>HORARIO:</strong> {HoraInicio} - {HoraFin}
                   </p>
                 </div>
               </div>
-              <div className="modal-content-inside-body-content-detalles">
+              <div className="modal-content-inside-body-content-personas">
                 <div className="modal-content-inside-body-content-detalles-recursos">
-                  <p>RESCURSOS:</p>
-                  <ul>
-                    <li>- 1 Macbook</li>
-                    <li>- 2 Linux</li>
-                  </ul>
+                
+                  <p><strong>RECURSOS:</strong> {Recursos}</p>
+                  
                 </div>
+              <div className="modal-content-inside-body-content-detalles">
                 <div className="modal-content-inside-body-content-detalles-personas">
-                  <p>PERSONAS: {Personas}</p>
-                </div>
+                    
+                    <p><strong>PERSONAS:</strong> {Personas}</p>
+                  </div>
+              </div>
+                
               </div>
             </div>
           </div>
