@@ -256,11 +256,11 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
           <div ref={messagesEndRef} />
         </ul>
         <div className="bottom_wrapper clearfix">
-          {showPopUp && (
-            <>
-              <button className="send_message2" onClick={togglePopUp}>
+        <button className="send_message2" onClick={togglePopUp}>
                 Detalles Reserva
               </button>
+          {showPopUp && (
+            <>
               <PopUp
                 onClose={togglePopUp}
                 Matricula={matriculita}
