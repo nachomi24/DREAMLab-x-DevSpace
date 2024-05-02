@@ -237,70 +237,71 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   // localStorage.clear();
 
   return (
-    <div className="chat_window">
-      <div className="top_menu">
-        <div className="title">RESERVA TU LUGAR</div>
-      </div>
-      <div className="error">
-        <div id="error-title" className="title"></div>
-      </div>
-      <ul id="all_messages" className="messages">
-        {messages.map((msg, index) => (
-          <li key={index} className={`message ${msg.side} appeared`}>
-            <div className="avatar"></div>
-            <div className="text_wrapper">
-              <div className="text">{msg.text}</div>
-            </div>
-          </li>
-        ))}
-        <div ref={messagesEndRef} />
-      </ul>
-      <div className="bottom_wrapper clearfix">
-        {showPopUp && (
-          <>
-            <button className="send_message2" onClick={togglePopUp}>
-              Detalles Reserva
-            </button>
-            <PopUp
-              onClose={togglePopUp}
-              Matricula={matriculita}
-              SalaID={salaID}
-              Dia={dia}
-              HoraInicio={horaInicio}
-              HoraFin={horaFin}
-              Recursos={recursos}
-              Personas={personas}
-              Confirmada={confirmada}
-            />
-          </>
-        )}
-        {!showPopUp && (
-          <>
-            <div className="message_input_wrapper">
-              <textarea
-                style={{ resize: "none" }}
-                id="conversation_query"
-                className="message_input"
-                placeholder="Escribe aquí..."
-                value={inputText}
-                onChange={handleMessageChange}
-                onKeyPress={handleKeyPress}
-              ></textarea>
-            </div>
-            <div
-              id="button_send_message"
-              className="send_message"
-              onClick={handleMessageSubmit}
-            >
-              <div id="send_button" className="text">
-                Enviar
+      <div className="chat_window">
+        <div className="top_menu">
+          <div className="title">RESERVA TU LUGAR</div>
+        </div>
+        <div className="error">
+          <div id="error-title" className="title"></div>
+        </div>
+        <ul id="all_messages" className="messages">
+          {messages.map((msg, index) => (
+            <li key={index} className={`message ${msg.side} appeared`}>
+              <div className={`avatar ${msg.side}`}></div>
+              <div className="text_wrapper">
+                <div className="text">{msg.text}</div>
               </div>
-            </div>
-          </>
-        )}
+            </li>
+          ))}
+          <div ref={messagesEndRef} />
+        </ul>
+        <div className="bottom_wrapper clearfix">
+          {showPopUp && (
+            <>
+              <button className="send_message2" onClick={togglePopUp}>
+                Detalles Reserva
+              </button>
+              <PopUp
+                onClose={togglePopUp}
+                Matricula={matriculita}
+                SalaID={salaID}
+                Dia={dia}
+                HoraInicio={horaInicio}
+                HoraFin={horaFin}
+                Recursos={recursos}
+                Personas={personas}
+                Confirmada={confirmada}
+              />
+            </>
+          )}
+          {!showPopUp && (
+            <>
+              <div className="message_input_wrapper">
+                <textarea
+                  style={{ resize: "none" }}
+                  id="conversation_query"
+                  className="message_input"
+                  placeholder="Escribe aquí..."
+                  value={inputText}
+                  onChange={handleMessageChange}
+                  onKeyPress={handleKeyPress}
+                ></textarea>
+              </div>
+              <div
+                id="button_send_message"
+                className="send_message"
+                onClick={handleMessageSubmit}
+              >
+                <div id="send_button" className="text">
+                  Enviar
+                </div>
+              </div>
+            </>
+          )}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
 
 export default Chat;
