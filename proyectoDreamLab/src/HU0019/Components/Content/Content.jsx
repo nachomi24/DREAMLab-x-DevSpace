@@ -52,10 +52,10 @@ const Content = ({ matricula }) => {
       console.error("Error al obtener los datos:", error);
     }
   };
-
+//correcto
   useEffect(() => {
     obtencionDatosGlobal();
-  });
+  }, []);
 
   return (
     <div className="table-container">
