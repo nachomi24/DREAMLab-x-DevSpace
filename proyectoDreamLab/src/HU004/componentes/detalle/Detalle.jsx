@@ -14,7 +14,7 @@ const PopUp = ({
 }) => {
   const handleConfirm = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/reservacion", {
+      const response = await fetch("https://devspaceapi.azurewebsites.net/api/reservacion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -5,7 +5,7 @@ import Tabla from "../Tabla/Tabla";
 import axios from "axios";
 
 const Content = ({ matricula }) => {
-  const apiURLPerfil = "http://localhost:8000/api/perfil/" + matricula;
+  const apiURLPerfil = "https://devspaceapi.azurewebsites.net/api/perfil/" + matricula;
 
   const [Carrera, setCarrera] = useState("");
   const [totalPuntos, setPuntos] = useState(0);

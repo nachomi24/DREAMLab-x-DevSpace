@@ -10,6 +10,8 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   });
   const [inputText, setInputText] = useState("");
   const messagesEndRef = useRef(null);
+  const [showButton, setShowButton] = useState(false);
+  const [showMessageInput, setShowMessageInput] = useState(true);
 
   const [matriculita, setMatriculita] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
@@ -122,6 +124,8 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
             setHoraFin(convertirHora(horaFin));
             setRecursos(recursos);
             setPersonas(parseInt(personas));
+            setShowButton(true);
+            setShowMessageInput(false);
             togglePopUp();
 
             console.log("Sala ID:", salaID);
@@ -256,9 +260,11 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
           <div ref={messagesEndRef} />
         </ul>
         <div className="bottom_wrapper clearfix">
-        <button className="send_message2" onClick={togglePopUp}>
-                Detalles Reserva
-              </button>
+          {showButton && (
+            <button className="send_message2" onClick={togglePopUp}>
+              Detalles Reserva
+            </button>
+          )}
           {showPopUp && (
             <>
               <PopUp
@@ -274,7 +280,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
               />
             </>
           )}
-          {!showPopUp && (
+          {showMessageInput && (
             <>
               <div className="message_input_wrapper">
                 <textarea

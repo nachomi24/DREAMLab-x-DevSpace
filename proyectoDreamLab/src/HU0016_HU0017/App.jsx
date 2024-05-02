@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import Tarjetas from "./componentes/TarjetasT/TarjetasT";
 import axios from "axios";
 import { useState, useEffect } from "react";
-const apiURL = "http://localhost:8000/api/info_talleres";
+const apiURL = "https://devspaceapi.azurewebsites.net/api/info_talleres";
 
 function App() {
   const [talleres, setTalleres] = useState([]);
