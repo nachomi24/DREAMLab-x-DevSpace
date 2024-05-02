@@ -153,6 +153,7 @@
   padding: 20px 20px;
   position: absolute;
   bottom: 0;
+  display: flex;
 }
 
 .bottom_wrapper .message_input_wrapper {
@@ -201,12 +202,37 @@
   text-align: center;
 }
 
+.bottom_wrapper .send_message2 {
+  width: 100%;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #363968;
+  border: 2px solid #363968;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-align: center;
+}
+
 .bottom_wrapper .send_message:hover {
   color: white;
   background-color: #15162A;
 }
 
+.bottom_wrapper .send_message2:hover {
+  color: white;
+  background-color: #15162A;
+}
+
 .bottom_wrapper .send_message .text {
+  font-size: 18px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
+}
+
+.bottom_wrapper .send_message2 .text {
   font-size: 18px;
   font-weight: 300;
   display: inline-block;
