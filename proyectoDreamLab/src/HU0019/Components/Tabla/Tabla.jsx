@@ -1,36 +1,17 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import "./Tabla.css";
 import foto1 from "../../../assets/iaia.png";
-import foto2 from "../../../assets/itit.png";
-import foto3 from "../../../assets/vrvr.png";
-import foto4 from "../../../assets/construye.png";
 import clockWait from "../../../assets/clock.gif";
 
-const obtenerImagenAleatoria = () => {
-  const imagenes = [foto1, foto2, foto3, foto4];
-  const indiceAleatorio = Math.floor(Math.random() * imagenes.length);
-  return imagenes[indiceAleatorio];
-};
-
 const ContenedorTarjetas = ({ datos, mostrarBotonCancel }) => {
-  const [imagenesAleatorias, setImagenesAleatorias] = useState([]);
-
-  useEffect(() => {
-    // Generar las imágenes aleatorias una vez al cargar la página
-    const imagenes = datos.map(() => obtenerImagenAleatoria());
-    setImagenesAleatorias(imagenes);
-  }, []); //DATOS 
-
   return (
     <div className="contenedor-tarjeta-general">
       <div className="contenedor-principal-tarjetas">
         <div className="contenedor-tarjetas">
-          {datos.map((dato, index) => (
+          {datos.map((dato) => (
             <Tarjeta
               key={dato.id}
               {...dato}
-              imagenAleatoria={imagenesAleatorias[index]}
               mostrarBotonCancel={mostrarBotonCancel}
             />
           ))}
@@ -45,16 +26,16 @@ const Tarjeta = ({
   Dia,
   HoraInicio,
   NombreSala,
-  imagenAleatoria,
   mostrarBotonCancel,
 }) => {
+  console.log("Propiedades recibidas en Tarjeta:", SalaID, Dia, HoraInicio, NombreSala, mostrarBotonCancel);
   return (
     <>
       <div className="tarjeta">
         <div>
           <img
             className="tarjeta-img-inside"
-            src={imagenAleatoria}
+            src={foto1} // Siempre utiliza la imagen foto1
             alt={NombreSala}
           />
         </div>
@@ -70,7 +51,7 @@ const Tarjeta = ({
             {mostrarBotonCancel ? (
               <button className="botoncito1">Cancelar</button>
             ) : (
-              <img className="relojcito" src={clockWait}></img>
+              <img className="relojcito" src={clockWait} alt="Clock"></img>
             )}
           </div>
         </div>
@@ -87,10 +68,17 @@ function Tabla({
   Matricula,
   UfIds,
 }) {
-  const [isEyeOpen, setIsEyeOpen] = useState(false);
+
+  console.log("ReservacionesNoConfirmadas:", ReservacionesNoConfirmadas);
+  console.log("ReservacionesConfirmadas:", ReservacionesConfirmadas);
+
+
+  console.log("Renderizando Tabla...");
+  const [isEyeOpen, setIsEyeOpen] = React.useState(false);
 
   const toggleEye = () => {
-    setIsEyeOpen(!isEyeOpen); // Cambia el estado de isEyeOpen al opuesto
+    console.log("Cambiando estado de isEyeOpen...");
+    setIsEyeOpen(!isEyeOpen);
   };
 
   return (
@@ -123,85 +111,76 @@ function Tabla({
               ></i>
               {!isEyeOpen &&
                 UfIds.map((uf, index) => (
-                  <>
-                    <div style={{ marginLeft: "4vh" }}>
-                      <p
-                        style={{ marginRight: 0 }}
-                        key={index}
-                        className="p_uf_curso"
-                      >
-                        {uf}
-                      </p>
-                    </div>
-                  </>
+                  <div key={index} style={{ marginLeft: "4vh" }}>
+                    <p style={{ marginRight: 0 }} className="p_uf_curso">
+                      {uf}
+                    </p>
+                  </div>
                 ))}
             </div>
           </td>
         </tr>
         <tr>
-          <div className="reservaciones-pend-div-fut">
-            <td className="reservaciones-pend-fut">
-              <div className="reservaciones-pend-fut-div">
-                <div className="reservaciones-pend-fut-div-title">
-                  <i
-                    style={{ marginRight: "15px", color: "#ABACC4" }}
-                    className={"fa-solid fa-hourglass-half"}
-                  ></i>
-                  Reservaciones Pendientes
-                </div>
-                <br />
-                {ReservacionesNoConfirmadas &&
-                ReservacionesNoConfirmadas.length !== 0 ? (
-                  <ContenedorTarjetas
-                    datos={ReservacionesNoConfirmadas}
-                    mostrarBotonCancel={false}
-                  />
-                ) : (
-                  <div className="reservaciones-pend-fut-div-content">
-                    <p style={{ fontSize: "2.5vh", marginBottom: "3vh" }}>
-                      Aún no has realizado una reservación. Haz click en el
-                      botón de abajo para realizar tu primera reservación.{" "}
-                    </p>
-                    <a
-                      style={{ marginBottom: "5px" }}
-                      className="botoncito2"
-                      href="/reservar"
-                    >
-                      Reservar ahora
-                    </a>
-                  </div>
-                )}
+          <td className="reservaciones-pend-fut">
+            <div className="reservaciones-pend-fut-div">
+              <div className="reservaciones-pend-fut-div-title">
+                <i
+                  style={{ marginRight: "15px", color: "#ABACC4" }}
+                  className={"fa-solid fa-hourglass-half"}
+                ></i>
+                Reservaciones Pendientes
               </div>
-            </td>
-            <td className="reservaciones-pend-fut">
-              <div className="reservaciones-pend-fut-div">
-                <div className="reservaciones-pend-fut-div-title">
-                  <i
-                    style={{ marginRight: "15px", color: "#ABACC4"  }}
-                    className={"fa-solid fa-clock-rotate-left"}
-                  ></i>
-                  Reservaciones Futuras
+              <br />
+              {ReservacionesNoConfirmadas &&
+              ReservacionesNoConfirmadas.length !== 0 ? (
+                <ContenedorTarjetas
+                  datos={ReservacionesNoConfirmadas}
+                  mostrarBotonCancel={false}
+                />
+              ) : (
+                <div className="reservaciones-pend-fut-div-content">
+                  <p style={{ fontSize: "2.5vh", marginBottom: "3vh" }}>
+                    Aún no has realizado una reservación. Haz click en el
+                    botón de abajo para realizar tu primera reservación.{" "}
+                  </p>
+                  <a
+                    style={{ marginBottom: "5px" }}
+                    className="botoncito2"
+                    href="/reservar"
+                  >
+                    Reservar ahora
+                  </a>
                 </div>
-                <br />
-                {console.log(ReservacionesConfirmadas)}
-                {ReservacionesConfirmadas &&
-                ReservacionesConfirmadas.length !== 0 ? (
-                  <ContenedorTarjetas
-                    datos={ReservacionesConfirmadas}
-                    mostrarBotonCancel={true}
-                  />
-                ) : (
-                  <div className="reservaciones-pend-fut-div-content">
-                    <p style={{ fontSize: "2.5vh", marginBottom: "3vh" }}>
-                      Tus reservaciones pendientes están en espera de
-                      confirmación.
-                    </p>
-                    <img className="relojcito" src={clockWait}></img>
-                  </div>
-                )}
+              )}
+            </div>
+          </td>
+          <td className="reservaciones-pend-fut">
+            <div className="reservaciones-pend-fut-div">
+              <div className="reservaciones-pend-fut-div-title">
+                <i
+                  style={{ marginRight: "15px", color: "#ABACC4" }}
+                  className={"fa-solid fa-clock-rotate-left"}
+                ></i>
+                Reservaciones Futuras
               </div>
-            </td>
-          </div>
+              <br />
+              {ReservacionesConfirmadas &&
+              ReservacionesConfirmadas.length !== 0 ? (
+                <ContenedorTarjetas
+                  datos={ReservacionesConfirmadas}
+                  mostrarBotonCancel={true}
+                />
+              ) : (
+                <div className="reservaciones-pend-fut-div-content">
+                  <p style={{ fontSize: "2.5vh", marginBottom: "3vh" }}>
+                    Tus reservaciones pendientes están en espera de
+                    confirmación.
+                  </p>
+                  <img className="relojcito" src={clockWait} alt="Clock"></img>
+                </div>
+              )}
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
