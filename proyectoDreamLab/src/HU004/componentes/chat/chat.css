@@ -238,3 +238,21 @@
   display: inline-block;
   line-height: 48px;
 }
+
+.avatar {
+  width: 40px; /* Ajusta el tamaño según tus necesidades */
+  height: 40px; /* Ajusta el tamaño según tus necesidades */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.avatar.left {
+  background-image: url('botICON.png');
+  float: left;
+}
+
+.avatar.right {
+  background-image: url('karen.png');
+  float: right;
+}
