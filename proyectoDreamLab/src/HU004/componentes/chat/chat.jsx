@@ -44,7 +44,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
       // Enviar solicitud a la API
       try {
         const response = await fetch(
-          `http://localhost:8000/api/chat_OpenAI/${text}`
+          `https://devspaceapi.azurewebsites.net/api/chat_OpenAI/${text}`
         );
         const data = await response.json();
 
