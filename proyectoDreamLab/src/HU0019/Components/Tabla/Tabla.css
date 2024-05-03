@@ -14,6 +14,8 @@
   border-radius: 10px;
   font-weight: bold;
   width: 50%;
+  display: flex;
+  float: left;
 }
 
 .tablaestilo tr {
@@ -99,7 +101,7 @@
   justify-content: left;
   align-items: start;
   width: 95%;
-  height: 75vh; /* Cambiado a unidades relativas */
+  height: 40vh; /* Cambiado a unidades relativas */
   background-color: #d9d9d96d;
   padding: 2.5vh; /* Cambiado a unidades relativas */
   border-radius: 1.5vw; /* Cambiado a unidades relativas */

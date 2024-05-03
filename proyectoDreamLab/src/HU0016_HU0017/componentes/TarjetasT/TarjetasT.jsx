@@ -65,6 +65,13 @@ const Tarjeta = ({
     setModalOpen(false);
   };
 
+  const convertirHora = (hora) => {
+    const [hour, minute] = hora.split(":");
+    const ampm = hour >= 12 ? "PM" : "AM";
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minute} ${ampm}`;
+  };
+
   return (
     <>
       <div onClick={handleOpenModal} className="tarjeta">
@@ -79,7 +86,7 @@ const Tarjeta = ({
           <h2>{Nombre}</h2>
           <div className="info-container">
             <p>{Ubicacion}</p>
-            <p>{HoraInicio}</p>
+            <p>{convertirHora(HoraInicio)}</p>
           </div>
         </div>
       </div>

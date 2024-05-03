@@ -15,6 +15,42 @@ const Modal = ({ data, onClose, imagen }) => {
     HoraCreado,
   } = data;
 
+  const convertirHora = (hora) => {
+    const [hour, minute] = hora.split(":");
+    const ampm = hour >= 12 ? "PM" : "AM";
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minute} ${ampm}`;
+  };
+
+  // Cambiar el formato de la fecha
+  const convertirFecha = (fecha) => {
+    const [year, month, day] = fecha.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
+  // Función para calcular el tiempo transcurrido
+  const calcularTiempoTranscurrido = (fechaCreado) => {
+    const fechaCreadoMs = new Date(fechaCreado).getTime();
+    const fechaActualMs = new Date().getTime();
+    const diferenciaMs = fechaActualMs - fechaCreadoMs;
+
+    // Convertir la diferencia a segundos, minutos, horas y días
+    const segundos = Math.floor(diferenciaMs / 1000);
+    const minutos = Math.floor(segundos / 60);
+    const horas = Math.floor(minutos / 60);
+    const dias = Math.floor(horas / 24);
+
+    if (dias > 0) {
+      return `Hace ${dias} día${dias > 1 ? "s" : ""}`;
+    } else if (horas > 0) {
+      return `Hace ${horas} hora${horas > 1 ? "s" : ""}`;
+    } else if (minutos > 0) {
+      return `Hace ${minutos} minuto${minutos > 1 ? "s" : ""}`;
+    } else {
+      return `Hace unos segundos`;
+    }
+  };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
@@ -38,19 +74,21 @@ const Modal = ({ data, onClose, imagen }) => {
                 <p>Profesor(a): {NombreProfesor}</p>
               </div>
               <div className="modal-content-inside-body-content-fecha">
-                <p>{Fecha}</p>
+                <p>{convertirFecha(Fecha)}</p>
                 <p className="horarie">
-                  {HoraInicio} a {HoraFin}
+                  {convertirHora(HoraInicio)} a {convertirHora(HoraFin)}
                 </p>
               </div>
               <div className="modal-content-inside-body-content-detalles">
                 <div className="modal-content-inside-body-content-detalles-creado">
-                  <p>Creado en:</p>
-                  <p className="creadito">{HoraCreado}</p>
+                  <p>Creado:</p>
+                  <p className="creadito">
+                    {calcularTiempoTranscurrido(HoraCreado)}
+                  </p>
                 </div>
                 <div className="modal-content-inside-body-content-detalles-cupo">
                   <p>Cupo:</p>
-                  <p className="cupito">{Cupo}</p>
+                  <p className="cupito">{Cupo} personas</p>
                 </div>
               </div>
             </div>

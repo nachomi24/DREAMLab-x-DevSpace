@@ -28,7 +28,20 @@ const Tarjeta = ({
   NombreSala,
   mostrarBotonCancel,
 }) => {
-  console.log("Propiedades recibidas en Tarjeta:", SalaID, Dia, HoraInicio, NombreSala, mostrarBotonCancel);
+  // Convertir la hora de formato 24 horas a formato 12 horas (PM/AM)
+  const convertirHora = (hora) => {
+    const [hour, minute] = hora.split(":");
+    const ampm = hour >= 12 ? "PM" : "AM";
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minute} ${ampm}`;
+  };
+
+  // Cambiar el formato de la fecha
+  const convertirFecha = (fecha) => {
+    const [year, month, day] = fecha.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <>
       <div className="tarjeta">
@@ -44,14 +57,24 @@ const Tarjeta = ({
             {SalaID} - {NombreSala}
           </h2>
           <div className="info-container">
-            <p>{Dia}</p>
-            <p>{HoraInicio}</p>
+            <p>{convertirFecha(Dia)}</p>
+            <p>{convertirHora(HoraInicio)}</p>
           </div>
           <div className="info-detail-cl-bt">
             {mostrarBotonCancel ? (
               <button className="botoncito1">Cancelar</button>
             ) : (
-              <img className="relojcito" src={clockWait} alt="Clock"></img>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <img className="relojcito" src={clockWait} alt="Clock"></img>
+                <p style={{ marginLeft: "15px", fontSize: "1.25vw" }}>
+                  En espera de confirmación
+                </p>
+              </div>
             )}
           </div>
         </div>
@@ -68,10 +91,8 @@ function Tabla({
   Matricula,
   UfIds,
 }) {
-
   console.log("ReservacionesNoConfirmadas:", ReservacionesNoConfirmadas);
   console.log("ReservacionesConfirmadas:", ReservacionesConfirmadas);
-
 
   console.log("Renderizando Tabla...");
   const [isEyeOpen, setIsEyeOpen] = React.useState(false);
@@ -85,7 +106,7 @@ function Tabla({
     <table className="tablaestilo">
       <tbody>
         <tr>
-          <td className="nombre_perfil" colSpan={2}>
+          <td style={{ width: "100%" }} className="nombre_perfil" colSpan={2}>
             <i
               style={{ marginRight: "25px", color: "#ABACC4" }}
               className={"fa-solid fa-user"}
@@ -94,7 +115,7 @@ function Tabla({
           </td>
         </tr>
         <tr>
-          <td className="uf_curso" colSpan={2}>
+          <td style={{ width: "100%" }} className="uf_curso" colSpan={2}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <i
                 style={{ marginRight: "15px", color: "#ABACC4" }}
@@ -105,7 +126,9 @@ function Tabla({
               <i
                 style={{ cursor: "pointer" }}
                 className={
-                  isEyeOpen ? `fa-solid fa-angle-right` : `fa-solid fa-angle-left`
+                  isEyeOpen
+                    ? `fa-solid fa-angle-right`
+                    : `fa-solid fa-angle-left`
                 }
                 onClick={toggleEye}
               ></i>
@@ -139,8 +162,8 @@ function Tabla({
               ) : (
                 <div className="reservaciones-pend-fut-div-content">
                   <p style={{ fontSize: "2.5vh", marginBottom: "3vh" }}>
-                    Aún no has realizado una reservación. Haz click en el
-                    botón de abajo para realizar tu primera reservación.{" "}
+                    Aún no has realizado una reservación. Haz click en el botón
+                    de abajo para realizar tu primera reservación.{" "}
                   </p>
                   <a
                     style={{ marginBottom: "5px" }}
