@@ -130,7 +130,6 @@ function Tabla({
                 ></i>
                 Reservaciones Pendientes
               </div>
-              <br />
               {ReservacionesNoConfirmadas &&
               ReservacionesNoConfirmadas.length !== 0 ? (
                 <ContenedorTarjetas
@@ -163,7 +162,6 @@ function Tabla({
                 ></i>
                 Reservaciones Futuras
               </div>
-              <br />
               {ReservacionesConfirmadas &&
               ReservacionesConfirmadas.length !== 0 ? (
                 <ContenedorTarjetas
