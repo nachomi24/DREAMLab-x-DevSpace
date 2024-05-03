@@ -4,8 +4,6 @@ describe('template spec', () => {
         cy.visit('http://localhost:5173/')
     })
 
-    
-    
     it('Especificar sala existente',()=>{
         
         cy.get('.fa-bars').click()
@@ -19,12 +17,8 @@ describe('template spec', () => {
         cy.get(':nth-child(5) > .text_wrapper > .text').should('be.visible');
         cy.contains('Sala: DL101, Nombre: Dimension Forge, Cupo: 10, Recursos: 6 Mouses, 10 Apple Vision Pro, 5 Lectores de huella, Hora de Inicio: 15:00:00, Hora de Fin: 19:00:00')
         .should('be.visible');
-
     })
     
-
-    
-
     it('Especificar sala inexistente',()=>{
         
         cy.get('.fa-bars').click()
@@ -36,12 +30,7 @@ describe('template spec', () => {
         cy.get('#button_send_message').click()
         cy.wait(200)
         cy.get(':nth-child(5) > .text_wrapper > .text').should('be.visible');
-        
-
     })
-
-    
-
 
     it('No especificar sala',()=>{
         
@@ -54,7 +43,5 @@ describe('template spec', () => {
         cy.get('#button_send_message').click()
         cy.wait(200)
         cy.get(':nth-child(5) > .text_wrapper > .text').should('be.visible');
-        
-
     })
 })
