@@ -52,20 +52,16 @@
   }
 }
 
-.reservaciones-pend-div-fut {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
 
 .reservaciones-pend-fut {
-  text-align: center;
+  text-align: start;
   font-size: 1.5vw;
+  align-items: start;
 }
 
 .reservaciones-pend-fut-div {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
   flex-direction: column;
 }
@@ -84,6 +80,7 @@
   width: 100%;
   font-family: 'Mina', sans-serif;
   margin-bottom: 2vh;
+  align-items: start;
 }
 
 .contenedor-tarjeta-general {
@@ -93,7 +90,7 @@
 .contenedor-principal-tarjetas {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
 
 .contenedor-tarjetas {
