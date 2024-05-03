@@ -14,22 +14,25 @@ const PopUp = ({
 }) => {
   const handleConfirm = async () => {
     try {
-      const response = await fetch("https://devspaceapi.azurewebsites.net/api/reservacion", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Matricula,
-          SalaID,
-          Dia,
-          HoraInicio,
-          HoraFin,
-          Recursos,
-          Personas,
-          Confirmada,
-        }),
-      });
+      const response = await fetch(
+        "https://devspaceapi.azurewebsites.net/api/reservacion",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            Matricula,
+            SalaID,
+            Dia,
+            HoraInicio,
+            HoraFin,
+            Recursos,
+            Personas,
+            Confirmada,
+          }),
+        }
+      );
 
       console.log(
         Matricula,
@@ -56,6 +59,20 @@ const PopUp = ({
     }
   };
 
+  // Convertir la hora de formato 24 horas a formato 12 horas (PM/AM)
+  const convertirHora = (hora) => {
+    const [hour, minute] = hora.split(":");
+    const ampm = hour >= 12 ? "PM" : "AM";
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minute} ${ampm}`;
+  };
+
+  // Cambiar el formato de la fecha
+  const convertirFecha = (fecha) => {
+    const [year, month, day] = fecha.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -66,30 +83,35 @@ const PopUp = ({
           <div className="modal-content-inside-body">
             <div className="modal-content-inside-body-content">
               <div className="modal-content-inside-body-content-ubi">
-                <p><strong>SALA:</strong> {SalaID}</p>
-
+                <p>
+                  <strong>SALA:</strong> {SalaID}
+                </p>
               </div>
               <div className="modal-content-inside-body-content-fecha">
-                <p><strong>FECHA: </strong>{Dia}</p>
+                <p>
+                  <strong>FECHA: </strong>
+                  {convertirFecha(Dia)}
+                </p>
                 <div className="modal-content-inside-body-content-horarie">
                   <p>
-                  <strong>HORARIO:</strong> {HoraInicio} - {HoraFin}
+                    <strong>HORARIO:</strong> {convertirHora(HoraInicio)} -{" "}
+                    {convertirHora(HoraFin)}
                   </p>
                 </div>
               </div>
               <div className="modal-content-inside-body-content-personas">
                 <div className="modal-content-inside-body-content-detalles-recursos">
-                
-                  <p><strong>RECURSOS:</strong> {Recursos}</p>
-                  
+                  <p>
+                    <strong>RECURSOS:</strong> {Recursos}
+                  </p>
                 </div>
-              <div className="modal-content-inside-body-content-detalles">
-                <div className="modal-content-inside-body-content-detalles-personas">
-                    
-                    <p><strong>PERSONAS:</strong> {Personas}</p>
+                <div className="modal-content-inside-body-content-detalles">
+                  <div className="modal-content-inside-body-content-detalles-personas">
+                    <p>
+                      <strong>PERSONAS:</strong> {Personas}
+                    </p>
                   </div>
-              </div>
-                
+                </div>
               </div>
             </div>
           </div>

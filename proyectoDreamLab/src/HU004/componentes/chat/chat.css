@@ -253,6 +253,6 @@
 }
 
 .avatar.right {
-  background-image: url('karen.png');
+  background-image: var(--right-avatar, url('karen.png')); /* Fallback a una imagen predeterminada si no se encuentra la URL de la foto del perfil */
   float: right;
 }
