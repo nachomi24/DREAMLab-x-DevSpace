@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
-import "./Tarjetas.css";
-import "./TarjetaInfo.css";
+import "./TarjetasSalas.css";
+import "./TarjetaInfoS.css";
 import Menu from "../Menu/Menu";
 import Modal from "../Modal/Modal";
-import foto1 from "../../../assets/iaia.png";
-import foto2 from "../../../assets/itit.png";
-import foto3 from "../../../assets/vrvr.png";
-import foto4 from "../../../assets/construye.png";
+import foto1 from "../../../assets/sala1.png";
+import foto2 from "../../../assets/sala2.png";
 
 const obtenerImagenAleatoria = () => {
-  const imagenes = [foto1, foto2, foto3, foto4];
+  const imagenes = [foto1, foto2];
   const indiceAleatorio = Math.floor(Math.random() * imagenes.length);
   return imagenes[indiceAleatorio];
 };
 
-const ContenedorTarjetas = ({ datos, onMenuClick }) => {
+const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
   const [imagenesAleatorias, setImagenesAleatorias] = useState([]);
 
   useEffect(() => {
@@ -41,17 +39,11 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
 };
 
 const Tarjeta = ({
-  TallerID,
-  NombreProfesor,
-  UFID,
-  NombreUF,
+  SalaID,
   Nombre,
   Cupo,
-  Ubicacion,
-  Fecha,
   HoraInicio,
   HoraFin,
-  HoraCreado,
   imagenAleatoria,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -78,31 +70,25 @@ const Tarjeta = ({
           <img
             className="tarjeta-img-inside"
             src={imagenAleatoria}
-            alt={Ubicacion}
+            alt={SalaID}
           />
         </div>
         <div className="tarjeta-info">
           <h2>{Nombre}</h2>
           <div className="info-container">
-            <p>{Ubicacion}</p>
-            <p>{convertirHora(HoraInicio)}</p>
+            <p>{SalaID}</p>
           </div>
         </div>
       </div>
       {modalOpen && (
         <Modal
           data={{
-            TallerID,
-            NombreProfesor,
-            UFID,
-            NombreUF,
+            SalaID,
             Nombre,
             Cupo,
-            Ubicacion,
-            Fecha,
             HoraInicio,
             HoraFin,
-            HoraCreado,
+            imagenAleatoria,
           }}
           onClose={handleCloseModal}
           imagen={imagenAleatoria}
@@ -112,4 +98,4 @@ const Tarjeta = ({
   );
 };
 
-export default ContenedorTarjetas;
+export default ContenedorTarjetasSalas;
