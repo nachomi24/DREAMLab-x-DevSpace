@@ -1,30 +1,52 @@
 import "./App.css";
 import Navbar from "../Navbar/Navbar";
-import Tarjetas from "./componentes/TarjetasT/TarjetasT";
+import TarjetasT from "./componentes/TarjetasT/TarjetasT";
+import TarjetasS from "./componentes/TarjetasS/TarjetasS";
 import axios from "axios";
 import { useState, useEffect } from "react";
-const apiURL = "https://devspaceapi2.azurewebsites.net/api/info_talleres";
+
+const apiURLT = "https://devspaceapi2.azurewebsites.net/api/info_talleres";
+const apiURLS = "https://devspaceapi2.azurewebsites.net/api/salas";
 
 function App() {
   const [talleres, setTalleres] = useState([]);
+  const [salas, setSalas] = useState([]);
+  const [activeMenu, setActiveMenu] = useState(0); // 0 for talleres, 1 for salas
 
   const obtenerTalleres = async () => {
     try {
-      const response = await axios.get(apiURL);
+      const response = await axios.get(apiURLT);
       setTalleres(response.data);
     } catch (error) {
       console.error("Error al obtener talleres:", error);
     }
   };
+  
+  const obtenerSalas = async () => {
+    try {
+      const response = await axios.get(apiURLS);
+      setSalas(response.data);
+    } catch (error) {
+      console.error("Error al obtener salas:", error);
+    }
+  };
 
   useEffect(() => {
-    obtenerTalleres();
-  }, []);
+    if (activeMenu === 0) {
+      obtenerTalleres();
+    } else {
+      obtenerSalas();
+    }
+  }, [activeMenu]);
 
   return (
     <>
       <Navbar />
-      <Tarjetas datos={talleres} />
+      {activeMenu === 0 ? (
+        <TarjetasT datos={talleres} onMenuClick={setActiveMenu} />
+      ) : (
+        <TarjetasS datos={salas} onMenuClick={setActiveMenu} />
+      )}
     </>
   );
 }
