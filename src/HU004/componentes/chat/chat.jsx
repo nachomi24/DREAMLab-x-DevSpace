@@ -44,7 +44,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
       // Enviar solicitud a la API
       try {
         const response = await fetch(
-          `https://devspaceapi.azurewebsites.net/api/chat_OpenAI/${text}`
+          `https://devspaceapi2.azurewebsites.net/api/Dreamy_OpenAI/${text}`
         );
         const data = await response.json();
 
@@ -147,7 +147,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   useEffect(() => {
     if (setLoggedIn) {
       // Realizar solicitud a la API para obtener la foto del perfil
-      fetch(`https://devspaceapi.azurewebsites.net/api/perfil/${matriculita}`)
+      fetch(`https://devspaceapi2.azurewebsites.net/api/perfil/${matriculita}`)
         .then((response) => response.json())
         .then((data) => {
           // Obtener la URL de la foto del perfil

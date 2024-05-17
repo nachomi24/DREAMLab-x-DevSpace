@@ -14,7 +14,7 @@ const Navbar = ({ loggedIn }) => {
   const matricula = localStorage.getItem("matricula");
 
   const apiURLPerfilCarrera =
-    "https://devspaceapi.azurewebsites.net/api/perfil/" + matricula;
+    "https://devspaceapi2.azurewebsites.net/api/perfil/" + matricula;
 
   const obtencionFotoPerfil = async () => {
     try {
@@ -85,6 +85,11 @@ const Navbar = ({ loggedIn }) => {
               SECCIONES
             </a>
           </li>
+          <li>
+            <a href="/admin" className="mina-bold">
+              ADMIN
+            </a>
+          </li>
         </ul>
         <div className="karen">
           <i
@@ -127,6 +132,11 @@ const Navbar = ({ loggedIn }) => {
             SECCIONES
           </a>
         </li>
+        <li>
+            <a href="/admin" className="mina-bold">
+              ADMIN
+            </a>
+          </li>
         <li>
           <input className="search_input-2" placeholder="Escribe aquí..." />
           <a className="search-icon-2">
