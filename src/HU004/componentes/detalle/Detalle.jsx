@@ -15,7 +15,7 @@ const PopUp = ({
   const handleConfirm = async () => {
     try {
       const response = await fetch(
-        "https://devspaceapi.azurewebsites.net/api/reservacion",
+        "https://devspaceapi2.azurewebsites.net/api/reservacion",
         {
           method: "POST",
           headers: {
