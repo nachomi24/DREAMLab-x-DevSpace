@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./chat.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
+import { Link } from 'react-router-dom'; // Asegúrate de tener esto importado
 
 const Chat = ({ setLoggedIn, setMatricula }) => {
   const [messages, setMessages] = useState(() => {
@@ -267,6 +268,9 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
        
       <div className="top_menu">
         <div className="title">RESERVA TU LUGAR</div>
+        <a href="/reservationform" className="reservation-link">
+          Haz click aquí para reservar de otra manera.
+        </a>
       </div>
       <div className="error">
         <div id="error-title" className="title"></div>
