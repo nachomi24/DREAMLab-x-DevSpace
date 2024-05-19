@@ -1,0 +1,183 @@
+.reservation-form {
+    width: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #cccccc00;
+    border-radius: 15px;
+    background-color: rgba(240, 240, 240, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 9vh;
+    color: #363968;
+    text-align: center;
+  }
+
+  
+.dreamy {
+  max-width: 85vh;
+  height: auto;
+  position: fixed;
+  padding-right: 15px;
+} 
+
+  .left {
+    flex: 1;
+  }
+  
+  .right {
+    flex: 2;
+  }
+  
+  .reservation-form label {
+    display: block;
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+  }
+  
+  .reservation-form .react-datepicker-wrapper,
+  .reservation-form .css-2b097c-container {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc00;
+  }
+  
+  .reservation-form .react-datepicker__input-container input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+  }
+  .reservation-form input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+  }
+
+  .reservation-form .css-b62m3t-container {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 0px solid #cccccc00;
+  }
+
+  .reservation-form .css-b62m3t-container:active{
+    font-size: 2.5vh;
+  }
+
+
+
+
+
+  div.css-b62m3t-container:active{
+    font-size: 2.5vh;
+  }
+
+  .reservation-form .css-13cymwt-control {
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    font-size: 2.5vh;
+    font-weight: normal;
+  }
+  
+  .react-datepicker__input-container input {
+    width: 100%;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    font-size: 2.5vh;
+  }
+
+  .reservation-form fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #cccccc00;
+    padding: 10px;
+    background-color: #fefefe;
+    border-radius: 4px;
+    margin-left: 12px;
+    margin-top: -13px;
+  }
+  
+  .reservation-form .counter {
+    display: flex;
+    align-items: center;
+  }
+  
+  .reservation-form .counter button {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 2.5vh;
+    border: none;
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+  
+  .reservation-form .counter span {
+    margin: 0 10px;
+    font-size: 2.5vh;
+  }
+  
+  .reservation-form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #363968;
+    color: #fefefe;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .reservation-form button[type="submit"]:hover {
+    background-color: #1b1e4b;
+  }
+
+  .reservation-form label.subtitulo {
+    font-weight: bold;
+    font-size: 3vh;
+    padding-left: 10px;
+  }
+  
+  legend.subtitulo {
+    font-weight: bold;
+    font-size: 3vh;
+  }
+
+  input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    font-size: 2.5vh;
+  }
+
+  div.css-t3ipsp-control{
+    border-color: black;
+    border-width: 2px;
+    box-shadow: 0 0 0 0px black;
+}
+
+div.css-t3ipsp-control:hover{
+    border-color: black;
+    border-width: 2px;
+    box-shadow: 0 0 0 0px black;
+}
+
+.css-1dimb5e-singleValue{
+    font-size: 2.5vh;
+}
+
+div.css-1nmdiq5-menu{
+    font-size: 2.5vh;
+}
