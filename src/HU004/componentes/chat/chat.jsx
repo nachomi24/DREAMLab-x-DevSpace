@@ -262,7 +262,9 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   // localStorage.clear();
 
   return (
+    
     <div className="chat_window">
+       
       <div className="top_menu">
         <div className="title">RESERVA TU LUGAR</div>
       </div>
@@ -323,6 +325,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
                 Enviar
               </div>
             </div>
+            <a href="#" className="">  ADMIN</a>
           </>
         )}
       </div>
