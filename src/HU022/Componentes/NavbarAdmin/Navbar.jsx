@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./Navbar.css";
-import logo from "../assets/logo1.0.png";
+import "../NavbarAdmin/Navbar.css";
+import logo from "../../../assets/logo1.0.png";
 import axios from "axios";
 
 const Navbar = ({ loggedIn }) => {
@@ -71,25 +71,16 @@ const Navbar = ({ loggedIn }) => {
         </div>
         <ul className="links">
           <li>
-            <a href="/inicio" className="mina-bold">
-              INICIO
+            <a href="#" className="mina-bold">
+              RESERVACIONES
             </a>
           </li>
           <li>
-            <a href="/admin" className="mina-bold">
-              RESERVAR
+            <a href="#" className="mina-bold">
+              VIDEOWALL
             </a>
           </li>
-          <li>
-            <a href="/secciones" className="mina-bold">
-              SECCIONES
-            </a>
-          </li>
-          <li>
-            <a href="/admin2" className="mina-bold">
-              ADMIN
-            </a>
-          </li>
+         
         </ul>
         <div className="karen">
           <i
@@ -100,14 +91,6 @@ const Navbar = ({ loggedIn }) => {
             }
             onClick={toggleMenu}
           ></i>
-          <input
-            id="search"
-            className={`search_input ${searchVisible ? "" : "hidden"}`}
-            placeholder="Escribe aquí..."
-          />
-          <a className="search-icon" onClick={toggleSearch}>
-            <i className="fa-solid fa-magnifying-glass search-img"></i>
-          </a>
           {/* Oculta el perfil si el usuario no está logueado */}
           {loggedIn && (
             <a style={{ lineHeight: 0 }} href="/perfil">
@@ -119,30 +102,15 @@ const Navbar = ({ loggedIn }) => {
       <div className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
         <li>
           <a href="/inicio" className="mina-bold-2">
-            INICIO
+            RESERVACIONES
           </a>
         </li>
         <li>
           <a href="/reservar" className="mina-bold-2">
-            RESERVAR
+            VIDEOWALL
           </a>
         </li>
-        <li>
-          <a href="/secciones" className="mina-bold-2">
-            SECCIONES
-          </a>
-        </li>
-        <li>
-            <a href="/admin2" className="mina-bold">
-              ADMIN
-            </a>
-          </li>
-        <li>
-          <input className="search_input-2" placeholder="Escribe aquí..." />
-          <a className="search-icon-2">
-            <i className="fa-solid fa-magnifying-glass search-img"></i>
-          </a>
-        </li>
+        
       </div>
     </header>
   );

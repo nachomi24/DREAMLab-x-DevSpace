@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./chat.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
+import adperfil from '../../../assets/adperfil.png'
 
 const Chat = ({ setLoggedIn, setMatricula }) => {
   const [messages, setMessages] = useState(() => {
@@ -325,7 +326,8 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
                 Enviar
               </div>
             </div>
-            <a href="#" className="">  ADMIN</a>
+           
+
           </>
         )}
       </div>

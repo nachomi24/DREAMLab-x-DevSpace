@@ -256,3 +256,16 @@
   background-image: var(--right-avatar, url('karen.png')); /* Fallback a una imagen predeterminada si no se encuentra la URL de la foto del perfil */
   float: right;
 }
+
+
+.boton2{
+  width: 50px;
+  height: 50px; /* Asegúrate de que la altura sea igual a la anchura para un círculo perfecto */
+  align-items: end;
+  justify-content: center;
+  display: flex;
+  border-radius: 50%; /* Esto hace que el botón sea circular */
+  background-color: #363968; /* Esto hace que el botón sea morado */
+}
+
+
