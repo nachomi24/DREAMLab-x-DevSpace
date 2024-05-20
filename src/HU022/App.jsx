@@ -1,4 +1,4 @@
-import Navbar from '../Navbar/Navbar.jsx';
+import Navbar from '../../src/HU022/Componentes/NavbarAdmin/Navbar.jsx';
 import Tarjetas from './Componentes/TarjetasA/TarjetasA.jsx';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';

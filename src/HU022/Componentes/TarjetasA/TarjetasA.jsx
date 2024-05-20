@@ -121,7 +121,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
               <Tarjeta key={dato.ReservacionID} {...dato} />
             ))
           ) : (
-            <p>No hay reservaciones pendientes.</p>
+            <p></p>
           )}
         </div>
       </div>
