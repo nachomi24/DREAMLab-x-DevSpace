@@ -21,7 +21,7 @@ function App() {
       console.error("Error al obtener talleres:", error);
     }
   };
-  
+
   const obtenerSalas = async () => {
     try {
       const response = await axios.get(apiURLS);
@@ -30,6 +30,8 @@ function App() {
       console.error("Error al obtener salas:", error);
     }
   };
+
+  
 
   useEffect(() => {
     if (activeMenu === 0) {
@@ -47,6 +49,7 @@ function App() {
       ) : (
         <TarjetasS datos={salas} onMenuClick={setActiveMenu} />
       )}
+      
     </>
   );
 }

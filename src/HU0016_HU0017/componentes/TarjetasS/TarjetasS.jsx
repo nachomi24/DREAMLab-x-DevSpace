@@ -14,18 +14,44 @@ const obtenerImagenAleatoria = () => {
 
 const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
   const [imagenesAleatorias, setImagenesAleatorias] = useState([]);
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const toggleSearch = () => {
+    setSearchVisible(!searchVisible);
+  };
 
   useEffect(() => {
     const imagenes = datos.map(() => obtenerImagenAleatoria());
     setImagenesAleatorias(imagenes);
   }, [datos]);
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredDatos = datos.filter((dato) =>
+    dato.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="contenedor-tarjeta-general">
       <Menu onMenuClick={onMenuClick} />
       <div className="contenedor-principal-tarjetas">
         <div className="contenedor-tarjetas">
-          {datos.map((dato, index) => (
+          <div>
+            <input
+              id="search"
+              className={`search_input ${searchVisible ? "" : "hidden"}`}
+              placeholder="Escribe aquí..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+            <a className="search-icon" onClick={toggleSearch}>
+              <i className="fa-solid fa-magnifying-glass search-img"></i>
+            </a>
+          </div>
+          {filteredDatos.map((dato, index) => (
             <Tarjeta
               key={dato.id}
               {...dato}

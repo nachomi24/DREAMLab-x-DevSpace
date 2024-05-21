@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Navbar = ({ loggedIn }) => {
   const [scrolling, setScrolling] = useState(false);
-  const [searchVisible, setSearchVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [Foto, setFoto] = useState("");
   const [Nombre, setNombre] = useState("");
@@ -53,10 +52,7 @@ const Navbar = ({ loggedIn }) => {
     obtencionFotoPerfil();
   });
 
-  // Función para alternar la visibilidad del input de búsqueda
-  const toggleSearch = () => {
-    setSearchVisible(!searchVisible);
-  };
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -100,14 +96,6 @@ const Navbar = ({ loggedIn }) => {
             }
             onClick={toggleMenu}
           ></i>
-          <input
-            id="search"
-            className={`search_input ${searchVisible ? "" : "hidden"}`}
-            placeholder="Escribe aquí..."
-          />
-          <a className="search-icon" onClick={toggleSearch}>
-            <i className="fa-solid fa-magnifying-glass search-img"></i>
-          </a>
           {/* Oculta el perfil si el usuario no está logueado */}
           {loggedIn && (
             <a style={{ lineHeight: 0 }} href="/perfil">
