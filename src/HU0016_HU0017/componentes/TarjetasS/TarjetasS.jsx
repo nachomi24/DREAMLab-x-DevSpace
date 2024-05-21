@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./TarjetasSalas.css";
 import "./TarjetaInfoS.css";
 import Menu from "../Menu/Menu";
-import Modal from "../Modal/Modal";
+import Modal from "../Modal/ModalS";
 import foto1 from "../../../assets/sala1.png";
 import foto2 from "../../../assets/sala2.png";
 
