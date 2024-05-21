@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../Navbar/Navbar'
 import ReservationForm from './componentes/ReservationForm';
+import Header from '../HU021/Componentes/Header/Header'
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -24,6 +25,7 @@ const App = () => {
   return (
     <div className="App">
         <Menu />
+        {/* <Header/> */}
         <ReservationForm datos={salas} />
     </div>
   );

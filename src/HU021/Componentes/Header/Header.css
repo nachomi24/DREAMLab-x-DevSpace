@@ -1,85 +1,62 @@
 .Header {
-    width: 100%;
-    min-height: 110vh;
-    background: url(../../../assets/fondo6.0.png) no-repeat center center/cover;
-    background-size: cover;
-    background-position: center;
-    color: #363968;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.Header-text {
-    text-align: center;
-    margin-top: 12vh;
-    margin-bottom: 10vh;
-}
-
-.Header-text h1 {
-    font-family: 'Mina', sans-serif;
-    font-size: 10vw;
-    font-weight: bolder;
-    line-height: 1;
-    margin-bottom: 2vh; /* Reduce el margen inferior */
-}
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
-    .Header {
-        min-height: 100vh; 
-    }
-    .Header-text h1 {
-        font-size: 15vw; 
-    }
-}
-
-.botonnav {
-    width: 63px;
-    align-items: end;
-    justify-content: center;
-    margin-top: 1vh; /* Añade un margen superior pequeño si es necesario */
-}
-
-.boton3{
-    width: 8%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo opaco */
     border-radius: 20px;
-    align-items: end;
+    padding: 20px;
+    z-index: 999; /* Asegura que esté por encima del contenido */
+  }
+  
+  .Header-content {
+    text-align: center;
+  }
+  
+  .Header-text {
+    margin-bottom: 2rem;
+  }
+  
+  .Header-text h1 {
+    font-family: 'Mina', sans-serif;
+    font-size: 4vw;
+    font-weight: bold;
+    margin-bottom: 2vh;
+  }
+  
+  .botonnav {
+    width: 63px;
+    margin-top: 1vh;
+  }
+  
+  .boton3 {
+    border-radius: 20px;
     background-color: #363968;
-    justify-content: center;
-    margin-top: 1vh; /* Añade un margen superior pequeño si es necesario */
     color: white;
     font-size: 0.9rem;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border: none;
     cursor: pointer;
-
-}
-
-
-.text-container {
+    text-decoration: none;
+  }
+  
+  .text-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    align-content: center;
     margin-top: 1rem;
     padding: 1rem;
-    
-}
-
-.text-container input {
-    width: 30%;
+  }
+  
+  .text-container input {
+    width: 60%;
     line-height: 1.7;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 20px;
     background-color: #ececec;
-    align-content: center;
-    align-items: center;
     text-align: center;
-
-    
-}
+  }
+  

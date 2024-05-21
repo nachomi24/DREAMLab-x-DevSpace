@@ -10,6 +10,7 @@ const apiSALAS = "https://devspaceapi2.azurewebsites.net/api/salas";
 const apiHORARIO = "https://devspaceapi2.azurewebsites.net/api/horario/";
 const apiRECURSOS = "https://devspaceapi2.azurewebsites.net/api/recursos/";
 const apiCUPO = "https://devspaceapi2.azurewebsites.net/api/cupo/";
+const apiRESERVACION = "https://devspaceapi2.azurewebsites.net/api/reservacion";
 
 const ReservationForm = () => {
     const [salas, setSalas] = useState([]);
@@ -71,21 +72,38 @@ const ReservationForm = () => {
         label: sala.Nombre
     }));
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({
-            sala: selectedSala,
-            fecha: fechaSeleccionada,
-            cantidadPersonas,
-            horaInicio,
-            horaFin,
-            recursosSeleccionados
-        });
+        const data = {
+            Matricula: "A01027008", // Matrícula por defecto
+            SalaID: selectedSala?.value || "",
+            Dia: fechaSeleccionada ? fechaSeleccionada.toISOString().split('T')[0] : "",
+            HoraInicio: horaInicio,
+            HoraFin: horaFin,
+            Recursos: Object.entries(recursosSeleccionados).map(([recurso, cantidad]) => `${cantidad} ${recurso}`).join(', '),
+            Personas: cantidadPersonas,
+            Confirmada: 0 // Confirmada por defecto
+        };
+        console.log("Datos a enviar:", data); // Añadir este log para ver los datos antes de enviarlos
+        try {
+            const response = await axios.post(apiRESERVACION, data);
+            console.log("Respuesta de la API:", response.data);
+            alert("Reserva realizada con éxito");
+        } catch (error) {
+            if (error.response) {
+                console.error("Error al realizar la reserva:", error.response.data);
+                alert(`Error al realizar la reserva: ${error.response.data.detail}`);
+            } else {
+                console.error("Error al realizar la reserva:", error.message);
+                alert("Error al realizar la reserva. Por favor, revise la consola para más detalles.");
+            }
+        }
     };
+    
 
     const isWeekend = (date) => {
         const day = date.getDay();
-        return day === 0 || day === 6; // Para desabilitar sabados y domingos
+        return day === 0 || day === 6; // Para deshabilitar sábados y domingos
     };
 
     const handleResourceChange = (recurso, cantidad) => {
@@ -141,7 +159,7 @@ const ReservationForm = () => {
                         Sala:
                         <Select
                             options={optionsSalas}
-                            placeholder="Seleccione una sala"
+                            placeholder="Selecciona una sala"
                             value={selectedSala}
                             onChange={setSelectedSala}
                         />
