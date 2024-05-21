@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className="App">
         <Menu />
-        {/* <Header/> */}
+        <Header/>
         <ReservationForm datos={salas} />
     </div>
   );
