@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import './TarjetasA.css';
 import Modal from '../Modal/Modal.jsx';
+import Modal2 from '../Modal2/Modal2.jsx';
+import Modal3 from '../Modal3/Modal3.jsx';
 
 function TarjetasA({ datos, actualizarReservaciones }) {
   const convertirHora = (hora) => {
@@ -13,12 +15,14 @@ function TarjetasA({ datos, actualizarReservaciones }) {
 
   const [selectedReserva, setSelectedReserva] = useState(null);
   const [reservacionesPendientes, setReservacionesPendientes] = useState([]);
+  const [modalData, setModalData] = useState(null);
+  const [modalData2, setModalData2] = useState(null);
+  
 
   useEffect(() => {
-    // Filtrar reservaciones pendientes al cargar o actualizar
     const reservacionesPendientesFiltradas = datos.filter(reserva => reserva.Confirmada === 0);
     setReservacionesPendientes(reservacionesPendientesFiltradas);
-  }, [datos]); // Escuchar cambios en 'datos'
+  }, [datos]);
 
   const handleOpenModal = (reserva) => {
     setSelectedReserva(reserva);
@@ -26,9 +30,11 @@ function TarjetasA({ datos, actualizarReservaciones }) {
 
   const handleCloseModal = () => {
     setSelectedReserva(null);
+    setModalData(null);
+    setModalData2(null);
   };
 
-  const confirmarReservacion = async (id) => {
+  const confirmarReservacion = async (id, reserva) => {
     try {
       console.log("Datos enviados para confirmar:", { reservacionId: id });
       const response = await axios.put(`https://devspaceapi2.azurewebsites.net/api/confirmar_reservacion?reservacionId=${id}`, null, {
@@ -38,6 +44,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
       });
       console.log("Respuesta del servidor:", response.data);
       actualizarReservaciones(id);
+      setModalData(reserva);
     } catch (error) {
       console.error("Error al confirmar la reservación", error);
       if (error.response) {
@@ -49,7 +56,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
     }
   };
 
-  const rechazarReservacion = async (id) => {
+  const rechazarReservacion = async (id, reserva) => {
     try {
       console.log("Datos enviados para rechazar:", { reservacionId: id });
       const response = await axios.delete(`https://devspaceapi2.azurewebsites.net/api/rechazar_reservacion?reservacionId=${id}`, null, {
@@ -59,6 +66,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
       });
       console.log("Respuesta del servidor:", response.data);
       actualizarReservaciones(id);
+      setModalData2(reserva);
     } catch (error) {
       console.error("Error al rechazar la reservación", error);
       if (error.response) {
@@ -69,7 +77,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
       }
     }
   };
-  
+
   const Tarjeta = ({
     ReservacionID,
     Matricula,
@@ -104,8 +112,32 @@ function TarjetasA({ datos, actualizarReservaciones }) {
             Personas,
             Confirmada
           })}>DETALLES</button>
-          <button onClick={() => confirmarReservacion(ReservacionID)}>CONFIRMAR</button>
-          <button onClick={() => rechazarReservacion(ReservacionID)}>RECHAZAR</button>
+          <button onClick={() => confirmarReservacion(ReservacionID, {
+            ReservacionID,
+            Matricula,
+            NombreEstudiante,
+            NombreSala,
+            SalaID,
+            Dia,
+            HoraInicio,
+            HoraFin,
+            Recursos,
+            Personas,
+            Confirmada
+          })}>CONFIRMAR</button>
+          <button onClick={() => rechazarReservacion(ReservacionID, {
+            ReservacionID,
+            Matricula,
+            NombreEstudiante,
+            NombreSala,
+            SalaID,
+            Dia,
+            HoraInicio,
+            HoraFin,
+            Recursos,
+            Personas,
+            Confirmada
+          })}>RECHAZAR</button>
         </div>
       </div>
     </div>
@@ -131,11 +163,24 @@ function TarjetasA({ datos, actualizarReservaciones }) {
           onClose={handleCloseModal}
         />
       )}
+      {modalData && (
+        <Modal2
+          data={modalData}
+          onClose={handleCloseModal}
+        />
+      )}
+      {modalData2 && (
+        <Modal3
+          data={modalData2}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 }
 
 export default TarjetasA;
+
 
 
 

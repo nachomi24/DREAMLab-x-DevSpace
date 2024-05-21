@@ -76,7 +76,7 @@ const Navbar = ({ loggedIn }) => {
             </a>
           </li>
           <li>
-            <a href="/admin" className="mina-bold">
+            <a href="/reservar" className="mina-bold">
               RESERVAR
             </a>
           </li>
