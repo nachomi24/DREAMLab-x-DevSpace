@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Chat from "./componentes/chat/chat";
 import Bot from "./componentes/dreamy/dreamy";
+import Header from '../HU021/Componentes/Header/Header';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(
@@ -14,6 +15,7 @@ const App = () => {
   return (
     <div>
       <Navbar loggedIn={loggedIn} />
+      <Header/>
       <Bot />
       <Chat setLoggedIn={setLoggedIn} setMatricula={setMatricula} />
     </div>
