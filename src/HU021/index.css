@@ -8,7 +8,7 @@
 }
 
 body{
-  background-image: url('../assets/bghome.jpg');
+  background-color: rgba(0, 0, 0, 0.493);
   background-repeat: repeat-y;
   background-size: cover;
 
