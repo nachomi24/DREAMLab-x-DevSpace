@@ -22,6 +22,12 @@ const Modal = ({ data, onClose }) => {
     return `${hour12}:${minute} ${ampm}`;
   };
 
+  // Cambiar el formato de la fecha
+  const convertirFecha = (fecha) => {
+    const [year, month, day] = fecha.split("-");
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -31,11 +37,11 @@ const Modal = ({ data, onClose }) => {
             <p className="subtitulito-header">Detalles</p>
             <button className="close-button" onClick={onClose}>×</button>
           </div>
-          <div className="modal-content-inside-body">
-            <div className="modal-content-inside-body-content">
+          <div className="modal-content-inside-body-2">
+            <div className="modal-content-inside-body-content-2">
               <p className="titulito">Lugar: {NombreSala}</p>
               <p className="titulito">Hora: {convertirHora(HoraInicio)} - {convertirHora(HoraFin)}</p>
-              <p className="titulito">Fecha: {Dia}</p>
+              <p className="titulito">Fecha: {convertirFecha(Dia)}</p>
               <p className="titulito">Cantidad: {Personas}</p>
               <p className="titulito">Recursos: {Recursos}</p>
             </div>
