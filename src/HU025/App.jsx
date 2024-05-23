@@ -5,7 +5,7 @@ import Header from '../HU021/Componentes/Header/Header'
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const apiSALAS = "https://devspaceapi2.azurewebsites.net/api/salas";
+const apiSALAS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 const App = () => {
   const [salas, setSalas] = useState([]);
 
@@ -25,7 +25,6 @@ const App = () => {
   return (
     <div className="App">
         <Menu />
-        <Header/>
         <ReservationForm datos={salas} />
     </div>
   );

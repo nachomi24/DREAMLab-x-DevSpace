@@ -3,7 +3,7 @@ import Tarjetas from './Componentes/TarjetasA/TarjetasA.jsx';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-const apiURLADMINR = "https://devspaceapi2.azurewebsites.net/api/info_reservaciones";
+const apiURLADMINR = "https://dreamlabapidev.azurewebsites.net/api/info_reservaciones";
 
 function App() {
   const [reservaciones, setReservaciones] = useState([]);

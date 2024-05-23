@@ -6,11 +6,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './ReservationForm.css';
 import fotodreamy from '../../assets/dreamy.png';
 
-const apiSALAS = "https://devspaceapi2.azurewebsites.net/api/salas";
-const apiHORARIO = "https://devspaceapi2.azurewebsites.net/api/horario/";
-const apiRECURSOS = "https://devspaceapi2.azurewebsites.net/api/recursos/";
-const apiCUPO = "https://devspaceapi2.azurewebsites.net/api/cupo/";
-const apiRESERVACION = "https://devspaceapi2.azurewebsites.net/api/reservacion";
+const apiSALAS = "https://dreamlabapidev.azurewebsites.net/api/salas";
+const apiHORARIO = "https://dreamlabapidev.azurewebsites.net/api/horario/";
+const apiRECURSOS = "https://dreamlabapidev.azurewebsites.net/api/recursos/";
+const apiCUPO = "https://dreamlabapidev.azurewebsites.net/api/cupo/";
+const apiRESERVACION = "https://dreamlabapidev.azurewebsites.net/api/reservacion";
 
 const ReservationForm = () => {
     const [salas, setSalas] = useState([]);
