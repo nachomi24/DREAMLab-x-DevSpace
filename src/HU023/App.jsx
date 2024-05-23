@@ -8,7 +8,6 @@ const apiURLADMINR = "https://devspaceapi2.azurewebsites.net/api/info_reservacio
 function App() {
   return (
     <div>
-      {/* <Navbar/> */}
       <StatsA />
     </div>
   );

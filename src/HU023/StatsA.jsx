@@ -11,7 +11,7 @@ const StatsA = () => {
       {
         label: 'Número de Reservaciones',
         data: [12, 19, 3, 5, 2],
-        backgroundColor: '#363968',
+        backgroundColor: '#31357795',
       },
     ],
   };
@@ -21,9 +21,7 @@ const StatsA = () => {
     datasets: [
       {
         data: [75, 25],
-        backgroundColor: ['#363968', 'rgba(54, 162, 235, 0.6)'],
-        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
-        borderWidth: 1,
+        backgroundColor: ['#31357795', '#66009655'],
       },
     ],
   };
@@ -35,9 +33,8 @@ const StatsA = () => {
         label: 'Reservaciones Diarias',
         data: [65, 59, 80, 81, 56, 55, 40, 48, 49, 60, 70, 76, 80, 83, 89, 90, 92, 95, 100, 102, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150],
         fill: false,
-        borderColor: 'rgba(75,192,192,1)',
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderWidth: 2,
+        backgroundColor: '#31357795',
+        borderColor: '#31357795',
       },
     ],
   };
@@ -49,12 +46,14 @@ const StatsA = () => {
     scales: {
       x: {
         ticks: {
-          color: 'rgba(0,0,0,0.7)',
+        color: '#31357795',
+
         },
       },
       y: {
         ticks: {
-          color: 'rgba(0,0,0,0.7)',
+
+        color: '#31357795',
         },
       },
     },
