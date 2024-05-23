@@ -15,7 +15,6 @@ const App = () => {
   return (
     <div>
       <Navbar loggedIn={loggedIn} />
-      <Header/>
       <Bot />
       <Chat setLoggedIn={setLoggedIn} setMatricula={setMatricula} />
     </div>

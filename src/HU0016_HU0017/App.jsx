@@ -5,8 +5,8 @@ import TarjetasS from "./componentes/TarjetasS/TarjetasS";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const apiURLT = "https://devspaceapi2.azurewebsites.net/api/info_talleres";
-const apiURLS = "https://devspaceapi2.azurewebsites.net/api/salas";
+const apiURLT = "https://dreamlabapidev.azurewebsites.net/api/info_talleres";
+const apiURLS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 
 function App() {
   const [talleres, setTalleres] = useState([]);

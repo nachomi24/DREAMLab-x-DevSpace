@@ -55,7 +55,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
   const confirmarReservacion = async (id, reserva) => {
     try {
       console.log("Datos enviados para confirmar:", { reservacionId: id });
-      const response = await axios.put(`https://devspaceapi2.azurewebsites.net/api/confirmar_reservacion?reservacionId=${id}`, null, {
+      const response = await axios.put(`https://dreamlabapidev.azurewebsites.net/api/confirmar_reservacion?reservacionId=${id}`, null, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -77,7 +77,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
   const rechazarReservacion = async (id, reserva) => {
     try {
       console.log("Datos enviados para rechazar:", { reservacionId: id });
-      const response = await axios.delete(`https://devspaceapi2.azurewebsites.net/api/rechazar_reservacion?reservacionId=${id}`, null, {
+      const response = await axios.delete(`https://dreamlabapidev.azurewebsites.net/api/rechazar_reservacion?reservacionId=${id}`, null, {
         headers: {
           'Content-Type': 'application/json'
         }

@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import "./chat.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
-
-import adperfil from '../../../assets/adperfil.png'
-
-import { Link } from 'react-router-dom'; // Asegúrate de tener esto importado
-
+import adperfil from '../../../assets/adperfil.png';
 
 const Chat = ({ setLoggedIn, setMatricula }) => {
   const [messages, setMessages] = useState(() => {
@@ -19,208 +16,103 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   const [showMessageInput, setShowMessageInput] = useState(true);
 
   const [matriculita, setMatriculita] = useState("");
-  const [showPopUp, setShowPopUp] = useState(false);
   const [salaID, setSalaID] = useState("");
   const [dia, setDia] = useState("");
   const [horaInicio, setHoraInicio] = useState("");
   const [horaFin, setHoraFin] = useState("");
   const [recursos, setRecursos] = useState("");
   const [personas, setPersonas] = useState("");
-  const confirmada = 0;
+  const [confirmada, setConfirmada] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    const savedLoginStatus = localStorage.getItem("isLoggedIn");
+    return savedLoginStatus === "true";
+  });
+  const [matricula, setMatriculaInput] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Nuevo estado para el mensaje de error
+  const [userType, setUserType] = useState("");
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8000/api/loginNormal', {
+        Matricula: matricula,
+        Contrasena: password
+      });
+
+      if (response.data && response.status === 200) {
+        const { Matricula, Tipo } = response.data;
+        const normalizedTipo = Tipo.trim().toLowerCase(); // Normalizar y convertir a minúsculas
+
+        console.log("Matrícula:", Matricula);
+        console.log("Tipo de usuario recibido:", Tipo);
+        console.log("Tipo de usuario normalizado:", normalizedTipo);
+        console.log("Tipo de usuario comparado:", normalizedTipo === "admin");
+
+        setIsLoggedIn(true);
+        localStorage.setItem("isLoggedIn", "true"); // Guardar estado de sesión en localStorage
+        setMatriculita(Matricula);
+        setUserType(normalizedTipo);
+        setErrorMessage(""); // Limpiar el mensaje de error
+
+        // Redirigir si el usuario es un admin
+        if (normalizedTipo === "admin") {
+          console.log("Redirigiendo a:", "http://localhost:8080/admin2");
+          window.location.replace("http://localhost:8080/admin2");
+        }
+      } else {
+        setErrorMessage("Matrícula o contraseña incorrecta"); // Establecer el mensaje de error
+      }
+    } catch (error) {
+      console.error("Error en login:", error);
+      setErrorMessage("Matrícula o contraseña incorrecta");
+    }
+  };
 
   const togglePopUp = () => {
     setShowPopUp(!showPopUp);
   };
 
-  // Función para enviar un mensaje al chat y recibir una respuesta de la API
-  const sendMessage = async (text, side) => {
-    if (text.trim()) {
-      const newMessage = { text, side };
-      setMessages((messages) => [...messages, newMessage]);
-      setInputText("");
+  const sendMessage = (text, side) => {
+    if (text.trim() === "") return;
 
-      // Mostrar mensaje de carga
-      const loadingMessage = {
-        text: "Cargando...",
-        side: "left",
-      };
-      setMessages((messages) => [...messages, loadingMessage]);
-
-      // Enviar solicitud a la API
-      try {
-        const response = await fetch(
-          `https://devspaceapi2.azurewebsites.net/api/Dreamy_OpenAI/${text}`
-        );
-        const data = await response.json();
-
-        // Remover las comillas de la respuesta
-        const cleanData = data.replace(/"/g, "");
-
-        // Remover los caracteres de salto de línea y agregar saltos de línea reales
-        const formattedData = cleanData.replace(/\\n/g, "\n");
-
-        // Dividir la respuesta en pasos usando el delimitador "\n"
-        // const steps = formattedData.split("\n");
-
-        // Eliminar mensaje de carga y agregar respuesta del bot
-        setMessages((messages) => [
-          ...messages.filter((msg) => msg !== loadingMessage),
-          { text: formattedData, side: "left" },
-        ]);
-
-        // Verificar si el mensaje contiene una matrícula
-        const matriculaRegex = /(A0\d{7}|L0\d{7})/i;
-        const match = text.match(matriculaRegex);
-
-        if (match) {
-          const nuevaMatricula = match[1]; // Obtener la matrícula del mensaje
-          setMatriculita(nuevaMatricula);
-          setMatricula(nuevaMatricula); // Actualizar el estado de la matrícula
-          setLoggedIn(true); // Establecer el estado de inicio de sesión como verdadero
-
-          // Guardar la matrícula y el estado de inicio de sesión en localStorage
-          localStorage.setItem("matricula", nuevaMatricula);
-          localStorage.setItem("loggedIn", true);
-        } else if (formattedData.toLowerCase().includes("gracias")) {
-          // Expresiones regulares para capturar las variables relevantes
-          setMatriculita(localStorage.getItem("matricula"));
-          console.log("Matrícula:", matriculita);
-          const salaRegex = /sala (DL\d{3})/i;
-          const fechaRegex = /(\d+ de \w+ de \d+)/i;
-          const horarioRegex =
-            /de (\d{1,2}(?::\d{2})?\w{2}) a (\d{1,2}(?::\d{2})?\w{2})|de (\d{1,2}(?::\d{2})?)\s*:\s*(\d{2})\s*a\s*(\d{1,2}(?::\d{2})?)/i;
-          const recursosRegex = /con (\d+ \w+(?:,|\sy\s)\d+ \w+)/i;
-          const personasRegex = /para (\d+) personas/i;
-
-          // Capturar las variables utilizando las expresiones regulares
-          const salaMatch = formattedData.match(salaRegex);
-          const fechaMatch = formattedData.match(fechaRegex);
-          const horarioMatch = formattedData.match(horarioRegex);
-          const recursosMatch = formattedData.match(recursosRegex);
-          const personasMatch = formattedData.match(personasRegex);
-
-          console.log(
-            salaMatch,
-            fechaMatch,
-            horarioMatch,
-            recursosMatch,
-            personasMatch
-          );
-
-          if (
-            salaMatch &&
-            fechaMatch &&
-            horarioMatch &&
-            recursosMatch &&
-            personasMatch
-          ) {
-            const salaID = salaMatch[1];
-            const fecha = fechaMatch[1];
-            const horaInicio = horarioMatch[1];
-            const horaFin = horarioMatch[2];
-            const recursos = recursosMatch[1];
-            const personas = parseInt(personasMatch[1]);
-
-            console.log(salaID, fecha, horaInicio, horaFin, recursos, personas);
-
-            setSalaID(salaID);
-            setDia(convertirFecha(fecha));
-            setHoraInicio(convertirHora(horaInicio));
-            setHoraFin(convertirHora(horaFin));
-            setRecursos(recursos);
-            setPersonas(parseInt(personas));
-            setShowButton(true);
-            setShowMessageInput(false);
-            togglePopUp();
-
-            console.log("Sala ID:", salaID);
-            console.log("Fecha:", convertirFecha(fecha));
-            console.log("Hora de inicio:", convertirHora(horaInicio));
-            console.log("Hora de fin:", convertirHora(horaFin));
-            console.log("Recursos:", recursos);
-            console.log("Personas:", parseInt(personas));
-          }
-        } else {
-          console.log("El mensaje no contiene una matrícula.");
-        }
-      } catch (error) {
-        console.error("Error al enviar solicitud a la API:", error);
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (setLoggedIn) {
-      // Realizar solicitud a la API para obtener la foto del perfil
-      fetch(`https://devspaceapi2.azurewebsites.net/api/perfil/${matriculita}`)
-        .then((response) => response.json())
-        .then((data) => {
-          // Obtener la URL de la foto del perfil
-          const fotoUrl = data.Foto;
-
-          // Actualizar el CSS con la URL de la foto del perfil
-          document.documentElement.style.setProperty(
-            "--right-avatar",
-            `url(${fotoUrl})`
-          );
-        })
-        .catch((error) => {
-          console.error("Error al obtener la foto del perfil:", error);
-        });
-    }
-  }, [setLoggedIn]);
-
-  const convertirFecha = (fecha) => {
-    // Extraer el día, mes y año del texto de la fecha
-    const [, dia, mes, año] = fecha.match(/(\d+) de (\w+) de (\d+)/);
-
-    // Mapear el nombre del mes a su número correspondiente
-    const meses = {
-      enero: "01",
-      febrero: "02",
-      marzo: "03",
-      abril: "04",
-      mayo: "05",
-      junio: "06",
-      julio: "07",
-      agosto: "08",
-      septiembre: "09",
-      octubre: "10",
-      noviembre: "11",
-      diciembre: "12",
+    const newMessage = {
+      text,
+      side,
     };
 
-    // Obtener el número del mes a partir del nombre
-    const mesNumero = meses[mes.toLowerCase()];
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+    setInputText("");
 
-    // Formatear la fecha en el formato deseado (AAAA-MM-DD)
-    const fechaFormateada = `${año}-${mesNumero.padStart(
-      2,
-      "0"
-    )}-${dia.padStart(2, "0")}`;
-    return fechaFormateada;
+    if (side === "right") {
+      setTimeout(() => {
+        const botResponse = {
+          text: "Esta es una respuesta automática del bot.",
+          side: "left",
+        };
+        setMessages((prevMessages) => [...prevMessages, botResponse]);
+      }, 1000);
+    }
   };
 
-  const convertirHora = (hora) => {
-    // Extraer la hora y am/pm del texto de la hora
+  const formatHour = (hora) => {
     const match = hora.match(/(\d{1,2})\s*(am|pm|AM|PM)/i);
 
     if (match) {
       let horaNumero = parseInt(match[1], 10);
       const ampm = match[2].toLowerCase();
 
-      // Convertir la hora a formato de 24 horas si es necesario
       if (ampm === "pm" && horaNumero !== 12) {
         horaNumero += 12;
       } else if (ampm === "am" && horaNumero === 12) {
         horaNumero = 0;
       }
 
-      // Formatear la hora en el formato deseado (HH:mm:ss)
       const horaFormateada = horaNumero.toString().padStart(2, "0") + ":00:00";
       return horaFormateada;
     } else {
-      // Si no se puede hacer coincidir el formato esperado, devuelve null o maneja el error de acuerdo a tus necesidades.
       return null;
     }
   };
@@ -235,8 +127,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
-      // Asegura que no se envíe al presionar Enter y Shift simultáneamente.
-      event.preventDefault(); // Previene el salto de línea en el textarea.
+      event.preventDefault();
       sendMessage(inputText, "right");
     }
   };
@@ -249,95 +140,91 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   }, [messages]);
 
   useEffect(() => {
-    // Guardar los mensajes en localStorage
     localStorage.setItem("chatMessages", JSON.stringify(messages));
   }, [messages]);
 
   useEffect(() => {
-    // Mensaje de bienvenida inicial
     const welcomeMessage =
       "¡Hola soy Dreamy, tu acompañante en esta aventura! Para iniciar sesión, proporciona tu matrícula; después para reservar ingresa el ID de la sala que deseas reservar, el día, hora de inicio y hora de salida, los recursos que ocupas y la cantidad de personas que estarán en la sala. Para más información, pregúntame lo que quieras.";
 
-    // Agregar el mensaje al chat si no hay mensajes guardados
     if (messages.length === 0) {
       setMessages([{ text: welcomeMessage, side: "left" }]);
     }
   }, [messages.length]);
 
-  // localStorage.clear();
-
   return (
-    
-    <div className="chat_window">
-       
-      <div className="top_menu">
-        <div className="title">RESERVA TU LUGAR</div>
-        <a href="/reservationform" className="reservation-link">
-          Haz click aquí para reservar de otra manera.
-        </a>
-      </div>
-      <div className="error">
-        <div id="error-title" className="title"></div>
-      </div>
-      <ul id="all_messages" className="messages">
-        {messages.map((msg, index) => (
-          <li key={index} className={`message ${msg.side} appeared`}>
-            <div className={`avatar ${msg.side}`}></div>
-            <div className="text_wrapper">
-              <div className="text">{msg.text}</div>
+    <div>
+      {!isLoggedIn ? (
+        <div className="login_form">
+          <h2>INICIAR SESIÓN</h2>
+          <form onSubmit={handleLogin}>
+            <div>
+              <label>Matrícula:</label>
+              <input
+                type="text"
+                value={matricula}
+                onChange={(e) => setMatriculaInput(e.target.value)}
+                required
+              />
             </div>
-          </li>
-        ))}
-        <div ref={messagesEndRef} />
-      </ul>
-      <div className="bottom_wrapper clearfix">
-        {showButton && (
-          <button className="send_message2" onClick={togglePopUp}>
-            Detalles Reserva
-          </button>
-        )}
-        {showPopUp && (
-          <>
-            <PopUp
-              onClose={togglePopUp}
-              Matricula={matriculita}
-              SalaID={salaID}
-              Dia={dia}
-              HoraInicio={horaInicio}
-              HoraFin={horaFin}
-              Recursos={recursos}
-              Personas={personas}
-              Confirmada={confirmada}
-            />
-          </>
-        )}
-        {showMessageInput && (
-          <>
-            <div className="message_input_wrapper">
-              <textarea
-                style={{ resize: "none" }}
-                id="conversation_query"
-                className="message_input"
-                placeholder="Escribe aquí..."
-                value={inputText}
-                onChange={handleMessageChange}
-                onKeyPress={handleKeyPress}
-              ></textarea>
+            <div>
+              <label>Contraseña:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
-            <div
-              id="button_send_message"
-              className="send_message"
-              onClick={handleMessageSubmit}
-            >
-              <div id="send_button" className="text">
-                Enviar
+            <button type="submit">Iniciar Sesión</button>
+            {errorMessage && <p className="error_message">{errorMessage}</p>}
+            {/* Muestra el mensaje de error */}
+          </form>
+        </div>
+      ) : (
+        <div className="chat_container">
+          <div className="chat_window">
+            <div className="top_menu">
+              <div className="title">RESERVA TU LUGAR</div>
+            </div>
+            <a href="/reservationform" className="reservation-link">
+                  Haz click aquí para reservar de otra manera.
+           </a>
+            <div className="error">
+              <div id="error-title" className="title"></div>
+            </div>
+            <ul id="all_messages" className="messages">
+              {messages.map((msg, index) => (
+                <li key={index} className={`message ${msg.side} appeared`}>
+                  <div className={`avatar ${msg.side}`}></div>
+                  <div className="text_wrapper">
+                    <div className="text">{msg.text}</div>
+                  </div>
+                </li>
+              ))}
+              <div ref={messagesEndRef} />
+            </ul>
+            {showMessageInput && (
+              <div className="bottom_wrapper clearfix">
+                <div className="message_input_wrapper">
+                  <input
+                    className="message_input"
+                    placeholder="Escribe tu mensaje..."
+                    value={inputText}
+                    onChange={handleMessageChange}
+                    onKeyPress={handleKeyPress}
+                  />
+                </div>
+                <div className="send_message" onClick={handleMessageSubmit}>
+                  <div className="icon"></div>
+                  <div className="text">Enviar</div>
+                </div>
               </div>
-            </div>
-           
-
-          </>
-        )}
-      </div>
+            )}
+          </div>
+        </div>
+      )}
+      {showPopUp && <PopUp toggle={togglePopUp} />}
     </div>
   );
 };
