@@ -1,13 +1,15 @@
 .menu {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     margin-bottom: 25px;
     padding-left: 10vw;
+    padding-right: 10vw; /* Añadido para espacio en la derecha */
 }
 
 .menu-row {
     display: flex;
     list-style-type: none;
+    flex-grow: 1;
 }
 
 .menu-row-element {
@@ -22,4 +24,17 @@
     font-weight: bolder;
     font-size: 3.5vh;
     transition: color 0.3s;
+}
+
+.search-container {
+    display: flex;
+    align-items: right;
+}
+
+.search_input {
+    margin-right: 10px;
+}
+
+.hidden {
+    display: none;
 }

@@ -38,20 +38,16 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
 
   return (
     <div className="contenedor-tarjeta-general">
-      <Menu onMenuClick={onMenuClick} />
+      <Menu 
+        onMenuClick={onMenuClick}
+        searchTerm={searchTerm}
+        onSearchChange={handleSearchChange}
+        toggleSearch={toggleSearch}
+        searchVisible={searchVisible}
+      />
       <div className="contenedor-principal-tarjetas">
         <div className="contenedor-tarjetas">
           <div>
-            <input
-              id="search"
-              className={`search_input ${searchVisible ? "" : "hidden"}`}
-              placeholder="Escribe aquí..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-            <a className="search-icon" onClick={toggleSearch}>
-              <i className="fa-solid fa-magnifying-glass search-img"></i>
-            </a>
           </div>
           {filteredDatos.map((dato, index) => (
             <Tarjeta

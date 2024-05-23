@@ -71,7 +71,7 @@ const Navbar = ({ loggedIn }) => {
         </div>
         <ul className="links">
           <li>
-            <a href="#" className="mina-bold">
+            <a href="/admin2" className="mina-bold">
               RESERVACIONES
             </a>
           </li>
@@ -80,7 +80,11 @@ const Navbar = ({ loggedIn }) => {
               VIDEOWALL
             </a>
           </li>
-         
+          <li>
+            <a href="/stats" className="mina-bold">
+              STATS
+            </a>
+          </li>
         </ul>
         <div className="karen">
           <i
@@ -110,7 +114,11 @@ const Navbar = ({ loggedIn }) => {
             VIDEOWALL
           </a>
         </li>
-        
+        <li>
+            <a href="/stats" className="mina-bold">
+              STATS
+            </a>
+          </li>
       </div>
     </header>
   );

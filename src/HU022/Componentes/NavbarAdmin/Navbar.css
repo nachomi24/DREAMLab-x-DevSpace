@@ -18,7 +18,24 @@ nav {
     justify-content: space-between; 
     transition: 0.5s;
 }
-
+/* Agrega estas líneas al archivo Navbar.css */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff; /* Ajusta el color de fondo según tu diseño */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra para el navbar */
+  }
+  nav.container {
+    padding: 10px 20px; /* Ajusta según tu diseño */
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
 .container{
     padding-left: 5%;
     padding-right: 5%;
