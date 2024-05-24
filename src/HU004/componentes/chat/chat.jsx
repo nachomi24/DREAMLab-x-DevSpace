@@ -3,7 +3,7 @@ import axios from "axios";
 import "./chat.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
-import adperfil from '../../../assets/adperfil.png';
+import adperfil from "../../../assets/adperfil.png";
 
 const Chat = ({ setLoggedIn, setMatricula }) => {
   const [messages, setMessages] = useState(() => {
@@ -33,14 +33,18 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Nuevo estado para el mensaje de error
   const [userType, setUserType] = useState("");
+  const [threadID, setThreadID] = useState(""); // Nuevo estado para el thread ID
 
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/loginNormal', {
-        Matricula: matricula,
-        Contrasena: password
-      });
+      const response = await axios.post(
+        "https://dreamlabapidev.azurewebsites.net/api/loginNormal",
+        {
+          Matricula: matricula,
+          Contrasena: password,
+        }
+      );
 
       if (response.data && response.status === 200) {
         const { Matricula, Tipo } = response.data;
@@ -75,7 +79,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
     setShowPopUp(!showPopUp);
   };
 
-  const sendMessage = (text, side) => {
+  const sendMessage = async (text, side) => {
     if (text.trim() === "") return;
 
     const newMessage = {
@@ -87,13 +91,31 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
     setInputText("");
 
     if (side === "right") {
-      setTimeout(() => {
+      try {
+        let response;
+        if (!threadID) {
+          // Primera interacción, crear thread
+          response = await axios.post(
+            "https://dreamlabapidev.azurewebsites.net/api/crear_thread",
+            { question: text }
+          );
+          setThreadID(response.data.thread_id);
+        } else {
+          // Interacciones subsecuentes, interactuar con thread existente
+          response = await axios.post(
+            "https://dreamlabapidev.azurewebsites.net/api/interactuar_thread",
+            { thread_id: threadID, question: text }
+          );
+        }
+
         const botResponse = {
-          text: "Esta es una respuesta automática del bot.",
+          text: response.data.message.content,
           side: "left",
         };
         setMessages((prevMessages) => [...prevMessages, botResponse]);
-      }, 1000);
+      } catch (error) {
+        console.error("Error al enviar mensaje:", error);
+      }
     }
   };
 
@@ -188,8 +210,8 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
               <div className="title">RESERVA TU LUGAR</div>
             </div>
             <a href="/reservationform" className="reservation-link">
-                  Haz click aquí para reservar de otra manera.
-           </a>
+              Haz click aquí para reservar de otra manera.
+            </a>
             <div className="error">
               <div id="error-title" className="title"></div>
             </div>
