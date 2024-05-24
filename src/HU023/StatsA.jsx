@@ -8,7 +8,7 @@ import Navbar from "../HU022/Componentes/NavbarAdmin/Navbar";
 const apiURLStatsSalas =
   "https://dreamlabapidev.azurewebsites.net/api/estadisticas/top_salas";
 const apiURLStatsReservaciones =
-  "https://dreamlabapidev.azurewebsites.net/estadisticas/reservaciones_semanales";
+  "https://dreamlabapidev.azurewebsites.net/api/estadisticas/reservaciones_semanales";
 
 const StatsA = () => {
   const [topSalas, setTopSalas] = useState([]);
@@ -114,7 +114,7 @@ const StatsA = () => {
       <h1>Estadísticas del D.R.E.A.M L.A.B</h1>
       <div className="panel">
         <div className="section">
-          <h2>Salas más usadas</h2>
+          <h2>Salas más usadas (Mayo)</h2>
           <div className="chart-container">
             <Bar data={barData} options={options} />
           </div>
@@ -124,16 +124,16 @@ const StatsA = () => {
           <div className="chart-container">
             <Pie data={pieData} options={options} />
           </div>
-          <p>En tiempo real: 16 personas</p>
+          <p>En tiempo real al día 24 de Mayo: 16 personas</p>
         </div>
         <div className="section">
-          <h2>Reservaciones Diarias (Última Semana)</h2>
+          <h2>Reservaciones Diarias (Semana: 20-24 Mayo)</h2>
           <div className="chart-container">
             <Line data={lineData} options={options} />
           </div>
         </div>
         <div className="section">
-          <h2>Top 5 equipos más usados (Última semana)</h2>
+          <h2>Top 5 equipos más usados (Semana: 20-24 Mayo)</h2>
           <ul>
             {topEquipos.map((equipo, index) => (
               <li key={index}>{equipo}</li>
