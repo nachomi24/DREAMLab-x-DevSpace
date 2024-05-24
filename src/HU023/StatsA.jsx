@@ -1,16 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './StatsA.css';
+import axios from "axios";
 import Navbar from "../HU022/Componentes/NavbarAdmin/Navbar";
 
+const apiURLStatsSalas= "http://localhost:8000/api/estadisticas/top_salas"
+const apiURLStatsReservaciones= "http://localhost:8000/api/estadisticas/reservaciones_semanales"
+
 const StatsA = () => {
+  const [topSalas, setTopSalas] = useState([]);
+  const [reservacionesSemana, setReservacionesSemana] = useState([]);
+
+  const obtenerTopSalas = async () => {
+    try {
+      const response = await axios.get(apiURLStatsSalas);
+      setTopSalas(response.data);
+    } catch (error) {
+      console.error("Error al obtener top salas:", error);
+    }
+  };
+  useEffect(() =>{
+    obtenerTopSalas();
+  },[]);
+
+  const obtenerReservacionesSemanales = async () => {
+    try {
+      const response = await axios.get(apiURLStatsReservaciones);
+      setReservacionesSemana(response.data);
+    } catch (error) {
+      console.error("Error al obtener reservas semanales:", error);
+    }
+  };
+  useEffect(() =>{
+    obtenerReservacionesSemanales();
+  },[]);
+
+//-----------------------Graficas empiezan aquí
   const barData = {
-    labels: ['New Horizons', 'Lego Room', 'Deep Net', 'Graveyard', 'Dimension Forge'],
+    labels: topSalas.map(sala => sala.Nombre),
     datasets: [
       {
         label: 'Número de Reservaciones',
-        data: [12, 19, 3, 5, 2],
+        data: topSalas.map(sala => sala.NumeroDeReservaciones),
         backgroundColor: '#31357795',
       },
     ],
@@ -20,18 +52,18 @@ const StatsA = () => {
     labels: ['Ocupado', 'Disponible'],
     datasets: [
       {
-        data: [75, 25],
+        data: [16, 25],
         backgroundColor: ['#31357795', '#66009655'],
       },
     ],
   };
 
   const lineData = {
-    labels: Array.from({ length: 30 }, (_, i) => `Día ${i + 1}`),
+    labels: reservacionesSemana.map(reservacionesSemana => reservacionesSemana.DiaSemana),
     datasets: [
       {
-        label: 'Reservaciones Diarias',
-        data: [65, 59, 80, 81, 56, 55, 40, 48, 49, 60, 70, 76, 80, 83, 89, 90, 92, 95, 100, 102, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150],
+        label: 'Reservaciones Semanales',
+        data: reservacionesSemana.map(reservacionesSemana => reservacionesSemana.NumeroDeReservaciones),
         fill: false,
         backgroundColor: '#31357795',
         borderColor: '#31357795',
@@ -82,16 +114,16 @@ const StatsA = () => {
           <div className="chart-container">
             <Pie data={pieData} options={options} />
           </div>
-          <p>En tiempo real: 75 personas</p>
+          <p>En tiempo real: 16 personas</p>
         </div>
         <div className="section">
-          <h2>Reservaciones Diarias (Último Mes)</h2>
+          <h2>Reservaciones Diarias (Última Semana)</h2>
           <div className="chart-container">
             <Line data={lineData} options={options} />
           </div>
         </div>
         <div className="section">
-          <h2>Top 5 equipos más usados (última semana)</h2>
+          <h2>Top 5 equipos más usados (Última semana)</h2>
           <ul>
             {topEquipos.map((equipo, index) => (
               <li key={index}>{equipo}</li>
