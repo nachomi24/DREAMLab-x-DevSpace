@@ -56,8 +56,11 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
         console.log("Tipo de usuario comparado:", normalizedTipo === "admin");
 
         setIsLoggedIn(true);
+        setLoggedIn(true);
         localStorage.setItem("isLoggedIn", "true"); // Guardar estado de sesión en localStorage
         setMatriculita(Matricula);
+        setMatricula(Matricula);
+        localStorage.setItem("matricula", Matricula);
         setUserType(normalizedTipo);
         setErrorMessage(""); // Limpiar el mensaje de error
 
@@ -82,62 +85,67 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   const sendMessage = async (text, side) => {
     if (text.trim() === "") return;
 
-    const newMessage = {
-      text,
-      side,
-    };
-
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
+    const newMessage = { text, side };
+    setMessages((messages) => [...messages, newMessage]);
     setInputText("");
 
-    if (side === "right") {
-      try {
-        let response;
-        if (!threadID) {
-          // Primera interacción, crear thread
-          response = await axios.post(
-            "https://dreamlabapidev.azurewebsites.net/api/crear_thread",
-            { question: text }
-          );
-          setThreadID(response.data.thread_id);
-        } else {
-          // Interacciones subsecuentes, interactuar con thread existente
-          response = await axios.post(
-            "https://dreamlabapidev.azurewebsites.net/api/interactuar_thread",
-            { thread_id: threadID, question: text }
-          );
-        }
+    // Mostrar mensaje de carga
+    const loadingMessage = {
+      text: "Cargando...",
+      side: "left",
+    };
+    setMessages((messages) => [...messages, loadingMessage]);
 
-        const botResponse = {
-          text: response.data.message.content,
-          side: "left",
-        };
-        setMessages((prevMessages) => [...prevMessages, botResponse]);
-      } catch (error) {
-        console.error("Error al enviar mensaje:", error);
+    // Enviar solicitud a la API
+    try {
+      let response;
+      if (!threadID) {
+        // Primera interacción, crear thread
+        response = await axios.post(
+          "https://dreamlabapidev.azurewebsites.net/api/crear_thread",
+          { question: text }
+        );
+        setThreadID(response.data.thread_id);
+      } else {
+        // Interacciones subsecuentes, interactuar con thread existente
+        response = await axios.post(
+          "https://dreamlabapidev.azurewebsites.net/api/interactuar_thread",
+          { thread_id: threadID, question: text }
+        );
       }
+
+      const botResponse = {
+        text: response.data.message.content,
+        side: "left",
+      };
+      setMessages((messages) => [...messages, botResponse]);
+    } catch (error) {
+      console.error("Error al enviar solicitud a la API:", error);
     }
   };
 
-  const formatHour = (hora) => {
-    const match = hora.match(/(\d{1,2})\s*(am|pm|AM|PM)/i);
+  useEffect(() => {
+    if (isLoggedIn && matriculita) {
+      // Realizar solicitud a la API para obtener la foto del perfil
+      fetch(
+        `https://dreamlabapidev.azurewebsites.net/api/perfil/${matriculita}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // Obtener la URL de la foto del perfil
+          const fotoUrl = data.Foto;
 
-    if (match) {
-      let horaNumero = parseInt(match[1], 10);
-      const ampm = match[2].toLowerCase();
-
-      if (ampm === "pm" && horaNumero !== 12) {
-        horaNumero += 12;
-      } else if (ampm === "am" && horaNumero === 12) {
-        horaNumero = 0;
-      }
-
-      const horaFormateada = horaNumero.toString().padStart(2, "0") + ":00:00";
-      return horaFormateada;
-    } else {
-      return null;
+          // Actualizar el CSS con la URL de la foto del perfil
+          document.documentElement.style.setProperty(
+            "--right-avatar",
+            `url(${fotoUrl})`
+          );
+        })
+        .catch((error) => {
+          console.error("Error al obtener la foto del perfil:", error);
+        });
     }
-  };
+  }, [isLoggedIn, matriculita]);
 
   const handleMessageChange = (event) => {
     setInputText(event.target.value);
@@ -167,7 +175,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
 
   useEffect(() => {
     const welcomeMessage =
-      "¡Hola soy Dreamy, tu acompañante en esta aventura! Para iniciar sesión, proporciona tu matrícula; después para reservar ingresa el ID de la sala que deseas reservar, el día, hora de inicio y hora de salida, los recursos que ocupas y la cantidad de personas que estarán en la sala. Para más información, pregúntame lo que quieras.";
+      "¡Hola soy Dreamy, tu acompañante en esta aventura! Para reservar ingresa el ID de la sala que deseas reservar, el día, hora de inicio y hora de salida, los recursos que ocupas y la cantidad de personas que estarán en la sala. Para más información, pregúntame lo que quieras.";
 
     if (messages.length === 0) {
       setMessages([{ text: welcomeMessage, side: "left" }]);
@@ -200,7 +208,6 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
             </div>
             <button type="submit">Iniciar Sesión</button>
             {errorMessage && <p className="error_message">{errorMessage}</p>}
-            {/* Muestra el mensaje de error */}
           </form>
         </div>
       ) : (
@@ -229,9 +236,10 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
             {showMessageInput && (
               <div className="bottom_wrapper clearfix">
                 <div className="message_input_wrapper">
-                  <input
+                  <textarea
+                    id="message_input"
                     className="message_input"
-                    placeholder="Escribe tu mensaje..."
+                    placeholder="Escribe tu mensaje aquí..."
                     value={inputText}
                     onChange={handleMessageChange}
                     onKeyPress={handleKeyPress}
@@ -244,9 +252,23 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
               </div>
             )}
           </div>
+          <div className="popup_button">
+            <button onClick={togglePopUp}>Detalles de reservación</button>
+          </div>
+          {showPopUp && (
+            <PopUp
+              dia={dia}
+              horaInicio={horaInicio}
+              horaFin={horaFin}
+              salaID={salaID}
+              recursos={recursos}
+              personas={personas}
+              confirmada={confirmada}
+              togglePopUp={togglePopUp}
+            />
+          )}
         </div>
       )}
-      {showPopUp && <PopUp toggle={togglePopUp} />}
     </div>
   );
 };

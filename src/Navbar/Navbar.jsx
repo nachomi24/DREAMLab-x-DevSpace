@@ -9,7 +9,7 @@ const Navbar = ({ loggedIn }) => {
   const [Foto, setFoto] = useState("");
   const [Nombre, setNombre] = useState("");
 
-  loggedIn = localStorage.getItem("loggedIn") === "true";
+  loggedIn = localStorage.getItem("isLoggedIn") === "true";
   const matricula = localStorage.getItem("matricula");
 
   const apiURLPerfilCarrera =
@@ -52,8 +52,6 @@ const Navbar = ({ loggedIn }) => {
     obtencionFotoPerfil();
   });
 
-  
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -81,7 +79,6 @@ const Navbar = ({ loggedIn }) => {
               SECCIONES
             </a>
           </li>
-          
         </ul>
         <div className="karen">
           <i
@@ -117,10 +114,10 @@ const Navbar = ({ loggedIn }) => {
           </a>
         </li>
         <li>
-            <a href="/admin2" className="mina-bold">
-              ADMIN
-            </a>
-          </li>
+          <a href="/admin2" className="mina-bold">
+            ADMIN
+          </a>
+        </li>
         <li>
           <input className="search_input-2" placeholder="Escribe aquí..." />
           <a className="search-icon-2">
