@@ -9,10 +9,16 @@ const apiURLStatsSalas =
   "https://dreamlabapidev.azurewebsites.net/api/estadisticas/top_salas";
 const apiURLStatsReservaciones =
   "https://dreamlabapidev.azurewebsites.net/api/estadisticas/reservaciones_semanales";
+const apiURLStatsOcupacion =
+  "https://dreamlabapidev.azurewebsites.net/api/estadisticas/ocupacion_tiempo_real";
+const apiURLStatsRecursos =
+  "https://dreamlabapidev.azurewebsites.net/api/estadisticas/top_recursos";
 
 const StatsA = () => {
   const [topSalas, setTopSalas] = useState([]);
   const [reservacionesSemana, setReservacionesSemana] = useState([]);
+  const [ocupacionActual, setOcupacionActual] = useState({ TotalPersonasDia: 0, TotalPersonasOcupado: 0 });
+  const [topRecursos, setTopRecursos] = useState([]);
 
   const obtenerTopSalas = async () => {
     try {
@@ -38,6 +44,55 @@ const StatsA = () => {
     obtenerReservacionesSemanales();
   }, []);
 
+  const obtenerTopRecursos = async () => {
+    try {
+      const response = await axios.get(apiURLStatsRecursos);
+      setTopRecursos(response.data);
+    } catch (error) {
+      console.error("Error al obtener top recursos:", error);
+    }
+  };
+  useEffect(() => {
+    obtenerTopRecursos();
+  }, []);
+
+  const obtenerOcupacionActual = async () => {
+    try {
+      const response = await axios.get(apiURLStatsOcupacion);
+      const data = response.data[0]; // Asegurando que obtenemos el primer objeto del array
+      setOcupacionActual({
+        TotalPersonasDia: data.TotalPersonasDia || 0,
+        TotalPersonasOcupado: data.TotalPersonasOcupado || 0,
+      });
+    } catch (error) {
+      console.error("Error al obtener la ocupacion actual:", error);
+      setOcupacionActual({ TotalPersonasDia: 0, TotalPersonasOcupado: 0 });
+    }
+  };
+  useEffect(() => {
+    obtenerOcupacionActual();
+  }, []);
+
+  const getTodayDate = () => {
+    const today = new Date();
+    return today.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+
+  const getCurrentWeekDates = () => {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const monday = new Date(today);
+    monday.setDate(today.getDate() - dayOfWeek + 1); // Set to Monday
+    const friday = new Date(monday);
+    friday.setDate(monday.getDate() + 4); // Set to Friday
+    return {
+      monday: monday.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' }),
+      friday: friday.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' })
+    };
+  };
+
+  const currentWeek = getCurrentWeekDates();
+
   //-----------------------Graficas empiezan aquí
   const barData = {
     labels: topSalas.map((sala) => sala.Nombre),
@@ -50,11 +105,17 @@ const StatsA = () => {
     ],
   };
 
+  const { TotalPersonasDia, TotalPersonasOcupado } = ocupacionActual;
+  const ocupacion = TotalPersonasOcupado || 0;
+  const total = TotalPersonasDia || 0;
+  const porcentajeOcupado = total > 0 ? (ocupacion / total) * 100 : 0;
+  const porcentajeLibre = 100 - porcentajeOcupado;
+
   const pieData = {
     labels: ["Ocupado", "Disponible"],
     datasets: [
       {
-        data: [16, 25],
+        data: [porcentajeOcupado, porcentajeLibre],
         backgroundColor: ["#31357795", "#66009655"],
       },
     ],
@@ -76,14 +137,6 @@ const StatsA = () => {
       },
     ],
   };
-
-  const topEquipos = [
-    "Apple Vision Pro",
-    "Cámara Óptica",
-    "Arduino 3",
-    "Lector de Huella",
-    "Mouses",
-  ];
 
   const options = {
     maintainAspectRatio: false,
@@ -124,19 +177,21 @@ const StatsA = () => {
           <div className="chart-container">
             <Pie data={pieData} options={options} />
           </div>
-          <p>En tiempo real al día 24 de Mayo: 16 personas</p>
+          <p>En tiempo real al día {getTodayDate()}: {ocupacion} personas</p>
         </div>
         <div className="section">
-          <h2>Reservaciones Diarias (Semana: 20-24 Mayo)</h2>
+          <h2>Reservaciones Diarias (Semana: {currentWeek.monday} - {currentWeek.friday})</h2>
           <div className="chart-container">
             <Line data={lineData} options={options} />
           </div>
         </div>
         <div className="section">
-          <h2>Top 5 equipos más usados (Semana: 20-24 Mayo)</h2>
+          <h2>Top 5 equipos más usados (Semana: {currentWeek.monday} - {currentWeek.friday})</h2>
           <ul>
-            {topEquipos.map((equipo, index) => (
-              <li key={index}>{equipo}</li>
+            {topRecursos.map((recurso, index) => (
+              <li key={index}>
+                {recurso.Recurso} - {recurso.Conteo}
+              </li>
             ))}
           </ul>
         </div>
