@@ -2,11 +2,11 @@ import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Chat from "./componentes/chat/chat";
 import Bot from "./componentes/dreamy/dreamy";
-import Header from '../HU021/Componentes/Header/Header';
+import Header from "../HU021/Componentes/Header/Header";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(
-    localStorage.getItem("loggedIn") === "true"
+    localStorage.getItem("isLoggedIn") === "true"
   );
   const [matricula, setMatricula] = useState(""); // Estado de la matrícula
 

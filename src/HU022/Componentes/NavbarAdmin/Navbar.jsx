@@ -76,7 +76,15 @@ const Navbar = ({ loggedIn }) => {
             </a>
           </li>
           <li>
+
             <a href="/videowall" className="mina-bold">
+
+            <a
+              href="https://calm-grass-085a9730f.5.azurestaticapps.net/"
+              target="_blank"
+              className="mina-bold"
+            >
+
               VIDEOWALL
             </a>
           </li>
@@ -115,10 +123,10 @@ const Navbar = ({ loggedIn }) => {
           </a>
         </li>
         <li>
-            <a href="/stats" className="mina-bold">
-              STATS
-            </a>
-          </li>
+          <a href="/stats" className="mina-bold">
+            STATS
+          </a>
+        </li>
       </div>
     </header>
   );
