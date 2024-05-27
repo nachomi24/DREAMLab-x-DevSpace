@@ -37,10 +37,11 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
   return (
     <div className="contenedor-tarjeta-general">
       <Menu onMenuClick={onMenuClick} />
+      
       <div className="contenedor-principal-tarjetas">
+        
         <div className="contenedor-tarjetas">
-          <div>
-            <input
+        <input
               id="search"
               className={`search_input ${searchVisible ? "" : "hidden"}`}
               placeholder="Escribe aquí..."
@@ -50,7 +51,8 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
             <a className="search-icon" onClick={toggleSearch}>
               <i className="fa-solid fa-magnifying-glass search-img"></i>
             </a>
-          </div>
+            
+          
           {filteredDatos.map((dato, index) => (
             <Tarjeta
               key={dato.id}
@@ -58,6 +60,7 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
               imagenAleatoria={imagenesAleatorias[index]}
             />
           ))}
+          
         </div>
       </div>
     </div>
