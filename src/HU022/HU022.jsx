@@ -1,11 +1,12 @@
-import Navbar from '../../src/HU022/Componentes/NavbarAdmin/Navbar.jsx';
+import Navbar from './Componentes/NavbarAdmin/Navbar.jsx';
 import Tarjetas from './Componentes/TarjetasA/TarjetasA.jsx';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import './indexHU022.css'
 
 const apiURLADMINR = "https://dreamlabapidev.azurewebsites.net/api/info_reservaciones";
 
-function App() {
+function HU022() {
   const [reservaciones, setReservaciones] = useState([]);
 
   const obtenerReservaciones = async () => {
@@ -34,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export default HU022;

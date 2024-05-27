@@ -1,9 +1,8 @@
 import React from 'react';
 import Header from '../HU021/Componentes/Header/Header.jsx';
+import './indexHU021.css'
 
-function App() {
-  
-
+function HU021() {
   return (
     <div>
         <Header />
@@ -11,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default HU021;

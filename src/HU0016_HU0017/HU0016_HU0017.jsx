@@ -1,14 +1,16 @@
-import "./App.css";
+import "./estilosHU0016_HU0017.css";
 import Navbar from "../Navbar/Navbar";
 import TarjetasT from "./componentes/TarjetasT/TarjetasT";
 import TarjetasS from "./componentes/TarjetasS/TarjetasS";
 import axios from "axios";
+import React from 'react'
+import './indexHU0016_HU0017.css'
 import { useState, useEffect } from "react";
 
 const apiURLT = "https://dreamlabapidev.azurewebsites.net/api/info_talleres";
 const apiURLS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 
-function App() {
+function HU0016_HU0017() {
   const [talleres, setTalleres] = useState([]);
   const [salas, setSalas] = useState([]);
   const [activeMenu, setActiveMenu] = useState(0); // 0 for talleres, 1 for salas
@@ -54,4 +56,4 @@ function App() {
   );
 }
 
-export default App;
+export default HU0016_HU0017;

@@ -2,9 +2,10 @@ import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Chat from "./componentes/chat/chat";
 import Bot from "./componentes/dreamy/dreamy";
-import Header from "../HU021/Componentes/Header/Header";
+import React from 'react'
+import './indexHU004.css'
 
-const App = () => {
+const HU004 = () => {
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
   );
@@ -21,4 +22,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HU004;

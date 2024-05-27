@@ -3,8 +3,10 @@ import Header from './componentes/header/Header'
 import Secciones from './componentes/secciones/Secciones'
 import Secciones2 from './componentes/secciones2/Secciones2'
 import Descripcion from './componentes/descripcion/Descripcion'
+import React from 'react'
+import './indexHU008.css'
 
-const App = () => {
+const HU008 = () => {
   return (
     <div>
       <Menu />
@@ -16,4 +18,4 @@ const App = () => {
   )
 }
 
-export default App
+export default HU008;

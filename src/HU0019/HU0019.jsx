@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Content from "./Components/Content/Content";
+import React from 'react'
+import './indexHU0019.css'
 
 let matricula = "";
 
@@ -8,7 +9,7 @@ const storedMatricula = localStorage.getItem("matricula");
 
 matricula = storedMatricula;
 
-function App() {
+function HU0019() {
   return (
     <div>
       <Navbar />
@@ -17,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default HU0019;
