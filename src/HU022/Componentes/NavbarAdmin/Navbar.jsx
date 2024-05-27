@@ -76,7 +76,7 @@ const Navbar = ({ loggedIn }) => {
             </a>
           </li>
           <li>
-            <a href="#" className="mina-bold">
+            <a href="/videowall" className="mina-bold">
               VIDEOWALL
             </a>
           </li>
