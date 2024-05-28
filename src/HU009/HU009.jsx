@@ -2,11 +2,12 @@ import Navbar from '../Navbar/Navbar'
 import Content from './Components/Content/Content'
 import Info from './Components/Info/Info'
 import React from 'react'
-import './indexHU009.css'
+import './HU009.css'
+import '../global.css'
 
 const HU009 = () => {
   return (
-    <div>
+    <div className="cuerpoHU009">
       <Navbar />
       <Content />
       <Info />

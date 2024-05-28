@@ -4,11 +4,12 @@ import Secciones from './componentes/secciones/Secciones'
 import Secciones2 from './componentes/secciones2/Secciones2'
 import Descripcion from './componentes/descripcion/Descripcion'
 import React from 'react'
-import './indexHU008.css'
+import './HU008.css'
+import '../global.css'
 
 const HU008 = () => {
   return (
-    <div>
+    <div className="cuerpoHU008" >
       <Menu />
       <Header />
       <Descripcion />

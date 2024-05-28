@@ -1,6 +1,6 @@
 import React from 'react'
 import GV from '../../../assets/GV.png'
-import './Secciones2.css'
+import '../../HU008.css'
 
 const Secciones2 = () => {
   return (

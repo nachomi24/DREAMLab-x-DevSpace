@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import "./chat.css";
+import "../../HU004.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
 
@@ -262,6 +262,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   // localStorage.clear();
 
   return (
+    <div>
     <div className="chat_window">
       <div className="top_menu">
         <div className="title">RESERVA TU LUGAR</div>
@@ -326,6 +327,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
           </>
         )}
       </div>
+    </div> 
     </div>
   );
 };

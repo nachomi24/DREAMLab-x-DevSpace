@@ -1,5 +1,5 @@
 import React from "react";
-import "./Detalle.css";
+import "../../HU004.css";
 
 const PopUp = ({
   onClose,
@@ -74,6 +74,7 @@ const PopUp = ({
   };
 
   return (
+    <div>
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-content-inside">
@@ -127,6 +128,7 @@ const PopUp = ({
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

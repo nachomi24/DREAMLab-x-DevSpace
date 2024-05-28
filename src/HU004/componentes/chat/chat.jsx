@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import "./chat.css";
+import "../../HU004.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
 import adperfil from "../../../assets/adperfil.png";
@@ -183,7 +183,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   }, [messages.length]);
 
   return (
-    <div>
+    <div className="HU004">
       {!isLoggedIn ? (
         <div className="login_form">
           <h2>INICIAR SESIÓN</h2>

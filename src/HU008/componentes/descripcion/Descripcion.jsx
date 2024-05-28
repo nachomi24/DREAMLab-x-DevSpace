@@ -1,5 +1,5 @@
 import React from 'react'
-import './Descripcion.css'
+import '../../HU008.css'
 
 const Descripcion = () => {
   return (

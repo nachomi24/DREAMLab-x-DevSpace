@@ -1,5 +1,6 @@
 import React from 'react'
 import boton from '../../../assets/boton.png'
+import '../../HU008.css'
 
 const Boton = () => {
   return (

@@ -3,7 +3,8 @@ import Navbar from "../Navbar/Navbar";
 import Chat from "./componentes/chat/chat";
 import Bot from "./componentes/dreamy/dreamy";
 import React from 'react'
-import './indexHU004.css'
+import './HU004.css'
+import '../global.css'
 
 const HU004 = () => {
   const [loggedIn, setLoggedIn] = useState(
@@ -14,7 +15,7 @@ const HU004 = () => {
   console.log(matricula);
 
   return (
-    <div>
+    <div className="cuerpoHU004">
       <Navbar loggedIn={loggedIn} />
       <Bot />
       <Chat setLoggedIn={setLoggedIn} setMatricula={setMatricula} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Card.css';
+import '../../HU009.css';
 
 const Card = () => {
   const [currentCard, setCurrentCard] = useState(0);

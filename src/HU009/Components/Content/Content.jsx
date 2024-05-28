@@ -1,5 +1,5 @@
 import React from 'react'
-import './Content.css'
+import '../../HU009.css';
 
 const Content = () => {
   return (
