@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import './TarjetasA.css';
+import "../../HU022.css";
 import Modal from '../Modal/Modal.jsx';
 import Modal2 from '../Modal2/Modal2.jsx';
 import Modal3 from '../Modal3/Modal3.jsx';
@@ -112,7 +112,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
     <div className="tarjeta-reserva">
       <div className="info-container">
         <div className="tarjeta-reserva-info">
-          <h2>{NombreEstudiante}</h2>
+          <h2 className="h2HU022">{NombreEstudiante}</h2>
           <p>{NombreSala}</p>
           <p>{convertirHora(HoraInicio)} - {convertirHora(HoraFin)}</p>
         </div>
@@ -167,7 +167,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
     <div className="contenedor-tarjeta-general">
       <div className="contenedor-principal-tarjetas">
         <div className="contenedor-tarjetas">
-          <h1>RESERVACIONES PENDIENTES</h1>
+          <h1 className="h1HU022">RESERVACIONES PENDIENTES</h1>
           <div className="contenedor-filtros">
             <label htmlFor="sala-select">Filtrar por sala: </label>
             <select

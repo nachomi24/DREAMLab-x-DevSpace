@@ -1,19 +1,35 @@
-.App {
-  text-align: center;
-  font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Mina&display=swap');
+
+
+
+
+
+.cuerpoHU023{
+  background-image: url('../assets/bghome.jpg');
+  background-repeat: repeat-y;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+
 }
 
-h1 {
+
+
+/*Lo que hacee sto es el padding de los lados del menu*/
+.container{
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+/*StatsA.css*/
+.h1HU023 {
   margin: 20px 0;
 }
+
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
   padding-top: 80px; /* Ajusta este valor según la altura de tu Navbar */
-}
-
-h1 {
-  margin: 20px 0;
 }
 
 .panel {
@@ -68,47 +84,5 @@ header {
 nav.container {
   padding: 10px 20px; /* Ajusta según tu diseño */
 }
-body {
-  margin: 0;
-  padding: 0;
-}
 
-.panel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #3b01561b;
-}
 
-.section {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #e9e9e9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.section h2 {
-  margin-bottom: 20px;
-}
-
-.chart-container {
-  width: 100%;
-  max-width: 400px;
-  height: 300px; 
-}
-
-.section ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.section ul li {
-  background-color: #efefef;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-}

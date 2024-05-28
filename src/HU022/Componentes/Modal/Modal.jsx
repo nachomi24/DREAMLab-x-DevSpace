@@ -1,4 +1,4 @@
-import "./Modal.css";
+import "../../HU022.css";
 
 const Modal = ({ data, onClose }) => {
   const {
