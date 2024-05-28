@@ -2,7 +2,7 @@ import Navbar from "../Navbar/Navbar";
 import Content from "./Components/Content/Content";
 import React from 'react'
 import './HU0019.css';
-
+import '../global.css';
 
 let matricula = "";
 

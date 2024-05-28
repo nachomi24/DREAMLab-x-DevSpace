@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Tarjetas.css";
-import "./TarjetaInfo.css";
+import "../../HU0016_HU0017.css";
 import Menu from "../Menu/Menu";
 import Modal from "../Modal/Modal";
 import foto1 from "../../../assets/iaia.png";

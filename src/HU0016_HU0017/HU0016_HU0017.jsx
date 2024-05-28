@@ -1,12 +1,11 @@
-import "./estilosHU0016_HU0017.css";
 import Navbar from "../Navbar/Navbar";
 import TarjetasT from "./componentes/TarjetasT/TarjetasT";
 import TarjetasS from "./componentes/TarjetasS/TarjetasS";
 import axios from "axios";
 import React from 'react'
-import './indexHU0016_HU0017.css'
 import { useState, useEffect } from "react";
-
+import "./HU0016_HU0017.css";
+import "../global.css";
 const apiURLT = "https://dreamlabapidev.azurewebsites.net/api/info_talleres";
 const apiURLS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 
@@ -44,7 +43,7 @@ function HU0016_HU0017() {
   }, [activeMenu]);
 
   return (
-    <>
+    <div className="cuerpoHU0016_HU0017">
       <Navbar />
       {activeMenu === 0 ? (
         <TarjetasT datos={talleres} onMenuClick={setActiveMenu} />
@@ -52,7 +51,7 @@ function HU0016_HU0017() {
         <TarjetasS datos={salas} onMenuClick={setActiveMenu} />
       )}
       
-    </>
+    </div>
   );
 }
 
