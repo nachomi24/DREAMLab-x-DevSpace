@@ -1,7 +1,8 @@
 import Navbar from "../Navbar/Navbar";
 import Content from "./Components/Content/Content";
 import React from 'react'
-import './indexHU0019.css'
+import './HU0019.css';
+
 
 let matricula = "";
 
@@ -11,7 +12,7 @@ matricula = storedMatricula;
 
 function HU0019() {
   return (
-    <div>
+    <div className="cuerpoHU0019">
       <Navbar />
       <Content matricula={matricula} />
     </div>

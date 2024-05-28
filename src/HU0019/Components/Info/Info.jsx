@@ -1,12 +1,12 @@
 import React from 'react'
-import './Info.css'
+import '../../HU0019.css';
 import Garage from '../../../assets/Garage.png'
 import Card from '../Card/Card'
 
 const Info = () => {
   return (
     
-    <div className='box'>
+    <div className='info-box'>
         <img src={Garage} alt="Garage" border="0" className='Garage container' />
         
        <Card />

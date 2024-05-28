@@ -1,5 +1,5 @@
 import React from "react";
-import "./Tabla.css";
+import '../../HU0019.css';
 import foto1 from "../../../assets/iaia.png";
 import clockWait from "../../../assets/clock.gif";
 

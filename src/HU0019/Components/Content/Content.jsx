@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Content.css";
+import '../../HU0019.css';
 import Profile from "../Profile/Profile";
 import Tabla from "../Tabla/Tabla";
 import axios from "axios";
@@ -57,14 +57,14 @@ const Content = ({ matricula }) => {
   }, []);
 
   return (
-    <div className="table-container">
+    <div className="content-table-container">
       <table>
         <tbody>
           <tr>
             <td
               style={{ display: "flex", alignItems: "start", margin: "0 20px" }}
             >
-              <div className="profile-container">
+              <div className="content-profile-container">
                 <Profile
                   Matricula={matricula}
                   Carrera={Carrera}
@@ -74,7 +74,7 @@ const Content = ({ matricula }) => {
               </div>
             </td>
             <td>
-              <div className="tabla-container">
+              <div className="content-tabla-container">
                 <Tabla
                   Nombre={Nombre}
                   TotalUF={totalUF}
