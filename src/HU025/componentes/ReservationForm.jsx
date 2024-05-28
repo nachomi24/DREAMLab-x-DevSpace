@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
-import './ReservationForm.css';
+import '../HU025.css';
 import fotodreamy from '../../assets/dreamy.png';
 
 const apiSALAS = "https://dreamlabapidev.azurewebsites.net/api/salas";
@@ -140,7 +140,7 @@ const ReservationForm = () => {
     const timeOptions = generateTimeOptions(horarios.HoraInicio, horarios.HoraFin);
 
     return (
-        <div className="container">
+        <div className="containerHU025">
             <div className="left">
                 <br />
                 <br />
@@ -153,7 +153,7 @@ const ReservationForm = () => {
                 <br />
                 <br />
                 <br />
-                <h2>RESERVA TU LUGAR</h2>
+                <h2 className='h2HU025'>RESERVA TU LUGAR</h2>
                 <form className="reservation-form" onSubmit={handleSubmit}>
                     <label className='subtitulo'>
                         Sala:

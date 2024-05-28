@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Bar, Pie, Line } from "react-chartjs-2";
 import "chart.js/auto";
-import "./StatsA.css";
+import "./HU023.css";
 import axios from "axios";
 import Navbar from "../HU022/Componentes/NavbarAdmin/Navbar";
 
@@ -164,7 +164,7 @@ const StatsA = () => {
   return (
     <div className="App">
       <Navbar />
-      <h1>Estadísticas del D.R.E.A.M L.A.B</h1>
+      <h1 className="h1HU023">Estadísticas del D.R.E.A.M L.A.B</h1>
       <div className="panel">
         <div className="section">
           <h2>Salas más usadas (Mayo)</h2>

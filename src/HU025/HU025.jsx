@@ -4,7 +4,8 @@ import Header from '../HU021/Componentes/Header/Header'
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom/client'
-import './indexHU025.css'
+import './HU025.css'
+import "../global.css";
 
 const apiSALAS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 const HU025 = () => {
@@ -24,7 +25,7 @@ const HU025 = () => {
   });
 
   return (
-    <div className="App">
+    <div className="App cuerpoHU025" > 
         <Menu />
         <ReservationForm datos={salas} />
     </div>
