@@ -1,0 +1,187 @@
+.contenedor-tarjeta-general {
+  position: relative;
+  z-index: 1;
+  top: 20vh;
+  left: 0;
+}
+
+.contenedor-principal-tarjetas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-tarjetas {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 70%;
+  height: 70vh;
+  background-color: #d9d9d96d;
+  padding: 5vh;
+  border-radius: 1.5vw;
+  box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.08);
+  overflow: auto;
+  overflow-x: hidden;
+  margin-bottom: 4vh;
+}
+
+.contenedor-tarjetas::-webkit-scrollbar {
+  width: 12px;
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.contenedor-tarjetas::-webkit-scrollbar-corner {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.tarjeta-reserva {
+  background-color: #f5f5f5;
+  padding: 1vh;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 1px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px; /* Agregar espacio entre tarjetas */
+  transition: box-shadow 0.3s;
+  height: auto; /* Permitir que la altura se ajuste automáticamente */
+  
+  
+}
+
+.tarjeta-reserva-info {
+  
+  flex-direction: column;
+  margin-left: 2vh;
+
+}
+
+.tarjeta-reserva-info h2,
+.tarjeta-reserva-info p {
+  margin-bottom: -10px; /* Ajusta el espacio entre los elementos de texto */
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tarjeta-reserva-botones {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 5vh;
+}
+
+.tarjeta-reserva-botones button {
+  margin-left: 10px;
+  width: 100px;
+  height: 30px;
+  border-radius: 17px;
+  border: none;
+  cursor: pointer;
+  color: black; /* Color de texto blanco */
+  font-weight: bold; /* Texto en negrita */
+  transition: box-shadow 0.3s;
+}
+
+.tarjeta-reserva-botones button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta-reserva-botones button:nth-child(1) {
+  background-color: #585CA7; /* Color de fondo */
+  color: white;
+}
+
+.tarjeta-reserva-botones button:nth-child(2) {
+  background-color: #C8E8A9; /* Color de fondo */
+}
+
+.tarjeta-reserva-botones button:nth-child(3) {
+  background-color: #E8ADA9; /* Color de fondo */
+}
+
+.tarjeta-reserva:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 2.4vh;
+}
+
+h1 {
+  font-size: 1.8vw;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 2vh;
+}
+
+.contenedor-filtros {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.contenedor-filtros label {
+  margin-right: 1vh;
+}
+
+.contenedor-filtros select {
+  padding: 0.5vh;
+  border-radius: 0.5vh;
+  border: 1px solid #ccc;
+}
+
+.boton-agregar {
+  width: 20%;
+  height: 6vh;
+  background: #585CA7;
+  border-radius: 1.5vw;
+  color: #FFFFFF;
+  font-size: 1vw;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 2vh;
+  transition: box-shadow 0.3s;
+}
+
+.boton-agregar:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.desc-2 {
+  margin-top: -10px;
+}
+
+/* Nuevo estilo para el botón circular de estado */
+.estado-publicacion {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.estado-publicacion.activa {
+  background-color: #4CAF50; /* Verde para activo */
+}
+
+.estado-publicacion.inactiva {
+  background-color: #ccc; /* Gris para inactivo */
+}
