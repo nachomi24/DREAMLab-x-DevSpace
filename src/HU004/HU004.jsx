@@ -2,9 +2,9 @@ import { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Chat from "./componentes/chat/chat";
 import Bot from "./componentes/dreamy/dreamy";
-import React from 'react'
-import './HU004.css'
-import '../global.css'
+import React from "react";
+import "./HU004.css";
+import "../global.css";
 
 const HU004 = () => {
   const [loggedIn, setLoggedIn] = useState(

@@ -23,7 +23,9 @@ function Menu({
       >
         <div style={{ display: "flex" }}>
           <div
-            className={`menu-row-element016 ${activeIndex === 0 ? "active" : ""}`}
+            className={`menu-row-element016 ${
+              activeIndex === 0 ? "active" : ""
+            }`}
           >
             <a
               href="#"
@@ -36,7 +38,9 @@ function Menu({
             </a>
           </div>
           <div
-            className={`menu-row-element016 ${activeIndex === 1 ? "active" : ""}`}
+            className={`menu-row-element016 ${
+              activeIndex === 1 ? "active" : ""
+            }`}
           >
             <a
               href="#"

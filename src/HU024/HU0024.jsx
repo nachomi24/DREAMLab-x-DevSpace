@@ -1,9 +1,10 @@
-import Navbar from '../HU022/Componentes/NavbarAdmin/Navbar.jsx';
-import Tarjetas from './Componentes/TarjetasVideo/TarjetasVideo.jsx';
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import './HU0024.css';
-const apiURLPublicaciones = "https://dreamlabapidev.azurewebsites.net/api/publicaciones";
+import Navbar from "../HU022/Componentes/NavbarAdmin/Navbar.jsx";
+import Tarjetas from "./Componentes/TarjetasVideo/TarjetasVideo.jsx";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import "./HU0024.css";
+const apiURLPublicaciones =
+  "https://dreamlabapidev.azurewebsites.net/api/publicaciones";
 
 function App() {
   const [publicaciones, setPublicaciones] = useState([]);

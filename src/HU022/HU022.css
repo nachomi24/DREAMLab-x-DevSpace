@@ -1,10 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Mina&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
-
-
-
 .cuerpoHU022{
   background-image: url('../assets/bghome.jpg');
   background-repeat: repeat-y;
@@ -175,10 +168,6 @@ nav {
     background-color: #fff; /* Ajusta el color de fondo según tu diseño */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra para el navbar */
   }
-  nav.container-1 {
-    padding: 10px 20px; /* Ajusta según tu diseño */
-  }
-  
   
 .container-1{
     padding-left: 5%;
@@ -490,7 +479,6 @@ nav ul li {
   padding: 1vh;
   border-radius: 10px;
   width: 100%;
-  height: 15%;
   box-shadow: 1px 4px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px; /* Agregar espacio entre tarjetas */
   transition: box-shadow 0.3s;
@@ -513,6 +501,7 @@ nav ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1vh 0;
 }
 
 .tarjeta-reserva-botones-HU022 {

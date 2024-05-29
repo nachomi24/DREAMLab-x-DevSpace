@@ -1,6 +1,3 @@
-@import url('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
-
 header {
     position: fixed;
     width: 100%;
@@ -62,14 +59,6 @@ nav {
     height: auto;
     margin-left: 25px;
     transition: 0.3s;   
-}
-
-.bars-img {
-    color: #363968;
-    font-size: 2rem;
-    cursor: pointer;
-    display: none;
-    transition: 0.3s;
 }
 
 .karen {
@@ -155,6 +144,7 @@ nav ul li {
     border-radius: 10px;
     overflow: hidden;
     transition: height .2s;
+    z-index: 1000;
 }
 
 .dropdown-menu.open {
@@ -172,10 +162,6 @@ nav ul li {
 
 .dropdown-menu li:nth-child(3) {
     padding-bottom: 20px;
-}
-
-.dropdown-menu li:last-child {
-    display: none;
 }
 
 .mina-bold-2 {
@@ -217,15 +203,69 @@ nav ul li {
     line-height: 0;
 }
 
+.perfil-menu-container {
+    position: relative;
+  }
+  
+  .perfil-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .perfil-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+    width: 200px;
+  }
+  
+  .perfil-dropdown-menu a,
+  .perfil-dropdown-menu .logout-button {
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    color: black;
+  }
+  
+  .perfil-dropdown-menu a:hover,
+  .perfil-dropdown-menu .logout-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+  }
+  
+  nav .karen .bars-img-navbar-principal {
+    color: #363968;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+    transition: 0.3s;
+  }
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1080px) {
     nav .links {
         display: none;
     }
 
-    .bars-img {
-        display: block; 
-    }
+    nav .karen .bars-img-navbar-principal {
+        display: block;
+      }
 
     .dropdown-menu {
         display: block;
@@ -248,10 +288,6 @@ nav ul li {
     .dropdown-menu li:last-child {
         display: flex;
         padding-bottom: 20px;
-    }
-
-    .dropdown-menu.open {
-        height: 225px;
     }
 }
 

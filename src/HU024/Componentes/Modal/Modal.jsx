@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import "./Modal.css";
+import axios from "axios";
 import "../../HU0024.css";
 
 const Modal = ({ onClose, onAdd }) => {
@@ -13,7 +12,7 @@ const Modal = ({ onClose, onAdd }) => {
   const [activa, setActiva] = useState(0); // Default to off (0)
 
   const handleToggle = () => {
-    setActiva(prev => {
+    setActiva((prev) => {
       const newValue = prev === 1 ? 0 : 1;
       console.log("Nuevo valor de activa:", newValue);
       return newValue;
@@ -28,17 +27,21 @@ const Modal = ({ onClose, onAdd }) => {
       liga,
       imagen,
       fecha,
-      activa
+      activa,
     };
 
     console.log("Datos a enviar:", nuevaPublicacion);
 
     try {
-      const response = await axios.post('https://dreamlabapidev.azurewebsites.net/api/publicaciones', nuevaPublicacion, {
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        "https://dreamlabapidev.azurewebsites.net/api/publicaciones",
+        nuevaPublicacion,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       console.log("Respuesta del servidor:", response.data);
       onAdd(response.data);
       onClose();
@@ -47,7 +50,10 @@ const Modal = ({ onClose, onAdd }) => {
       if (error.response) {
         console.error("Detalles del error:", error.response.data);
         if (error.response.data.detail) {
-          console.error("Detalles específicos del error:", error.response.data.detail);
+          console.error(
+            "Detalles específicos del error:",
+            error.response.data.detail
+          );
         }
       }
     }
@@ -59,7 +65,9 @@ const Modal = ({ onClose, onAdd }) => {
         <div className="modal-content024-inside">
           <div className="modal-content024-inside-header">
             <h2 className="titulito024-header">Nueva Publicación</h2>
-            <button className="close-button024" onClick={onClose}>×</button>
+            <button className="close-button024" onClick={onClose}>
+              ×
+            </button>
           </div>
           <div className="modal-content024-inside-body">
             <div className="modal-content024-inside-body-content">
@@ -102,7 +110,7 @@ const Modal = ({ onClose, onAdd }) => {
                   onChange={(e) => setLigaImagen(e.target.value)}
                 />
               </div>
-           
+
               <div className="field">
                 <label className="titulito024">Fecha:</label>
                 <input
@@ -111,7 +119,7 @@ const Modal = ({ onClose, onAdd }) => {
                   onChange={(e) => setFecha(e.target.value)}
                 />
               </div>
-               {/*
+              {/*
               <div className="field">
                 <label className="titulito024">Activa:</label>
                 <button 
@@ -123,7 +131,9 @@ const Modal = ({ onClose, onAdd }) => {
               </div>
             */}
               <div className="modal-content024-inside-footer">
-                <button className="boton024" onClick={handleAdd}>AGREGAR</button>
+                <button className="boton024" onClick={handleAdd}>
+                  AGREGAR
+                </button>
               </div>
             </div>
           </div>

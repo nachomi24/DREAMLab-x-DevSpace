@@ -71,20 +71,12 @@ const Navbar = ({ loggedIn }) => {
         </div>
         <ul className="links-HU022">
           <li>
-            <a href="/admin2" className="mina-bold-HU022">
+            <a href="/admin/reservaciones" className="mina-bold-HU022">
               RESERVACIONES
             </a>
           </li>
           <li>
-
-            <a href="/videowall" className="mina-bold" />
-
-            <a
-              href="https://calm-grass-085a9730f.5.azurestaticapps.net/"
-              target="_blank"
-              className="mina-bold-HU022"
-            >
-
+            <a href="/videowall" className="mina-bold-HU022">
               VIDEOWALL
             </a>
           </li>
@@ -98,8 +90,8 @@ const Navbar = ({ loggedIn }) => {
           <i
             className={
               isMenuOpen
-                ? `fa-solid fa-xmark bars-img`
-                : `fa-solid fa-bars bars-img`
+                ? `fa-solid fa-xmark bars-img-HU022`
+                : `fa-solid fa-bars bars-img-HU022`
             }
             onClick={toggleMenu}
           ></i>
