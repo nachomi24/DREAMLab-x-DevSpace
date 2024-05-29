@@ -52,53 +52,53 @@ const Modal = ({ data, onClose, imagen }) => {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay016" onClick={onClose}>
       <div
         style={{ background: `url(${imagen}) no-repeat center center/cover` }}
-        className="modal-content"
+        className="modal-content016"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="modal-content-inside">
-          <div className="modal-content-inside-header">
+        <div className="modal-content016-inside">
+          <div className="modal-content016-inside-header">
             <h2 className="titulito-header">{Nombre}</h2>
           </div>
-          <div className="modal-content-inside-body">
-            <div className="modal-content-inside-body-content">
-              <div className="modal-content-inside-body-content-ubi">
+          <div className="modal-content016-inside-body">
+            <div className="modal-content016-inside-body-content">
+              <div className="modal-content016-inside-body-content-ubi">
                 <p>📍{Ubicacion}</p>
               </div>
-              <div className="modal-content-inside-body-content-uf">
+              <div className="modal-content016-inside-body-content-uf">
                 <p className="uniforma">
                   {UFID} - {NombreUF}
                 </p>
                 <p>Profesor(a): {NombreProfesor}</p>
               </div>
-              <div className="modal-content-inside-body-content-fecha">
+              <div className="modal-content016-inside-body-content-fecha">
                 <p>{convertirFecha(Fecha)}</p>
                 <p className="horarie">
                   {convertirHora(HoraInicio)} a {convertirHora(HoraFin)}
                 </p>
               </div>
-              <div className="modal-content-inside-body-content-detalles">
-                <div className="modal-content-inside-body-content-detalles-creado">
+              <div className="modal-content016-inside-body-content-detalles">
+                <div className="modal-content016-inside-body-content-detalles-creado">
                   <p>Creado:</p>
                   <p className="creadito">
                     {calcularTiempoTranscurrido(HoraCreado)}
                   </p>
                 </div>
-                <div className="modal-content-inside-body-content-detalles-cupo">
+                <div className="modal-content016-inside-body-content-detalles-cupo">
                   <p>Cupo:</p>
                   <p className="cupito">{Cupo} personas</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="modal-content-inside-body-content-boton">
-            <div className="modal-content-inside-body-content-boton-content">
-              <a href="/reservar" className="botoncito2">
+          <div className="modal-content016-inside-body-content-boton">
+            <div className="modal-content016-inside-body-content-boton-content">
+              <a href="/reservar" className="botoncito2016">
                 RESERVAR
               </a>
-              <button className="botoncito1" onClick={onClose}>
+              <button className="botoncito1016" onClick={onClose}>
                 CERRAR
               </button>
             </div>

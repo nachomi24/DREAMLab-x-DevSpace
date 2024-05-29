@@ -59,17 +59,17 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-content-inside">
-          <div className="modal-content-inside-header">
-            <h2 className="titulito-header">Editar Publicación</h2>
-            <button className="close-button" onClick={onClose}>×</button>
+    <div className="modal-overlay024" onClick={onClose}>
+      <div className="modal-content024" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-content024-inside">
+          <div className="modal-content024-inside-header">
+            <h2 className="titulito024-header">Editar Publicación</h2>
+            <button className="close-button024" onClick={onClose}>×</button>
           </div>
-          <div className="modal-content-inside-body">
-            <div className="modal-content-inside-body-content">
+          <div className="modal-content024-inside-body">
+            <div className="modal-content024-inside-body-content">
               <div className="field">
-                <label className="titulito">Título:</label>
+                <label className="titulito024">Título:</label>
                 <input
                   type="text"
                   value={titulo}
@@ -77,7 +77,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Autor:</label>
+                <label className="titulito024">Autor:</label>
                 <input
                   type="text"
                   value={autor}
@@ -85,14 +85,14 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Descripción:</label>
+                <label className="titulito024">Descripción:</label>
                 <textarea
                   value={descripcion}
                   onChange={(e) => setDescripcion(e.target.value)}
                 />
               </div>
               <div className="field">
-                <label className="titulito">Liga Publicación:</label>
+                <label className="titulito024">Liga Publicación:</label>
                 <input
                   type="text"
                   value={liga}
@@ -100,7 +100,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Liga Imagen:</label>
+                <label className="titulito024">Liga Imagen:</label>
                 <input
                   type="text"
                   value={imagen}
@@ -108,7 +108,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Fecha:</label>
+                <label className="titulito024">Fecha:</label>
                 <input
                   type="text"
                   value={fecha}
@@ -117,7 +117,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
               </div>
               {/*
               <div className="field">
-                <label className="titulito">Activa:</label>
+                <label className="titulito024">Activa:</label>
                 <button 
                   className={`toggle-button ${activa === 1 ? 'on' : 'off'}`}
                   onClick={handleToggle}
@@ -126,8 +126,8 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 </button>
               </div>
                 */}
-              <div className="modal-content-inside-footer">
-                <button className="boton" onClick={handleUpdate}>GUARDAR</button>
+              <div className="modal-content024-inside-footer">
+                <button className="boton024" onClick={handleUpdate}>GUARDAR</button>
               </div>
             </div>
           </div>

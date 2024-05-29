@@ -69,8 +69,8 @@ const Card = () => {
   };
 
   return (
-    <div className='box1'>
-      <div className='Card'>
+    <div className='box1019'>
+      <div className='Card019'>
         <button onClick={prevCard}>{"<"}</button>
         <div>
           <h2>{cards[currentCard].title}</h2>
@@ -78,7 +78,7 @@ const Card = () => {
         </div>
         <button onClick={nextCard}>{">"}</button>
       </div>
-      <button className='ReservarAhora'>RESERVAR AHORA</button>
+      <button className='ReservarAhora019'>RESERVAR AHORA</button>
       
     </div>
   );

@@ -149,15 +149,15 @@ function TarjetasPublicaciones({ datos }) {
     };
 
     return (
-      <div className="tarjeta-reserva">
+      <div className="tarjeta-reserva024">
         <div className={`estado-publicacion ${activa ? 'activa' : 'inactiva'}`} onClick={handleToggleActiva}></div>
         <div className="info-container">
-          <div className="tarjeta-reserva-info">
+          <div className="tarjeta-reserva024-info">
             <h2>{titulo}</h2>
             <p>{autor}</p>
             <p className="desc-2">{formatearFecha(fecha)}</p>
           </div>
-          <div className="tarjeta-reserva-botones">
+          <div className="tarjeta-reserva024-botones">
             <button onClick={() => confirmarPublicacion(_id, {
               _id,
               activa,
@@ -176,12 +176,12 @@ function TarjetasPublicaciones({ datos }) {
   };
 
   return (
-    <div className="contenedor-tarjeta-general">
-      <div className="contenedor-principal-tarjetas">
-        <div className="contenedor-tarjetas">
+    <div className="contenedor-tarjeta-general024">
+      <div className="contenedor-principal-tarjetas024">
+        <div className="contenedor-tarjetas024">
           <h1>PUBLICACIONES</h1>
           <button className="boton-agregar" onClick={handleOpenAddModal}>AGREGAR PUBLICACIÓN</button>
-          <div className="contenedor-filtros">
+          <div className="contenedor-filtros024">
             {/* Puedes agregar filtros aquí si es necesario */}
           </div>
           {publicacionesPendientes.map((dato) => (

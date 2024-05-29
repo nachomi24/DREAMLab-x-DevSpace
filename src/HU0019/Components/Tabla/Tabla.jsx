@@ -5,9 +5,9 @@ import clockWait from "../../../assets/clock.gif";
 
 const ContenedorTarjetas = ({ datos, mostrarBotonCancel }) => {
   return (
-    <div className="contenedor-tarjeta-general">
-      <div className="contenedor-principal-tarjetas">
-        <div className="contenedor-tarjetas">
+    <div className="contenedor-tarjeta-general019">
+      <div className="contenedor-principal-tarjetas019">
+        <div className="contenedor-tarjetas019">
           {datos.map((dato) => (
             <Tarjeta
               key={dato.id}
@@ -56,13 +56,13 @@ const Tarjeta = ({
           <h2>
             {SalaID} - {NombreSala}
           </h2>
-          <div className="info-container">
+          <div className="info-container019">
             <p>{convertirFecha(Dia)}</p>
             <p>{convertirHora(HoraInicio)}</p>
           </div>
           <div className="info-detail-cl-bt">
             {mostrarBotonCancel ? (
-              <button className="botoncito1">Cancelar</button>
+              <button className="botoncito1019">Cancelar</button>
             ) : (
               <div
                 style={{
@@ -167,7 +167,7 @@ function Tabla({
                   </p>
                   <a
                     style={{ marginBottom: "5px" }}
-                    className="botoncito2"
+                    className="botoncito2019"
                     href="/reservar"
                   >
                     Reservar ahora
