@@ -77,7 +77,7 @@ const Navbar = ({ loggedIn }) => {
           </li>
           <li>
 
-            <a href="/videowall" className="mina-bold">
+            <a href="/videowall" className="mina-bold" />
 
             <a
               href="https://calm-grass-085a9730f.5.azurestaticapps.net/"
