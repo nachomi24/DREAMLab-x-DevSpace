@@ -68,16 +68,16 @@ const Card = () => {
   };
 
   return (
-    <div className='box1'>
-      <div className='Card'>
-        <button className='prev_next' onClick={prevCard}>{"<"}</button>
-        <div className='card-margin'>
+    <div className='box1HU009'>
+      <div className='CardHU009'>
+        <button className='prev_nextHU009' onClick={prevCard}>{"<"}</button>
+        <div className='card-marginHU009'>
           <h2>{cards[currentCard].title}</h2>
           <p>{cards[currentCard].description}</p>
         </div>
-        <button className='prev_next' onClick={nextCard}>{">"}</button>
+        <button className='prev_nextHU009' onClick={nextCard}>{">"}</button>
       </div>
-      <button className='ReservarAhora'>RESERVAR AHORA</button>
+      <button className='ReservarAhoraHU009'>RESERVAR AHORA</button>
       
     </div>
   );

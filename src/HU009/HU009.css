@@ -4,7 +4,7 @@
 }
 
 
-.box1 {
+.box1HU009 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
   padding-right: 5%;
 }
 
-.Card {
+.CardHU009 {
   margin-top: 3vh;
   border: 1px transparent;
   border-radius: 30px;
@@ -31,7 +31,7 @@
   transition: max-width 0.1s;
 }
 
-.Card h2 {
+.CardHU009 h2 {
   font-size: 4.5vw; 
   font-weight: bold;
   color: #363968;
@@ -40,7 +40,7 @@
   margin-bottom: 1.5vh;
 }
 
-.Card p {
+.CardHU009 p {
   font-size: 1.5vw; 
   font-weight: bold;
   line-height: 1.2;
@@ -50,7 +50,7 @@
 }
 
 /* Estilos para button */
-.prev_next {
+.prev_nextHU009 {
   background-color: #D9D9D9;
   color: #363968;
   font-size: 3vw; 
@@ -63,7 +63,7 @@
   background-color: rgba(217, 217, 217, 0.82);
 }
 
-.ReservarAhora {
+.ReservarAhoraHU009 {
   background-color: #15162A;
   color: white;
   font-size: 1.5vw;
@@ -80,69 +80,69 @@
   box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
 }
 
-.card-margin {
+.card-marginHU009 {
   margin: 0 2vw;
 }
 
-.ReservarAhora:hover {
+.ReservarAhoraHU009:hover {
   color: rgba(255, 255, 255, 1) !important;
   box-shadow: 0 4px 16px rgb(46, 17, 68);
   transition: all 0.2s ease;
 }
 
 @media (max-width: 1150px) {
-  .Content-text h1 {
+  .Content-textHU009 h1 {
       font-size: 9vw; 
   }
 
-  .ReservarAhora {
+  .ReservarAhoraHU009 {
       font-size: 3vw;
   }
 }
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 850px) {
-  .Card {
+  .CardHU009 {
       max-width: 75vw; 
   }
   
-  .prev_next{
+  .prev_nextHU009{
       font-size: 8vw; 
   }
 
-  .Card h2 {
+  .CardHU009 h2 {
       font-size: 7vw; 
   }
 
-  .Card p {
+  .CardHU009 p {
       font-size: 3vw; 
   }
 
-  .content-height {
+  .content-heightHU009 {
       min-height: 40vh;
   }
 
-  .Content-text h1 {
+  .Content-textHU009 h1 {
       font-size: 8vw; 
   }
 
-  .ReservarAhora {
+  .ReservarAhoraHU009 {
       width: 45%; 
   }
 }
 
 @media (max-width: 650px) {
-  .Card {
+  .CardHU009 {
       max-width: 90vw; 
   }
 }
 
 
-.Content{
+.ContentHU009{
   min-height: auto;
 }
 
-.content-height {
+.content-heightHU009 {
   position: relative;
   z-index: 1;
   top: 0;
@@ -160,13 +160,13 @@
   transition: min-height 1s;
 }
 
-.Content-text{
+.Content-textHU009{
   margin-top: 12vh;
   margin-bottom: 10vh;
   text-align: center;
 }
 
-.Content-text h1{
+.Content-textHU009 h1{
   font-size: 10vw;
   font-family: 'Mina', sans-serif;
   font-weight: bolder;
@@ -175,21 +175,21 @@
 }
 
 @media (max-width: 1150px) {
-  .Content-text{
+  .Content-textHU009{
       margin-top: 20vh;
   }
 
-  .Content-text h1 {
+  .Content-textHU009 h1 {
       font-size: 15vw; 
   }
 }
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 850px) {
-  .content-height {
+  .content-heightHU009 {
       min-height: 40vh;
   }
-  .Content-text h1 {
+  .Content-textHU009 h1 {
       font-size: 15vw; 
   }
 }
@@ -207,7 +207,7 @@
 }
 
 
-.Garage {
+.GarageHU009 {
   width: 100%; 
   max-width: 700px;
   border: 0;

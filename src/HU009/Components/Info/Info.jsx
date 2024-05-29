@@ -7,7 +7,7 @@ const Info = () => {
   return (
     <div className='boxHU009'>
       <div>
-        <img src={Garage} alt="Garage" className='Garage container' />
+        <img src={Garage} alt="Garage" className='GarageHU009 container' />
       </div>
       <Card />
     </div>  

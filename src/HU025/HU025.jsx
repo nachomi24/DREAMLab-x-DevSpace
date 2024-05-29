@@ -1,6 +1,6 @@
 import Menu from '../Navbar/Navbar'
 import ReservationForm from './componentes/ReservationForm';
-import Header from '../HU021/Componentes/Header/Header'
+
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom/client'
@@ -25,7 +25,7 @@ const HU025 = () => {
   });
 
   return (
-    <div className="App cuerpoHU025" > 
+    <div className="App-HU025 cuerpoHU025" > 
         <Menu />
         <ReservationForm datos={salas} />
     </div>

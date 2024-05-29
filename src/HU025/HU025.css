@@ -1,26 +1,18 @@
 
 
 
-
-
-
-  
+/*
   .cuerpoHU025 {
     background-image: url('../assets/fond2.9.png');
     background-repeat: repeat-y;
     background-position: center;
     background-size: cover;
-  }
+  */
   
-
-
- 
-
-
 
   /*ReservationForm.css*/
 
-  .reservation-form {
+  .reservation-form-HU025 {
     width: 100vh;
     margin: 0 auto;
     padding: 20px;
@@ -46,41 +38,41 @@
   }
 
   
-.dreamy {
-  max-width: 85vh;
+.dreamy-HU025 {
+  max-width: 75vh;
   height: auto;
   position: fixed;
-  padding-right: 15px;
+  padding-right: 10px;
 } 
 
-  .left {
-    flex: 1;
+  .left-HU025 {
+    flex: 6;
   }
   
-  .right {
+  .right-HU025 {
     flex: 2;
   }
   
-  .reservation-form label {
+  .reservation-form-HU025 label {
     display: block;
     margin-bottom: 2vh;
     font-size: 2.5vh;
   }
   
-  .reservation-form .react-datepicker-wrapper,
-  .reservation-form .css-2b097c-containerHU025 {
+  .reservation-form-HU025 .react-datepicker-wrapper,
+  .reservation-form-HU025 .css-2b097c-containerHU025 {
     width: 100%;
     margin-bottom: 10px;
     border: 1px solid #cccccc00;
   }
   
-  .reservation-form .react-datepicker__input-containerHU025 input {
+  .reservation-form-HU025 .react-datepicker__input-containerHU025 input {
     width: 100%;
     padding: 8px;
     border: 1px solid #cccccc00;
     border-radius: 4px;
   }
-  .reservation-form input[type="time"] {
+  .reservation-form-HU025 input[type="time"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -88,13 +80,13 @@
     border-radius: 4px;
   }
 
-  .reservation-form .css-b62m3t-containerHU025 {
+  .reservation-form-HU025 .css-b62m3t-containerHU025 {
     width: 100%;
     margin-bottom: 10px;
     border: 0px solid #cccccc00;
   }
 
-  .reservation-form .css-b62m3t-containerHU025:active{
+  .reservation-form-HU025 .css-b62m3t-containerHU025:active{
     font-size: 2.5vh;
   }
 
@@ -106,7 +98,7 @@
     font-size: 2.5vh;
   }
 
-  .reservation-form .css-13cymwt-control {
+  .reservation-form-HU025 .css-13cymwt-control {
     border: 1px solid #cccccc00;
     border-radius: 4px;
     font-size: 2.5vh;
@@ -120,7 +112,7 @@
     font-size: 2.5vh;
   }
 
-  .reservation-form fieldset {
+  .reservation-form-HU025 fieldset {
     margin-bottom: 20px;
     border: 1px solid #cccccc00;
     padding: 10px;
@@ -130,12 +122,12 @@
     margin-top: -13px;
   }
   
-  .reservation-form .counter {
+  .reservation-form-HU025 .counter-HU025 {
     display: flex;
     align-items: center;
   }
   
-  .reservation-form .counter button {
+  .reservation-form-HU025 .counter-HU025 button {
     width: 30px;
     height: 30px;
     text-align: center;
@@ -145,12 +137,12 @@
     cursor: pointer;
   }
   
-  .reservation-form .counter span {
+  .reservation-form-HU025 .counter span {
     margin: 0 10px;
     font-size: 2.5vh;
   }
   
-  .reservation-form button[type="submit"] {
+  .reservation-form-HU025 button[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #363968;
@@ -160,17 +152,17 @@
     cursor: pointer;
   }
   
-  .reservation-form button[type="submit"]:hover {
+  .reservation-form-HU025 button[type="submit"]:hover {
     background-color: #1b1e4b;
   }
 
-  .reservation-form label.subtitulo {
+  .reservation-form-HU025 label.subtitulo-HU025 {
     font-weight: bold;
     font-size: 3vh;
     padding-left: 10px;
   }
   
-  legend.subtitulo {
+  legend.subtitulo-HU025 {
     font-weight: bold;
     font-size: 3vh;
   }
