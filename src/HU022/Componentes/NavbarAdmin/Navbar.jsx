@@ -63,15 +63,15 @@ const Navbar = ({ loggedIn }) => {
   };
 
   return (
-    <header>
+    <header className="header-HU022">
       <nav className={`container-1 ${scrolling ? "scrolling" : ""}`}>
-        <div className="logo">
+        <div className="logo-HU022">
           <img src={logo} alt="Logo de D.R.E.A.M. Lab" />
-          <h1 className="logo-title">D.R.E.A.M. LAB</h1>
+          <h1 className="logo-title-HU022">D.R.E.A.M. LAB</h1>
         </div>
-        <ul className="links">
+        <ul className="links-HU022">
           <li>
-            <a href="/admin2" className="mina-bold">
+            <a href="/admin2" className="mina-bold-HU022">
               RESERVACIONES
             </a>
           </li>
@@ -82,19 +82,19 @@ const Navbar = ({ loggedIn }) => {
             <a
               href="https://calm-grass-085a9730f.5.azurestaticapps.net/"
               target="_blank"
-              className="mina-bold"
+              className="mina-bold-HU022"
             >
 
               VIDEOWALL
             </a>
           </li>
           <li>
-            <a href="/stats" className="mina-bold">
+            <a href="/stats" className="mina-bold-HU022">
               STATS
             </a>
           </li>
         </ul>
-        <div className="karen">
+        <div className="karen-HU022">
           <i
             className={
               isMenuOpen
@@ -106,24 +106,24 @@ const Navbar = ({ loggedIn }) => {
           {/* Oculta el perfil si el usuario no está logueado */}
           {loggedIn && (
             <a style={{ lineHeight: 0 }} href="/perfil">
-              <img className="foto-perfil" src={Foto} alt={Nombre} />
+              <img className="foto-perfil-HU022" src={Foto} alt={Nombre} />
             </a>
           )}
         </div>
       </nav>
-      <div className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
+      <div className={`dropdown-menu-HU022 ${isMenuOpen ? "open" : ""}`}>
         <li>
-          <a href="/inicio" className="mina-bold-2">
+          <a href="/inicio" className="mina-bold-2-HU022">
             RESERVACIONES
           </a>
         </li>
         <li>
-          <a href="/reservar" className="mina-bold-2">
+          <a href="/reservar" className="mina-bold-2-HU022">
             VIDEOWALL
           </a>
         </li>
         <li>
-          <a href="/stats" className="mina-bold">
+          <a href="/stats" className="mina-bold-HU022">
             STATS
           </a>
         </li>

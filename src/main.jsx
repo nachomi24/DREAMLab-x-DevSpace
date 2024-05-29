@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/garage_valley" element={<HU009 />} />
         {/* <Route path="/perfil" element={<HU0019 />} /> */}
      
-        {/* <Route path="/admin2" element={<HU022 />} /> */}
+        {/* <Route path="/admin2" element={<HU022 />} />  */}
         {/* <Route path="/stats" element={<HU023 />} /> */}
         
         {/* <Route path="/reservationform" element={<HU025 />} /> */}

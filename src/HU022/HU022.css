@@ -19,7 +19,7 @@
 
 
 
-.modal-overlay {
+.modal-overlay-HU022 {
     position: fixed;
     top: 0;
     left: 0;
@@ -34,7 +34,7 @@
     
 }
 
-.modal-content {
+.modal-content-HU022 {
     width: 500px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 48px;
@@ -42,11 +42,11 @@
     position: relative;
 }
 
-.modal-content-inside {
+.modal-content-inside-HU022 {
     border-radius: 15px;
 }
 
-.modal-content-inside-header {
+.modal-content-inside-header-HU022 {
     width: 100%;
     color: #000000;
     text-align: center;
@@ -58,11 +58,11 @@
     position: relative;
 }
 
-.modal-content-inside-header .titulito-header {
+.modal-content-inside-header-HU022 .titulito-header-HU022 {
     font-family: 'Mina';
 }
 
-.close-button {
+.close-button-HU022 {
     position: absolute;
     top: 13px;
     right: 40px;
@@ -77,7 +77,7 @@
 }
 
 
-.modal-content-inside-body-2 {
+.modal-content-inside-cuerpoHU022-2-HU022 {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -87,7 +87,7 @@
     
 }
 
-.modal-content-inside-body-content-2 {
+.modal-content-inside-cuerpoHU022-content-2-HU022 {
     background-color: #FFFFFF;
     color: #000000;
     padding: 10px 35px;
@@ -95,23 +95,23 @@
     text-align: left;
 }
 
-.titulito {
+.titulito-HU022 {
     margin: 5px 0;
     font-size: 18px;
 }
 
 
 
-.botoncito1:hover {
+.botoncito1-HU022:hover {
     box-shadow: 0px 0px rgb(0, 0, 0);
 }
 
-.subtitulito-header{
+.subtitulito-header-HU022{
     font-size: 2vh;
     margin: 0;
 }
 
-.titulito-header{
+.titulito-header-HU022{
     font-size: 3vh;
     margin: 0;
 }
@@ -120,7 +120,7 @@
 
 
 
-.modal-content-inside-body-content {
+.modal-content-inside-cuerpoHU022-content-HU022 {
     background-color: #FFFFFF;
     color: #000000;
     padding: 10px 34px;
@@ -133,7 +133,7 @@
     margin-bottom: 13px;
 }
 
-.botoncito1 {
+.botoncito1-HU022 {
     padding: 5px 15px;
     font-size: 2cqi;
     background-color: #f31818;
@@ -166,7 +166,7 @@ nav {
     transition: 0.5s;
 }
 /* Agrega estas líneas al archivo Navbar.css */
-header {
+.header-HU022 {
     position: fixed;
     top: 0;
     left: 0;
@@ -190,18 +190,18 @@ header {
     background-color: #d7d9f1;
 }
 
-.logo {
+.logo-HU022 {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.logo img{
+.logo-HU022 img{
     width: auto;
     height: 65px;
 }
 
-.foto-perfil {
+.foto-perfil-HU022 {
     width: 50px;
     height: 50px;
     border-radius: 50px;
@@ -209,7 +209,7 @@ header {
     transition: 0.3s;
 }
 
-.logo-title {
+.logo-title-HU022 {
     margin-left: 20px;
     font-family: 'Mina', sans-serif;
     font-size: 25px;
@@ -218,14 +218,14 @@ header {
     text-align: center;
 }
 
-.karen img {
+.karen-HU022 img {
     width: 65px; 
     height: auto;
     margin-left: 25px;
     transition: 0.3s;   
 }
 
-.bars-img {
+.bars-img-HU022 {
     color: #363968;
     font-size: 2rem;
     cursor: pointer;
@@ -233,14 +233,14 @@ header {
     transition: 0.3s;
 }
 
-.karen {
+.karen-HU022 {
     width: 100%;
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
-.karen .search_input {
+.karen-HU022 .search_input-HU022 {
     border: 1px solid black;
     height: 50px;
     box-sizing: border-box;
@@ -259,17 +259,17 @@ header {
     transition: 0.3s;
 }
 
-.hidden {
+.hidden-HU022 {
     display: none;
 }
 
-.mina-bold {
+.mina-bold-HU022 {
     font-family: "Mina", sans-serif;
     font-weight: 700;
     font-style: normal;
 }
 
-.search-icon {
+.search-icon-HU022 {
     width: 40px;
     height: 40px;
     border-radius: 50%; 
@@ -283,7 +283,7 @@ header {
     line-height: 0;
 }
 
-.search-img{
+.search-img-HU022{
     color: #363968;
     font-size: 2rem;
 }
@@ -292,7 +292,7 @@ li {
     list-style: none;
 }
 
-nav .links {
+nav .links-HU022 {
     display: flex;
     margin: 0 35px;
     gap: 2.5rem;
@@ -306,7 +306,7 @@ nav ul li {
 }
 
 /* DROPDOWN MENU */
-.dropdown-menu {
+.dropdown-menu-HU022 {
     display: none;
     position: absolute;
     right: 12rem;
@@ -318,11 +318,11 @@ nav ul li {
     transition: height .2s;
 }
 
-.dropdown-menu.open {
+.dropdown-menu-HU022.open {
     height: 155px;
 }
 
-.dropdown-menu li {
+.dropdown-menu-HU022 li {
     padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
@@ -331,15 +331,15 @@ nav ul li {
     justify-content: center;
 }
 
-.dropdown-menu li:nth-child(3) {
+.dropdown-menu-HU022 li:nth-child(3) {
     padding-bottom: 20px;
 }
 
-.dropdown-menu li:last-child {
+.dropdown-menu-HU022 li:last-child {
     display: none;
 }
 
-.mina-bold-2 {
+.mina-bold-2-HU022 {
     font-family: "Mina", sans-serif;
     color: #d7d9f1;
     font-size: 25px;
@@ -347,7 +347,7 @@ nav ul li {
     font-style: normal;
 }
 
-.dropdown-menu .search_input-2 {
+.dropdown-menu-HU022 .search_input-2-HU022 {
     height: 50px;
     border: 1px solid black;
     box-sizing: border-box;
@@ -365,7 +365,7 @@ nav ul li {
     transition: 0.3s;
 }
 
-.search-icon-2 {
+.search-icon-2-HU022 {
     position: absolute;
     right: 0;
     width: 40px;
@@ -380,44 +380,44 @@ nav ul li {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 1080px) {
-    nav .links {
+    nav .links-HU022 {
         display: none;
     }
 
-    .bars-img {
+    .bars-img-HU022 {
         display: block; 
     }
 
-    .dropdown-menu {
+    .dropdown-menu-HU022 {
         display: block;
     }
 }
 
 @media (max-width: 750px) {
-    .karen .search_input, .search-icon {
+    .karen-HU022 .search_input-HU022, .search-icon-HU022 {
         display: none;
     }
 
-    .dropdown-menu {
+    .dropdown-menu-HU022 {
         right: 8rem;
     }
 
-    .dropdown-menu li:nth-child(3) {
+    .dropdown-menu-HU022 li:nth-child(3) {
         padding-bottom: 0;
     }
 
-    .dropdown-menu li:last-child {
+    .dropdown-menu-HU022 li:last-child {
         display: flex;
         padding-bottom: 20px;
     }
 
-    .dropdown-menu.open {
+    .dropdown-menu-HU022.open {
         height: 225px;
     }
 }
 
 @media (max-width: 575px) {
-    .dropdown-menu {
+    .dropdown-menu-HU022 {
         left: 2rem;
         right: 2rem;
         width: unset;
@@ -425,7 +425,7 @@ nav ul li {
 }
 
 @media (max-width: 450px) {
-    .logo-title {
+    .logo-title-HU022 {
         display: none;
     }
 }
@@ -434,27 +434,27 @@ nav ul li {
 
 /*TarjetasA.css*/
 
-.contenedor-tarjeta-general {
+.contenedor-tarjeta-general-HU022 {
   position: relative;
   z-index: 1;
   top: 20vh;
   left: 0;
 }
 
-.contenedor-principal-tarjetas {
+.contenedor-principal-tarjetas-HU022 {
   display: flex;
   justify-content: center;
   align-items: center;
   
 }
 
-.contenedor-tarjetas {
+.contenedor-tarjetas-HU022 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 60%;
-  height: 70vh;
+  height: 75vh;
   background-color: #d9d9d96d;
   padding: 5vh;
   border-radius: 1.5vw;
@@ -464,28 +464,28 @@ nav ul li {
   margin-bottom: 4vh;
 }
 
-.contenedor-tarjetas::-webkit-scrollbar {
+.contenedor-tarjetas-HU022::-webkit-scrollbar {
   width: 12px;
 }
 
-.contenedor-tarjetas::-webkit-scrollbar-thumb {
+.contenedor-tarjetas-HU022::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.08);
   border-radius: 6px;
 }
 
-.contenedor-tarjetas::-webkit-scrollbar-thumb:hover {
+.contenedor-tarjetas-HU022::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.contenedor-tarjetas::-webkit-scrollbar-track {
+.contenedor-tarjetas-HU022::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.contenedor-tarjetas::-webkit-scrollbar-corner {
+.contenedor-tarjetas-HU022::-webkit-scrollbar-corner {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.tarjeta-reserva {
+.tarjeta-reserva-HU022 {
   background-color: #f5f5f5;
   padding: 1vh;
   border-radius: 10px;
@@ -496,7 +496,7 @@ nav ul li {
   transition: box-shadow 0.3s;
 }
 
-.tarjeta-reserva-info {
+.tarjeta-reserva-info-HU022 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -504,25 +504,25 @@ nav ul li {
   margin-left: 3vh;
 }
 
-.tarjeta-reserva-info h2HU022,
-.tarjeta-reserva-info p {
+.tarjeta-reserva-info-HU022 h2HU022,
+.tarjeta-reserva-info-HU022 p {
   margin-bottom: -10px; /* Ajusta el espacio entre los elementos de texto */
 }
 
-.info-container {
+.info-container-HU022 {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.tarjeta-reserva-botones {
+.tarjeta-reserva-botones-HU022 {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-right: 5vh;
 }
 
-.tarjeta-reserva-botones button {
+.tarjeta-reserva-botones-HU022 button {
   margin-left: 10px;
   width: 100px;
   height: 30px;
@@ -534,20 +534,20 @@ nav ul li {
   transition: box-shadow 0.3s;
 }
 
-.tarjeta-reserva-botones button:hover {
+.tarjeta-reserva-botones-HU022 button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave al pasar el cursor */
 }
 
-.tarjeta-reserva-botones button:nth-child(1) {
+.tarjeta-reserva-botones-HU022 button:nth-child(1) {
   background-color: #585CA7; /* Color morado para el primer botón */
   color: white;
 }
 
-.tarjeta-reserva-botones button:nth-child(2) {
+.tarjeta-reserva-botones-HU022 button:nth-child(2) {
   background-color: #C8E8A9;  /* Color rojo para el segundo botón */
 }
 
-.tarjeta-reserva-botones button:nth-child(3) {
+.tarjeta-reserva-botones-HU022 button:nth-child(3) {
   background-color: #E8ADA9; /* Color verde para el tercer botón */
 }
 
@@ -562,17 +562,17 @@ nav ul li {
   margin-bottom: 2vh;
 }
 
-.contenedor-filtros {
+.contenedor-filtros-HU022 {
   display: flex;
   align-items: center;
   margin-bottom: 2vh;
 }
 
-.contenedor-filtros label {
+.contenedor-filtros-HU022 label {
   margin-right: 1vh;
 }
 
-.contenedor-filtros select {
+.contenedor-filtros-HU022 select {
   padding: 0.5vh;
   border-radius: 0.5vh;
   border: 1px solid #ccc;

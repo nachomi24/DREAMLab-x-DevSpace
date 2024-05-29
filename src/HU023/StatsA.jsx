@@ -162,30 +162,30 @@ const StatsA = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App-HU023">
       <Navbar />
       <h1 className="h1HU023">Estadísticas del D.R.E.A.M L.A.B</h1>
-      <div className="panel">
-        <div className="section">
+      <div className="panel-HU023">
+        <div className="section-HU023">
           <h2>Salas más usadas (Mayo)</h2>
-          <div className="chart-container">
+          <div className="chart-container-HU023">
             <Bar data={barData} options={options} />
           </div>
         </div>
-        <div className="section">
+        <div className="section-HU023">
           <h2>Ocupación del D.R.E.A.M L.A.B</h2>
-          <div className="chart-container">
+          <div className="chart-container-HU023">
             <Pie data={pieData} options={options} />
           </div>
           <p>En tiempo real al día {getTodayDate()}: {ocupacion} personas</p>
         </div>
-        <div className="section">
+        <div className="section-HU023">
           <h2>Reservaciones Diarias (Semana: {currentWeek.monday} - {currentWeek.friday})</h2>
-          <div className="chart-container">
+          <div className="chart-container-HU023">
             <Line data={lineData} options={options} />
           </div>
         </div>
-        <div className="section">
+        <div className="section-HU023">
           <h2>Top 5 equipos más usados (Semana: {currentWeek.monday} - {currentWeek.friday})</h2>
           <ul>
             {topRecursos.map((recurso, index) => (
