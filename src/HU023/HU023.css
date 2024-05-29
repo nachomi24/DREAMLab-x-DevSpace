@@ -1,0 +1,62 @@
+/*Lo que hacee sto es el padding de los lados del menu*/
+.container-HU023{
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+/*StatsA.css*/
+.h1HU023 {
+  margin: 20px 0;
+}
+
+.App-HU023 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding-top: 80px; /* Ajusta este valor según la altura de tu Navbar */
+}
+
+.panel-HU023 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #15001f3a;
+}
+
+.section-HU023 {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #e9e9e9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-HU023 h2 {
+  margin-bottom: 20px;
+}
+
+.chart-container-HU023 {
+  width: 100%;
+  max-width: 400px; /* Ajusta el ancho máximo */
+  height: 300px; /* Ajusta la altura */
+}
+
+.section-HU023 ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.section-HU023 ul li {
+  background-color: #efefef;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav.container-HU023 {
+  padding: 10px 20px; /* Ajusta según tu diseño */
+}
+
+

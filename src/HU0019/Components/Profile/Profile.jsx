@@ -1,4 +1,4 @@
-import "./Profile.css";
+import '../../HU0019.css';
 
 function Profile({ Matricula, Carrera, Foto, TotalPuntos }) {
   return (

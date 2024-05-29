@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
-import './TarjetasVideo.css';
-import Modal from '../Modal/Modal';  
-import EditModal from '../EditModal/EditModal';  
+import axios from "axios";
+import "../../HU0024.css";
+import Modal from "../Modal/Modal";
+import EditModal from "../EditModal/EditModal";
 
 function TarjetasPublicaciones({ datos }) {
   const [publicacionesPendientes, setPublicacionesPendientes] = useState([]);
@@ -15,8 +15,8 @@ function TarjetasPublicaciones({ datos }) {
     const publicacionesConId = datos.map((dato, index) => {
       console.log(`Publicación ${index + 1}:`, dato);
       return {
-        _id: dato._id || dato.id, 
-        ...dato
+        _id: dato._id || dato.id,
+        ...dato,
       };
     });
     setPublicacionesPendientes(publicacionesConId);
@@ -44,12 +44,19 @@ function TarjetasPublicaciones({ datos }) {
     if (newPublication._id) {
       setPublicacionesPendientes([...publicacionesPendientes, newPublication]);
     } else {
-      console.error("La nueva publicación no tiene un ID definido:", newPublication);
+      console.error(
+        "La nueva publicación no tiene un ID definido:",
+        newPublication
+      );
     }
   };
 
   const handleUpdatePublication = (updatedPublication) => {
-    setPublicacionesPendientes(prev => prev.map(pub => pub._id === updatedPublication._id ? updatedPublication : pub));
+    setPublicacionesPendientes((prev) =>
+      prev.map((pub) =>
+        pub._id === updatedPublication._id ? updatedPublication : pub
+      )
+    );
   };
 
   const confirmarPublicacion = (id, publicacion) => {
@@ -64,20 +71,28 @@ function TarjetasPublicaciones({ datos }) {
 
     try {
       console.log("Datos enviados para rechazar:", { publicacionId: id });
-      const response = await axios.delete(`https://dreamlabapidev.azurewebsites.net/api/publicaciones/${id}`, {
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await axios.delete(
+        `https://dreamlabapidev.azurewebsites.net/api/publicaciones/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       console.log("Respuesta del servidor:", response.data);
-      setPublicacionesPendientes(prev => prev.filter(pub => pub._id !== id));
+      setPublicacionesPendientes((prev) =>
+        prev.filter((pub) => pub._id !== id)
+      );
       handleCloseModal();
     } catch (error) {
       console.error("Error al rechazar la publicación", error);
       if (error.response) {
         console.error("Detalles del error:", error.response.data);
         if (error.response.data.detail) {
-          console.error("Detalles específicos del error:", error.response.data.detail);
+          console.error(
+            "Detalles específicos del error:",
+            error.response.data.detail
+          );
         }
       }
     }
@@ -85,14 +100,14 @@ function TarjetasPublicaciones({ datos }) {
 
   const formatearFecha = (fecha) => {
     const opciones = {
-      year: 'numeric',
-      month: 'short',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
     };
-    return new Date(fecha).toLocaleString('es-ES', opciones);
+    return new Date(fecha).toLocaleString("es-ES", opciones);
   };
 
   const toggleActiva = async (publicacion) => {
@@ -107,8 +122,8 @@ function TarjetasPublicaciones({ datos }) {
         updatedPublication,
         {
           headers: {
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -131,7 +146,7 @@ function TarjetasPublicaciones({ datos }) {
     autor,
     fecha,
     imagen,
-    liga
+    liga,
   }) => {
     console.log("Publicación ID:", _id);
 
@@ -144,30 +159,39 @@ function TarjetasPublicaciones({ datos }) {
         autor,
         fecha,
         imagen,
-        liga
+        liga,
       });
     };
 
     return (
-      <div className="tarjeta-reserva">
-        <div className={`estado-publicacion ${activa ? 'activa' : 'inactiva'}`} onClick={handleToggleActiva}></div>
-        <div className="info-container">
-          <div className="tarjeta-reserva-info">
-            <h2>{titulo}</h2>
+      <div className="tarjeta-reserva024">
+        <div
+          className={`estado-publicacion ${activa ? "activa" : "inactiva"}`}
+          onClick={handleToggleActiva}
+        ></div>
+        <div className="info-container-HU024">
+          <div className="tarjeta-reserva024-info">
+            <h2 className="h2-titulo">{titulo}</h2>
             <p>{autor}</p>
             <p className="desc-2">{formatearFecha(fecha)}</p>
           </div>
-          <div className="tarjeta-reserva-botones">
-            <button onClick={() => confirmarPublicacion(_id, {
-              _id,
-              activa,
-              titulo,
-              descripcion,
-              autor,
-              fecha,
-              imagen,
-              liga
-            })}>EDITAR</button>
+          <div className="tarjeta-reserva024-botones">
+            <button
+              onClick={() =>
+                confirmarPublicacion(_id, {
+                  _id,
+                  activa,
+                  titulo,
+                  descripcion,
+                  autor,
+                  fecha,
+                  imagen,
+                  liga,
+                })
+              }
+            >
+              EDITAR
+            </button>
             <button onClick={() => rechazarPublicacion(_id)}>ELIMINAR</button>
           </div>
         </div>
@@ -176,12 +200,14 @@ function TarjetasPublicaciones({ datos }) {
   };
 
   return (
-    <div className="contenedor-tarjeta-general">
-      <div className="contenedor-principal-tarjetas">
-        <div className="contenedor-tarjetas">
-          <h1>PUBLICACIONES</h1>
-          <button className="boton-agregar" onClick={handleOpenAddModal}>AGREGAR PUBLICACIÓN</button>
-          <div className="contenedor-filtros">
+    <div className="contenedor-tarjeta-general024">
+      <div className="contenedor-principal-tarjetas024">
+        <div className="contenedor-tarjetas024">
+          <h1 className="h1-publicaciones">PUBLICACIONES</h1>
+          <button className="boton-agregar" onClick={handleOpenAddModal}>
+            AGREGAR PUBLICACIÓN
+          </button>
+          <div className="contenedor-filtros024">
             {/* Puedes agregar filtros aquí si es necesario */}
           </div>
           {publicacionesPendientes.map((dato) => (
@@ -189,8 +215,16 @@ function TarjetasPublicaciones({ datos }) {
           ))}
         </div>
       </div>
-      {isModalOpen && <Modal onClose={handleCloseAddModal} onAdd={handleAddPublication} />}
-      {isEditModalOpen && <EditModal publicacion={selectedPublicacion} onClose={handleCloseModal} onUpdate={handleUpdatePublication} />}
+      {isModalOpen && (
+        <Modal onClose={handleCloseAddModal} onAdd={handleAddPublication} />
+      )}
+      {isEditModalOpen && (
+        <EditModal
+          publicacion={selectedPublicacion}
+          onClose={handleCloseModal}
+          onUpdate={handleUpdatePublication}
+        />
+      )}
     </div>
   );
 }

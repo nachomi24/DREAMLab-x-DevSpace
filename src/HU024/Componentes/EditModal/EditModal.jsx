@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import "./Modal.css";
+import axios from "axios";
+import "../../HU0024.css";
 
 const EditModal = ({ publicacion, onClose, onUpdate }) => {
   const [titulo, setTitulo] = useState("");
@@ -24,7 +24,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
   }, [publicacion]);
 
   const handleToggle = () => {
-    setActiva(prev => (prev === 1 ? 0 : 1));
+    setActiva((prev) => (prev === 1 ? 0 : 1));
   };
 
   const handleUpdate = async () => {
@@ -35,15 +35,19 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
       liga,
       imagen,
       fecha,
-      activa
+      activa,
     };
 
     try {
-      const response = await axios.put(`https://dreamlabapidev.azurewebsites.net/api/publicaciones/${publicacion._id}`, publicacionActualizada, {
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await axios.put(
+        `https://dreamlabapidev.azurewebsites.net/api/publicaciones/${publicacion._id}`,
+        publicacionActualizada,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       console.log("Respuesta del servidor:", response.data);
       onUpdate(response.data);
       onClose();
@@ -52,24 +56,29 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
       if (error.response) {
         console.error("Detalles del error:", error.response.data);
         if (error.response.data.detail) {
-          console.error("Detalles específicos del error:", error.response.data.detail);
+          console.error(
+            "Detalles específicos del error:",
+            error.response.data.detail
+          );
         }
       }
     }
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-content-inside">
-          <div className="modal-content-inside-header">
-            <h2 className="titulito-header">Editar Publicación</h2>
-            <button className="close-button" onClick={onClose}>×</button>
+    <div className="modal-overlay024" onClick={onClose}>
+      <div className="modal-content024" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-content024-inside">
+          <div className="modal-content024-inside-header">
+            <h2 className="titulito024-header">Editar Publicación</h2>
+            <button className="close-button024" onClick={onClose}>
+              ×
+            </button>
           </div>
-          <div className="modal-content-inside-body">
-            <div className="modal-content-inside-body-content">
+          <div className="modal-content024-inside-body">
+            <div className="modal-content024-inside-body-content">
               <div className="field">
-                <label className="titulito">Título:</label>
+                <label className="titulito024">Título:</label>
                 <input
                   type="text"
                   value={titulo}
@@ -77,7 +86,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Autor:</label>
+                <label className="titulito024">Autor:</label>
                 <input
                   type="text"
                   value={autor}
@@ -85,14 +94,14 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Descripción:</label>
+                <label className="titulito024">Descripción:</label>
                 <textarea
                   value={descripcion}
                   onChange={(e) => setDescripcion(e.target.value)}
                 />
               </div>
               <div className="field">
-                <label className="titulito">Liga Publicación:</label>
+                <label className="titulito024">Liga Publicación:</label>
                 <input
                   type="text"
                   value={liga}
@@ -100,7 +109,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Liga Imagen:</label>
+                <label className="titulito024">Liga Imagen:</label>
                 <input
                   type="text"
                   value={imagen}
@@ -108,7 +117,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 />
               </div>
               <div className="field">
-                <label className="titulito">Fecha:</label>
+                <label className="titulito024">Fecha:</label>
                 <input
                   type="text"
                   value={fecha}
@@ -117,7 +126,7 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
               </div>
               {/*
               <div className="field">
-                <label className="titulito">Activa:</label>
+                <label className="titulito024">Activa:</label>
                 <button 
                   className={`toggle-button ${activa === 1 ? 'on' : 'off'}`}
                   onClick={handleToggle}
@@ -126,8 +135,10 @@ const EditModal = ({ publicacion, onClose, onUpdate }) => {
                 </button>
               </div>
                 */}
-              <div className="modal-content-inside-footer">
-                <button className="boton" onClick={handleUpdate}>GUARDAR</button>
+              <div className="modal-content024-inside-footer">
+                <button className="boton024" onClick={handleUpdate}>
+                  GUARDAR
+                </button>
               </div>
             </div>
           </div>

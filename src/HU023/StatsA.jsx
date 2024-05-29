@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Bar, Pie, Line } from "react-chartjs-2";
 import "chart.js/auto";
-import "./StatsA.css";
+import "./HU023.css";
 import axios from "axios";
 import Navbar from "../HU022/Componentes/NavbarAdmin/Navbar";
 
@@ -17,7 +17,10 @@ const apiURLStatsRecursos =
 const StatsA = () => {
   const [topSalas, setTopSalas] = useState([]);
   const [reservacionesSemana, setReservacionesSemana] = useState([]);
-  const [ocupacionActual, setOcupacionActual] = useState({ TotalPersonasDia: 0, TotalPersonasOcupado: 0 });
+  const [ocupacionActual, setOcupacionActual] = useState({
+    TotalPersonasDia: 0,
+    TotalPersonasOcupado: 0,
+  });
   const [topRecursos, setTopRecursos] = useState([]);
 
   const obtenerTopSalas = async () => {
@@ -75,7 +78,11 @@ const StatsA = () => {
 
   const getTodayDate = () => {
     const today = new Date();
-    return today.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+    return today.toLocaleDateString("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
   };
 
   const getCurrentWeekDates = () => {
@@ -86,8 +93,14 @@ const StatsA = () => {
     const friday = new Date(monday);
     friday.setDate(monday.getDate() + 4); // Set to Friday
     return {
-      monday: monday.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' }),
-      friday: friday.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' })
+      monday: monday.toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "long",
+      }),
+      friday: friday.toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "long",
+      }),
     };
   };
 
@@ -162,31 +175,39 @@ const StatsA = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App-HU023">
       <Navbar />
-      <h1>Estadísticas del D.R.E.A.M L.A.B</h1>
-      <div className="panel">
-        <div className="section">
+      <h1 className="h1HU023">Estadísticas del D.R.E.A.M L.A.B</h1>
+      <div className="panel-HU023">
+        <div className="section-HU023">
           <h2>Salas más usadas (Mayo)</h2>
-          <div className="chart-container">
+          <div className="chart-container-HU023">
             <Bar data={barData} options={options} />
           </div>
         </div>
-        <div className="section">
+        <div className="section-HU023">
           <h2>Ocupación del D.R.E.A.M L.A.B</h2>
-          <div className="chart-container">
+          <div className="chart-container-HU023">
             <Pie data={pieData} options={options} />
           </div>
-          <p>En tiempo real al día {getTodayDate()}: {ocupacion} personas</p>
+          <p>
+            En tiempo real al día {getTodayDate()}: {ocupacion} personas
+          </p>
         </div>
-        <div className="section">
-          <h2>Reservaciones Diarias (Semana: {currentWeek.monday} - {currentWeek.friday})</h2>
-          <div className="chart-container">
+        <div className="section-HU023">
+          <h2>
+            Reservaciones Diarias (Semana: {currentWeek.monday} -{" "}
+            {currentWeek.friday})
+          </h2>
+          <div className="chart-container-HU023">
             <Line data={lineData} options={options} />
           </div>
         </div>
-        <div className="section">
-          <h2>Top 5 equipos más usados (Semana: {currentWeek.monday} - {currentWeek.friday})</h2>
+        <div className="section-HU023">
+          <h2>
+            Top 5 equipos más usados (Semana: {currentWeek.monday} -{" "}
+            {currentWeek.friday})
+          </h2>
           <ul>
             {topRecursos.map((recurso, index) => (
               <li key={index}>

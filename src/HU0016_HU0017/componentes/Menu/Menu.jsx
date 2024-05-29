@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Menu.css";
+import "../../HU0016_HU0017.css";
 
 function Menu({
   onMenuClick,
@@ -16,14 +16,16 @@ function Menu({
   };
 
   return (
-    <div className="menu">
+    <div className="menu016">
       <div
         style={{ alignItems: "center", justifyContent: "space-between" }}
-        className="menu-row"
+        className="menu-row016"
       >
         <div style={{ display: "flex" }}>
           <div
-            className={`menu-row-element ${activeIndex === 0 ? "active" : ""}`}
+            className={`menu-row-element016 ${
+              activeIndex === 0 ? "active" : ""
+            }`}
           >
             <a
               href="#"
@@ -36,7 +38,9 @@ function Menu({
             </a>
           </div>
           <div
-            className={`menu-row-element ${activeIndex === 1 ? "active" : ""}`}
+            className={`menu-row-element016 ${
+              activeIndex === 1 ? "active" : ""
+            }`}
           >
             <a
               href="#"
@@ -52,7 +56,7 @@ function Menu({
         <div className="search-container">
           <input
             id="search"
-            className={`search_input ${searchVisible ? "" : "hidden"}`}
+            className={`search_input016 ${searchVisible ? "" : "hidden016"}`}
             placeholder="Escribe aquí..."
             value={searchTerm}
             onChange={onSearchChange}

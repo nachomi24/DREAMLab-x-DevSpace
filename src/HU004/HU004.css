@@ -1,0 +1,534 @@
+
+.cuerpoHU004 {
+  background-image: url('../assets/fond2.9.png');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.chat_window {
+  position: absolute;
+  width: calc(50% - 10px); 
+  max-width: 700px; 
+  height: 550px;
+  border-radius: 10px;
+  background-color: transparent;
+  left: 50%; 
+  top: 60%; 
+  transform: translateY(-50%);
+  overflow: hidden;
+  font-family: "Mina", sans-serif;
+  z-index: 1; /* Asegura que esté debajo del formulario de inicio de sesión */
+}
+
+.chat_container {
+  width: 60%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.login_formHU004 {
+  position: fixed;
+  top: 55%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Asegura que esté encima de todo */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+}
+
+.login_formHU004 h2 {
+  margin-bottom: 20px;
+  color: #363968;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.login_formHU004 form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.login_formHU004 label {
+  margin-bottom: 5px;
+  color: #363968;
+  font-size: 18px;
+}
+
+.login_formHU004 input {
+  margin-bottom: 10px;
+  padding: 9px;
+  border: 1px solid #d9d9d9;
+  border-radius: 9px;
+  outline: none;
+  font-family: "Mina", sans-serif;
+  font-size: 18px;
+  color: #363968;
+  width: 100%;
+}
+
+.login_formHU004 button {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #363968;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login_formHU004 button:hover {
+  background-color: #15162A;
+}
+
+/* titulo de reserva tu lugar */
+.top_menuHU004 {
+  background-color: transparent;
+  width: 100%;
+  padding: 20px 0 15px;
+}
+
+@keyframes fade-up{
+  0%{
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+
+  }
+}
+
+.fade-in {
+  animation: fade-up 0.5s;
+}
+
+.top_menuHU004 .title {
+  text-align: center;
+  color: #363968;
+  font-size: 60px;
+  font-weight: bolder;
+  line-height: 50px;
+  margin-bottom: 2vh;
+}
+
+.errorHU004 {
+  visibility: hidden;
+}
+
+.errorHU004.show {
+  visibility: visible;
+}
+
+.errorHU004 .title {
+  text-align: center;
+  color: rgb(207, 58, 58);
+  font-size: 20px;
+  font-weight: bolder;
+  line-height: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.messages {
+  position: relative;
+  list-style: none;
+  padding: 20px 10px 0 10px;
+  margin: 0;
+  height: 20vw;
+  overflow-y: scroll;
+}
+
+.messages::-webkit-scrollbar {
+  width: 0; /* oculta la barra de desplazamiento */
+}
+
+.messages .message {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: all 0.5s linear;
+  opacity: 0;
+}
+
+.messages .message.left .avatar {
+  background-image: url('../assets/botICON.png');
+  background-size: cover;
+  float: left;
+}
+.messages .message.left .text_wrapper {
+  background-color: white;
+  margin-left: 20px;
+}
+.messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
+  right: 100%;
+  border-right-color: white;
+}
+.messages .message.left .text {
+  color: #363968;
+}
+.messages .message.right .avatar {
+  background-image: url('karen.png');
+  background-size: cover;
+  float: right;
+}
+.messages .message.right .text_wrapper {
+  background-color: #363968;
+  margin-right: 20px;
+  float: right;
+}
+.messages .message.right .text_wrapper::after, .messages .message.right .text_wrapper::before {
+  left: 100%;
+  border-left-color: #363968;
+}
+.messages .message.right .text {
+  color: white;
+}
+.messages .message.appeared {
+  opacity: 1;
+}
+.messages .message .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.messages .message .text_wrapper {
+  display: inline-block;
+  padding: 20px;
+  border-radius: 6px;
+  width: calc(100% - 85px);
+  min-width: 100px;
+  position: relative;
+}
+.messages .message .text_wrapper::after, .messages .message .text_wrapper:before {
+  top: 18px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.messages .message .text_wrapper::after {
+  border-width: 13px;
+  margin-top: 0px;
+}
+.messages .message .text_wrapper::before {
+  border-width: 15px;
+  margin-top: -2px;
+}
+.messages .message .text_wrapper .text {
+  font-size: 18px;
+  font-weight: 300;
+}
+  
+.bottom_wrapperHU004 {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  padding: 20px 20px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+}
+
+.bottom_wrapperHU004 .message_input_wrapper {
+  display: inline-block;
+  height: 50px;
+  border-radius: 25px; 
+  background-color: white;
+  border: 1px solid #D9D9D9;
+  width: calc(100% - 160px);
+  position: relative;
+  padding: 0 20px;
+  margin-right: 10px;
+}
+
+.bottom_wrapperHU004 .message_input_wrapper .message_input {
+  border: none;
+  height: 100%;
+  box-sizing: border-box;
+  /*border-radius: 50px; */
+  width: calc(100% - 40px);
+  position: absolute;
+  outline-width: 0;
+  color:#363968;
+  font-family: "Mina", sans-serif;
+  float: right;
+  text-align: left;
+  font-size: 18px;
+  line-height: 25px;
+  padding-top: 12px;
+}
+
+.message_input::-webkit-scrollbar {
+  width: 0; /* oculta la barra de desplazamiento */
+}
+
+.bottom_wrapperHU004 .send_message {
+  width: 140px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #363968;
+  border: 2px solid #363968;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-align: center;
+}
+
+.bottom_wrapperHU004 .send_message2 {
+  width: 100%;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #363968;
+  border: 2px solid #363968;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-align: center;
+}
+
+.bottom_wrapperHU004 .send_message:hover {
+  color: white;
+  background-color: #15162A;
+}
+
+.bottom_wrapperHU004 .send_message2:hover {
+  color: white;
+  background-color: #15162A;
+}
+
+.bottom_wrapperHU004 .send_message .text {
+  font-size: 18px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
+}
+
+.bottom_wrapperHU004 .send_message2 .text {
+  font-size: 18px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
+}
+
+.avatar {
+  width: 40px; /* Ajusta el tamaño según tus necesidades */
+  height: 40px; /* Ajusta el tamaño según tus necesidades */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.avatar.left {
+  background-image: url('../assets/botICON.png');
+  float: left;
+}
+
+.avatar.right {
+  background-image: var(--right-avatar, url('karen.png')); /* Fallback a una imagen predeterminada si no se encuentra la URL de la foto del perfil */
+  float: right;
+}
+
+.reservation-link{
+  width: 100%;
+  text-decoration: underline;
+  text-align: center;
+  color: #363968;
+}
+
+.boton2HU004{
+  width: 50px;
+  height: 50px; /* Asegúrate de que la altura sea igual a la anchura para un círculo perfecto */
+  align-items: end;
+  justify-content: center;
+  display: flex;
+  border-radius: 50%; /* Esto hace que el botón sea circular */
+  background-color: #363968; /* Esto hace que el botón sea morado */
+}
+
+.modal-overlayHU004 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.modal-contentHU004 {
+    width: 600px;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-contentHU004-inside {
+    border-radius: 15px;
+}
+
+.modal-contentHU004-inside-header {
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-size: 4vh;
+    background-color: rgba(240, 240, 240, 0.9);
+    padding: 25px 25px 10px 25px;
+    border-radius: 15px 15px 0 0;
+    line-height: 1;
+}
+
+.modal-contentHU004-inside-header .titulito-header {
+    font-family: 'Mina' ;
+}
+
+.modal-contentHU004-inside-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-contentHU004-inside-body-content {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    background-color: rgba(240, 240, 240, 0.9);
+    color: black;
+    padding: 15px 35px;
+    width: 100%;
+}
+
+.modal-contentHU004-inside-body-content-ubi {
+    text-align: justify;
+    font-weight: normal;
+    font-size: 3.5vh;
+    
+}
+
+.modal-contentHU004-inside-body-content-fecha {
+    text-align: justify;
+    font-weight: normal;
+    font-size: 3.5vh;
+    
+}
+
+.modal-contentHU004-inside-body-content-fecha .horarie {
+    text-align: justify;
+    font-weight: normal;
+    font-size: 3.5vh;
+    
+}
+
+.modal-contentHU004-inside-body-content-personas {
+    text-align: justify;
+    font-weight: normal;
+    font-size: 3.5vh;
+    padding-bottom: 10px;
+}
+
+.modal-contentHU004-inside-body-content-detalles {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: justify;
+    font-weight: normal;
+    font-size: 3.5vh;
+    padding-bottom: 10px;
+}
+
+.modal-contentHU004-inside-body-content-detalles-creado {
+    text-align: left;
+}
+
+.modal-contentHU004-inside-body-content-detalles-creado .creadito {
+    font-size: 2.5vh;
+}
+
+.modal-contentHU004-inside-body-content-detalles-cupo {
+    text-align: right;
+}
+
+.modal-contentHU004-inside-body-content-detalles-cupo .cupito {
+    font-size: 2.5vh;
+}
+
+.modal-contentHU004-inside-body-content-boton {
+    width: 100%;
+    text-align: center;
+    font-size: 4vh;
+    background-color: rgba(240, 240, 240, 0.9);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.modal-contentHU004-inside-body-content-boton-content {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.botoncitoHU004 {
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
+    background-color: #6d1919;
+    color: #eff0ff;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s;
+}
+
+.botoncitoHU004:hover {
+    box-shadow: 0px 0px rgb(0, 0, 0);
+}
+
+.botoncito2HU004 {
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
+    background-color: #363968;
+    color: #eff0ff;
+    border-radius: 25px;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s;
+}
+
+.botoncito2HU004:hover {
+    box-shadow: 0px 0px rgb(0, 0, 0);
+}
+
+.bot-containerHU004 img {
+  margin-top: 100px;
+  max-width: 55vw;
+  max-height: 100%;
+}
+

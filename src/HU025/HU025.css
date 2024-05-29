@@ -1,0 +1,197 @@
+
+
+
+/*
+  .cuerpoHU025 {
+    background-image: url('../assets/fond2.9.png');
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: cover;
+  */
+  
+
+  /*ReservationForm.css*/
+
+  .reservation-form-HU025 {
+    width: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #cccccc00;
+    border-radius: 15px;
+    background-color: rgba(240, 240, 240, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerHU025 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .h2HU025 {
+    font-size: 9vh;
+    color: #363968;
+    text-align: center;
+  }
+
+  
+.dreamy-HU025 {
+  max-width: 75vh;
+  height: auto;
+  position: fixed;
+  padding-right: 10px;
+} 
+
+  .left-HU025 {
+    flex: 6;
+  }
+  
+  .right-HU025 {
+    flex: 2;
+  }
+  
+  .reservation-form-HU025 label {
+    display: block;
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+  }
+  
+  .reservation-form-HU025 .react-datepicker-wrapper,
+  .reservation-form-HU025 .css-2b097c-containerHU025 {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc00;
+  }
+  
+  .reservation-form-HU025 .react-datepicker__input-containerHU025 input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+  }
+  .reservation-form-HU025 input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+  }
+
+  .reservation-form-HU025 .css-b62m3t-containerHU025 {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 0px solid #cccccc00;
+  }
+
+  .reservation-form-HU025 .css-b62m3t-containerHU025:active{
+    font-size: 2.5vh;
+  }
+
+
+
+
+
+  div.css-b62m3t-containerHU025:active{
+    font-size: 2.5vh;
+  }
+
+  .reservation-form-HU025 .css-13cymwt-control {
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    font-size: 2.5vh;
+    font-weight: normal;
+  }
+  
+  .react-datepicker__input-containerHU025 input {
+    width: 100%;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    font-size: 2.5vh;
+  }
+
+  .reservation-form-HU025 fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #cccccc00;
+    padding: 10px;
+    background-color: #fefefe;
+    border-radius: 4px;
+    margin-left: 12px;
+    margin-top: -13px;
+  }
+  
+  .reservation-form-HU025 .counter-HU025 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .reservation-form-HU025 .counter-HU025 button {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 2.5vh;
+    border: none;
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+  
+  .reservation-form-HU025 .counter span {
+    margin: 0 10px;
+    font-size: 2.5vh;
+  }
+  
+  .reservation-form-HU025 button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #363968;
+    color: #fefefe;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .reservation-form-HU025 button[type="submit"]:hover {
+    background-color: #1b1e4b;
+  }
+
+  .reservation-form-HU025 label.subtitulo-HU025 {
+    font-weight: bold;
+    font-size: 3vh;
+    padding-left: 10px;
+  }
+  
+  legend.subtitulo-HU025 {
+    font-weight: bold;
+    font-size: 3vh;
+  }
+
+  input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+    font-size: 2.5vh;
+  }
+
+  div.css-t3ipsp-control{
+    border-color: black;
+    border-width: 2px;
+    box-shadow: 0 0 0 0px black;
+}
+
+div.css-t3ipsp-control:hover{
+    border-color: black;
+    border-width: 2px;
+    box-shadow: 0 0 0 0px black;
+}
+
+.css-1dimb5e-singleValue{
+    font-size: 2.5vh;
+}
+
+div.css-1nmdiq5-menu{
+    font-size: 2.5vh;
+}

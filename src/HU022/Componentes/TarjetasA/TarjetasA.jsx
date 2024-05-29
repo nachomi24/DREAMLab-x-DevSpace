@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import './TarjetasA.css';
+import "../../HU022.css";
 import Modal from '../Modal/Modal.jsx';
 import Modal2 from '../Modal2/Modal2.jsx';
 import Modal3 from '../Modal3/Modal3.jsx';
@@ -109,14 +109,14 @@ function TarjetasA({ datos, actualizarReservaciones }) {
     Personas,
     Confirmada
   }) => (
-    <div className="tarjeta-reserva">
-      <div className="info-container">
-        <div className="tarjeta-reserva-info">
-          <h2>{NombreEstudiante}</h2>
+    <div className="tarjeta-reserva-HU022">
+      <div className="info-container-HU022">
+        <div className="tarjeta-reserva-info-HU022">
+          <h2 className="h2HU022">{NombreEstudiante}</h2>
           <p>{NombreSala}</p>
           <p>{convertirHora(HoraInicio)} - {convertirHora(HoraFin)}</p>
         </div>
-        <div className="tarjeta-reserva-botones">
+        <div className="tarjeta-reserva-botones-HU022">
           <button onClick={() => handleOpenModal({
             ReservacionID,
             Matricula,
@@ -164,11 +164,11 @@ function TarjetasA({ datos, actualizarReservaciones }) {
   const salasUnicas = [...new Set(datos.map(reserva => reserva.NombreSala))]; // Obtener salas únicas
 
   return (
-    <div className="contenedor-tarjeta-general">
-      <div className="contenedor-principal-tarjetas">
-        <div className="contenedor-tarjetas">
-          <h1>RESERVACIONES PENDIENTES</h1>
-          <div className="contenedor-filtros">
+    <div className="contenedor-tarjeta-general-HU022">
+      <div className="contenedor-principal-tarjetas-HU022">
+        <div className="contenedor-tarjetas-HU022">
+          <h1 className="h1HU022">RESERVACIONES PENDIENTES</h1>
+          <div className="contenedor-filtros-HU022">
             <label htmlFor="sala-select">Filtrar por sala: </label>
             <select
               id="sala-select"

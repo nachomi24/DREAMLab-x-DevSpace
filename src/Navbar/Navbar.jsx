@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Navbar.css";
+import "./estiloNavbar.css";
 import logo from "../assets/logo1.0.png";
 import axios from "axios";
 
@@ -8,6 +8,7 @@ const Navbar = ({ loggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [Foto, setFoto] = useState("");
   const [Nombre, setNombre] = useState("");
+  const [isPerfilMenuOpen, setIsPerfilMenuOpen] = useState(false);
 
   loggedIn = localStorage.getItem("isLoggedIn") === "true";
   const matricula = localStorage.getItem("matricula");
@@ -56,6 +57,18 @@ const Navbar = ({ loggedIn }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const togglePerfilMenu = () => {
+    setIsPerfilMenuOpen(!isPerfilMenuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("chatMessages");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("matricula");
+    localStorage.removeItem("threadID");
+    window.location.href = "/reservar";
+  };
+
   return (
     <header>
       <nav className={`container ${scrolling ? "scrolling" : ""}`}>
@@ -65,7 +78,7 @@ const Navbar = ({ loggedIn }) => {
         </div>
         <ul className="links">
           <li>
-            <a href="/inicio" className="mina-bold">
+            <a href="/" className="mina-bold">
               INICIO
             </a>
           </li>
@@ -84,16 +97,30 @@ const Navbar = ({ loggedIn }) => {
           <i
             className={
               isMenuOpen
-                ? `fa-solid fa-xmark bars-img`
-                : `fa-solid fa-bars bars-img`
+                ? `bars-img-navbar-principal fa-solid fa-xmark`
+                : `bars-img-navbar-principal fa-solid fa-bars`
             }
             onClick={toggleMenu}
           ></i>
-          {/* Oculta el perfil si el usuario no está logueado */}
           {loggedIn && (
-            <a style={{ lineHeight: 0 }} href="/perfil">
-              <img className="foto-perfil" src={Foto} alt={Nombre} />
-            </a>
+            <div className="perfil-menu-container">
+              <button className="perfil-button" onClick={togglePerfilMenu}>
+                <img className="foto-perfil" src={Foto} alt={Nombre} />
+              </button>
+              {isPerfilMenuOpen && (
+                <div className="perfil-dropdown-menu">
+                  <a href="/perfil" className="mina-bold-2">
+                    Perfil
+                  </a>
+                  <button
+                    onClick={handleLogout}
+                    className="mina-bold-2 logout-button"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </nav>
@@ -111,17 +138,6 @@ const Navbar = ({ loggedIn }) => {
         <li>
           <a href="/secciones" className="mina-bold-2">
             SECCIONES
-          </a>
-        </li>
-        <li>
-          <a href="/admin2" className="mina-bold">
-            ADMIN
-          </a>
-        </li>
-        <li>
-          <input className="search_input-2" placeholder="Escribe aquí..." />
-          <a className="search-icon-2">
-            <i className="fa-solid fa-magnifying-glass search-img"></i>
           </a>
         </li>
       </div>

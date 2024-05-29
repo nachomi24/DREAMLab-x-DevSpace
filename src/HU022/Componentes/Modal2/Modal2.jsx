@@ -1,4 +1,4 @@
-import "./Modal2.css";
+import "../../HU022.css";
 
 const Modal2 = ({ data, onClose }) => {
   const {
@@ -23,17 +23,17 @@ const Modal2 = ({ data, onClose }) => {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-content-inside">
-          <div className="modal-content-inside-header">
-            <h2 className="titulito-header"></h2>
-            <p className="subtitulito-header"></p>
+    <div className="modal-overlay-HU022" onClick={onClose}>
+      <div className="modal-content-HU022" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-content-inside-HU022">
+          <div className="modal-content-inside-header-HU022">
+            <h2 className="titulito-header-HU022"></h2>
+            <p className="subtitulito-header-HU022"></p>
             
           </div>
-          <div className="modal-content-inside-body">
-            <div className="modal-content-inside-body-content">
-              <p className="titulito">La reserva de {NombreEstudiante} fue confirmada exitosamente</p>
+          <div className="modal-content-inside-cuerpoHU022-HU022">
+            <div className="modal-content-inside-cuerpoHU022-content-HU022">
+              <p className="titulito-HU022">La reserva de {NombreEstudiante} fue confirmada exitosamente</p>
             </div>
           </div>
         </div>

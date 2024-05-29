@@ -1,0 +1,439 @@
+/*.cuerpoHU0019{
+    background-image: url('../assets/bghome.jpg');
+    background-repeat: repeat-y;
+    background-size: cover;
+  
+  }
+*/ 
+.containerHU0019{
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+/* Card.css */
+.box1019 {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Card019 {
+    margin-top: 50px;
+    border: 1px transparent;
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+    padding: 30px;
+    text-align: center;
+    background: rgba(217, 217, 217, 0.4);
+    width: 100%; 
+    max-width: 500px; 
+    height: auto; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Card019 h2 {
+    font-size: 3.5vw; 
+    font-weight: bold;
+    color: #363968;
+    line-height: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.Card019 p {
+    font-size: 1.5vw; 
+    font-weight: bold;
+    line-height: 1.2;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.button-prev-next-card {
+    background-color: #D9D9D9;
+    color: #363968;
+    font-size: 1.8vw; 
+    font-weight: bold;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: rgba(217, 217, 217, 0.82);
+}
+
+.ReservarAhora019 {
+    background-color: #15162A;
+    color: white;
+    font-size: 1.4vw; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5vh; 
+    width: 40%; 
+    border-radius: 73px;
+    line-height: 1.1;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+}
+
+.ReservarAhora019:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 16px rgb(46, 17, 68);
+    transition: all 0.2s ease;
+}
+
+/* Content.css */
+
+
+.content-table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+}
+  
+.content-table-container table {
+    width: 90%;
+    border-collapse: collapse;
+    border-radius: 25px;
+    height: 67.5vh;
+}
+  
+.content-profile-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 0 10%;
+}
+  
+.content-tabla-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-right: 50px;
+    margin-bottom: 35px;
+}
+
+.Content {
+    width: 100%;
+    min-height: 110vh;
+    background: url(../../assets/fondo6.0.png) no-repeat center center/cover;
+    background-size: cover;
+    background-position: center;
+    color: #363968;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Content-text {
+    text-align: center;
+    max-width: 800px;
+}
+
+.Content-text h1 {
+    font-size: 170px;
+    font-weight: bolder;
+    line-height: 0.9;
+}
+
+@media (max-width: 768px) {
+    .Content {
+        min-height: 100vh; 
+    }
+
+    .Content-text h1 {
+        font-size: 20vw; 
+    }
+}
+
+/* Info.css */
+.info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150vh; 
+    background-image: linear-gradient(to top, #585ca7, #777aba, #9699cd, #b6b8df, #d7d9f1);
+}
+
+.Garage019 {
+    width: 100%; 
+    max-width: 850px; 
+    position: relative;
+}
+
+
+/* Profile.css */
+.image-container img {
+    width: 300px;
+    height: 300px;
+    border-radius: 20%;
+}
+
+.matricula-text {
+    font-size: 3vw;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: #363968;
+    text-align: center;
+}
+
+.descripcion-text {
+    font-size: 1.5vw;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: #000000;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.puntos-perfil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+}
+
+.puntos-text {
+    width: 50%;
+    font-size: 1.5vw;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: black;
+    text-align: center;
+    line-height: 1;
+}
+
+.puntos {
+    font-size: 5vw;
+    font-family: 'Mina';
+    font-weight: bolder;
+    color: #363968;
+    text-align: center;
+    margin-right: 2vh;
+}
+
+/* Tabla.css */
+
+
+.tablaestilo {
+    background-color: rgba(217, 217, 217, 0.3);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+.tablaestilo td {
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 50%;
+    display: flex;
+    float: left;
+}
+
+.tablaestilo tr {
+    border-bottom: 1px solid black;
+}
+
+.tablaestilo tr:last-child {
+    border-bottom: 0;
+}
+
+.nombre_perfil {
+    font-family: 'Mina', sans-serif;
+    font-size: 2.25vw;
+}
+
+.p_uf_curso {
+    font-size: 1.75vw;
+    margin-right: 4vh;
+    color: black;
+}
+
+.uf_curso {
+    font-size: 2.5vw;
+    font-family: 'Mina';
+    margin-right: 4vh;
+    color: #363968;
+}
+
+.karen019 .bars-img {
+    display: none;
+}
+
+@media (max-width: 1080px) {
+    .karen019 .bars-img {
+        display: block; 
+    }
+}
+
+.reservaciones-pend-fut {
+    text-align: start;
+    font-size: 1.5vw;
+    align-items: start;
+}
+
+.reservaciones-pend-fut-div {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+
+.reservaciones-pend-fut-div-title {
+    text-align: center;
+    width: 100%;
+    font-size: 2vw;
+    font-family: 'Mina', sans-serif;
+    margin-bottom: 1vh;
+}
+
+.reservaciones-pend-fut-div-content {
+    text-align: center;
+    float: left;
+    width: 100%;
+    font-family: 'Mina', sans-serif;
+    margin-bottom: 2vh;
+    align-items: start;
+}
+
+.contenedor-tarjeta-general019 {
+    margin: 10px;
+}
+
+.contenedor-principal-tarjetas019 {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.contenedor-tarjetas019 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: start;
+    width: 95%;
+    height: 40vh;
+    background-color: #d9d9d96d;
+    padding: 2.5vh;
+    border-radius: 1.5vw;
+    box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.08);
+    overflow: auto;
+    overflow-x: hidden;
+    margin-bottom: 4vh;
+}
+
+.contenedor-tarjetas019::-webkit-scrollbar {
+    display: none;
+}
+
+.tarjeta {
+    margin-bottom: 5vh;
+    margin-right: 2vh;
+    width: 100%;
+    line-height: 1.5;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 1px 4px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s;
+}
+
+.tarjeta:hover {
+    box-shadow: 2px 6px rgba(56, 56, 56, 0.384);
+}
+
+.tarjeta-info {
+    background-color: #D9D9D9; 
+    border-radius: 20px;  
+    z-index: 1;
+    position: relative;
+    padding: 1vh;
+    padding-bottom: 0;
+    max-width: 100%; 
+    margin: 0 auto; 
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-img-inside {
+    position: relative;
+    z-index: 0;
+    border-radius: 25px;
+    margin-bottom: -70px;
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.tarjeta-info h2 {
+    font-size: 1.25vw;
+    margin: 0;
+    text-align: left;
+    padding-left: 5%;
+    margin-bottom: 2vh;
+    font-family: 'Mina', sans-serif;
+}
+
+.info-container019 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 1vw;
+    margin-top: -10px; 
+    font-size: 1vw;
+}
+
+.botoncito1019 {
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
+    background-color: #6d1919;
+    color: #eff0ff;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    transition: box-shadow 0.3s;
+}
+
+.botoncito1019:hover {
+    box-shadow: 0px 0px rgb(185, 185, 185);
+}
+
+.botoncito2019 {
+    padding: 5px 15px 5px 15px ;
+    font-size: 3vh;
+    background-color: #363968;
+    color: #eff0ff;
+    border-radius: 30px;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    transition: box-shadow 0.3s;
+}
+
+.botoncito2019:hover {
+    box-shadow: 0px 0px rgb(185, 185, 185);
+}
+
+.relojcito {
+    width: 13%;
+}
+
+.info-detail-cl-bt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}

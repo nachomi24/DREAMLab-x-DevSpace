@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Tarjetas.css";
-import "./TarjetaInfo.css";
+import "../../HU0016_HU0017.css";
 import Menu from "../Menu/Menu";
 import Modal from "../Modal/Modal";
 import foto1 from "../../../assets/iaia.png";
@@ -37,7 +36,7 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
   );
 
   return (
-    <div className="contenedor-tarjeta-general">
+    <div className="contenedor-tarjeta-general016">
       <Menu 
         onMenuClick={onMenuClick}
         searchTerm={searchTerm}
@@ -45,8 +44,8 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
         toggleSearch={toggleSearch}
         searchVisible={searchVisible}
       />
-      <div className="contenedor-principal-tarjetas">
-        <div className="contenedor-tarjetas">
+      <div className="contenedor-principal-tarjetas016">
+        <div className="contenedor-tarjetas016">
           <div>
           </div>
           {filteredDatos.map((dato, index) => (
@@ -95,17 +94,17 @@ const Tarjeta = ({
 
   return (
     <>
-      <div onClick={handleOpenModal} className="tarjeta">
+      <div onClick={handleOpenModal} className="tarjeta016">
         <div>
           <img
-            className="tarjeta-img-inside"
+            className="tarjeta-img-inside016"
             src={imagenAleatoria}
             alt={Ubicacion}
           />
         </div>
-        <div className="tarjeta-info">
+        <div className="tarjeta-info016">
           <h2>{Nombre}</h2>
-          <div className="info-container">
+          <div className="info-container016">
             <p>{Ubicacion}</p>
             <p>{convertirHora(HoraInicio)}</p>
           </div>
