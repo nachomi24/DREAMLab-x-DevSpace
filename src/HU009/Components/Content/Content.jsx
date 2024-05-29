@@ -3,9 +3,9 @@ import '../../HU009.css';
 
 const Content = () => {
   return (
-    <div className='Content'>
-      <div className='content-height'>
-        <div className='Content-text'>
+    <div className='ContentHU009'>
+      <div className='content-heightHU009'>
+        <div className='Content-textHU009'>
           <h1>GARAGE</h1>
           <h1>VALLEY</h1>
         </div>

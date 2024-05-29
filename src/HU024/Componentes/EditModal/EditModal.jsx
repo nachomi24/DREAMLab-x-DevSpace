@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+<<<<<<< HEAD
 import "./Modal.css";
+=======
+import "../../HU0024.css";
+>>>>>>> 79518c443d1b3b2b0011738bcb2451114d21628e
 
 const EditModal = ({ publicacion, onClose, onUpdate }) => {
   const [titulo, setTitulo] = useState("");

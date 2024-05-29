@@ -3,8 +3,8 @@ import '../../HU008.css'
 
 const Descripcion = () => {
   return (
-    <div className='boxd'>
-        <p className='descripcion'>HAZ CLICK EN LA SECCIÓN DE TU<br />INTERÉS PARA SABER MÁS ACERCA<br />DE LO QUE TE OFRECE</p>
+    <div className='boxdHU008'>
+        <p className='descripcionHU008'>HAZ CLICK EN LA SECCIÓN DE TU<br />INTERÉS PARA SABER MÁS ACERCA<br />DE LO QUE TE OFRECE</p>
     </div>
   )
 }

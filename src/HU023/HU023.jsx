@@ -1,10 +1,11 @@
 import StatsA from './StatsA.jsx';
-import './indexHU023.css'
+import './HU023.css'
+import "../global.css";
 import React from 'react';
 
 function HU023() {
   return (
-    <div>
+    <div className='cuerpoHU023'>
       <StatsA />
     </div>
   );

@@ -185,7 +185,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   return (
     <div className="HU004">
       {!isLoggedIn ? (
-        <div className="login_form">
+        <div className="login_formHU004">
           <h2>INICIAR SESIÓN</h2>
           <form onSubmit={handleLogin}>
             <div>
@@ -213,7 +213,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
       ) : (
         <div className="chat_container">
           <div className="chat_window">
-            <div className="top_menu">
+            <div className="top_menuHU004">
               <div className="title">RESERVA TU LUGAR</div>
             </div>
             <a href="/reservationform" className="reservation-link">
@@ -234,7 +234,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
               <div ref={messagesEndRef} />
             </ul>
             {showMessageInput && (
-              <div className="bottom_wrapper clearfix">
+              <div className="bottom_wrapperHU004 clearfix">
                 <div className="message_input_wrapper">
                   <textarea
                     id="message_input"

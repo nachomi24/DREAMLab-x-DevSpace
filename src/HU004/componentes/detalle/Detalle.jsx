@@ -75,39 +75,39 @@ const PopUp = ({
 
   return (
     <div>
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-content-inside">
-          <div className="modal-content-inside-header">
+    <div className="modal-overlayHU004" onClick={onClose}>
+      <div className="modal-contentHU004" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-contentHU004-inside">
+          <div className="modal-contentHU004-inside-header">
             <h2 className="titulito-header">DETALLES DE LA RESERVACIÓN</h2>
           </div>
-          <div className="modal-content-inside-body">
-            <div className="modal-content-inside-body-content">
-              <div className="modal-content-inside-body-content-ubi">
+          <div className="modal-contentHU004-inside-body">
+            <div className="modal-contentHU004-inside-body-content">
+              <div className="modal-contentHU004-inside-body-content-ubi">
                 <p>
                   <strong>SALA:</strong> {SalaID}
                 </p>
               </div>
-              <div className="modal-content-inside-body-content-fecha">
+              <div className="modal-contentHU004-inside-body-content-fecha">
                 <p>
                   <strong>FECHA: </strong>
                   {convertirFecha(Dia)}
                 </p>
-                <div className="modal-content-inside-body-content-horarie">
+                <div className="modal-contentHU004-inside-body-content-horarie">
                   <p>
                     <strong>HORARIO:</strong> {convertirHora(HoraInicio)} -{" "}
                     {convertirHora(HoraFin)}
                   </p>
                 </div>
               </div>
-              <div className="modal-content-inside-body-content-personas">
-                <div className="modal-content-inside-body-content-detalles-recursos">
+              <div className="modal-contentHU004-inside-body-content-personas">
+                <div className="modal-contentHU004-inside-body-content-detalles-recursos">
                   <p>
                     <strong>RECURSOS:</strong> {Recursos}
                   </p>
                 </div>
-                <div className="modal-content-inside-body-content-detalles">
-                  <div className="modal-content-inside-body-content-detalles-personas">
+                <div className="modal-contentHU004-inside-body-content-detalles">
+                  <div className="modal-contentHU004-inside-body-content-detalles-personas">
                     <p>
                       <strong>PERSONAS:</strong> {Personas}
                     </p>
@@ -116,12 +116,12 @@ const PopUp = ({
               </div>
             </div>
           </div>
-          <div className="modal-content-inside-body-content-boton">
-            <div className="modal-content-inside-body-content-boton-content">
-              <button className="botoncito1" onClick={onClose}>
+          <div className="modal-contentHU004-inside-body-content-boton">
+            <div className="modal-contentHU004-inside-body-content-boton-content">
+              <button className="botoncitoHU004" onClick={onClose}>
                 Cancelar
               </button>
-              <button className="botoncito2" onClick={handleConfirm}>
+              <button className="botoncito2HU004" onClick={handleConfirm}>
                 Confirmar
               </button>
             </div>

@@ -264,10 +264,10 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   return (
     <div>
     <div className="chat_window">
-      <div className="top_menu">
+      <div className="top_menuHU004">
         <div className="title">RESERVA TU LUGAR</div>
       </div>
-      <div className="error">
+      <div className="errorHU004">
         <div id="error-title" className="title"></div>
       </div>
       <ul id="all_messages" className="messages">
@@ -281,7 +281,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
         ))}
         <div ref={messagesEndRef} />
       </ul>
-      <div className="bottom_wrapper clearfix">
+      <div className="bottom_wrapperHU004 clearfix">
         {showButton && (
           <button className="send_message2" onClick={togglePopUp}>
             Detalles Reserva

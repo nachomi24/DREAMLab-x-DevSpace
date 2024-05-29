@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Menu.css";
+import "../../HU0016_HU0017.css";
 
 function Menu({
   onMenuClick,

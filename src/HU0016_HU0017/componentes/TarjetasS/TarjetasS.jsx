@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import "./TarjetasSalas.css";
-import "./TarjetaInfoS.css";
+import "../../HU0016_HU0017.css";
 import Menu from "../Menu/Menu";
 import Modal from "../Modal/ModalS";
 import foto1 from "../../../assets/sala1.png";
@@ -35,7 +34,7 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
   );
 
   return (
-    <div className="contenedor-tarjeta-general">
+    <div className="contenedor-tarjeta-general-s">
       <Menu 
         onMenuClick={onMenuClick}
         searchTerm={searchTerm}
@@ -43,8 +42,8 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
         toggleSearch={toggleSearch}
         searchVisible={searchVisible}
       />
-      <div className="contenedor-principal-tarjetas">
-        <div className="contenedor-tarjetas">
+      <div className="contenedor-principal-tarjetas-s">
+        <div className="contenedor-tarjetas-s">
           {filteredDatos.map((dato, index) => (
             <Tarjeta
               key={dato.id}
@@ -85,17 +84,17 @@ const Tarjeta = ({
 
   return (
     <>
-      <div onClick={handleOpenModal} className="tarjeta">
+      <div onClick={handleOpenModal} className="tarjeta-s">
         <div>
           <img
-            className="tarjeta-img-inside"
+            className="tarjeta-img-inside-s"
             src={imagenAleatoria}
             alt={SalaID}
           />
         </div>
-        <div className="tarjeta-info">
+        <div className="tarjeta-info-s">
           <h2>{Nombre}</h2>
-          <div className="info-container">
+          <div className="info-container-s">
             <p>{SalaID}</p>
           </div>
         </div>
