@@ -12,3 +12,12 @@
     line-height: 1;
     cursor: pointer;
   }
+
+
+  body{
+    background-image: url('../src/assets/bghome.jpg');
+    background-repeat: repeat-y;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+  }

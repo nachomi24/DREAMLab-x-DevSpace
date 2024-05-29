@@ -141,21 +141,21 @@ const ReservationForm = () => {
 
     return (
         <div className="containerHU025">
-            <div className="left">
+            <div className="left-HU025">
                 <br />
                 <br />
                 <br />
                 <br />
-                <img src={fotodreamy} className="dreamy" alt="foto de dreamy" />
+                <img src={fotodreamy} className="dreamy-HU025" alt="foto de dreamy" />
             </div>
-            <div className="right">
+            <div className="right-HU025">
                 <br />
                 <br />
                 <br />
                 <br />
                 <h2 className='h2HU025'>RESERVA TU LUGAR</h2>
-                <form className="reservation-form" onSubmit={handleSubmit}>
-                    <label className='subtitulo'>
+                <form className="reservation-form-HU025" onSubmit={handleSubmit}>
+                    <label className='subtitulo-HU025'>
                         Sala:
                         <Select
                             options={optionsSalas}
@@ -164,7 +164,7 @@ const ReservationForm = () => {
                             onChange={setSelectedSala}
                         />
                     </label>
-                    <label className='subtitulo'>
+                    <label className='subtitulo-HU025'>
                         Fecha:
                         <DatePicker
                             dateFormat="dd/MM/yyyy"
@@ -174,7 +174,7 @@ const ReservationForm = () => {
                             filterDate={(date) => !isWeekend(date)}
                         />
                     </label>
-                    <label className='subtitulo'>
+                    <label className='subtitulo-HU025'>
                         Hora de Inicio:
                         <select
                             value={horaInicio}
@@ -187,7 +187,7 @@ const ReservationForm = () => {
                             ))}
                         </select>
                     </label>
-                    <label className='subtitulo'>
+                    <label className='subtitulo-HU025'>
                         Hora de Fin:
                         <select
                             value={horaFin}
@@ -200,7 +200,7 @@ const ReservationForm = () => {
                             ))}
                         </select>
                     </label>
-                    <label className='subtitulo'>
+                    <label className='subtitulo-HU025'>
                         Recursos:
                     </label>
                     <fieldset>
@@ -208,7 +208,7 @@ const ReservationForm = () => {
                             <div key={recurso.nombre}>
                                 <label>
                                     {recurso.nombre}:
-                                    <div className="counter">
+                                    <div className="counter-HU025">
                                         <button
                                             type="button"
                                             onClick={() => handleResourceChange(recurso.nombre, Math.max((recursosSeleccionados[recurso.nombre] || 0) - 1, 0))}
@@ -227,9 +227,9 @@ const ReservationForm = () => {
                             </div>
                         ))}
                     </fieldset>
-                    <label className='subtitulo'>
+                    <label className='subtitulo-HU025'>
                         Cantidad de Personas:
-                        <div className="counter">
+                        <div className="counter-HU025">
                             <button
                                 type="button"
                                 onClick={() => setCantidadPersonas(prevCount => prevCount > 1 ? prevCount - 1 : 1)}
