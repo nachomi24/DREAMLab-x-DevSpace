@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mina&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
@@ -31,5 +31,12 @@ body.global-background {
   background-size: cover;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+}
+
+body.videowall-background {
+  font-weight: 700;
+  background: linear-gradient(to bottom, #000000, #17113d, #5915a6);
+  background-attachment: fixed;
   overflow: hidden;
 }

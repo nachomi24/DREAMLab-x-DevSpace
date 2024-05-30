@@ -1,10 +1,4 @@
-/*.cuerpoHU0019{
-    background-image: url('../assets/bghome.jpg');
-    background-repeat: repeat-y;
-    background-size: cover;
-  
-  }
-*/ 
+ 
 .containerHU0019{
     padding-left: 7%;
     padding-right: 7%;
@@ -123,7 +117,7 @@
 .Content {
     width: 100%;
     min-height: 110vh;
-    background: url(../../assets/fondo6.0.png) no-repeat center center/cover;
+    background: url(../assets/fondo6.0.png) no-repeat center center/cover;
     background-size: cover;
     background-position: center;
     color: #363968;

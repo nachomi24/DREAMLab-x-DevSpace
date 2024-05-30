@@ -277,6 +277,7 @@
   
   .h2-titulo {
     font-size: 2.4vh;
+    font-weight: 500;
   }
   
   .h1-publicaciones {
@@ -312,7 +313,6 @@
     font-weight: 700;
     border: none;
     cursor: pointer;
-    margin-bottom: 2vh;
     transition: box-shadow 0.3s;
   }
   
@@ -340,5 +340,14 @@
   
   .estado-publicacion.inactiva {
     background-color: #ccc; /* Gris para inactivo */
+  }
+
+  .videowall-link {
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    text-align: center;
+    color: #363968;
+    font-size: 1.25vw;
   }
   

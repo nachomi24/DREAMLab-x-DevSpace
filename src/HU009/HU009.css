@@ -149,7 +149,7 @@
   left: 0;
   width: 100%;
   min-height: 90vh;
-  background: url(../../../assets/fondo6.0.png) no-repeat center center/cover;
+  background: url(../assets/fondo6.0.png) no-repeat center center/cover;
   background-size: 100% auto;
   background-position: center calc(85% - 20px);;
   color: #363968;

@@ -204,9 +204,25 @@ function TarjetasPublicaciones({ datos }) {
       <div className="contenedor-principal-tarjetas024">
         <div className="contenedor-tarjetas024">
           <h1 className="h1-publicaciones">PUBLICACIONES</h1>
-          <button className="boton-agregar" onClick={handleOpenAddModal}>
-            AGREGAR PUBLICACIÓN
-          </button>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <button className="boton-agregar" onClick={handleOpenAddModal}>
+              AGREGAR PUBLICACIÓN
+            </button>
+            <a className="videowall-link" href="/videowall" target="_blank">
+              <i
+                style={{ marginRight: "15px", fontSize: "6vh" }}
+                className="fa-solid fa-arrows-to-eye"
+              ></i>
+              <p>Visualizar Videowall</p>
+            </a>
+          </div>
           <div className="contenedor-filtros024">
             {/* Puedes agregar filtros aquí si es necesario */}
           </div>
