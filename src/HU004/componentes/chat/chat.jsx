@@ -52,7 +52,9 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
         const normalizedTipo = Tipo.trim().toLowerCase();
 
         if (normalizedTipo === "admin") {
-          window.location.replace("http://localhost:8080/admin/reservaciones");
+          window.location.replace(
+            "https://green-ground-02320f30f.5.azurestaticapps.net/admin/reservaciones"
+          );
         }
 
         setLoggedIn(true);
