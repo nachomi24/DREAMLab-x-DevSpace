@@ -247,6 +247,7 @@ nav ul li {
     width: 100%;
     text-align: left;
     padding: 10px 20px;
+    line-height: 1;
   }
   
   nav .karen .bars-img-navbar-principal {

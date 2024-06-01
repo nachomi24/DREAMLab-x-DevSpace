@@ -2,7 +2,7 @@ import Navbar from "../Navbar/Navbar";
 import TarjetasT from "./componentes/TarjetasT/TarjetasT";
 import TarjetasS from "./componentes/TarjetasS/TarjetasS";
 import axios from "axios";
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 import "./HU0016_HU0017.css";
 import "../global.css";
@@ -32,8 +32,6 @@ function HU0016_HU0017() {
     }
   };
 
-  
-
   useEffect(() => {
     if (activeMenu === 0) {
       obtenerTalleres();
@@ -50,7 +48,6 @@ function HU0016_HU0017() {
       ) : (
         <TarjetasS datos={salas} onMenuClick={setActiveMenu} />
       )}
-      
     </div>
   );
 }
