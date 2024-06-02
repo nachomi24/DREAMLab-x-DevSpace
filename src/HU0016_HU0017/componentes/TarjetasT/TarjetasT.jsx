@@ -3,7 +3,7 @@ import "../../HU0016_HU0017.css";
 import Menu from "../Menu/Menu";
 import Modal from "../Modal/Modal";
 
-const ContenedorTarjetas = ({ datos, onMenuClick }) => {
+const ContenedorTarjetas = ({ datos, onMenuClick, activeMenu }) => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -15,6 +15,10 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
     setSearchTerm(event.target.value);
   };
 
+  const handleMenuClick = (index) => {
+    onMenuClick(index);
+  };
+
   const filteredDatos = datos.filter((dato) =>
     dato.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -22,11 +26,12 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
   return (
     <div className="contenedor-tarjeta-general016">
       <Menu
-        onMenuClick={onMenuClick}
+        onMenuClick={handleMenuClick}
         searchTerm={searchTerm}
         onSearchChange={handleSearchChange}
         toggleSearch={toggleSearch}
         searchVisible={searchVisible}
+        activeIndex={activeMenu} // Pasar activeMenu como prop
       />
       <div className="contenedor-principal-tarjetas016">
         <div className="contenedor-tarjetas016">

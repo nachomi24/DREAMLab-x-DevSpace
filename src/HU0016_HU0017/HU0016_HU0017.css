@@ -24,10 +24,11 @@
 
 .menu-row-element016 {
     margin: 0 2.5vw;
+    color: rgb(141, 141, 141);
 }
 
 .menu-row-element016.active a {
-    color: rgb(141, 141, 141); /* Cambia este color al que prefieras */
+    color: #363968; /* Cambia este color al que prefieras */
 }
 
 .menu-row-element016 a {
