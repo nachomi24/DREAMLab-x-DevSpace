@@ -5,6 +5,7 @@ import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../HU025.css';
 import fotodreamy from '../../assets/dreamy.png';
+import PopUp from "../../HU004/componentes/detalle/Detalle";
 
 const apiSALAS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 const apiHORARIO = "https://dreamlabapidev.azurewebsites.net/api/horario/";
@@ -23,6 +24,8 @@ const ReservationForm = () => {
     const [horaInicio, setHoraInicio] = useState("");
     const [horaFin, setHoraFin] = useState("");
     const [recursosSeleccionados, setRecursosSeleccionados] = useState({});
+    const [showPopUp, setShowPopUp] = useState(false); // State para controlar el popup
+    const [reservaData, setReservaData] = useState({}); // Nuevo state para almacenar datos de la reserva
 
     useEffect(() => {
         const obtenerSalas = async () => {
@@ -88,7 +91,8 @@ const ReservationForm = () => {
         try {
             const response = await axios.post(apiRESERVACION, data);
             console.log("Respuesta de la API:", response.data);
-            alert("Reserva realizada con éxito");
+            setReservaData(data); // Guardar los datos de la reserva en el estado
+            setShowPopUp(true); // Mostrar el popup al enviar la solicitud
         } catch (error) {
             if (error.response) {
                 console.error("Error al realizar la reserva:", error.response.data);
@@ -99,7 +103,6 @@ const ReservationForm = () => {
             }
         }
     };
-    
 
     const isWeekend = (date) => {
         const day = date.getDay();
@@ -229,24 +232,29 @@ const ReservationForm = () => {
                     </fieldset>
                     <label className='subtitulo-HU025'>
                         Cantidad de Personas:
-                        <div className="counter-HU025">
-                            <button
-                                type="button"
-                                onClick={() => setCantidadPersonas(prevCount => prevCount > 1 ? prevCount - 1 : 1)}
-                            >
-                                -
-                            </button>
-                            <span>{cantidadPersonas}</span>
-                            <button
-                                type="button"
-                                onClick={() => setCantidadPersonas(prevCount => prevCount < cupo ? prevCount + 1 : prevCount)}
-                            >
-                                +
-                            </button>
-                        </div>
+                        <input
+                            type="number"
+                            value={cantidadPersonas}
+                            onChange={(e) => setCantidadPersonas(Math.min(Math.max(e.target.value, 1), cupo))}
+                            min="1"
+                            max={cupo}
+                        />
                     </label>
-                    <button type="submit">Reservar</button>
+                    <button className="submit-button-HU025" type="submit">Reservar</button>
                 </form>
+                {showPopUp && (
+                    <PopUp
+                        onClose={() => setShowPopUp(false)}
+                        Matricula={reservaData.Matricula}
+                        SalaID={reservaData.SalaID}
+                        Dia={reservaData.Dia}
+                        HoraInicio={reservaData.HoraInicio}
+                        HoraFin={reservaData.HoraFin}
+                        Recursos={reservaData.Recursos}
+                        Personas={reservaData.Personas}
+                        Confirmada={reservaData.Confirmada}
+                    />
+                )}
             </div>
         </div>
     );
