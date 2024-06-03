@@ -111,8 +111,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-right: 50px;
-    margin-bottom: 35px;
 }
 
 .Content {
@@ -326,7 +324,6 @@
     box-shadow: 0.8vw 0.8vw 2vw 2vw rgba(0, 0, 0, 0.08);
     overflow: auto;
     overflow-x: hidden;
-    margin-bottom: 4vh;
 }
 
 .contenedor-tarjetas019::-webkit-scrollbar {
@@ -334,8 +331,7 @@
 }
 
 .tarjeta {
-    margin-bottom: 5vh;
-    margin-right: 2vh;
+    margin-bottom: 3vh;
     width: 100%;
     line-height: 1.5;
     cursor: pointer;
@@ -433,3 +429,71 @@
     align-items: center;
     margin-bottom: 20px;
 }
+
+/* ConfirmCancelPopup.css */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    width: 75vh;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .popup-button-div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .popup-button-div-inside {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .popup-button-cerrar {
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
+    background-color: #6d1919;
+    color: #eff0ff;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s;
+  }
+
+  .popup-button-cerrar:hover {
+    box-shadow: 0px 0px rgb(0, 0, 0);
+  }
+
+  .popup-button-aceptar {
+    padding: 5px 15px 5px 15px;
+	font-size: 3vh;
+	background-color: #363968;
+	color: #eff0ff;
+	border-radius: 25px;
+	border: none;
+	cursor: pointer;
+	box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+	transition: box-shadow 0.3s;
+  }
+
+  .popup-button-aceptar:hover {
+    box-shadow: 0px 0px rgb(0, 0, 0);
+  }
+  

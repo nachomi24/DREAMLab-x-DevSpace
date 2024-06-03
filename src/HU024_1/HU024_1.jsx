@@ -21,7 +21,7 @@ const HU024_1 = () => {
     const fetchReservaciones = async () => {
       try {
         const response = await axios.get(
-          "https://dreamlabapidev.azurewebsites.net/api/info_reservaciones"
+          "https://dreamlabapidev.azurewebsites.net/api/reservaciones_confirmadas"
         );
         setReservaciones(response.data);
       } catch (error) {
@@ -32,7 +32,7 @@ const HU024_1 = () => {
     const fetchPublicaciones = async () => {
       try {
         const response = await axios.get(
-          "https://dreamlabapidev.azurewebsites.net/api/publicaciones"
+          "https://dreamlabapidev.azurewebsites.net/api/publicaciones_activas"
         );
         setPublicaciones(response.data);
       } catch (error) {
@@ -160,8 +160,8 @@ const HU024_1 = () => {
       >
         {reservaciones.map((reservacion, index) => {
           const textLength = reservacion.NombreEstudiante.length;
-          const percentage = Math.min(textLength * 0.75, 100); // Porcentaje máximo de 100%
-          const duration = Math.min(textLength * 0.25, 10); // Duración mínima de 10 segundos
+          const percentage = Math.min(textLength * 0.55, 100); // Porcentaje máximo de 100%
+          const duration = Math.min(textLength * 0.2, 10); // Duración mínima de 10 segundos
 
           return (
             <SwiperSlide key={index}>

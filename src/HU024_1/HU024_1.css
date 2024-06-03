@@ -39,7 +39,7 @@
 
 .reservation-card {
   margin: 1rem;
-  background-color: #E7F1FF;
+  background-color: #dddaff;
   box-shadow: 0 1px 3vh #E7F1FF, 0 0 3vh #E7F1FF;
   border-radius: 1rem;
   padding: 1rem;
@@ -51,7 +51,7 @@
   justify-content: center;
   text-align: center;
   font-weight: bolder;
-  width: 15vw;
+  width: 18vw;
   height: 20vh;
   overflow: hidden;
   cursor: pointer;
@@ -156,7 +156,8 @@
 }
 
 .bienvenida {
-  font-size: calc(0.5rem + 1.5vw);
+  font-size: calc(0.5rem + 1.4vw);
+  margin-bottom: 1.25rem;
 }
 
 .bienvenida-peque {
@@ -174,7 +175,7 @@
 }
 
 .qr-code {
-  height: 15vh;
+  height: 8vw;
   display: block; /* Asegura que la imagen se muestre como bloque para aplicar márgenes automáticos */
   margin: 0 auto; /* Centra horizontalmente */
 }
@@ -210,7 +211,7 @@
   }
   
   .card-back {
-    background-color: #fff;
+    background-color: #dddaff;
     transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
