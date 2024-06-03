@@ -39,14 +39,16 @@
 
   
 .dreamy-HU025 {
-  max-width: 75vh;
+  max-width: 90vh;
   height: auto;
   position: fixed;
   padding-right: 10px;
+  margin-top: -1.5vh;
+  z-index: -1000;
 } 
 
   .left-HU025 {
-    flex: 6;
+    flex: 1;
   }
   
   .right-HU025 {
@@ -194,4 +196,218 @@ div.css-t3ipsp-control:hover{
 
 div.css-1nmdiq5-menu{
     font-size: 2.5vh;
+}
+
+select {
+  font-size: 2.5vh;
+  border: 0px;
+  padding: 0.8vh;
+  width: 35%;
+  border-radius: 5px;
+  margin-left: 1.5vh;
+}
+
+.reservation-form-HU025 input[type="number"] {
+  font-size: 2.5vh;
+  border: 0px;
+  padding: 0.8vh;
+  width: 10%;
+  text-align: center;
+  border-radius: 5px;
+  margin-left: 1vh;
+}
+
+.reservation-form-HU025 input[type="text"] {
+  font-size: 2.5vh;
+  border: 0px;
+  padding: 0.8vh;
+  width: 100%;
+  border-radius: 5px;
+}
+
+@media (max-width: 480px) {
+  .left-HU025 {
+    display: none;
+  }
+
+  .right-HU025 {
+    width: 100%;
+  }
+
+  .reservation-form-HU025 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #cccccc00;
+    border-radius: 15px;
+    background-color: rgba(240, 240, 240, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerHU025 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .h2HU025 {
+    font-size: 5vh;
+    color: #363968;
+    text-align: center;
+    line-height: 5vh;
+    padding-bottom: 1vh;
+  }
+
+  legend.subtitulo-HU025 {
+    font-size: 1vh;
+    padding-left: 10px;
+  }
+
+  .react-datepicker-ignore-onclickoutside{
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 1vh;
+    width: 100%;
+  }
+
+  .reservation-form-HU025 input[type="text"] {
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 0.8vh;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  select {
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 0.8vh;
+    width: 35%;
+    border-radius: 5px;
+    margin-left: 1.5vh;
+  }
+
+  .reservation-form-HU025 input[type="number"] {
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 0.8vh;
+    width: 20%;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .cuerpoHU025 {
+    background-image: url('../assets/fond2.9.png');
+    background-position: left;
+    background-size: cover;
+  }
+
+  .submit-button-HU025 {
+    font-size: 2.5vh;
+    padding: 1vh;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #363968;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+  
+  }
+}
+
+@media (max-width: 768px) {
+  .left-HU025 {
+    display: none;
+  }
+
+  .right-HU025 {
+    width: 100%;
+  }
+
+  .reservation-form-HU025 {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #cccccc00;
+    border-radius: 15px;
+    background-color: rgba(240, 240, 240, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerHU025 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .h2HU025 {
+    font-size: 5vh;
+    color: #363968;
+    text-align: center;
+    line-height: 5vh;
+    padding-bottom: 1vh;
+  }
+
+  legend.subtitulo-HU025 {
+    font-size: 1vh;
+    padding-left: 10px;
+  }
+
+  .react-datepicker-ignore-onclickoutside{
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 1vh;
+    width: 100%;
+  }
+
+  .reservation-form-HU025 input[type="text"] {
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 0.8vh;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  select {
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 0.8vh;
+    width: 35%;
+    border-radius: 5px;
+    margin-left: 1.5vh;
+  }
+
+  .reservation-form-HU025 input[type="number"] {
+    font-size: 2.5vh;
+    border: 0px;
+    padding: 0.8vh;
+    width: 20%;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .cuerpoHU025 {
+    background-image: url('../assets/fond2.9.png');
+    background-position: left;
+    background-size: cover;
+  }
+
+  .submit-button-HU025 {
+    font-size: 2.5vh;
+    padding: 1vh;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #363968;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+  }
 }
