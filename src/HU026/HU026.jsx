@@ -1,12 +1,12 @@
-import Navbar from "../HU022/Componentes/NavbarAdmin/Navbar.jsx";
-import Tarjetas from "./Componentes/TarjetasVideo/TarjetasVideo.jsx";
+import Navbar from "../Navbar/Navbar.jsx";
+import Tarjetas from "../HU026/Componentes/TarjetasTalleres.jsx";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "./HU0024.css";
+import "../HU026/HU026.css";
 const apiURLPublicaciones =
-  "https://dreamlabapidev.azurewebsites.net/api/publicaciones";
+  "https://dreamlabapidev.azurewebsites.net/api/info_talleres";
 
-function HU024() {
+function HU026() {
   const [publicaciones, setPublicaciones] = useState([]);
 
   const obtenerPublicaciones = async () => {
@@ -24,11 +24,11 @@ function HU024() {
   }, []);
 
   return (
-    <div className="cuerpoHU0024">
+    <div className="cuerpoHU0026">
       <Navbar />
       <Tarjetas datos={publicaciones} />
     </div>
   );
 }
 
-export default HU024;
+export default HU026;
