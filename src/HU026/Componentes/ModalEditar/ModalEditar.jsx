@@ -4,9 +4,9 @@ import "../../HU026.css";
 
 const EditTallerModal = ({ taller, onClose, onUpdate }) => {
   const [tallerID, setTallerID] = useState("");
-  const [nombreProfesor, setNombreProfesor] = useState("");
+  //const [nombreProfesor, setNombreProfesor] = useState("");
   const [ufid, setUFID] = useState("");
-  const [nombreUF, setNombreUF] = useState("");
+  //const [nombreUF, setNombreUF] = useState("");
   const [nombre, setNombre] = useState("");
   const [cupo, setCupo] = useState("");
   //const [ubicacion, setUbicacion] = useState("");
@@ -14,46 +14,46 @@ const EditTallerModal = ({ taller, onClose, onUpdate }) => {
   const [fecha, setFecha] = useState("");
   const [horaInicio, setHoraInicio] = useState("");
   const [horaFin, setHoraFin] = useState("");
-  const [horaCreado, setHoraCreado] = useState("");
+  //const [horaCreado, setHoraCreado] = useState("");
 
   useEffect(() => {
     if (taller) {
       setTallerID(taller.TallerID);
-      setNombreProfesor(taller.NombreProfesor);
+      //setNombreProfesor(taller.NombreProfesor);
       setUFID(taller.UFID);
-      setNombreUF(taller.NombreUF);
+      //setNombreUF(taller.NombreUF);
       setNombre(taller.Nombre);
       setCupo(taller.Cupo);
       //setUbicacion(taller.Ubicacion);
-        setSalaID(taller.SalaID);
+      setSalaID(taller.SalaID);
       setFecha(taller.Fecha);
       setHoraInicio(taller.HoraInicio);
       setHoraFin(taller.HoraFin);
-      setHoraCreado(taller.HoraCreado);
+      //setHoraCreado(taller.HoraCreado);
+      
     }
   }, [taller]);
 
 const handleUpdate = async () => {
   const tallerActualizado = {
     TallerID: tallerID,
-    NombreProfesor: nombreProfesor,
+    //NombreProfesor: nombreProfesor,
     UFID: ufid,
-    NombreUF: nombreUF,
+    //NombreUF: nombreUF,
     Nombre: nombre,
     Cupo: parseInt(cupo, 10),  // Asegúrate de que sea un número
     //Ubicacion: ubicacion,
     SalaID: salaID,
     Fecha: new Date(fecha).toISOString().split('T')[0], // Formato YYYY-MM-DD
     HoraInicio: horaInicio,
-    HoraFin: horaFin,
-    HoraCreado: new Date(horaCreado).toISOString(), // Asegúrate de que sea un datetime
+    HoraFin: horaFin
   };
 
-  console.log("Datos enviados para actualizar:", tallerActualizado);
+  
 
   try {
     const response = await axios.put(
-      `http://localhost:8000/api/actualizar_taller/${taller.TallerID}`,
+      `https://dreamlabapidev.azurewebsites.net/api/actualizar_taller/${tallerID}`,
       tallerActualizado,
       {
         headers: {
@@ -61,7 +61,7 @@ const handleUpdate = async () => {
         },
       }
     );
-    console.log("Respuesta del servidor:", response.data);
+    
     onUpdate(response.data);
     onClose();
   } catch (error) {
@@ -110,11 +110,11 @@ const handleUpdate = async () => {
                 />
               </div> */}
               <div className="field">
-                <label className="titulito026">Nombre UF:</label>
+                <label className="titulito026">ID de UF:</label>
                 <input
                   type="text"
-                  value={nombreUF}
-                  onChange={(e) => setNombreUF(e.target.value)}
+                  value={ufid}
+                  onChange={(e) => setUFID(e.target.value)}
                 />
               </div>
               <div className="field">
@@ -165,14 +165,14 @@ const handleUpdate = async () => {
                   onChange={(e) => setHoraFin(e.target.value)}
                 />
               </div>
-              <div className="field">
+              {/*<div className="field">
                 <label className="titulito026">Hora Creado:</label>
                 <input
                   type="text"
                   value={horaCreado}
                   onChange={(e) => setHoraCreado(e.target.value)}
                 />
-              </div>
+              </div>*/}
               <div className="modal-content026-inside-footer">
                 <button className="boton026" onClick={handleUpdate}>
                   GUARDAR
