@@ -11,6 +11,7 @@
   flex-direction: column;
   padding-left: 5%;
   padding-right: 5%;
+  padding-bottom: 10vh;
 }
 
 .CardHU009 {
@@ -78,6 +79,7 @@
   border-radius: 75px;
   line-height: 1.1;
   box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
+  text-align: center;
 }
 
 .card-marginHU009 {
@@ -93,6 +95,7 @@
 @media (max-width: 1150px) {
   .Content-textHU009 h1 {
       font-size: 9vw; 
+      padding-top: 1vh;
   }
 
   .ReservarAhoraHU009 {
