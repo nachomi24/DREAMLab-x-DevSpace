@@ -1,7 +1,9 @@
+// HU024_1.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Mousewheel, Autoplay } from "swiper/modules";
+import Marquee from "react-fast-marquee";
 import Card from "./Componentes/Card/Card.jsx";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -19,7 +21,7 @@ const HU024_1 = () => {
     const fetchReservaciones = async () => {
       try {
         const response = await axios.get(
-          "https://dreamlabapidev.azurewebsites.net/api/info_reservaciones"
+          "https://dreamlabapidev.azurewebsites.net/api/reservaciones_confirmadas"
         );
         setReservaciones(response.data);
       } catch (error) {
@@ -30,7 +32,7 @@ const HU024_1 = () => {
     const fetchPublicaciones = async () => {
       try {
         const response = await axios.get(
-          "https://dreamlabapidev.azurewebsites.net/api/publicaciones"
+          "https://dreamlabapidev.azurewebsites.net/api/publicaciones_activas"
         );
         setPublicaciones(response.data);
       } catch (error) {
@@ -105,37 +107,41 @@ const HU024_1 = () => {
     });
   };
 
-  const shouldEnableLoop = (slides, slidesPerView) => {
-    return slides.length > slidesPerView;
-  };
-
-  // Dentro del componente VideoWall
   const renderVerticalCarousel = (columnIndex) => {
     const isPaused = pausedColumns.includes(columnIndex);
-    const direction = columnIndex % 2 === 0 ? "scroll-up" : "scroll-down";
+    const direction = columnIndex % 2 === 0 ? "up" : "down";
+    const firstRow = publicaciones.slice(0, publicaciones.length / 2);
 
     return (
       <div className={`vertical-carousel ${isPaused ? "paused" : ""}`}>
-        {publicaciones.map((publicacion, index) => (
-          <div
-            key={index}
-            className={`carousel-slide ${direction}`}
-            style={{ animationDelay: `${index * 5}s` }}
-          >
-            <Card
-              publicacion={publicacion}
-              onClick={() => handleCardClick(columnIndex)}
-              isPaused={isPaused}
-            />
-          </div>
-        ))}
+        <Marquee
+          direction={direction}
+          gradient={false}
+          play={!isPaused}
+          speed={50}
+          style={{ height: "100%" }}
+        >
+          {firstRow.map((publicacion, index) => (
+            <div
+              key={index}
+              className={`carousel-slide`}
+              style={{ animationDelay: `${index * 5}s` }}
+            >
+              <Card
+                publicacion={publicacion}
+                onClick={() => handleCardClick(columnIndex)}
+                isPaused={isPaused}
+              />
+            </div>
+          ))}
+        </Marquee>
       </div>
     );
   };
 
   const renderHorizontalSwiper = () => {
     const slidesPerView = 4;
-    const loop = shouldEnableLoop(reservaciones, slidesPerView);
+    const loop = reservaciones.length > slidesPerView;
 
     return (
       <Swiper
@@ -154,8 +160,8 @@ const HU024_1 = () => {
       >
         {reservaciones.map((reservacion, index) => {
           const textLength = reservacion.NombreEstudiante.length;
-          const percentage = Math.min(textLength * 0.75, 100); // Porcentaje máximo de 100%
-          const duration = Math.min(textLength * 0.25, 10); // Duración mínima de 10 segundos
+          const percentage = Math.min(textLength * 0.55, 100); // Porcentaje máximo de 100%
+          const duration = Math.min(textLength * 0.2, 10); // Duración mínima de 10 segundos
 
           return (
             <SwiperSlide key={index}>
@@ -221,7 +227,7 @@ const HU024_1 = () => {
             <img src={DreamLab} alt="DreamLab" className="dreamlab" />
             <p className="bienvenida">D.R.E.A.M. LAB</p>
             <img
-              src={`https://api.qrserver.com/v1/create-qr-code/?data=https://devspaceapp.azurewebsites.net/&size=100x100`}
+              src={`https://api.qrserver.com/v1/create-qr-code/?data=https://dreamlabupc.com/HU024_1&size=150x150`}
               alt="QR Code"
               className="qr-code"
             />

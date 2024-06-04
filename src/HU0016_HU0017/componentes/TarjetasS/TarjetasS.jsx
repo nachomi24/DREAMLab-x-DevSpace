@@ -11,7 +11,7 @@ const obtenerImagenAleatoria = () => {
   return imagenes[indiceAleatorio];
 };
 
-const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
+const ContenedorTarjetasSalas = ({ datos, onMenuClick, activeMenu }) => {
   const [imagenesAleatorias, setImagenesAleatorias] = useState([]);
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,18 +29,24 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick }) => {
     setSearchTerm(event.target.value);
   };
 
+  const handleMenuClick = (index) => {
+    console.log("handleMenuClick index:", index); // Verificar que index se pase correctamente
+    onMenuClick(index);
+  };
+
   const filteredDatos = datos.filter((dato) =>
     dato.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="contenedor-tarjeta-general-s">
-      <Menu 
-        onMenuClick={onMenuClick}
+      <Menu
+        onMenuClick={handleMenuClick}
         searchTerm={searchTerm}
         onSearchChange={handleSearchChange}
         toggleSearch={toggleSearch}
         searchVisible={searchVisible}
+        activeIndex={activeMenu}
       />
       <div className="contenedor-principal-tarjetas-s">
         <div className="contenedor-tarjetas-s">

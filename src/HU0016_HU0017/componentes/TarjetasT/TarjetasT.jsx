@@ -1,20 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../HU0016_HU0017.css";
 import Menu from "../Menu/Menu";
 import Modal from "../Modal/Modal";
-import foto1 from "../../../assets/iaia.png";
-import foto2 from "../../../assets/itit.png";
-import foto3 from "../../../assets/vrvr.png";
-import foto4 from "../../../assets/construye.png";
 
-const obtenerImagenAleatoria = () => {
-  const imagenes = [foto1, foto2, foto3, foto4];
-  const indiceAleatorio = Math.floor(Math.random() * imagenes.length);
-  return imagenes[indiceAleatorio];
-};
-
-const ContenedorTarjetas = ({ datos, onMenuClick }) => {
-  const [imagenesAleatorias, setImagenesAleatorias] = useState([]);
+const ContenedorTarjetas = ({ datos, onMenuClick, activeMenu }) => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -22,13 +11,12 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
     setSearchVisible(!searchVisible);
   };
 
-  useEffect(() => {
-    const imagenes = datos.map(() => obtenerImagenAleatoria());
-    setImagenesAleatorias(imagenes);
-  }, [datos]);
-
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleMenuClick = (index) => {
+    onMenuClick(index);
   };
 
   const filteredDatos = datos.filter((dato) =>
@@ -37,23 +25,19 @@ const ContenedorTarjetas = ({ datos, onMenuClick }) => {
 
   return (
     <div className="contenedor-tarjeta-general016">
-      <Menu 
-        onMenuClick={onMenuClick}
+      <Menu
+        onMenuClick={handleMenuClick}
         searchTerm={searchTerm}
         onSearchChange={handleSearchChange}
         toggleSearch={toggleSearch}
         searchVisible={searchVisible}
+        activeIndex={activeMenu} // Pasar activeMenu como prop
       />
       <div className="contenedor-principal-tarjetas016">
         <div className="contenedor-tarjetas016">
-          <div>
-          </div>
+          <div></div>
           {filteredDatos.map((dato, index) => (
-            <Tarjeta
-              key={dato.id}
-              {...dato}
-              imagenAleatoria={imagenesAleatorias[index]}
-            />
+            <Tarjeta key={index} {...dato} imagenAleatoria={dato.Imagen} />
           ))}
         </div>
       </div>
@@ -73,7 +57,7 @@ const Tarjeta = ({
   HoraInicio,
   HoraFin,
   HoraCreado,
-  imagenAleatoria,
+  Imagen,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -96,11 +80,7 @@ const Tarjeta = ({
     <>
       <div onClick={handleOpenModal} className="tarjeta016">
         <div>
-          <img
-            className="tarjeta-img-inside016"
-            src={imagenAleatoria}
-            alt={Ubicacion}
-          />
+          <img className="tarjeta-img-inside016" src={Imagen} alt={Ubicacion} />
         </div>
         <div className="tarjeta-info016">
           <h2>{Nombre}</h2>
@@ -124,9 +104,10 @@ const Tarjeta = ({
             HoraInicio,
             HoraFin,
             HoraCreado,
+            Imagen,
           }}
           onClose={handleCloseModal}
-          imagen={imagenAleatoria}
+          imagen={Imagen}
         />
       )}
     </>

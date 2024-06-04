@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../../HU0016_HU0017.css";
 
 function Menu({
@@ -7,11 +6,9 @@ function Menu({
   onSearchChange,
   toggleSearch,
   searchVisible,
+  activeIndex,
 }) {
-  const [activeIndex, setActiveIndex] = useState(0); // Talleres is default active
-
   const handleItemClick = (index) => {
-    setActiveIndex(index);
     onMenuClick(index);
   };
 
