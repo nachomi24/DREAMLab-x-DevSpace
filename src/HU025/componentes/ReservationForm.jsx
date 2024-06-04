@@ -110,6 +110,14 @@ const ReservationForm = () => {
     };
 
     const isWeekend = (date) => {
+        const today = new Date();        
+        today.setHours(0, 0, 0, 0);
+    
+        date.setHours(0, 0, 0, 0);
+        if (date <= today) {
+            return 1;
+        }
+    
         const day = date.getDay();
         return day === 0 || day === 6;
     };
