@@ -62,7 +62,7 @@ const Content = ({ matricula }) => {
         <tbody>
           <tr>
             <td
-              style={{ display: "flex", alignItems: "start", margin: "0 20px" }}
+              className="stylecontent"
             >
               <div className="content-profile-container">
                 <Profile
