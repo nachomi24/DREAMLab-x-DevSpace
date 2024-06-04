@@ -240,7 +240,7 @@ const ReservationForm = () => {
                             max={cupo}
                         />
                     </label>
-                    <button className="submit-button-HU025" type="submit">Reservar</button>
+                    <button className="submit-button-HU025" type="submit">RESERVAR</button>
                 </form>
                 {showPopUp && (
                     <PopUp
