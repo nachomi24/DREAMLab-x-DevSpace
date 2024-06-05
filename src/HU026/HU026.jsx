@@ -1,12 +1,15 @@
-import Navbar from "../HU022/Componentes/NavbarAdmin/Navbar.jsx";
-import Tarjetas from "./Componentes/TarjetasVideo/TarjetasVideo.jsx";
+import Navbar from "../Navbar/Navbar.jsx";
+import Tarjetas from "../HU026/Componentes/TarjetasTalleres.jsx";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import "./HU0024.css";
-const apiURLPublicaciones =
-  "https://dreamlabapidev.azurewebsites.net/api/publicaciones";
+import "../HU026/HU026.css";
 
-function HU024() {
+const nominaProfesor = localStorage.getItem("matricula");
+
+const apiURLPublicaciones =
+  "https://dreamlabapidev.azurewebsites.net/api/info_talleres/" + nominaProfesor;
+
+function HU026() {
   const [publicaciones, setPublicaciones] = useState([]);
 
   const obtenerPublicaciones = async () => {
@@ -24,11 +27,11 @@ function HU024() {
   }, []);
 
   return (
-    <div className="cuerpoHU0024">
+    <div className="cuerpoHU0026">
       <Navbar />
       <Tarjetas datos={publicaciones} />
     </div>
   );
 }
 
-export default HU024;
+export default HU026;

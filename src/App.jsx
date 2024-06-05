@@ -12,6 +12,7 @@ import HU023 from "./HU023/HU023";
 import HU024 from "./HU024/HU0024";
 import HU024_1 from "./HU024_1/HU024_1";
 import HU025 from "./HU025/HU025";
+import HU026 from "./HU026/HU026";
 
 const App = () => {
   const location = useLocation();
@@ -41,7 +42,11 @@ const App = () => {
       <Route path="/admin/videowall" element={<HU024 />} />
       <Route path="/videowall" element={<HU024_1 />} />
       <Route path="/reservationform" element={<HU025 />} />
+
+      <Route path="/talleres" element={<HU026 />} />
+
       <Route path="/open_spaces" element={<HU010 />} />
+
     </Routes>
   );
 };

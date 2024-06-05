@@ -12,6 +12,8 @@ const Navbar = ({ loggedIn }) => {
 
   loggedIn = localStorage.getItem("isLoggedIn") === "true";
   const matricula = localStorage.getItem("matricula");
+  const [isProfesor, setIsProfesor] = useState(false);
+
 
   const apiURLPerfilCarrera =
     "https://dreamlabapidev.azurewebsites.net/api/perfil/" + matricula;
@@ -51,7 +53,9 @@ const Navbar = ({ loggedIn }) => {
 
   useEffect(() => {
     obtencionFotoPerfil();
-  });
+    setIsProfesor(localStorage.getItem("userType") === "profesor");
+  }, []);
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -63,6 +67,7 @@ const Navbar = ({ loggedIn }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("chatMessages");
+    localStorage.removeItem("userType");
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("matricula");
     localStorage.removeItem("threadID");
@@ -92,6 +97,13 @@ const Navbar = ({ loggedIn }) => {
               ESPACIOS
             </a>
           </li>
+          {isProfesor && (
+          <li>
+            <a href="/talleres" className="mina-bold">
+              TALLERES
+            </a>
+          </li>
+        )}
         </ul>
         <div className="karen">
           <i
