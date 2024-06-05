@@ -61,7 +61,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
         setErrorMessage("");
 
         if (normalizedTipo === "admin") {
-          window.location.replace("http://localhost:8080/admin2");
+          window.location.replace("https://green-ground-02320f30f.5.azurestaticapps.net/admin2");
         }
       } else {
         setErrorMessage("Matrícula o contraseña incorrecta");
