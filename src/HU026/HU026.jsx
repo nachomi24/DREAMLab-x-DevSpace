@@ -3,8 +3,11 @@ import Tarjetas from "../HU026/Componentes/TarjetasTalleres.jsx";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../HU026/HU026.css";
+
+const nominaProfesor = localStorage.getItem("matricula");
+
 const apiURLPublicaciones =
-  "https://dreamlabapidev.azurewebsites.net/api/info_talleres";
+  "https://dreamlabapidev.azurewebsites.net/api/info_talleres/" + nominaProfesor;
 
 function HU026() {
   const [publicaciones, setPublicaciones] = useState([]);

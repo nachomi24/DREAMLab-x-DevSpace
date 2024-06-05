@@ -56,11 +56,12 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
             "https://green-ground-02320f30f.5.azurestaticapps.net/admin/reservaciones"
           );
         }
-
-        if (normalizedTipo === "profesor") {
+        else if (normalizedTipo === "profesor") {
+          localStorage.setItem("userType", normalizedTipo);
           window.location.replace(
-            "https://green-ground-02320f30f.5.azurestaticapps.net/admin/reservaciones"
+            "http://localhost:8080/talleres"
           );
+          
         }
 
         setLoggedIn(true);

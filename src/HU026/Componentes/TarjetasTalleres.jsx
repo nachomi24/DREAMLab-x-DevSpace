@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../HU026.css";
 import EditModal from "../Componentes/ModalEditar/ModalEditar";
+import Modal from "../Componentes/Modal/Modal";
+import CancelPopUp from "../Componentes/PopUpCancel/PopUpCancel"; // Asegúrate de ajustar la ruta según tu estructura de archivos
 
 function TarjetasTalleres({ datos }) {
   const [talleresPendientes, setTalleresPendientes] = useState([]);
   const [selectedTaller, setSelectedTaller] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isCancelPopUpOpen, setIsCancelPopUpOpen] = useState(false); // Nuevo estado para el pop-up de cancelación
 
   useEffect(() => {
     console.log("Datos iniciales:", datos);
@@ -59,12 +62,14 @@ function TarjetasTalleres({ datos }) {
     handleOpenModal(taller);
   };
 
-  const rechazarTaller = async (id) => {
-    if (!id) {
-      console.error("ID de taller indefinido");
-      return;
+  const handleConfirmDelete = async () => {
+    if (!selectedTaller) {
+      console.error("Taller no seleccionado");
+      return Promise.reject(new Error("Taller no seleccionado"));
     }
-
+  
+    const id = selectedTaller.TallerID;
+  
     try {
       console.log("Datos enviados para rechazar:", { tallerId: id });
       const response = await axios.delete(
@@ -77,9 +82,10 @@ function TarjetasTalleres({ datos }) {
       );
       console.log("Respuesta del servidor:", response.data);
       setTalleresPendientes((prev) =>
-        prev.filter((taller) => taller._id !== id)
+        prev.filter((taller) => taller.TallerID !== id)
       );
-      handleCloseModal();
+      setSelectedTaller(null);
+      return Promise.resolve();
     } catch (error) {
       console.error("Error al rechazar el taller", error);
       if (error.response) {
@@ -88,8 +94,10 @@ function TarjetasTalleres({ datos }) {
           console.error("Detalles específicos del error:", error.response.data.detail);
         }
       }
+      return Promise.reject(error);
     }
   };
+  
 
   const formatearFecha = (fecha) => {
     const opciones = {
@@ -188,7 +196,19 @@ function TarjetasTalleres({ datos }) {
             >
               EDITAR
             </button>
-            <button onClick={() => rechazarTaller(TallerID)}>ELIMINAR</button>
+            <button onClick={() => { setSelectedTaller({
+                TallerID,
+                NombreProfesor,
+                UFID,
+                NombreUF,
+                Nombre,
+                Cupo,
+                SalaID,
+                Fecha,
+                HoraInicio,
+                HoraFin,
+                HoraCreado
+              }); setIsCancelPopUpOpen(true); }}>ELIMINAR</button>
           </div>
         </div>
       </div>
@@ -228,6 +248,12 @@ function TarjetasTalleres({ datos }) {
           taller={selectedTaller}
           onClose={handleCloseModal}
           onUpdate={handleUpdateTaller}
+        />
+      )}
+      {isCancelPopUpOpen && (
+        <CancelPopUp
+          onClose={() => setIsCancelPopUpOpen(false)}
+          onConfirm={handleConfirmDelete}
         />
       )}
     </div>

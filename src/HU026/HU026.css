@@ -130,7 +130,8 @@
   font-size: 14px; /* Tamaño de fuente ajustado */
   font-weight: bold;
   transition: box-shadow 0.3s;
-  margin: 2vh 30vh; /* Reducido el margen */
+  margin: 1vh 30vh; /* Reducido el margen */
+  margin-left: 25vh;
 }
 
 .toggle-button {
