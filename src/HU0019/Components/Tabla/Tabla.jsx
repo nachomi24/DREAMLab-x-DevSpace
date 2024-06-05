@@ -76,7 +76,7 @@ const Tarjeta = ({
                 }}
               >
                 <img className="relojcito" src={clockWait} alt="Clock"></img>
-                <p style={{ marginLeft: "15px", fontSize: "1.25vw" }}>
+                <p className="confirmacion-texto">
                   En espera de confirmación
                 </p>
               </div>
@@ -203,7 +203,7 @@ function Tabla({
               </div>
             </td>
           </tr>
-          <tr>
+          <tr className="reservaciones-columnas">
             <td className="reservaciones-pend-fut">
               <div className="reservaciones-pend-fut-div">
                 <div className="reservaciones-pend-fut-div-title">

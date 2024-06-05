@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
-import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../HU025.css';
 import fotodreamy from '../../assets/dreamy.png';
@@ -15,7 +14,7 @@ const apiRESERVACION = "https://dreamlabapidev.azurewebsites.net/api/reservacion
 
 const ReservationForm = () => {
     const [salas, setSalas] = useState([]);
-    const [selectedSala, setSelectedSala] = useState(null);
+    const [selectedSala, setSelectedSala] = useState("");
     const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
     const [cantidadPersonas, setCantidadPersonas] = useState(1);
     const [horarios, setHorarios] = useState({ HoraInicio: "", HoraFin: "" });
@@ -24,8 +23,8 @@ const ReservationForm = () => {
     const [horaInicio, setHoraInicio] = useState("");
     const [horaFin, setHoraFin] = useState("");
     const [recursosSeleccionados, setRecursosSeleccionados] = useState({});
-    const [showPopUp, setShowPopUp] = useState(false); // State para controlar el popup
-    const [reservaData, setReservaData] = useState({}); // Nuevo state para almacenar datos de la reserva
+    const [showPopUp, setShowPopUp] = useState(false);
+    const [reservaData, setReservaData] = useState({});
 
     useEffect(() => {
         const obtenerSalas = async () => {
@@ -44,20 +43,19 @@ const ReservationForm = () => {
         if (selectedSala) {
             const obtenerDetallesSala = async () => {
                 try {
-                    const responseHorario = await axios.get(`${apiHORARIO}${selectedSala.value}`);
+                    const responseHorario = await axios.get(`${apiHORARIO}${selectedSala}`);
                     setHorarios(responseHorario.data);
 
-                    const responseRecursos = await axios.get(`${apiRECURSOS}${selectedSala.value}`);
+                    const responseRecursos = await axios.get(`${apiRECURSOS}${selectedSala}`);
                     const recursosArray = responseRecursos.data.Recursos.split(',').map(recurso => {
                         const [cantidad, nombre] = recurso.trim().split(' ');
                         return { nombre, cantidad: parseInt(cantidad) };
                     });
                     setRecursos(recursosArray);
 
-                    const responseCupo = await axios.get(`${apiCUPO}${selectedSala.value}`);
+                    const responseCupo = await axios.get(`${apiCUPO}${selectedSala}`);
                     setCupo(responseCupo.data.Cupo);
 
-                    // Reiniciar horas seleccionadas y recursos seleccionados
                     setHoraInicio(responseHorario.data.HoraInicio);
                     setHoraFin(responseHorario.data.HoraFin);
                     setRecursosSeleccionados({});
@@ -70,29 +68,36 @@ const ReservationForm = () => {
         }
     }, [selectedSala]);
 
-    const optionsSalas = salas.map(sala => ({
-        value: sala.SalaID,
-        label: sala.Nombre
-    }));
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        const matricula = localStorage.getItem("matricula");
+
+        if (!matricula) {
+            alert("No se encontró la matrícula en el almacenamiento local.");
+            return;
+        }
+
         const data = {
-            Matricula: "A01027008", // Matrícula por defecto
-            SalaID: selectedSala?.value || "",
+            Matricula: matricula,
+            SalaID: selectedSala || "",
             Dia: fechaSeleccionada ? fechaSeleccionada.toISOString().split('T')[0] : "",
             HoraInicio: horaInicio,
             HoraFin: horaFin,
             Recursos: Object.entries(recursosSeleccionados).map(([recurso, cantidad]) => `${cantidad} ${recurso}`).join(', '),
             Personas: cantidadPersonas,
-            Confirmada: 0 // Confirmada por defecto
+            Confirmada: 0 
         };
-        console.log("Datos a enviar:", data); // Añadir este log para ver los datos antes de enviarlos
+
+        setReservaData(data);
+        setShowPopUp(true);
+    };
+
+    const handleConfirmReservation = async () => {
         try {
-            const response = await axios.post(apiRESERVACION, data);
+            const response = await axios.post(apiRESERVACION, reservaData);
             console.log("Respuesta de la API:", response.data);
-            setReservaData(data); // Guardar los datos de la reserva en el estado
-            setShowPopUp(true); // Mostrar el popup al enviar la solicitud
+            setShowPopUp(false);
+            alert("Reserva realizada con éxito");
         } catch (error) {
             if (error.response) {
                 console.error("Error al realizar la reserva:", error.response.data);
@@ -106,7 +111,7 @@ const ReservationForm = () => {
 
     const isWeekend = (date) => {
         const day = date.getDay();
-        return day === 0 || day === 6; // Para deshabilitar sábados y domingos
+        return day === 0 || day === 6;
     };
 
     const handleResourceChange = (recurso, cantidad) => {
@@ -160,12 +165,17 @@ const ReservationForm = () => {
                 <form className="reservation-form-HU025" onSubmit={handleSubmit}>
                     <label className='subtitulo-HU025'>
                         Sala:
-                        <Select
-                            options={optionsSalas}
-                            placeholder="Selecciona una sala"
+                        <select
                             value={selectedSala}
-                            onChange={setSelectedSala}
-                        />
+                            onChange={(e) => setSelectedSala(e.target.value)}
+                        >
+                            <option value="" disabled>Selecciona una sala</option>
+                            {salas.map(sala => (
+                                <option key={sala.SalaID} value={sala.SalaID}>
+                                    {sala.Nombre}
+                                </option>
+                            ))}
+                        </select>
                     </label>
                     <label className='subtitulo-HU025'>
                         Fecha:
@@ -240,7 +250,7 @@ const ReservationForm = () => {
                             max={cupo}
                         />
                     </label>
-                    <button className="submit-button-HU025" type="submit">Reservar</button>
+                    <button className="submit-button-HU025" type="submit">RESERVAR</button>
                 </form>
                 {showPopUp && (
                     <PopUp
@@ -253,6 +263,7 @@ const ReservationForm = () => {
                         Recursos={reservaData.Recursos}
                         Personas={reservaData.Personas}
                         Confirmada={reservaData.Confirmada}
+                        onConfirm={handleConfirmReservation}
                     />
                 )}
             </div>

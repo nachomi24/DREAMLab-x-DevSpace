@@ -89,7 +89,7 @@ const Navbar = ({ loggedIn }) => {
           </li>
           <li>
             <a href="/secciones" className="mina-bold">
-              SECCIONES
+              ESPACIOS
             </a>
           </li>
         </ul>
@@ -126,7 +126,7 @@ const Navbar = ({ loggedIn }) => {
       </nav>
       <div className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
         <li>
-          <a href="/inicio" className="mina-bold-2">
+          <a href="/" className="mina-bold-2">
             INICIO
           </a>
         </li>
@@ -137,7 +137,7 @@ const Navbar = ({ loggedIn }) => {
         </li>
         <li>
           <a href="/secciones" className="mina-bold-2">
-            SECCIONES
+            ESPACIOS
           </a>
         </li>
       </div>
