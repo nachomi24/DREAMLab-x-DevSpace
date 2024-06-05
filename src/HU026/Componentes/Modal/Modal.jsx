@@ -31,7 +31,7 @@ const Modal = ({ onClose, onAdd }) => {
   
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/crear_talleres",
+        "https://dreamlabapidev.azurewebsites.net/api/crear_talleres",
         nuevoTaller,
         {
           headers: {

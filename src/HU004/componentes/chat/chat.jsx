@@ -59,7 +59,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
         else if (normalizedTipo === "profesor") {
           localStorage.setItem("userType", normalizedTipo);
           window.location.replace(
-            "http://localhost:8080/talleres"
+            "https://green-ground-02320f30f.5.azurestaticapps.net/talleres"
           );
           
         }

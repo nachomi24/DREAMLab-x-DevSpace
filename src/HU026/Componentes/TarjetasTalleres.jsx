@@ -73,7 +73,7 @@ function TarjetasTalleres({ datos }) {
     try {
       console.log("Datos enviados para rechazar:", { tallerId: id });
       const response = await axios.delete(
-        `http://localhost:8000/api/eliminar_taller?TallerID=${id}`,
+        `https://dreamlabapidev.azurewebsites.net/api/eliminar_taller?TallerID=${id}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -119,7 +119,7 @@ function TarjetasTalleres({ datos }) {
       };
 
       const response = await axios.put(
-        `https://localhost:8000/api/info_talleres/${taller._id}`,
+        `https://dreamlabapidev.azurewebsites.net/api/info_talleres/${taller._id}`,
         updatedTaller,
         {
           headers: {
