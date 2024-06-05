@@ -1,47 +1,84 @@
 //Para probar inicio de sesión módulo HU004
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('http://localhost:5173/')
+        cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/reservar')
     })
 
-    it('Especificar sala existente',()=>{
-        
-        cy.get('.fa-bars').click()
-        cy.get(':nth-child(2) > .mina-bold-2').click()
-        cy.get('#conversation_query').type('Hola, mi matricula es A00835268')
-        cy.get('#button_send_message').click()
-        cy.wait(200)
-        cy.get('#conversation_query').type('Quiero reservar la sala DL101')
-        cy.get('#button_send_message').click()
-        cy.wait(200)
-        cy.get(':nth-child(5) > .text_wrapper > .text').should('be.visible');
-        cy.contains('Sala: DL101, Nombre: Dimension Forge, Cupo: 10, Recursos: 6 Mouses, 10 Apple Vision Pro, 5 Lectores de huella, Hora de Inicio: 15:00:00, Hora de Fin: 19:00:00')
-        .should('be.visible');
+    it('Happy Path',()=>{
+        cy.get(':nth-child(1) > input').type('A00833125');
+        cy.get(':nth-child(2) > input').type('cristina123');
+        cy.get('button').click()
+        cy.get('.reservation-link').click()
+        cy.get(':nth-child(1) > select').select('Dimension Forge')
+        cy.get('.react-datepicker__input-container > input').type('02/05/2024')
+        cy.get(':nth-child(1) > select').select('Dimension Forge')
+        //Seleccionar las horas de inicio y fin
+        cy.get(':nth-child(3) > select').select('15:00')
+        cy.get(':nth-child(4) > select').select('18:00')
+        cy.get(':nth-child(1) > label > .counter-HU025 > :nth-child(3)').click()
+        cy.get(':nth-child(2) > label > .counter-HU025 > :nth-child(3)').click()
+        cy.get(':nth-child(3) > label > .counter-HU025 > :nth-child(3)').click()
+        cy.get(':nth-child(7) > input').type('2')
+        cy.get('.submit-button-HU025').click()
+        cy.get('.botoncito2HU004').click()
+
     })
     
-    it('Especificar sala inexistente',()=>{
+    it('Aceptar Reservacion sin nada',()=>{
+        cy.get(':nth-child(1) > input').type('A00833125');
+        cy.get(':nth-child(2) > input').type('cristina123');
+        cy.get('button').click()
+        cy.get('.reservation-link').click()
         
-        cy.get('.fa-bars').click()
-        cy.get(':nth-child(2) > .mina-bold-2').click()
-        cy.get('#conversation_query').type('Hola, mi matricula es A00835268')
-        cy.get('#button_send_message').click()
-        cy.wait(200)
-        cy.get('#conversation_query').type('Deseo reservar en la sala DL122, el 2 de mayo de 2024 de 3PM a 5PM. Los recursos serán 3 computadoras y 2 switches. Seremos 2 personas')
-        cy.get('#button_send_message').click()
-        cy.wait(200)
-        cy.get(':nth-child(5) > .text_wrapper > .text').should('be.visible');
+        cy.get('.submit-button-HU025').click()
+        //Lo siguiente no deberia ser visible
+        cy.get('.botoncito2HU004').should('not.be.visible')
+
     })
 
-    it('No especificar sala',()=>{
+
+    it('Reservacion solo con sala',()=>{
+        cy.get(':nth-child(1) > input').type('A00833125');
+        cy.get(':nth-child(2) > input').type('cristina123');
+        cy.get('button').click()
+        cy.get('.reservation-link').click()
+        cy.get(':nth-child(1) > select').select('Dimension Forge')
         
-        cy.get('.fa-bars').click()
-        cy.get(':nth-child(2) > .mina-bold-2').click()
-        cy.get('#conversation_query').type('Hola, mi matricula es A00835268')
-        cy.get('#button_send_message').click()
-        cy.wait(200)
-        cy.get('#conversation_query').type('Deseo reservar en la sala, el 2 de mayo de 2024 de 3PM a 5PM. Los recursos serán 3 computadoras y 2 switches. Seremos 2 personas')
-        cy.get('#button_send_message').click()
-        cy.wait(200)
-        cy.get(':nth-child(5) > .text_wrapper > .text').should('be.visible');
+        cy.get('.submit-button-HU025').click()
+        cy.get('.botoncito2HU004').click()
+        cy.get('.botoncito2HU004').should('not.be.visible')
+
+    })
+
+    it('Reservacion con sala y fecha',()=>{
+        cy.get(':nth-child(1) > input').type('A00833125');
+        cy.get(':nth-child(2) > input').type('cristina123');
+        cy.get('button').click()
+        cy.get('.reservation-link').click()
+        cy.get(':nth-child(1) > select').select('Dimension Forge')
+
+        cy.get('.react-datepicker__input-container > input').type('02/05/2024')
+        cy.get(':nth-child(1) > select').select('Dimension Forge')
+        cy.get('.submit-button-HU025').click()
+        cy.get('.botoncito2HU004').click()
+        cy.get('.botoncito2HU004').should('not.be.visible')
+
+    })
+
+    it('Reservacion con sala, fecha y horas invalidas',()=>{
+        cy.get(':nth-child(1) > input').type('A00833125');
+        cy.get(':nth-child(2) > input').type('cristina123');
+        cy.get('button').click()
+        cy.get('.reservation-link').click()
+        cy.get(':nth-child(1) > select').select('Dimension Forge')
+        
+        cy.get('.react-datepicker__input-container > input').type('02/05/2024')
+        cy.get(':nth-child(1) > select').select('Dimension Forge')
+        cy.get(':nth-child(3) > select').select('18:00')
+        cy.get(':nth-child(4) > select').select('15:00')
+        cy.get('.submit-button-HU025').click()
+        cy.get('.botoncito2HU004').click()
+        cy.get('.botoncito2HU004').should('not.be.visible')
+
     })
 })

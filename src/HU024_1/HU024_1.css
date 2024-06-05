@@ -157,11 +157,18 @@
 
 .bienvenida {
   font-size: calc(0.5rem + 1.4vw);
-  margin-bottom: 1.25rem;
+}
+
+.bienvenidota {
+  font-size: calc(0.5rem + 1.75vw);
 }
 
 .bienvenida-peque {
   font-size: calc(0.5rem + 0.75vw);
+}
+
+.bienvenida-mas-peque {
+  font-size: calc(0.5rem + 0.5vw);
 }
 
 .manejo-reservas {
