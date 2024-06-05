@@ -1,10 +1,10 @@
 
-.cuerpoHU009 {
+.cuerpoHU010 {
   background: #d7d9f1;
 }
 
 
-.box1HU009 {
+.box1HU010 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
   padding-bottom: 10vh;
 }
 
-.CardHU009 {
+.CardHU010 {
   margin-top: 3vh;
   border: 1px transparent;
   border-radius: 30px;
@@ -32,7 +32,7 @@
   transition: max-width 0.1s;
 }
 
-.CardHU009 h2 {
+.CardHU010 h2 {
   font-size: 4.5vw; 
   font-weight: bold;
   color: #363968;
@@ -41,7 +41,7 @@
   margin-bottom: 1.5vh;
 }
 
-.CardHU009 p {
+.CardHU010 p {
   font-size: 1.5vw; 
   font-weight: bold;
   line-height: 1.2;
@@ -51,7 +51,7 @@
 }
 
 /* Estilos para button */
-.prev_nextHU009 {
+.prev_nextHU010 {
   background-color: #D9D9D9;
   color: #363968;
   font-size: 3vw; 
@@ -64,10 +64,10 @@
   background-color: rgba(217, 217, 217, 0.82);
 }
 
-.ReservarAhoraHU009 {
+.ReservarAhoraHU010 {
   background-color: #15162A;
   color: white;
-  font-size: 3vh;
+  font-size: 1.5vw;
   font-weight: bold;
   padding: 15px 20px;
   border: none;
@@ -82,74 +82,70 @@
   text-align: center;
 }
 
-.card-marginHU009 {
+.card-marginHU010 {
   margin: 0 2vw;
 }
 
-.ReservarAhoraHU009:hover {
+.ReservarAhoraHU010:hover {
   color: rgba(255, 255, 255, 1) !important;
   box-shadow: 0 4px 16px rgb(46, 17, 68);
   transition: all 0.2s ease;
 }
 
 @media (max-width: 1150px) {
-  .Content-textHU009 h1 {
+  .Content-textHU010 h1 {
       font-size: 9vw; 
       padding-top: 1vh;
   }
 
-  .ReservarAhoraHU009 {
-      font-size: 5vw;
-  }
-
-  .CardHU009 h2 {
-      font-size: 10vw; 
+  .ReservarAhoraHU010 {
+      font-size: 3vw;
   }
 }
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 850px) {
-  .CardHU009 {
+  .CardHU010 {
       max-width: 75vw; 
   }
   
-  .prev_nextHU009{
+  .prev_nextHU010{
       font-size: 8vw; 
   }
 
-  .CardHU009 h2 {
-    font-size: 10vw; 
-}
-
-  .CardHU009 p {
-      font-size: 4vw; 
+  .CardHU010 h2 {
+      font-size: 7vw; 
   }
 
-  .content-heightHU009 {
+  .CardHU010 p {
+      font-size: 3vw; 
+  }
+
+  .content-heightHU010 {
       min-height: 40vh;
   }
 
-  .Content-textHU009 h1 {
+  .Content-textHU010 h1 {
       font-size: 8vw; 
   }
 
-  .ReservarAhoraHU009 {
-    font-size: 5vw;
-}
+  .ReservarAhoraHU010 {
+      width: 45%; 
+  }
 }
 
 @media (max-width: 650px) {
-  .CardHU009 {
+  .CardHU010 {
       max-width: 90vw; 
   }
 }
 
 
-.ContentHU009{
+.ContentHU010{
   min-height: auto;
 }
 
-.content-heightHU009 {
+.content-heightHU010 {
   position: relative;
   z-index: 1;
   top: 0;
@@ -167,13 +163,13 @@
   transition: min-height 1s;
 }
 
-.Content-textHU009{
+.Content-textHU010{
   margin-top: 12vh;
   margin-bottom: 10vh;
   text-align: center;
 }
 
-.Content-textHU009 h1{
+.Content-textHU010 h1{
   font-size: 10vw;
   font-family: 'Mina', sans-serif;
   font-weight: bolder;
@@ -182,26 +178,26 @@
 }
 
 @media (max-width: 1150px) {
-  .Content-textHU009{
+  .Content-textHU010{
       margin-top: 20vh;
   }
 
-  .Content-textHU009 h1 {
+  .Content-textHU010 h1 {
       font-size: 15vw; 
   }
 }
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 850px) {
-  .content-heightHU009 {
+  .content-heightHU010 {
       min-height: 40vh;
   }
-  .Content-textHU009 h1 {
+  .Content-textHU010 h1 {
       font-size: 15vw; 
   }
 }
 
-.boxHU009 {
+.boxHU010 {
   position: relative;
   z-index: 0;
   display: flex;
@@ -214,7 +210,7 @@
 }
 
 
-.GarageHU009 {
+.GarageHU010 {
   width: 100%; 
   max-width: 700px;
   border: 0;

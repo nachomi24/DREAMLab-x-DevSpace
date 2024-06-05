@@ -145,13 +145,16 @@
   }
   
   .reservation-form-HU025 button[type="submit"] {
-    width: 100%;
-    padding: 10px;
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
     background-color: #363968;
-    color: #fefefe;
+    color: #eff0ff;
+    border-radius: 25px;
     border: none;
-    border-radius: 4px;
+    line-height: 1.6;
     cursor: pointer;
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s;
   }
   
   .reservation-form-HU025 button[type="submit"]:hover {
@@ -255,7 +258,7 @@ select {
   }
 
   .h2HU025 {
-    font-size: 5vh;
+    font-size: 6vh;
     color: #363968;
     text-align: center;
     line-height: 5vh;
@@ -307,15 +310,68 @@ select {
   }
 
   .submit-button-HU025 {
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
+    background-color: #363968;
+    color: #eff0ff;
+    border-radius: 25px;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s;
+  }
+
+  .modal-overlayHU004 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-contentHU004 {
+    width: 90%;
+  }
+
+  .modal-contentHU004-inside-header {
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-ubi{
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-fecha{
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-personas{
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-detalles {
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-boton {
+    text-align: center;
+    align-items: center;
+  }
+
+  .modal-contentHU004-inside-body-content-boton-content {
     font-size: 2.5vh;
     padding: 1vh;
     border: 0px;
     border-radius: 5px;
-    background-color: #363968;
     color: white;
     cursor: pointer;
     width: 100%;
-  
   }
 }
 
@@ -349,7 +405,7 @@ select {
   }
 
   .h2HU025 {
-    font-size: 5vh;
+    font-size: 6vh;
     color: #363968;
     text-align: center;
     line-height: 5vh;
@@ -401,11 +457,65 @@ select {
   }
 
   .submit-button-HU025 {
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
+    background-color: #363968;
+    color: #eff0ff;
+    border-radius: 25px;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s;
+  }
+
+  .modal-overlayHU004 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-contentHU004 {
+    width: 90%;
+  }
+
+  .modal-contentHU004-inside-header {
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-ubi{
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-fecha{
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-personas{
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-detalles {
+    font-size: 3vh;
+  }
+
+  .modal-contentHU004-inside-body-content-boton {
+    text-align: center;
+    align-items: center;
+  }
+
+  .modal-contentHU004-inside-body-content-boton-content {
     font-size: 2.5vh;
     padding: 1vh;
     border: 0px;
     border-radius: 5px;
-    background-color: #363968;
     color: white;
     cursor: pointer;
     width: 100%;
