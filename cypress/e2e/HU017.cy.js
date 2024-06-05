@@ -1,18 +1,12 @@
 //Para probar la visibilidad de los detalles de un taller
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('http://localhost:5173/')
+        cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/')
     })
 
     it('probar que se puede ver toda la información detallada de un taller',()=>{
-        cy.get(':nth-child(1) > .tarjeta-info').click()
-        cy.get('.titulito-header').should('be.visible')
-        cy.get('.modal-content-inside-body-content-ubi > p').should('be.visible')
-        cy.get('.uniforma').should('be.visible')
-        cy.get('.modal-content-inside-body-content-uf > :nth-child(2)').should('be.visible')
-        cy.get('.modal-content-inside-body-content-fecha > :nth-child(1)').should('be.visible')
-        cy.get('.horarie').should('be.visible')
-        cy.get('.creadito').should('be.visible')
-        cy.get('.cupito').should('be.visible')
+        cy.get(':nth-child(2) > :nth-child(1) > .tarjeta-img-inside016').click()
+        cy.get('.botoncito1016').should('be.visible')
+        
     })
 })

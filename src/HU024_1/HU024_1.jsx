@@ -1,5 +1,4 @@
-// HU024_1.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Mousewheel, Autoplay } from "swiper/modules";
@@ -13,9 +12,11 @@ import DreamLab from "../assets/DreamLab.png";
 
 const HU024_1 = () => {
   const [reservaciones, setReservaciones] = useState([]);
-  const [publicaciones, setPublicaciones] = useState([]);
+  const [shuffledPublicaciones, setShuffledPublicaciones] = useState([]);
   const [fechaActual, setFechaActual] = useState("");
   const [pausedColumns, setPausedColumns] = useState([]);
+  const [mensaje, setMensaje] = useState(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const fetchReservaciones = async () => {
@@ -34,7 +35,7 @@ const HU024_1 = () => {
         const response = await axios.get(
           "https://dreamlabapidev.azurewebsites.net/api/publicaciones_activas"
         );
-        setPublicaciones(response.data);
+        setShuffledPublicaciones(shufflePublicaciones(response.data));
       } catch (error) {
         console.error("Error fetching publicaciones:", error);
       }
@@ -87,8 +88,34 @@ const HU024_1 = () => {
     actualizarFecha();
     const interval = setInterval(actualizarFecha, 1000); // Actualiza cada minuto
 
+    const inputElement = inputRef.current;
+    if (inputElement) {
+      inputElement.focus();
+    }
+
     return () => clearInterval(interval);
   }, []);
+
+  const shuffleArray = (array) => {
+    let shuffledArray = array.slice();
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray;
+  };
+
+  const shufflePublicaciones = (publicaciones) => {
+    const numColumns = 7;
+    const shuffled = [];
+    for (let i = 0; i < numColumns; i++) {
+      shuffled.push(shuffleArray(publicaciones));
+    }
+    return shuffled;
+  };
 
   const convertirHora = (hora) => {
     const [hour, minute] = hora.split(":");
@@ -97,9 +124,10 @@ const HU024_1 = () => {
     return `${hour12}:${minute} ${ampm}`;
   };
 
-  const handleCardClick = (columnIndex) => {
+  const handleCardClick = (columnIndex, cardIndex) => {
     setPausedColumns((prevPausedColumns) => {
-      if (prevPausedColumns.includes(columnIndex)) {
+      const isColumnPaused = prevPausedColumns.includes(columnIndex);
+      if (isColumnPaused) {
         return prevPausedColumns.filter((index) => index !== columnIndex);
       } else {
         return [...prevPausedColumns, columnIndex];
@@ -110,7 +138,7 @@ const HU024_1 = () => {
   const renderVerticalCarousel = (columnIndex) => {
     const isPaused = pausedColumns.includes(columnIndex);
     const direction = columnIndex % 2 === 0 ? "up" : "down";
-    const firstRow = publicaciones.slice(0, publicaciones.length / 2);
+    const columnPublicaciones = shuffledPublicaciones[columnIndex] || [];
 
     return (
       <div className={`vertical-carousel ${isPaused ? "paused" : ""}`}>
@@ -121,7 +149,7 @@ const HU024_1 = () => {
           speed={50}
           style={{ height: "100%" }}
         >
-          {firstRow.map((publicacion, index) => (
+          {columnPublicaciones.map((publicacion, index) => (
             <div
               key={index}
               className={`carousel-slide`}
@@ -129,7 +157,7 @@ const HU024_1 = () => {
             >
               <Card
                 publicacion={publicacion}
-                onClick={() => handleCardClick(columnIndex)}
+                onClick={() => handleCardClick(columnIndex, index)}
                 isPaused={isPaused}
               />
             </div>
@@ -188,6 +216,82 @@ const HU024_1 = () => {
     );
   };
 
+  const handleKeyDown = async (event) => {
+    if (event.key === "Enter") {
+      const RFID = event.target.value;
+      try {
+        const response = await axios.post(
+          "https://dreamlabapidev.azurewebsites.net/api/loginCredencial",
+          { RFID }
+        );
+        const data = response.data;
+        event.target.value = "";
+        if (data.Mensaje) {
+          setMensaje(
+            <>
+              <p className="bienvenida">Dreamer</p>
+              <p className="bienvenida-peque">
+                Para conocer más sobre D.R.E.A.M. LAB consulta el siguiente QR
+              </p>
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?data=https://dreamlabspace.world/open_spaces&size=150x150`}
+                alt="QR Code"
+                className="qr-code"
+              />
+            </>
+          );
+        } else if (data.TipoUsuario === "Admin") {
+          const nombre = data.Nombre.split(" ")[0];
+          setMensaje(
+            <>
+              <p className="bienvenida">HOLA</p>
+              <p style={{ textTransform: "uppercase" }} className="bienvenida">
+                {nombre}
+              </p>
+            </>
+          );
+        } else {
+          const nombre = data.Nombre.split(" ")[0];
+          const numReservaciones = data.Reservaciones.length;
+          const qrLink =
+            numReservaciones === 0
+              ? "https://dreamlabspace.world/reservar"
+              : "https://dreamlabspace.world/perfil";
+          setMensaje(
+            <>
+              <p className="bienvenida">HOLA</p>
+              <p style={{ textTransform: "uppercase" }} className="bienvenida">
+                {nombre}
+              </p>
+              <p className="bienvenida-mas-peque">cuentas con</p>
+              <p className="bienvenidota">{numReservaciones}</p>
+              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
+                {numReservaciones === 1 ? "RESERVACIÓN" : "RESERVACIONES"}
+              </p>
+              <p className="bienvenida-mas-peque">
+                Para{" "}
+                {numReservaciones === 1
+                  ? "consultar tu reservación"
+                  : numReservaciones > 1
+                  ? "consultar tus reservaciones"
+                  : "realizar una reservación"}{" "}
+                consulta el siguiente QR
+              </p>
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?data=${qrLink}&size=150x150`}
+                alt="QR Code"
+                className="qr-code"
+              />
+            </>
+          );
+        }
+        setTimeout(() => setMensaje(null), 15000);
+      } catch (error) {
+        console.error("Error logging in:", error);
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="grid grid-cols-8">
@@ -222,18 +326,28 @@ const HU024_1 = () => {
         ))}
         <div className="col-span-1 flex items-start justify-center relative">
           <div className="text-white text-center p-4 z-10 justify-center items-center">
-            <p className="bienvenida">WELCOME</p>
-            <p className="bienvenida-peque">TO</p>
-            <img src={DreamLab} alt="DreamLab" className="dreamlab" />
-            <p className="bienvenida">D.R.E.A.M. LAB</p>
-            <img
-              src={`https://api.qrserver.com/v1/create-qr-code/?data=https://dreamlabupc.com/HU024_1&size=150x150`}
-              alt="QR Code"
-              className="qr-code"
-            />
+            {mensaje || (
+              <>
+                <p className="bienvenida">WELCOME</p>
+                <p className="bienvenida-peque">TO</p>
+                <img src={DreamLab} alt="DreamLab" className="dreamlab" />
+                <p className="bienvenida">D.R.E.A.M. LAB</p>
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?data=https://dreamlabupc.com/HU024_1&size=150x150`}
+                  alt="QR Code"
+                  className="qr-code"
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
+      <input
+        type="text"
+        onKeyDown={handleKeyDown}
+        ref={inputRef}
+        style={{ position: "absolute", left: "-9999px" }}
+      />
     </div>
   );
 };
