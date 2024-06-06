@@ -358,7 +358,7 @@ const HU024_1 = () => {
             </>
           );
         }
-        setTimeout(() => setMensaje(null), 1005000);
+        setTimeout(() => setMensaje(null), 15000);
       } catch (error) {
         console.error("Error logging in:", error);
       }
