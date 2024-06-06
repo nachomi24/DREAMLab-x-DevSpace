@@ -2,6 +2,9 @@ header {
     position: fixed;
     width: 100%;
     z-index: 10;
+   
+
+    
 }
 
 /*Lo que hacee sto es el padding de los lados del menu*/
@@ -17,8 +20,8 @@ nav {
 }
 
 .container{
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 6%;
+    padding-right: 6%;
     justify-content: space-between;
 }
 
@@ -43,6 +46,7 @@ nav {
     border-radius: 50px;
     cursor: pointer;
     transition: 0.3s;
+    margin-left: auto;
 }
 
 .logo-title {
@@ -277,7 +281,7 @@ nav ul li {
     .karen .search_input, .search-icon {
         display: none;
     }
-
+    
     .dropdown-menu {
         right: 8rem;
     }
