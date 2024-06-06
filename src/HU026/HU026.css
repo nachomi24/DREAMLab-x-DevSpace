@@ -14,7 +14,7 @@
 
 .modal-overlay026 {
   position: fixed;
-  top: 3vh; /* Ajuste de posición */
+  top: 0;
   left: 0;
   z-index: 5;
   width: 100%;
@@ -28,11 +28,34 @@
 
 .modal-content026 {
   width: 600px; /* Reducido de 600px a 400px */
+  height: 80vh; /* Ajustado a 80vh */
   background-color: rgba(255, 255, 255, 1);
   border-radius: 15px;
-  overflow: hidden;
+  overflow-y: scroll;
   position: relative;
   font-size: 16px; /* Tamaño de fuente ajustado */
+  top: -2.5vh;
+}
+
+.modal-content026::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal-content026::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.212);
+  border-radius: 6px;
+}
+
+.modal-content026::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(86, 86, 86, 0.516);
+}
+
+.modal-content026::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.modal-content026::-webkit-scrollbar-corner {
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .modal-content026-inside {
@@ -131,7 +154,7 @@
   font-weight: bold;
   transition: box-shadow 0.3s;
   margin: 1vh 30vh; /* Reducido el margen */
-  margin-left: 25vh;
+  margin-left: 30vh;
 }
 
 .toggle-button {
