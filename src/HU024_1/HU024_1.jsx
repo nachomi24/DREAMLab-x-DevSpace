@@ -9,6 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css/autoplay";
 import "./HU024_1.css";
 import DreamLab from "../assets/DreamLab.png";
+import Dreamy from "../assets/dreamy2.png";
 
 const HU024_1 = () => {
   const [reservaciones, setReservaciones] = useState([]);
@@ -229,8 +230,13 @@ const HU024_1 = () => {
         if (data.Mensaje) {
           setMensaje(
             <>
-              <p className="bienvenida">Dreamer</p>
-              <p className="bienvenida-peque">
+              <p style={{ color: "lightgreen" }} className="bienvenida">
+                HOLA
+              </p>
+              <p style={{ color: "lightgreen" }} className="bienvenida">
+                Dreamer
+              </p>
+              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
                 Para conocer más sobre D.R.E.A.M. LAB consulta el siguiente QR
               </p>
               <img
@@ -244,10 +250,67 @@ const HU024_1 = () => {
           const nombre = data.Nombre.split(" ")[0];
           setMensaje(
             <>
-              <p className="bienvenida">HOLA</p>
-              <p style={{ textTransform: "uppercase" }} className="bienvenida">
+              <p style={{ color: "skyblue" }} className="bienvenida">
+                HOLA
+              </p>
+              <p
+                style={{
+                  color: "skyblue",
+                  textTransform: "uppercase",
+                  marginBottom: "5vh",
+                }}
+                className="bienvenida"
+              >
                 {nombre}
               </p>
+              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
+                Agradecemos tu servicio en D.R.E.A.M. LAB
+              </p>
+              <img src={Dreamy} alt="Dreamy" className="dreamy" />
+            </>
+          );
+        } else if (data.TipoUsuario === "Profesor") {
+          const nombre = data.Nombre.split(" ")[0];
+          const numReservaciones = data.Reservaciones.length;
+          const qrLink =
+            numReservaciones === 0
+              ? "https://dreamlabspace.world/reservar"
+              : "https://dreamlabspace.world/perfil";
+          setMensaje(
+            <>
+              <p style={{ color: "lightpink" }} className="bienvenida">
+                HOLA
+              </p>
+              <p
+                style={{ color: "lightpink", textTransform: "uppercase" }}
+                className="bienvenida"
+              >
+                {nombre}
+              </p>
+              <p className="bienvenida-mas-peque">cuentas con</p>
+              <p style={{ color: "lightpink" }} className="bienvenidota">
+                {numReservaciones}
+              </p>
+              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
+                {numReservaciones === 1 ? "RESERVACIÓN" : "RESERVACIONES"}
+              </p>
+              <p
+                style={{ marginBottom: "5vh" }}
+                className="bienvenida-mas-peque"
+              >
+                Para{" "}
+                {numReservaciones === 1
+                  ? "consultar tu reservación"
+                  : numReservaciones > 1
+                  ? "consultar tus reservaciones"
+                  : "realizar una reservación"}{" "}
+                consulta el siguiente QR
+              </p>
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?data=${qrLink}&size=150x150`}
+                alt="QR Code"
+                className="qr-code"
+              />
             </>
           );
         } else {
@@ -259,16 +322,26 @@ const HU024_1 = () => {
               : "https://dreamlabspace.world/perfil";
           setMensaje(
             <>
-              <p className="bienvenida">HOLA</p>
-              <p style={{ textTransform: "uppercase" }} className="bienvenida">
+              <p style={{ color: "yellow" }} className="bienvenida">
+                HOLA
+              </p>
+              <p
+                style={{ color: "yellow", textTransform: "uppercase" }}
+                className="bienvenida"
+              >
                 {nombre}
               </p>
               <p className="bienvenida-mas-peque">cuentas con</p>
-              <p className="bienvenidota">{numReservaciones}</p>
+              <p style={{ color: "yellow" }} className="bienvenidota">
+                {numReservaciones}
+              </p>
               <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
                 {numReservaciones === 1 ? "RESERVACIÓN" : "RESERVACIONES"}
               </p>
-              <p className="bienvenida-mas-peque">
+              <p
+                style={{ marginBottom: "5vh" }}
+                className="bienvenida-mas-peque"
+              >
                 Para{" "}
                 {numReservaciones === 1
                   ? "consultar tu reservación"
@@ -331,12 +404,10 @@ const HU024_1 = () => {
                 <p className="bienvenida">WELCOME</p>
                 <p className="bienvenida-peque">TO</p>
                 <img src={DreamLab} alt="DreamLab" className="dreamlab" />
-                <p className="bienvenida">D.R.E.A.M. LAB</p>
-                <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?data=https://dreamlabupc.com/HU024_1&size=150x150`}
-                  alt="QR Code"
-                  className="qr-code"
-                />
+                <p style={{ marginBottom: "5vh" }} className="bienvenida">
+                  D.R.E.A.M. LAB
+                </p>
+                <img src={Dreamy} alt="Dreamy" className="dreamy" />
               </>
             )}
           </div>

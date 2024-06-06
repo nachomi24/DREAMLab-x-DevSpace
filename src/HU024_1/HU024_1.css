@@ -181,6 +181,12 @@
   margin: 0 auto; /* Centra horizontalmente */
 }
 
+.dreamy {
+  height: 25vh;
+  display: block; /* Asegura que la imagen se muestre como bloque para aplicar márgenes automáticos */
+  margin: 0 auto; /* Centra horizontalmente */
+}
+
 .qr-code {
   height: 8vw;
   display: block; /* Asegura que la imagen se muestre como bloque para aplicar márgenes automáticos */

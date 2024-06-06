@@ -42,11 +42,8 @@ const App = () => {
       <Route path="/admin/videowall" element={<HU024 />} />
       <Route path="/videowall" element={<HU024_1 />} />
       <Route path="/reservationform" element={<HU025 />} />
-
       <Route path="/talleres" element={<HU026 />} />
-
       <Route path="/open_spaces" element={<HU010 />} />
-
     </Routes>
   );
 };
