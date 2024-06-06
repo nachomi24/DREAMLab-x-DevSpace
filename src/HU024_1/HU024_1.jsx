@@ -236,13 +236,13 @@ const HU024_1 = () => {
               <p style={{ color: "lightgreen" }} className="bienvenida">
                 Dreamer
               </p>
-              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
+              <p style={{ marginBottom: "3vh" }} className="bienvenida-peque">
                 Para conocer más sobre D.R.E.A.M. LAB consulta el siguiente QR
               </p>
               <img
                 src={`https://api.qrserver.com/v1/create-qr-code/?data=https://dreamlabspace.world/open_spaces&size=150x150`}
                 alt="QR Code"
-                className="qr-code"
+                className="qr-code-2"
               />
             </>
           );
@@ -257,13 +257,13 @@ const HU024_1 = () => {
                 style={{
                   color: "skyblue",
                   textTransform: "uppercase",
-                  marginBottom: "5vh",
+                  marginBottom: "3vh",
                 }}
                 className="bienvenida"
               >
                 {nombre}
               </p>
-              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
+              <p style={{ marginBottom: "3vh" }} className="bienvenida-peque">
                 Agradecemos tu servicio en D.R.E.A.M. LAB
               </p>
               <img src={Dreamy} alt="Dreamy" className="dreamy" />
@@ -291,11 +291,11 @@ const HU024_1 = () => {
               <p style={{ color: "lightpink" }} className="bienvenidota">
                 {numReservaciones}
               </p>
-              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
+              <p style={{ marginBottom: "3vh" }} className="bienvenida-peque">
                 {numReservaciones === 1 ? "RESERVACIÓN" : "RESERVACIONES"}
               </p>
               <p
-                style={{ marginBottom: "5vh" }}
+                style={{ marginBottom: "3vh" }}
                 className="bienvenida-mas-peque"
               >
                 Para{" "}
@@ -309,7 +309,7 @@ const HU024_1 = () => {
               <img
                 src={`https://api.qrserver.com/v1/create-qr-code/?data=${qrLink}&size=150x150`}
                 alt="QR Code"
-                className="qr-code"
+                className="qr-code-2"
               />
             </>
           );
@@ -335,11 +335,11 @@ const HU024_1 = () => {
               <p style={{ color: "yellow" }} className="bienvenidota">
                 {numReservaciones}
               </p>
-              <p style={{ marginBottom: "5vh" }} className="bienvenida-peque">
+              <p style={{ marginBottom: "3vh" }} className="bienvenida-peque">
                 {numReservaciones === 1 ? "RESERVACIÓN" : "RESERVACIONES"}
               </p>
               <p
-                style={{ marginBottom: "5vh" }}
+                style={{ marginBottom: "3vh" }}
                 className="bienvenida-mas-peque"
               >
                 Para{" "}
@@ -353,12 +353,12 @@ const HU024_1 = () => {
               <img
                 src={`https://api.qrserver.com/v1/create-qr-code/?data=${qrLink}&size=150x150`}
                 alt="QR Code"
-                className="qr-code"
+                className="qr-code-2"
               />
             </>
           );
         }
-        setTimeout(() => setMensaje(null), 15000);
+        setTimeout(() => setMensaje(null), 1005000);
       } catch (error) {
         console.error("Error logging in:", error);
       }
