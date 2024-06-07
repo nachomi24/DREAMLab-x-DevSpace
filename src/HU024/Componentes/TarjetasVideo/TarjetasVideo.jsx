@@ -217,8 +217,8 @@ function TarjetasPublicaciones({ datos }) {
             </button>
             <a className="videowall-link" href="/videowall" target="_blank">
               <i
-                style={{ marginRight: "15px", fontSize: "6vh" }}
-                className="fa-solid fa-arrows-to-eye"
+                style={{ marginRight: "8px", fontSize: "3vh", marginTop: "-7px"}}
+                className="fas fa-eye"
               ></i>
               <p>Visualizar Videowall</p>
             </a>

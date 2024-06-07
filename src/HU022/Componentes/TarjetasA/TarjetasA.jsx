@@ -17,7 +17,11 @@ function TarjetasA({ datos, actualizarReservaciones }) {
   const [reservacionesPendientes, setReservacionesPendientes] = useState([]);
   const [modalData, setModalData] = useState(null);
   const [modalData2, setModalData2] = useState(null);
-  const [selectedSala, setSelectedSala] = useState(''); // Nuevo estado para la sala seleccionada
+  const [selectedSala, setSelectedSala] = useState('');
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [reservaToConfirm, setReservaToConfirm] = useState(null);
+  const [showPopUpReject, setShowPopUpReject] = useState(false);
+  const [reservaToReject, setReservaToReject] = useState(null);
 
   useEffect(() => {
     const reservacionesPendientesFiltradas = datos.filter(reserva => reserva.Confirmada === 0);
@@ -96,6 +100,40 @@ function TarjetasA({ datos, actualizarReservaciones }) {
     }
   };
 
+  const handleConfirmarClick = (reserva) => {
+    setReservaToConfirm(reserva);
+    setShowPopUp(true);
+  };
+
+  const handlePopUpClose = () => {
+    setShowPopUp(false);
+    setReservaToConfirm(null);
+  };
+
+  const handlePopUpConfirm = async () => {
+    if (reservaToConfirm) {
+      await confirmarReservacion(reservaToConfirm.ReservacionID, reservaToConfirm);
+      handlePopUpClose();
+    }
+  };
+
+  const handleRechazarClick = (reserva) => {
+    setReservaToReject(reserva);
+    setShowPopUpReject(true);
+  };
+
+  const handlePopUpRejectClose = () => {
+    setShowPopUpReject(false);
+    setReservaToReject(null);
+  };
+
+  const handlePopUpRejectConfirm = async () => {
+    if (reservaToReject) {
+      await rechazarReservacion(reservaToReject.ReservacionID, reservaToReject);
+      handlePopUpRejectClose();
+    }
+  };
+
   const Tarjeta = ({
     ReservacionID,
     Matricula,
@@ -130,7 +168,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
             Personas,
             Confirmada
           })}>DETALLES</button>
-          <button onClick={() => confirmarReservacion(ReservacionID, {
+          <button onClick={() => handleConfirmarClick({
             ReservacionID,
             Matricula,
             NombreEstudiante,
@@ -143,7 +181,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
             Personas,
             Confirmada
           })}>CONFIRMAR</button>
-          <button onClick={() => rechazarReservacion(ReservacionID, {
+          <button onClick={() => handleRechazarClick({
             ReservacionID,
             Matricula,
             NombreEstudiante,
@@ -161,7 +199,7 @@ function TarjetasA({ datos, actualizarReservaciones }) {
     </div>
   );
 
-  const salasUnicas = [...new Set(datos.map(reserva => reserva.NombreSala))]; // Obtener salas únicas
+  const salasUnicas = [...new Set(datos.map(reserva => reserva.NombreSala))];
 
   return (
     <div className="contenedor-tarjeta-general-HU022">
@@ -194,16 +232,16 @@ function TarjetasA({ datos, actualizarReservaciones }) {
           onClose={handleCloseModal}
         />
       )}
-      {modalData && (
+      {showPopUp && (
         <Modal2
-          data={modalData}
-          onClose={handleCloseModal}
+          onClose={handlePopUpClose}
+          onConfirm={handlePopUpConfirm}
         />
       )}
-      {modalData2 && (
+      {showPopUpReject && (
         <Modal3
-          data={modalData2}
-          onClose={handleCloseModal}
+          onClose={handlePopUpRejectClose}
+          onConfirm={handlePopUpRejectConfirm}
         />
       )}
     </div>
