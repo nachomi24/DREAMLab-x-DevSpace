@@ -129,15 +129,23 @@ const ReservationForm = () => {
         }));
     };
 
-    const generateTimeOptions = (start, end) => {
+    const generateTimeOptions = (start, end, startFrom = null, excludeStart = false) => {
         const startHour = parseInt(start.split(':')[0], 10);
         const startMinute = parseInt(start.split(':')[1], 10);
         const endHour = parseInt(end.split(':')[0], 10);
         const endMinute = parseInt(end.split(':')[1], 10);
 
         const options = [];
-        let hour = startHour;
-        let minute = startMinute;
+        let hour = startFrom ? parseInt(startFrom.split(':')[0], 10) : startHour;
+        let minute = startFrom ? parseInt(startFrom.split(':')[1], 10) : startMinute;
+
+        if (excludeStart) {
+            minute += 30;
+            if (minute >= 60) {
+                minute = 0;
+                hour += 1;
+            }
+        }
 
         while (hour < endHour || (hour === endHour && minute <= endMinute)) {
             const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
@@ -153,7 +161,8 @@ const ReservationForm = () => {
         return options;
     };
 
-    const timeOptions = generateTimeOptions(horarios.HoraInicio, horarios.HoraFin);
+    const timeOptionsStart = generateTimeOptions(horarios.HoraInicio, horarios.HoraFin);
+    const timeOptionsEnd = generateTimeOptions(horarios.HoraInicio, horarios.HoraFin, horaInicio, true);
 
     return (
         <div className="containerHU025">
@@ -201,7 +210,7 @@ const ReservationForm = () => {
                             value={horaInicio}
                             onChange={(e) => setHoraInicio(e.target.value)}
                         >
-                            {timeOptions.map(time => (
+                            {timeOptionsStart.map(time => (
                                 <option key={time} value={time}>
                                     {time}
                                 </option>
@@ -214,7 +223,7 @@ const ReservationForm = () => {
                             value={horaFin}
                             onChange={(e) => setHoraFin(e.target.value)}
                         >
-                            {timeOptions.map(time => (
+                            {timeOptionsEnd.map(time => (
                                 <option key={time} value={time}>
                                     {time}
                                 </option>
