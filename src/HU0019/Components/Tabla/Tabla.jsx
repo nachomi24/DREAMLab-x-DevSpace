@@ -195,7 +195,7 @@ function Tabla({
                 {!isEyeOpen &&
                   UfIds.map((uf, index) => (
                     <div key={index} style={{ marginLeft: "4vh" }}>
-                      <p style={{ marginRight: 0 }} className="p_uf_curso">
+                      <p style={{ marginRight: 0 }} className="p_uf_curso2">
                         {uf}
                       </p>
                     </div>
@@ -221,7 +221,7 @@ function Tabla({
                   />
                 ) : (
                   <div className="reservaciones-pend-fut-div-content">
-                    <p style={{ fontSize: "2.5vh", marginBottom: "3vh" }}>
+                    <p className="no-reservaciones">
                       Aún no has realizado una reservación. Haz click en el
                       botón de abajo para realizar tu primera reservación.{" "}
                     </p>
@@ -254,7 +254,7 @@ function Tabla({
                   />
                 ) : (
                   <div className="reservaciones-pend-fut-div-content">
-                    <p style={{ fontSize: "2.5vh", marginBottom: "3vh" }}>
+                    <p className="no-reservaciones">
                       Tus reservaciones pendientes están en espera de
                       confirmación.
                     </p>

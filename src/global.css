@@ -19,21 +19,24 @@ a {
 
 body {
   background-image: url('../src/assets/bghome.jpg');
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-color: #4D507D;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 body.global-background {
   background-image: url('../src/assets/bghome.jpg');
-  background-repeat: repeat-y;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: unset;
   margin: 0;
   padding: 0;
-  height: 100vh;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 body.videowall-background {
