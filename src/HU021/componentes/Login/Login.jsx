@@ -31,13 +31,13 @@ const Login = ({ setLoggedIn, setMatricula }) => {
 
         if (normalizedTipo === "admin") {
           localStorage.setItem("userType", normalizedTipo);
-          window.location.replace("http://localhost:8080/admin/reservaciones");
+          window.location.href = "/admin/reservaciones";
         } else if (normalizedTipo === "profesor") {
           localStorage.setItem("userType", normalizedTipo);
-          window.location.replace("http://localhost:8080/talleres");
+          window.location.href = "/talleres";
         } else {
           localStorage.setItem("userType", normalizedTipo);
-          window.location.replace("http://localhost:8080/reservar");
+          window.location.href = "/reservar";
         }
 
         setLoggedIn(true);
