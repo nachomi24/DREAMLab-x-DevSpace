@@ -7,6 +7,7 @@ import HU009 from "./HU009/HU009";
 import HU010 from "./HU010/HU010.jsx";
 import HU0016_HU0017 from "./HU0016_HU0017/HU0016_HU0017";
 import HU0019 from "./HU0019/HU0019";
+import HU021 from "./HU021/HU021";
 import HU022 from "./HU022/HU022";
 import HU023 from "./HU023/HU023";
 import HU024 from "./HU024/HU0024";
@@ -37,6 +38,7 @@ const App = () => {
       <Route path="/secciones" element={<HU008 />} />
       <Route path="/garage_valley" element={<HU009 />} />
       <Route path="/perfil" element={<HU0019 />} />
+      <Route path="/login" element={<HU021 />} />
       <Route path="/admin/reservaciones" element={<HU022 />} />
       <Route path="/stats" element={<HU023 />} />
       <Route path="/admin/videowall" element={<HU024 />} />

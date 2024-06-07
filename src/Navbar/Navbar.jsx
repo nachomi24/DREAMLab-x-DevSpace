@@ -14,7 +14,6 @@ const Navbar = ({ loggedIn }) => {
   const matricula = localStorage.getItem("matricula");
   const [isProfesor, setIsProfesor] = useState(false);
 
-
   const apiURLPerfilCarrera =
     "https://dreamlabapidev.azurewebsites.net/api/perfil/" + matricula;
 
@@ -55,7 +54,6 @@ const Navbar = ({ loggedIn }) => {
     obtencionFotoPerfil();
     setIsProfesor(localStorage.getItem("userType") === "profesor");
   }, []);
-  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -71,7 +69,7 @@ const Navbar = ({ loggedIn }) => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("matricula");
     localStorage.removeItem("threadID");
-    window.location.href = "/reservar";
+    window.location.href = "/login";
   };
 
   return (
@@ -98,12 +96,12 @@ const Navbar = ({ loggedIn }) => {
             </a>
           </li>
           {isProfesor && (
-          <li>
-            <a href="/talleres" className="mina-bold">
-              TALLERES
-            </a>
-          </li>
-        )}
+            <li>
+              <a href="/talleres" className="mina-bold">
+                TALLERES
+              </a>
+            </li>
+          )}
         </ul>
         <div className="karen">
           <i
@@ -114,6 +112,20 @@ const Navbar = ({ loggedIn }) => {
             }
             onClick={toggleMenu}
           ></i>
+          {!loggedIn && (
+            <div className="perfil-menu-container">
+              <button className="perfil-button" onClick={togglePerfilMenu}>
+                <i className="perfil-icono fa-solid fa-user"></i>
+              </button>
+              {isPerfilMenuOpen && (
+                <div className="perfil-dropdown-menu">
+                  <a href="/login" className="mina-bold-2">
+                    Iniciar Sesión
+                  </a>
+                </div>
+              )}
+            </div>
+          )}
           {loggedIn && (
             <div className="perfil-menu-container">
               <button className="perfil-button" onClick={togglePerfilMenu}>
@@ -136,23 +148,31 @@ const Navbar = ({ loggedIn }) => {
           )}
         </div>
       </nav>
-      <div className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
-        <li>
-          <a href="/" className="mina-bold-2">
-            INICIO
-          </a>
-        </li>
-        <li>
-          <a href="/reservar" className="mina-bold-2">
-            RESERVAR
-          </a>
-        </li>
-        <li>
-          <a href="/secciones" className="mina-bold-2">
-            ESPACIOS
-          </a>
-        </li>
-      </div>
+      {isProfesor && (
+        <div className={`dropdown-menu-2 ${isMenuOpen ? "open" : ""}`}>
+          <li>
+            <a href="/" className="mina-bold-2">
+              INICIO
+            </a>
+          </li>
+          <li>
+            <a href="/reservar" className="mina-bold-2">
+              RESERVAR
+            </a>
+          </li>
+          <li>
+            <a href="/secciones" className="mina-bold-2">
+              ESPACIOS
+            </a>
+          </li>
+
+          <li>
+            <a href="/talleres" className="mina-bold-2">
+              TALLERES
+            </a>
+          </li>
+        </div>
+      )}
     </header>
   );
 };
