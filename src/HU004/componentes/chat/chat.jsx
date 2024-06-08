@@ -3,7 +3,6 @@ import axios from "axios";
 import "../../HU004.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
-import adperfil from "../../../assets/adperfil.png";
 
 const Chat = ({ setLoggedIn, setMatricula }) => {
   const [messages, setMessages] = useState(() => {
@@ -29,51 +28,8 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
     const savedLoginStatus = localStorage.getItem("isLoggedIn");
     return savedLoginStatus === "true";
   });
-  const [matricula, setMatriculaInput] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [userType, setUserType] = useState("");
   const [threadID, setThreadID] = useState("");
   const [inputError, setInputError] = useState("");
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://dreamlabapidev.azurewebsites.net/api/loginNormal",
-        {
-          Matricula: matricula,
-          Contrasena: password,
-        }
-      );
-
-      if (response.data && response.status === 200) {
-        const { Matricula, Tipo } = response.data;
-        const normalizedTipo = Tipo.trim().toLowerCase();
-
-        if (normalizedTipo === "admin") {
-          window.location.replace("http://localhost:8080/admin/reservaciones");
-        } else if (normalizedTipo === "profesor") {
-          localStorage.setItem("userType", normalizedTipo);
-          window.location.replace("http://localhost:8080/talleres");
-        }
-
-        setLoggedIn(true);
-        setIsLoggedIn(true);
-        localStorage.setItem("isLoggedIn", "true");
-        setMatriculita(Matricula);
-        setMatricula(Matricula);
-        localStorage.setItem("matricula", Matricula);
-        setUserType(normalizedTipo);
-        setErrorMessage("");
-      } else {
-        setErrorMessage("Matrícula o contraseña incorrecta");
-      }
-    } catch (error) {
-      console.error("Error en login:", error);
-      setErrorMessage("Matrícula o contraseña incorrecta");
-    }
-  };
 
   const togglePopUp = () => {
     setShowPopUp(!showPopUp);
@@ -340,110 +296,72 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
 
   return (
     <div className="HU004">
-      {!isLoggedIn ? (
-        <div className="login_formHU004">
-          <h2>INICIA SESIÓN</h2>
-          <form onSubmit={handleLogin}>
-            <div>
-              <label>Matrícula:</label>
-              <input
-                type="text"
-                value={matricula}
-                onChange={(e) => setMatriculaInput(e.target.value)}
-                required
-              />
+      <div className="chat_container">
+        <div className="chat_window">
+          <div className="top_menuHU004">
+            <div className="title">RESERVA TU LUGAR</div>
+            <div style={{ display: "flex" }}>
+              <a href="/reservar_normal" className="reservation-link">
+                Haz click aquí para reservar de otra manera.
+              </a>
             </div>
-            <div>
-              <label>Contraseña:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit">Iniciar Sesión</button>
-            {errorMessage && (
-              <p
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: "20px",
-                }}
-              >
-                {errorMessage}
-              </p>
-            )}
-          </form>
-        </div>
-      ) : (
-        <div className="chat_container">
-          <div className="chat_window">
-            <div className="top_menuHU004">
-              <div className="title">RESERVA TU LUGAR</div>
-              <div style={{ display: "flex" }}>
-                <a href="/reservationform" className="reservation-link">
-                  Haz click aquí para reservar de otra manera.
-                </a>
-              </div>
-            </div>
-            {inputError && (
-              <div className="errorHU004 show">
-                <div className="title">{inputError}</div>
-              </div>
-            )}
-            <ul id="all_messages" className="messages">
-              {messages.map((msg, index) => (
-                <li key={index} className={`message ${msg.side} appeared`}>
-                  <div className={`avatar ${msg.side}`}></div>
-                  <div className="text_wrapper">
-                    <div className="text">{msg.text}</div>
-                  </div>
-                </li>
-              ))}
-              <div ref={messagesEndRef} />
-            </ul>
-            {showButton && (
-              <div className="bottom_wrapperHU004">
-                <button className="send_message2" onClick={togglePopUp}>
-                  Detalles de Solicitud
-                </button>
-              </div>
-            )}
-            {showMessageInput && (
-              <div className="bottom_wrapperHU004 clearfix">
-                <div className="message_input_wrapper">
-                  <textarea
-                    id="message_input"
-                    className="message_input"
-                    placeholder="Escribe tu mensaje aquí..."
-                    value={inputText}
-                    onChange={handleMessageChange}
-                    onKeyPress={handleKeyPress}
-                  />
-                </div>
-                <div className="send_message" onClick={handleMessageSubmit}>
-                  <div className="icon"></div>
-                  <div className="text">Enviar</div>
-                </div>
-              </div>
-            )}
           </div>
-          {showPopUp && (
-            <PopUp
-              onClose={togglePopUp}
-              Matricula={matriculita}
-              SalaID={salaID}
-              Dia={dia}
-              HoraInicio={horaInicio}
-              HoraFin={horaFin}
-              Recursos={recursos}
-              Personas={personas}
-              Confirmada={confirmada}
-            />
+          {inputError && (
+            <div className="errorHU004 show">
+              <div className="title">{inputError}</div>
+            </div>
+          )}
+          <ul id="all_messages" className="messages">
+            {messages.map((msg, index) => (
+              <li key={index} className={`message ${msg.side} appeared`}>
+                <div className={`avatar ${msg.side}`}></div>
+                <div className="text_wrapper">
+                  <div className="text">{msg.text}</div>
+                </div>
+              </li>
+            ))}
+            <div ref={messagesEndRef} />
+          </ul>
+          {showButton && (
+            <div className="bottom_wrapperHU004">
+              <button className="send_message2" onClick={togglePopUp}>
+                Detalles de Solicitud
+              </button>
+            </div>
+          )}
+          {showMessageInput && (
+            <div className="bottom_wrapperHU004 clearfix">
+              <div className="message_input_wrapper">
+                <textarea
+                  id="message_input"
+                  className="message_input"
+                  placeholder="Escribe tu mensaje aquí..."
+                  value={inputText}
+                  onChange={handleMessageChange}
+                  onKeyPress={handleKeyPress}
+                />
+              </div>
+              <div className="send_message" onClick={handleMessageSubmit}>
+                <div className="icon"></div>
+                <div className="text">Enviar</div>
+              </div>
+            </div>
           )}
         </div>
-      )}
+        {showPopUp && (
+          <PopUp
+            onClose={togglePopUp}
+            Matricula={matriculita}
+            SalaID={salaID}
+            Dia={dia}
+            HoraInicio={horaInicio}
+            HoraFin={horaFin}
+            Recursos={recursos}
+            Personas={personas}
+            Confirmada={confirmada}
+          />
+        )}
+      </div>
     </div>
   );
 };

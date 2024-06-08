@@ -22,20 +22,27 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #4D507D;
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+}
+
+body.espacio-background {
+  background-image: url('../src/assets/bghome.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #4D507D;
+  overflow: scroll;
+  height: 100vh;
   width: 100%;
 }
 
 body.global-background {
   background-image: url('../src/assets/bghome.jpg');
   background-repeat: no-repeat;
-  background-size: unset;
-  margin: 0;
-  padding: 0;
+  background-size: cover;
   overflow: hidden;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 

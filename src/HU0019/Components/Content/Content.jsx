@@ -3,7 +3,7 @@ import "../../HU0019.css";
 import Profile from "../Profile/Profile";
 import Tabla from "../Tabla/Tabla";
 import axios from "axios";
-import fotoicono from "../../../assets/iconoperfil2.png"; // Asegúrate de que la importación es correcta
+import fotoicono from "../../../assets/iconoperfil2.png";
 
 const Content = ({ matricula }) => {
   const apiURLPerfil =

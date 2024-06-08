@@ -81,7 +81,7 @@ const Navbar = ({ loggedIn }) => {
             </a>
           </li>
           <li>
-            <a href="/stats" className="mina-bold-HU022">
+            <a href="/admin/stats" className="mina-bold-HU022">
               STATS
             </a>
           </li>
@@ -115,7 +115,7 @@ const Navbar = ({ loggedIn }) => {
           </a>
         </li>
         <li>
-          <a href="/stats" className="mina-bold-HU022">
+          <a href="/admin/stats" className="mina-bold-HU022">
             STATS
           </a>
         </li>

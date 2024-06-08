@@ -1,12 +1,3 @@
-
-.cuerpoHU004 {
-  background-image: url('../assets/fond2.9.png');
-  background-repeat: repeat-y;
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
-}
-
 .chat_window {
   position: absolute;
   width: calc(50% - 10px); 

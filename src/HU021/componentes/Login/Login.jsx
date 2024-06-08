@@ -84,7 +84,6 @@ const Login = ({ setLoggedIn, setMatricula }) => {
     <div className="HU004">
       <div className="login_formHU021">
         <h2>INICIA SESIÓN</h2>
-        <img src={adperfil} className="botonnav" alt="adperfil" />
         <form onSubmit={handleLogin}>
           <div>
             <label>Matrícula:</label>
@@ -104,18 +103,21 @@ const Login = ({ setLoggedIn, setMatricula }) => {
               required
             />
           </div>
-          <button type="submit">Iniciar Sesión</button>
           {errorMessage && (
             <p
               style={{
                 display: "flex",
                 justifyContent: "center",
-                marginTop: "20px",
+                marginTop: "10px",
+                marginBottom: "10px",
+                color: "rgb(207, 58, 58)",
+                fontWeight: "bold",
               }}
             >
               {errorMessage}
             </p>
           )}
+          <button type="submit">Iniciar Sesión</button>
         </form>
       </div>
     </div>

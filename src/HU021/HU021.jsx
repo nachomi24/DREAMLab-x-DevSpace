@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Login from "./componentes/Login/Login";
+import Dreamy from "./componentes/dreamy/dreamy";
 import "./HU021.css";
 import "../global.css";
 
@@ -16,6 +17,7 @@ const HU004 = () => {
     <div className="cuerpoHU004">
       <Navbar loggedIn={loggedIn} />
       <Login setLoggedIn={setLoggedIn} setMatricula={setMatricula} />
+      <Dreamy />
     </div>
   );
 };

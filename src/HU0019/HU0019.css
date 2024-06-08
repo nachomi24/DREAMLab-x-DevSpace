@@ -381,6 +381,60 @@
     font-size: 1vw;
 }
 
+.botoncitofotito {
+    padding: 5px 15px 5px 15px ;
+    font-size: 2vh;
+    font-weight: bold;
+    background-color: #E8ADA9;
+    color: black;
+    border-radius: 30px;
+    margin-top: 3vh;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+  }
+
+  .botoncitofotito:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .botoncitofotitoconfirmar {
+    padding: 5px 15px 5px 15px ;
+    font-size: 2vh;
+    font-weight: bold;
+    background-color: #C8E8A9;
+    color: black;
+    border-radius: 30px;
+    margin-top: 3vh;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+  }
+
+  .botoncitofotitoconfirmar:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+.custom-file-upload {
+    margin-top: 3vh;
+    display: inline-block;
+    font-weight: bold;
+    padding: 5px 15px 5px 15px ;
+    cursor: pointer;
+    color: #eff0ff;
+    border: none;
+    background-color: #363968;
+    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    border-radius: 4px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .custom-file-upload:hover {
+    box-shadow: 0px 0px rgb(185, 185, 185);
+  }
+
 .botoncito1019 {
     padding: 5px 15px 5px 15px;
     font-size: 3vh;

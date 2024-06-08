@@ -369,7 +369,7 @@
   .videowall-link {
     display: flex;
     align-items: center;
-    text-decoration: underline;
+    text-decoration: none;
     text-align: center;
     color: #363968;
     font-size: 1.25vw;

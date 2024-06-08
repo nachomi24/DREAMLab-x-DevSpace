@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./estiloNavbar.css";
 import logo from "../assets/logo1.0.png";
 import axios from "axios";
+import fotoicono from "../assets/iconoperfil2.png";
 
 const Navbar = ({ loggedIn }) => {
   const [scrolling, setScrolling] = useState(false);
@@ -26,7 +27,7 @@ const Navbar = ({ loggedIn }) => {
 
       // Manejar la respuesta de perfilCarrera
       const { Foto, Nombre } = perfilCarrera.data;
-      setFoto(Foto);
+      setFoto(Foto || fotoicono);
       setNombre(Nombre);
     } catch (error) {
       console.error("Error al obtener los datos:", error);
@@ -91,7 +92,7 @@ const Navbar = ({ loggedIn }) => {
             </a>
           </li>
           <li>
-            <a href="/secciones" className="mina-bold">
+            <a href="/espacios" className="mina-bold">
               ESPACIOS
             </a>
           </li>
@@ -161,7 +162,7 @@ const Navbar = ({ loggedIn }) => {
             </a>
           </li>
           <li>
-            <a href="/secciones" className="mina-bold-2">
+            <a href="/espacios" className="mina-bold-2">
               ESPACIOS
             </a>
           </li>
