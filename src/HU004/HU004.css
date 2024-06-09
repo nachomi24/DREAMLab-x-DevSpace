@@ -172,7 +172,7 @@
   color: #363968;
 }
 .messages .message.right .avatar {
-  background-image: url('../assets/karenFoto.png');
+  background-image: var(--right-avatar);
   background-size: cover;
   float: right;
 }
@@ -334,7 +334,6 @@
 }
 
 .avatar.right {
-  background-image: var(--right-avatar, url('../assets/karenFoto.png')); /* Fallback a una imagen predeterminada si no se encuentra la URL de la foto del perfil */
   float: right;
 }
 

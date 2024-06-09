@@ -1,6 +1,8 @@
-import "../../HU0016_HU0017.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import checkmarkGif from "../../../assets/checkmark.gif";
 
-const Modal = ({ data, onClose, imagen }) => {
+const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   const {
     TallerID,
     NombreProfesor,
@@ -15,6 +17,20 @@ const Modal = ({ data, onClose, imagen }) => {
     HoraCreado,
   } = data;
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userType, setUserType] = useState("");
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showCancelation, setShowCancelation] = useState(false);
+  const [reservedTaller, setReservedTaller] = useState(false);
+  const [canceledTaller, setCanceledTaller] = useState(false);
+  const [matricula, setMatricula] = useState("");
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+    setUserType(localStorage.getItem("userType"));
+    setMatricula(localStorage.getItem("matricula"));
+  }, []);
+
   const convertirHora = (hora) => {
     const [hour, minute] = hora.split(":");
     const ampm = hour >= 12 ? "PM" : "AM";
@@ -22,19 +38,16 @@ const Modal = ({ data, onClose, imagen }) => {
     return `${hour12}:${minute} ${ampm}`;
   };
 
-  // Cambiar el formato de la fecha
   const convertirFecha = (fecha) => {
     const [year, month, day] = fecha.split("-");
     return `${day}/${month}/${year}`;
   };
 
-  // Función para calcular el tiempo transcurrido
   const calcularTiempoTranscurrido = (fechaCreado) => {
     const fechaCreadoMs = new Date(fechaCreado).getTime();
     const fechaActualMs = new Date().getTime();
     const diferenciaMs = fechaActualMs - fechaCreadoMs;
 
-    // Convertir la diferencia a segundos, minutos, horas y días
     const segundos = Math.floor(diferenciaMs / 1000);
     const minutos = Math.floor(segundos / 60);
     const horas = Math.floor(minutos / 60);
@@ -51,8 +64,93 @@ const Modal = ({ data, onClose, imagen }) => {
     }
   };
 
+  const handleReservarClick = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleCancelarClick = () => {
+    setShowCancelation(true);
+  };
+
+  const handleConfirmationClose = () => {
+    setShowConfirmation(false);
+  };
+
+  const handleCancelationClose = () => {
+    setShowCancelation(false);
+  };
+
+  const handleReservarConfirm = async () => {
+    try {
+      await axios.post(
+        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion`,
+        null,
+        {
+          params: {
+            tallerID: TallerID,
+            matricula: matricula,
+          },
+        }
+      );
+
+      setShowConfirmation(false);
+      setReservedTaller(true);
+
+      showPopupAndRedirect();
+    } catch (error) {
+      alert(error.response ? error.response.data.message : error.message);
+    }
+  };
+
+  const handleCancelarConfirm = async () => {
+    try {
+      await axios.delete(
+        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion`,
+        {
+          params: {
+            tallerID: TallerID,
+            matricula: matricula,
+          },
+        }
+      );
+
+      setShowCancelation(false);
+      setCanceledTaller(true);
+
+      showPopupCancelAndRedirect();
+    } catch (error) {
+      alert(error.response ? error.response.data.message : error.message);
+    }
+  };
+
+  const showPopupAndRedirect = () => {
+    setShowConfirmation(false);
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
+  };
+
+  const showPopupCancelAndRedirect = () => {
+    setShowCancelation(false);
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
+  };
+
+  const renderCupo = () => {
+    if (Cupo === 1) {
+      return `${Cupo} persona`;
+    } else if (Cupo > 1) {
+      return `${Cupo} personas`;
+    } else {
+      return `${Cupo}`;
+    }
+  };
+
   return (
-    <div className="modal-overlay016" onClick={onClose}>
+    <div className="modal-overlay016">
       <div
         style={{ background: `url(${imagen}) no-repeat center center/cover` }}
         className="modal-content016"
@@ -64,9 +162,15 @@ const Modal = ({ data, onClose, imagen }) => {
           </div>
           <div className="modal-content016-inside-body">
             <div className="modal-content016-inside-body-content">
-              <div className="modal-content016-inside-body-content-ubi">
-                <p>📍{Ubicacion}</p>
-              </div>
+              {Cupo === "No hay cupo" ? (
+                <div className="modal-content016-inside-body-content-cupo-inexistente-cero">
+                  <div className="cupito">CUPO AGOTADO</div>
+                </div>
+              ) : (
+                <div className="modal-content016-inside-body-content-ubi">
+                  <p>📍{Ubicacion}</p>
+                </div>
+              )}
               <div className="modal-content016-inside-body-content-uf">
                 <p className="uniforma">
                   {UFID} - {NombreUF}
@@ -86,18 +190,60 @@ const Modal = ({ data, onClose, imagen }) => {
                     {calcularTiempoTranscurrido(HoraCreado)}
                   </p>
                 </div>
+                {isReservado && (
+                  <div className="modal-content016-inside-body-content-detalles-reservado">
+                    <div className="reservadito">TALLER RESERVADO</div>
+                  </div>
+                )}
+                {isCancelado && (
+                  <div className="modal-content016-inside-body-content-detalles-cancelado">
+                    <div className="canceladito">TALLER CANCELADO</div>
+                  </div>
+                )}
                 <div className="modal-content016-inside-body-content-detalles-cupo">
                   <p>Cupo:</p>
-                  <p className="cupito">{Cupo} personas</p>
+                  <p className="cupito">{renderCupo()}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="modal-content016-inside-body-content-boton">
             <div className="modal-content016-inside-body-content-boton-content">
-              <a href="/reservar" className="botoncito2016">
-                RESERVAR
-              </a>
+              {isLoggedIn ? (
+                userType === "alumno" ? (
+                  isCancelado ? (
+                    <button
+                      className="botoncito3016"
+                      onClick={handleReservarClick}
+                      disabled
+                    >
+                      RESERVAR
+                    </button>
+                  ) : !isReservado && Cupo !== "No hay cupo" ? (
+                    <button
+                      className="botoncito2016"
+                      onClick={handleReservarClick}
+                    >
+                      RESERVAR
+                    </button>
+                  ) : (
+                    <button
+                      className="botoncito2016"
+                      onClick={handleCancelarClick}
+                    >
+                      CANCELAR
+                    </button>
+                  )
+                ) : (
+                  <a href="/reservar" className="botoncito2016">
+                    RESERVAR
+                  </a>
+                )
+              ) : Cupo === "No hay cupo" ? null : (
+                <a href="/login" className="botoncito2016">
+                  INICIAR SESIÓN
+                </a>
+              )}
               <button className="botoncito1016" onClick={onClose}>
                 CERRAR
               </button>
@@ -105,6 +251,100 @@ const Modal = ({ data, onClose, imagen }) => {
           </div>
         </div>
       </div>
+      {showConfirmation && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h3>¿Estás seguro que quieres reservar este taller?</h3>
+            <p>
+              Tu asistencia es muy importante, ya que el cupo es limitado.
+              Apreciamos mucho tu puntualidad y presencia.
+            </p>
+            <p
+              style={{ fontWeight: "bolder", color: "green", fontSize: "3vh" }}
+            >
+              GANARÁS 10 PUNTOS DE PRIORIDAD
+            </p>
+            <div className="popup-button-div">
+              <div className="popup-button-div-inside">
+                <button
+                  className="popup-button-cerrar"
+                  onClick={handleConfirmationClose}
+                >
+                  Cancelar
+                </button>
+                <button
+                  className="popup-button-aceptar"
+                  onClick={handleReservarConfirm}
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {showCancelation && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h3>
+              ¿Estás seguro que quieres cancelar tu reservación de este taller?
+            </h3>
+            <p>
+              Recuerda que tu reserva ya fue procesada y contemplada para la
+              logística del taller. No podrás volver a reservar este taller.
+            </p>
+            <p
+              style={{
+                fontWeight: "bolder",
+                color: "darkred",
+                fontSize: "3vh",
+              }}
+            >
+              PERDERÁS 5 PUNTOS DE PRIORIDAD
+            </p>
+            <div className="popup-button-div">
+              <div className="popup-button-div-inside">
+                <button
+                  className="popup-button-cerrar"
+                  onClick={handleCancelationClose}
+                >
+                  Cancelar
+                </button>
+                <button
+                  className="popup-button-aceptar"
+                  onClick={handleCancelarConfirm}
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {reservedTaller && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <div className="confirmation-message">
+              <img src={checkmarkGif} alt="Confirmación" />
+              <p>
+                <b>TALLER RESERVADO</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+      {canceledTaller && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <div className="confirmation-message">
+              <img src={checkmarkGif} alt="Confirmación" />
+              <p>
+                <b>TALLER CANCELADO</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -75,7 +75,7 @@ const Navbar = ({ loggedIn }) => {
 
   return (
     <header>
-      <nav className={`container ${scrolling ? "scrolling" : ""}`}>
+      <nav className={`containerNavbar ${scrolling ? "scrolling" : ""}`}>
         <div className="logo">
           <img src={logo} alt="Logo de D.R.E.A.M. Lab" />
           <h1 className="logo-title">D.R.E.A.M. LAB</h1>

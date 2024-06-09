@@ -1,10 +1,7 @@
 header {
     position: fixed;
-    width: 100%;
+    width: 100%;  
     z-index: 10;
-   
-
-    
 }
 
 /*Lo que hacee sto es el padding de los lados del menu*/
@@ -19,13 +16,13 @@ nav {
     transition: 0.5s;
 }
 
-.container{
+.containerNavbar{
     padding-left: 6%;
     padding-right: 6%;
     justify-content: space-between;
 }
 
-.container.scrolling {
+.containerNavbar.scrolling {
     background-color: #d7d9f1;
 }
 

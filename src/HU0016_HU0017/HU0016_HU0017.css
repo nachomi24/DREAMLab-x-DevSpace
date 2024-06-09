@@ -147,6 +147,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     text-align: center;
     font-weight: normal;
     font-size: 2vh;
@@ -160,12 +161,65 @@
     font-size: 2.5vh;
 }
 
+.modal-content016-inside-body-content-detalles-reservado {
+  text-align: center;
+}
+
+.modal-content016-inside-body-content-detalles-reservado .reservadito {
+  background-color: lightgreen;
+  color:#363968;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 15px;
+}
+
+.modal-content016-inside-body-content-detalles-cancelado {
+  text-align: center;
+}
+
+.modal-content016-inside-body-content-detalles-cancelado .canceladito {
+  background-color: rgb(255, 99, 99);
+  color:#363968;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 15px;
+}
+
 .modal-content016-inside-body-content-detalles-cupo {
     text-align: right;
 }
 
 .modal-content016-inside-body-content-detalles-cupo .cupito {
     font-size: 2.5vh;
+}
+
+.modal-content016-inside-body-content-cupo-inexistente {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+  align-items: center;
+  text-align: center;
+  font-weight: normal;
+  font-size: 2vh;
+}
+
+.modal-content016-inside-body-content-cupo-inexistente-cero {
+  text-align: center;
+}
+
+.modal-content016-inside-body-content-cupo-inexistente-cero .cupito {
+  background-color: rgb(255, 99, 99);
+  color:#363968;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 15px;
 }
 
 .modal-content016-inside-body-content-boton {
@@ -217,6 +271,23 @@
 
 .botoncito2016:hover {
     box-shadow: 0px 0px rgb(0, 0, 0);
+}
+
+.botoncito3016 {
+  padding: 5px 15px 5px 15px;
+  font-size: 3vh;
+  background-color: #686868;
+  color: #eff0ff;
+  border-radius: 25px;
+  border: none;
+  line-height: 1.6;
+  cursor: pointer;
+  box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+  transition: box-shadow 0.3s;
+}
+
+.botoncito3016:hover {
+  box-shadow: 0px 0px rgb(0, 0, 0);
 }
 
 /* TarjetaInfoS */
@@ -344,14 +415,61 @@
   border: 0.5px solid rgba(0, 0, 0, 0.08);
 }
 
+.reservadoverde016 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  background-color: lightgreen;
+  color: #363968;
+  font-size: 1vw;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid green;
+  box-shadow: -3px 5px 6px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.canceladorojo016 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  background-color: rgb(255, 99, 99);
+  color: #363968;
+  font-size: 1vw;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid darkred;
+  box-shadow: -3px 5px 6px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.reservadorojo016 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: fit-content;
+  background-color: rgb(255, 99, 99);
+  color: #363968;
+  font-size: 1vw;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid darkred;
+  box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
 .tarjeta-img-inside016 {
-  position: relative;
-  z-index: 0;
   border-radius: 25px;
   margin-bottom: -70px;
   height: 200px;
   width: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .tarjeta-info016 h2 {
@@ -427,6 +545,7 @@
   }
   
   .tarjeta016 {
+    position: relative;
     margin-bottom: 7vh;
     margin-left: 5vh;
     margin-right: 5vh;
@@ -545,6 +664,60 @@
     font-size: 3vh;
   }
 
+  .reservadoverde016 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    background-color: lightgreen;
+    color: #363968;
+    font-size: 2.5vw;
+    font-weight: bolder;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid green;
+    box-shadow: -3px 5px 6px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+  
+  .reservadorojo016 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    background-color: rgb(255, 99, 99);
+    color: #363968;
+    font-size: 2.5vw;
+    font-weight: bolder;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid darkred;
+    box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+}
+
+/* ConfirmCancelPopup.css */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  width: 75vh;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 @media (max-width: 480px) {

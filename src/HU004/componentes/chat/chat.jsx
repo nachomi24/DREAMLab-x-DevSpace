@@ -52,7 +52,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
 
     // Mostrar mensaje de carga
     const loadingMessage = {
-      text: "Cargando...",
+      text: <img src={loadingChat} alt="Loading" />,
       side: "left",
     };
     const loadingMessageIndex = messages.length + 1; // Añadimos +1 porque ya hemos añadido el mensaje del usuario.
@@ -79,8 +79,11 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
         );
       }
 
+      // Formatear el mensaje del bot
+      const formattedText = response.data.message.content;
+
       const botResponse = {
-        text: response.data.message.content,
+        text: formattedText,
         side: "left",
       };
 
@@ -157,23 +160,23 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn && matriculita) {
-      fetch(
-        `https://dreamlabapidev.azurewebsites.net/api/perfil/${matriculita}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          const fotoUrl = data.Foto;
-          document.documentElement.style.setProperty(
-            "--right-avatar",
-            `url(${fotoUrl})`
-          );
-        })
-        .catch((error) => {
-          console.error("Error al obtener la foto del perfil:", error);
-        });
-    }
-  }, [isLoggedIn, matriculita]);
+    const savedMatricula = localStorage.getItem("matricula");
+
+    fetch(
+      `https://dreamlabapidev.azurewebsites.net/api/perfil/${savedMatricula}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const fotoUrl = data.Foto;
+        document.documentElement.style.setProperty(
+          "--right-avatar",
+          `url(${fotoUrl})`
+        );
+      })
+      .catch((error) => {
+        console.error("Error al obtener la foto del perfil:", error);
+      });
+  }, []);
 
   const convertirFecha = (fecha) => {
     // Extraer el día, mes y año del texto de la fecha
@@ -233,7 +236,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
   const handleConfirmReservation = () => {
     const reservationData = {
       SalaID: salaID,
-      Matricula: matriculita,
+      Matricula: localStorage.getItem("matricula"),
       Dia: dia,
       HoraInicio: horaInicio,
       HoraFin: horaFin,
