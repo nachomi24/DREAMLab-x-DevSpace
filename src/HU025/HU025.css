@@ -1,15 +1,4 @@
 
-
-
-/*
-  .cuerpoHU025 {
-    background-image: url('../assets/fond2.9.png');
-    background-repeat: repeat-y;
-    background-position: center;
-    background-size: cover;
-  */
-  
-
   /*ReservationForm.css*/
 
   .reservation-form-HU025 {
@@ -235,6 +224,7 @@ select {
 
   .right-HU025 {
     width: 100%;
+    padding-bottom: 2vh;
   }
 
   .reservation-form-HU025 {
@@ -320,6 +310,10 @@ select {
     cursor: pointer;
     box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
     transition: box-shadow 0.3s;
+  }
+
+  option {
+    font-size: 1.8vh;
   }
 
   .modal-overlayHU004 {

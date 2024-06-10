@@ -22,7 +22,19 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #4D507D;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+  width: 100%;
+}
+
+body.reservanormal-background {
+  background-image: url('../src/assets/bghome.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #4D507D;
+  overflow-x: hidden;
+  overflow-y: scroll;
   height: 100vh;
   width: 100%;
 }
@@ -32,7 +44,8 @@ body.espacio-background {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #4D507D;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 100vh;
   width: 100%;
 }

@@ -16,6 +16,7 @@ import HU025 from "./HU025/HU025";
 import HU026 from "./HU026/HU026";
 import Error from "./error/error";
 import Error_Pagina from "./error_pagina/error_pagina";
+import { doc } from "firebase/firestore";
 
 // Función para obtener rutas permitidas
 const getPermittedRoutes = (isLoggedIn, userType) => {
@@ -96,7 +97,13 @@ const App = () => {
       document.body.classList.add("espacio-background");
       document.body.classList.remove("global-background");
       document.body.classList.remove("videowall-background");
-    } else {
+    } else if (location.pathname === "/reservar_normal") {
+      document.body.classList.add("reservanormal-background");
+      document.body.classList.remove("global-background");
+      document.body.classList.remove("espacio-background");
+      document.body.classList.remove("videowall-background");
+    }
+    else {
       document.body.classList.remove("global-background");
       document.body.classList.remove("espacio-background");
       document.body.classList.remove("videowall-background");
