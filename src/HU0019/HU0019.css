@@ -156,7 +156,7 @@
 
 
 /* Profile.css */
-.image-container img {
+.image-container #foto-perfil {
     width: 300px;
     height: 300px;
     border-radius: 20%;
@@ -204,9 +204,7 @@
     font-size: 5vw;
     font-family: 'Mina';
     font-weight: bolder;
-    color: #363968;
     text-align: center;
-    margin-right: 2vh;
 }
 
 /* Tabla.css */
@@ -561,7 +559,72 @@
     font-size: 2.5vh; 
     margin-bottom: 3vh;
 }
-  
+
+.boton-puntos-prioridad {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+    margin-right: 2vh;
+    color: #363968;
+    transition: color 0.3s;
+}
+
+.boton-puntos-prioridad:hover {
+    color: #151845;
+}
+
+.button-question {
+    font-size: 1.5rem;
+}
+
+.popup-content-puntos-prioridad {
+    display: flex;
+    justify-content: space-between;
+    width: 150vh;
+    height: 65vh;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+.puntos-prioridad-message {
+    width: 100%;
+}
+
+.puntos-prioridad-buttons {
+    margin-top: 15px;
+}
+
+.puntos-prioridad-message-inside {
+    overflow-y: scroll;
+    height: 85%;
+}
+
+.puntos-prioridad-message-inside-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.puntos-prioridad-message-inside h1 {
+    font-size: 3vw;
+    color: #363968;
+}
+
+.puntos-prioridad-message-inside p {
+    width: 90%;
+    text-align: justify;
+    font-size: 1.25vw;
+    color: black;
+    margin-bottom: 1vh;
+}
   
   @media (max-width: 480px) {
     .cuerpoHU0019 {
@@ -643,7 +706,7 @@
         width: 100%;
     }
 
-    .image-container img {
+    .image-container #foto-perfil {
         height: 100%;
         display: none;
     }
@@ -785,7 +848,7 @@
         width: 100%;
     }
 
-    .image-container img {
+    .image-container #foto-perfil {
         height: 100%;
         display: none;
     }

@@ -149,6 +149,23 @@ const Navbar = ({ loggedIn }) => {
           )}
         </div>
       </nav>
+      <div className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
+        <li>
+          <a href="/" className="mina-bold-2">
+            INICIO
+          </a>
+        </li>
+        <li>
+          <a href="/reservar" className="mina-bold-2">
+            RESERVAR
+          </a>
+        </li>
+        <li>
+          <a href="/secciones" className="mina-bold-2">
+            ESPACIOS
+          </a>
+        </li>
+      </div>
       {isProfesor && (
         <div className={`dropdown-menu-2 ${isMenuOpen ? "open" : ""}`}>
           <li>

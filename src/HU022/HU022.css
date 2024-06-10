@@ -9,9 +9,6 @@
 
 
 /*Modal.css*/
-
-
-
 .modal-overlay-HU022 {
     position: fixed;
     top: 0;
@@ -22,9 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.042);
-   
-    
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content-HU022 {
@@ -210,7 +205,6 @@ nav {
 .karen-HU022 img {
     width: 65px; 
     height: auto;
-    margin-left: 25px;
     transition: 0.3s;   
 }
 
@@ -565,6 +559,7 @@ nav ul li {
   padding: 0.5vh;
   border-radius: 0.5vh;
   border: 1px solid #ccc;
+  width: fit-content;
 }
 
 

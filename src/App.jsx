@@ -89,7 +89,9 @@ const App = () => {
     } else if (
       location.pathname === "/espacios" ||
       location.pathname === "/open_spaces" ||
-      location.pathname === "/garage_valley"
+      location.pathname === "/garage_valley" ||
+      location.pathname === "/admin/stats" ||
+      location.pathname === "/perfil"
     ) {
       document.body.classList.add("espacio-background");
       document.body.classList.remove("global-background");

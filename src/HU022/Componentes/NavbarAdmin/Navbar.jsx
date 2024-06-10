@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import "../../HU022.css";
 import logo from "../../../assets/logo1.0.png";
 import axios from "axios";
+import fotoicono from "../../../assets/iconoperfil2.png";
 
 const Navbar = ({ loggedIn }) => {
   const [scrolling, setScrolling] = useState(false);
-  const [searchVisible, setSearchVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [Foto, setFoto] = useState("");
   const [Nombre, setNombre] = useState("");
+  const [isPerfilMenuOpen, setIsPerfilMenuOpen] = useState(false);
 
   loggedIn = localStorage.getItem("loggedIn") === "true";
   const matricula = localStorage.getItem("matricula");
@@ -25,7 +26,7 @@ const Navbar = ({ loggedIn }) => {
 
       // Manejar la respuesta de perfilCarrera
       const { Foto, Nombre } = perfilCarrera.data;
-      setFoto(Foto);
+      setFoto(Foto || fotoicono);
       setNombre(Nombre);
     } catch (error) {
       console.error("Error al obtener los datos:", error);
@@ -53,13 +54,21 @@ const Navbar = ({ loggedIn }) => {
     obtencionFotoPerfil();
   });
 
-  // Función para alternar la visibilidad del input de búsqueda
-  const toggleSearch = () => {
-    setSearchVisible(!searchVisible);
-  };
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const togglePerfilMenu = () => {
+    setIsPerfilMenuOpen(!isPerfilMenuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("chatMessages");
+    localStorage.removeItem("userType");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("matricula");
+    localStorage.removeItem("threadID");
+    window.location.href = "/login";
   };
 
   return (
@@ -95,12 +104,21 @@ const Navbar = ({ loggedIn }) => {
             }
             onClick={toggleMenu}
           ></i>
-          {/* Oculta el perfil si el usuario no está logueado */}
-          {loggedIn && (
-            <a style={{ lineHeight: 0 }} href="/perfil">
-              <img className="foto-perfil-HU022" src={Foto} alt={Nombre} />
-            </a>
-          )}
+          <div className="perfil-menu-container">
+            <button className="perfil-button" onClick={togglePerfilMenu}>
+              <img className="foto-perfil" src={Foto} alt={Nombre} />
+            </button>
+            {isPerfilMenuOpen && (
+              <div className="perfil-dropdown-menu">
+                <button
+                  onClick={handleLogout}
+                  className="mina-bold-2 logout-button"
+                >
+                  Cerrar Sesión
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
       <div className={`dropdown-menu-HU022 ${isMenuOpen ? "open" : ""}`}>

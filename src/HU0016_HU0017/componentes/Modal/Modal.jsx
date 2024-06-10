@@ -211,15 +211,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
             <div className="modal-content016-inside-body-content-boton-content">
               {isLoggedIn ? (
                 userType === "alumno" ? (
-                  isCancelado ? (
-                    <button
-                      className="botoncito3016"
-                      onClick={handleReservarClick}
-                      disabled
-                    >
-                      RESERVAR
-                    </button>
-                  ) : !isReservado && Cupo !== "No hay cupo" ? (
+                  !isReservado && Cupo !== "No hay cupo" ? (
                     <button
                       className="botoncito2016"
                       onClick={handleReservarClick}
@@ -291,7 +283,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
             </h3>
             <p>
               Recuerda que tu reserva ya fue procesada y contemplada para la
-              logística del taller. No podrás volver a reservar este taller.
+              logística del taller.
             </p>
             <p
               style={{
@@ -300,7 +292,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
                 fontSize: "3vh",
               }}
             >
-              PERDERÁS 5 PUNTOS DE PRIORIDAD
+              PERDERÁS 10 PUNTOS DE PRIORIDAD
             </p>
             <div className="popup-button-div">
               <div className="popup-button-div-inside">
