@@ -4,7 +4,14 @@ import axios from "axios";
 import checkmarkGif from "../../../assets/checkmark.gif";
 import dreamyRegalito from "../../../assets/dreamy_regalito.png";
 
-function Profile({ Matricula, Carrera, Foto, TotalPuntos }) {
+function Profile({
+  Matricula,
+  Carrera,
+  Foto,
+  PuntosUF,
+  PuntosDefault,
+  TotalPuntos,
+}) {
   const [isUpdatingPhoto, setIsUpdatingPhoto] = useState(false);
   const [isUpdatedPhoto, setIsUpdatedPhoto] = useState(false);
   const [newPhoto, setNewPhoto] = useState(null);
@@ -171,7 +178,39 @@ function Profile({ Matricula, Carrera, Foto, TotalPuntos }) {
                     1. Los puntos que recibes por estar cursando Unidades de
                     Formación (UF) en tu semestre, los cuales están calculados
                     por la cantidad de créditos que se deben de cursar al
-                    semestre.
+                    semestre. En este caso, la cantidad que recibes es{" "}
+                    <b>{PuntosUF}</b> puntos.
+                  </p>
+                  <p>
+                    2. Los puntos que recibes por defecto, los cuales están
+                    calculados para que tengas una cantidad de puntos mínima con
+                    el fin de realizar reservaciones. En este caso, la cantidad
+                    que recibes es <b>{PuntosDefault}</b> puntos.
+                  </p>
+                  <p>
+                    Dado esto, en caso de que no curses ninguna UF, tu mínimo
+                    siempre será de <b>25</b> puntos.
+                  </p>
+                  <h2>¿Cómo puedo obtener más puntos?</h2>
+                  <p>
+                    Para obtener una mayor cantidad de prioridad, puedes
+                    realizar reservaciones en salas y talleres. Al enviar una
+                    reservación en una sala obtienes <b>20</b> puntos y, si esa
+                    reservación fue confirmada, se te suman otros <b>30</b>{" "}
+                    puntos, dando un total de <b>50</b> puntos; mientras que al
+                    realizar una reservación en un taller obtienes <b>10</b>{" "}
+                    puntos.
+                  </p>
+                  <h2>¿Puedo llegar a perder prioridad?</h2>
+                  <p>
+                    Realmente para ofrecer una mejor experiencia al usuario, si
+                    decides cancelar reservaciones, no queremos penalizarte
+                    restandote más prioridad de la que ya habías ganado. Sin
+                    embargo, si llegas a cancelar una reservación confirmada, ya
+                    sea en una sala o en un taller, los puntos que habías ganado
+                    simplemente se restablecerán de tu total de prioridad. Esto
+                    para que tú y otros usuarios hagan reservas de forma
+                    totalmente clara y justa.
                   </p>
                 </div>
               </div>

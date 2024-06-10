@@ -76,9 +76,7 @@ const Tarjeta = ({
                 }}
               >
                 <img className="relojcito" src={clockWait} alt="Clock"></img>
-                <p className="confirmacion-texto">
-                  En espera de confirmación
-                </p>
+                <p className="confirmacion-texto">En espera de confirmación</p>
               </div>
             )}
           </div>
@@ -90,6 +88,7 @@ const Tarjeta = ({
 
 function Tabla({
   Nombre,
+  Semestre,
   TotalUF,
   ReservacionesNoConfirmadas,
   ReservacionesConfirmadas: propsReservacionesConfirmadas,
@@ -181,7 +180,7 @@ function Tabla({
                   style={{ marginRight: "15px", color: "#ABACC4" }}
                   className={"fa-solid fa-spinner"}
                 ></i>
-                <p className="p_uf_curso">UF en curso:</p>
+                <p className="p_uf_curso">UF de tu semestre ({Semestre}°):</p>
                 <p className="uf_curso">{TotalUF}</p>
                 <i
                   style={{ cursor: "pointer" }}
