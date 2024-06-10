@@ -130,7 +130,13 @@ const Navbar = ({ loggedIn }) => {
           {loggedIn && (
             <div className="perfil-menu-container">
               <button className="perfil-button" onClick={togglePerfilMenu}>
-                <img className="foto-perfil" src={Foto} alt={Nombre} />
+                <div
+                  style={{
+                    backgroundImage: `url(${Foto})`,
+                    backgroundSize: "cover",
+                  }}
+                  className="foto-perfil"
+                ></div>
               </button>
               {isPerfilMenuOpen && (
                 <div className="perfil-dropdown-menu">

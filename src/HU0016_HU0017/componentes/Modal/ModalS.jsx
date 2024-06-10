@@ -1,13 +1,5 @@
-import "../../HU0016_HU0017.css";
-
 const ModalS = ({ data, onClose, imagen }) => {
-  const {
-    SalaID,
-    Nombre,
-    Cupo,
-    HoraInicio,
-    HoraFin,
-  } = data;
+  const { SalaID, Nombre, Cupo, HoraInicio, HoraFin, Foto } = data;
 
   const convertirHora = (hora) => {
     const [hour, minute] = hora.split(":");
@@ -48,7 +40,7 @@ const ModalS = ({ data, onClose, imagen }) => {
   return (
     <div className="modal-overlay016" onClick={onClose}>
       <div
-        style={{ background: `url(${imagen}) no-repeat center center/cover` }}
+        style={{ background: `url(${Foto}) no-repeat center center/cover` }}
         className="modal-content016"
         onClick={(e) => e.stopPropagation()}
       >
@@ -61,8 +53,7 @@ const ModalS = ({ data, onClose, imagen }) => {
               <div className="modal-content016-inside-body-content-ubi">
                 <p>{Nombre}</p>
               </div>
-              <div className="modal-content016-inside-body-content-uf">
-              </div>
+              <div className="modal-content016-inside-body-content-uf"></div>
               <div className="modal-content016-inside-body-content-fecha">
                 <p>Horario de disponibilidad:</p>
                 <p className="horarie">
@@ -70,8 +61,7 @@ const ModalS = ({ data, onClose, imagen }) => {
                 </p>
               </div>
               <div className="modal-content016-inside-body-content-detalles">
-                <div className="modal-content016-inside-body-content-detalles-creado">
-                </div>
+                <div className="modal-content016-inside-body-content-detalles-creado"></div>
                 <div className="modal-content016-inside-body-content-detalles-cupo">
                   <p>Cupo:</p>
                   <p className="cupito">{Cupo} personas</p>

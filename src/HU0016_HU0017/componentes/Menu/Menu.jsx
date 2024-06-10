@@ -25,7 +25,8 @@ function Menu({
             }`}
           >
             <a
-              href="#"
+              id="talleres"
+              href="#talleres"
               onClick={(e) => {
                 e.preventDefault();
                 handleItemClick(0);
@@ -40,7 +41,8 @@ function Menu({
             }`}
           >
             <a
-              href="#"
+              id="salas"
+              href="#salas"
               onClick={(e) => {
                 e.preventDefault();
                 handleItemClick(1);

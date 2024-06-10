@@ -209,6 +209,9 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
           </div>
           <div className="modal-content016-inside-body-content-boton">
             <div className="modal-content016-inside-body-content-boton-content">
+              <button className="botoncito1016" onClick={onClose}>
+                CERRAR
+              </button>
               {isLoggedIn ? (
                 userType === "alumno" ? (
                   !isReservado && Cupo !== "No hay cupo" ? (
@@ -236,9 +239,6 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
                   INICIAR SESIÓN
                 </a>
               )}
-              <button className="botoncito1016" onClick={onClose}>
-                CERRAR
-              </button>
             </div>
           </div>
         </div>
