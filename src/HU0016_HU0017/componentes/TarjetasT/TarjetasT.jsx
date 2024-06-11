@@ -10,33 +10,69 @@ const ContenedorTarjetas = ({ datos, onMenuClick, activeMenu }) => {
   const [cancelados, setCancelados] = useState([]);
 
   const matricula = localStorage.getItem("matricula");
+  const nomina = localStorage.getItem("matricula");
 
   useEffect(() => {
-    const fetchReservados = async () => {
-      try {
-        const response = await axios.get(
-          "https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/alumno",
-          { params: { matricula } }
-        );
-        const reservadosData = response.data.filter(
-          (reservacion) => reservacion.Estatus === "Reservado"
-        );
+    const userType = localStorage.getItem("userType");
 
-        const canceladosData = response.data.filter(
-          (reservacion) => reservacion.Estatus === "Cancelado"
-        );
+    if (userType === "alumno") {
+      const fetchReservados = async () => {
+        try {
+          const response = await axios.get(
+            "https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/estudiante",
+            { params: { matricula } }
+          );
 
-        setReservados(reservadosData);
-        setCancelados(canceladosData);
-      } catch (error) {
-        console.error("Error al obtener los talleres:", error);
+          console.log(response);
+
+          const reservadosData = response.data.filter(
+            (reservacion) => reservacion.Estatus === "Reservado"
+          );
+
+          const canceladosData = response.data.filter(
+            (reservacion) => reservacion.Estatus === "Cancelado"
+          );
+
+          setReservados(reservadosData);
+          setCancelados(canceladosData);
+        } catch (error) {
+          console.error("Error al obtener los talleres:", error);
+        }
+      };
+
+      if (matricula) {
+        fetchReservados();
       }
-    };
+    } else if (userType === "profesor") {
+      const fetchReservadosProfesor = async () => {
+        try {
+          const response = await axios.get(
+            "https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/profesor",
+            { params: { nomina } }
+          );
 
-    if (matricula) {
-      fetchReservados();
+          console.log(response);
+
+          const reservadosData = response.data.filter(
+            (reservacion) => reservacion.Estatus === "Reservado"
+          );
+
+          const canceladosData = response.data.filter(
+            (reservacion) => reservacion.Estatus === "Cancelado"
+          );
+
+          setReservados(reservadosData);
+          setCancelados(canceladosData);
+        } catch (error) {
+          console.error("Error al obtener los talleres:", error);
+        }
+      };
+
+      if (nomina) {
+        fetchReservadosProfesor();
+      }
     }
-  }, [matricula]);
+  }, [matricula, nomina]);
 
   const toggleSearch = () => {
     setSearchVisible(!searchVisible);
@@ -84,6 +120,7 @@ const ContenedorTarjetas = ({ datos, onMenuClick, activeMenu }) => {
 
 const Tarjeta = ({
   TallerID,
+  Nomina,
   NombreProfesor,
   UFID,
   NombreUF,
@@ -146,6 +183,7 @@ const Tarjeta = ({
         <Modal
           data={{
             TallerID,
+            Nomina,
             NombreProfesor,
             UFID,
             NombreUF,

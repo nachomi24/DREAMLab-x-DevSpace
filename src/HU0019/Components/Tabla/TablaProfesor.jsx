@@ -88,13 +88,12 @@ const Tarjeta = ({
   );
 };
 
-function Tabla({
+function TablaProfesor({
   Nombre,
-  Semestre,
   TotalUF,
   ReservacionesNoConfirmadas,
   ReservacionesConfirmadas: propsReservacionesConfirmadas,
-  Matricula,
+  Nomina,
   UfIds,
 }) {
   const [reservacionesConfirmadas, setReservacionesConfirmadas] = useState(
@@ -172,7 +171,7 @@ function Tabla({
                 style={{ marginRight: "25px", color: "#ABACC4" }}
                 className={"fa-solid fa-user"}
               ></i>
-              {Nombre} - {Matricula}
+              {Nombre} - {Nomina}
             </td>
           </tr>
           <tr>
@@ -182,7 +181,7 @@ function Tabla({
                   style={{ marginRight: "15px", color: "#ABACC4" }}
                   className={"fa-solid fa-spinner"}
                 ></i>
-                <p className="p_uf_curso">UF de tu semestre ({Semestre}°):</p>
+                <p className="p_uf_curso">UF impartidas:</p>
                 <p className="uf_curso">{TotalUF}</p>
                 <i
                   style={{ cursor: "pointer" }}
@@ -275,4 +274,4 @@ function Tabla({
   );
 }
 
-export default Tabla;
+export default TablaProfesor;

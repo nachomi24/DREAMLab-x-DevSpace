@@ -5,6 +5,7 @@ import checkmarkGif from "../../../assets/checkmark.gif";
 const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   const {
     TallerID,
+    Nomina,
     NombreProfesor,
     UFID,
     NombreUF,
@@ -83,7 +84,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   const handleReservarConfirm = async () => {
     try {
       await axios.post(
-        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion`,
+        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/estudiante`,
         null,
         {
           params: {
@@ -102,14 +103,57 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
     }
   };
 
+  const handleReservarConfirmProfesor = async () => {
+    try {
+      await axios.post(
+        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/profesor`,
+        null,
+        {
+          params: {
+            tallerID: TallerID,
+            nomina: matricula,
+          },
+        }
+      );
+
+      setShowConfirmation(false);
+      setReservedTaller(true);
+
+      showPopupAndRedirect();
+    } catch (error) {
+      alert(error.response ? error.response.data.message : error.message);
+    }
+  };
+
   const handleCancelarConfirm = async () => {
     try {
       await axios.delete(
-        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion`,
+        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/estudiante`,
         {
           params: {
             tallerID: TallerID,
             matricula: matricula,
+          },
+        }
+      );
+
+      setShowCancelation(false);
+      setCanceledTaller(true);
+
+      showPopupCancelAndRedirect();
+    } catch (error) {
+      alert(error.response ? error.response.data.message : error.message);
+    }
+  };
+
+  const handleCancelarConfirmProfesor = async () => {
+    try {
+      await axios.delete(
+        `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/profesor`,
+        {
+          params: {
+            tallerID: TallerID,
+            nomina: matricula,
           },
         }
       );
@@ -229,6 +273,24 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
                       CANCELAR
                     </button>
                   )
+                ) : userType === "profesor" ? (
+                  matricula !== Nomina ? (
+                    !isReservado && Cupo !== "No hay cupo" ? (
+                      <button
+                        className="botoncito2016"
+                        onClick={handleReservarClick}
+                      >
+                        RESERVAR
+                      </button>
+                    ) : (
+                      <button
+                        className="botoncito2016"
+                        onClick={handleCancelarClick}
+                      >
+                        CANCELAR
+                      </button>
+                    )
+                  ) : null
                 ) : (
                   <a href="/reservar" className="botoncito2016">
                     RESERVAR
@@ -243,7 +305,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
           </div>
         </div>
       </div>
-      {showConfirmation && (
+      {showConfirmation && userType === "alumno" && (
         <div className="popup-overlay">
           <div className="popup-content">
             <h3>¿Estás seguro que quieres reservar este taller?</h3>
@@ -275,7 +337,39 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
           </div>
         </div>
       )}
-      {showCancelation && (
+      {showConfirmation && userType === "profesor" && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h3>¿Estás seguro que quieres reservar este taller?</h3>
+            <p>
+              Tu asistencia es muy importante, ya que el cupo es limitado.
+              Apreciamos mucho tu puntualidad y presencia.
+            </p>
+            <p
+              style={{ fontWeight: "bolder", color: "green", fontSize: "3vh" }}
+            >
+              GANARÁS 10 PUNTOS DE PRIORIDAD
+            </p>
+            <div className="popup-button-div">
+              <div className="popup-button-div-inside">
+                <button
+                  className="popup-button-cerrar"
+                  onClick={handleConfirmationClose}
+                >
+                  Cancelar
+                </button>
+                <button
+                  className="popup-button-aceptar"
+                  onClick={handleReservarConfirmProfesor}
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {showCancelation && userType === "alumno" && (
         <div className="popup-overlay">
           <div className="popup-content">
             <h3>
@@ -305,6 +399,44 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
                 <button
                   className="popup-button-aceptar"
                   onClick={handleCancelarConfirm}
+                >
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {showCancelation && userType === "profesor" && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h3>
+              ¿Estás seguro que quieres cancelar tu reservación de este taller?
+            </h3>
+            <p>
+              Recuerda que tu reserva ya fue procesada y contemplada para la
+              logística del taller.
+            </p>
+            <p
+              style={{
+                fontWeight: "bolder",
+                color: "darkred",
+                fontSize: "3vh",
+              }}
+            >
+              PERDERÁS 10 PUNTOS DE PRIORIDAD
+            </p>
+            <div className="popup-button-div">
+              <div className="popup-button-div-inside">
+                <button
+                  className="popup-button-cerrar"
+                  onClick={handleCancelationClose}
+                >
+                  Cancelar
+                </button>
+                <button
+                  className="popup-button-aceptar"
+                  onClick={handleCancelarConfirmProfesor}
                 >
                   Aceptar
                 </button>

@@ -4,9 +4,8 @@ import axios from "axios";
 import checkmarkGif from "../../../assets/checkmark.gif";
 import dreamyRegalito from "../../../assets/dreamy_regalito.png";
 
-function Profile({
-  Matricula,
-  Carrera,
+function ProfileProfesor({
+  Nomina,
   Foto,
   PuntosUF,
   PuntosDefault,
@@ -42,11 +41,11 @@ function Profile({
         const photoURL = await uploadFile(newPhoto);
 
         await axios.put(
-          `https://dreamlabapidev.azurewebsites.net/api/actualizar_foto/estudiante`,
+          `https://dreamlabapidev.azurewebsites.net/api/actualizar_foto/profesor`,
           null,
           {
             params: {
-              matricula: Matricula,
+              nomina: Nomina,
               foto: photoURL,
             },
           }
@@ -130,7 +129,7 @@ function Profile({
           </button>
         </div>
       )}
-      <p className="descripcion-text">Estudiante - {Carrera}</p>
+      <p className="descripcion-text">Profesor</p>
       <div className="puntos-perfil">
         <p className="puntos-text">Puntos de prioridad</p>
         <button className="boton-puntos-prioridad" onClick={handlePuntosClick}>
@@ -230,4 +229,4 @@ function Profile({
   );
 }
 
-export default Profile;
+export default ProfileProfesor;

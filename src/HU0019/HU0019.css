@@ -205,6 +205,7 @@
     font-family: 'Mina';
     font-weight: bolder;
     text-align: center;
+    margin-left: 10px;
 }
 
 /* Tabla.css */
@@ -275,6 +276,7 @@
     justify-content: start;
     align-items: start;
     flex-direction: column;
+    width: 100%; /* Ajuste de ancho para mantener consistencia */
 }
 
 .reservaciones-pend-fut-div-title {
@@ -296,6 +298,7 @@
 
 .contenedor-tarjeta-general019 {
     margin: 10px;
+    width: 100%;
 }
 
 .contenedor-principal-tarjetas019 {
@@ -467,7 +470,7 @@
 }
 
 .relojcito {
-    width: 13%;
+    width: 10%;
 }
 
 .info-detail-cl-bt {

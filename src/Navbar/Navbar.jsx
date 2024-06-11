@@ -16,7 +16,11 @@ const Navbar = ({ loggedIn }) => {
   const [isProfesor, setIsProfesor] = useState(false);
 
   const apiURLPerfilCarrera =
-    "https://dreamlabapidev.azurewebsites.net/api/perfil/" + matricula;
+    "https://dreamlabapidev.azurewebsites.net/api/perfil_estudiante/" +
+    matricula;
+
+  const apiURLPerfilProfesor =
+    "https://dreamlabapidev.azurewebsites.net/api/perfil_profesor/" + matricula;
 
   const obtencionFotoPerfil = async () => {
     try {
@@ -27,6 +31,22 @@ const Navbar = ({ loggedIn }) => {
 
       // Manejar la respuesta de perfilCarrera
       const { Foto, Nombre } = perfilCarrera.data;
+      setFoto(Foto || fotoicono);
+      setNombre(Nombre);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
+
+  const obtencionFotoPerfilProfesor = async () => {
+    try {
+      // Realizar todas las solicitudes en paralelo utilizando Promise.all()
+      const [perfilProfesor] = await Promise.all([
+        axios.get(apiURLPerfilProfesor),
+      ]);
+
+      // Manejar la respuesta de perfilCarrera
+      const { Foto, Nombre } = perfilProfesor.data;
       setFoto(Foto || fotoicono);
       setNombre(Nombre);
     } catch (error) {
@@ -52,8 +72,13 @@ const Navbar = ({ loggedIn }) => {
   }, []);
 
   useEffect(() => {
-    obtencionFotoPerfil();
     setIsProfesor(localStorage.getItem("userType") === "profesor");
+    const userType = localStorage.getItem("userType");
+    if (userType === "alumno") {
+      obtencionFotoPerfil();
+    } else if (userType === "profesor") {
+      obtencionFotoPerfilProfesor();
+    }
   }, []);
 
   const toggleMenu = () => {
