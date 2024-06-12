@@ -241,7 +241,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
                 )}
                 {isCancelado && (
                   <div className="modal-content016-inside-body-content-detalles-cancelado">
-                    <div className="canceladito">TALLER CANCELADO</div>
+                    <div className="canceladito">RESERVACIÓN CANCELADA</div>
                   </div>
                 )}
                 <div className="modal-content016-inside-body-content-detalles-cupo">
@@ -463,7 +463,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
             <div className="confirmation-message">
               <img src={checkmarkGif} alt="Confirmación" />
               <p>
-                <b>TALLER CANCELADO</b>
+                <b>RESERVACIÓN CANCELADA</b>
               </p>
             </div>
           </div>

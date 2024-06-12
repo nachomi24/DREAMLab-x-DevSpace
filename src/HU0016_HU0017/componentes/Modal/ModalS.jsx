@@ -1,5 +1,16 @@
+import Descripcion from "../../../HU008/componentes/descripcion/Descripcion";
+
 const ModalS = ({ data, onClose, imagen }) => {
-  const { SalaID, Nombre, Cupo, HoraInicio, HoraFin, Foto } = data;
+  const {
+    SalaID,
+    Nombre,
+    Cupo,
+    Recursos,
+    HoraInicio,
+    HoraFin,
+    Foto,
+    Descripcion,
+  } = data;
 
   const convertirHora = (hora) => {
     const [hour, minute] = hora.split(":");
@@ -46,22 +57,23 @@ const ModalS = ({ data, onClose, imagen }) => {
       >
         <div className="modal-content016-inside">
           <div className="modal-content016-inside-header">
-            <h2 className="titulito-header">{SalaID}</h2>
+            <h2 className="titulito-header">
+              {SalaID} - {Nombre}
+            </h2>
           </div>
           <div className="modal-content016-inside-body">
             <div className="modal-content016-inside-body-content">
-              <div className="modal-content016-inside-body-content-ubi">
-                <p>{Nombre}</p>
-              </div>
-              <div className="modal-content016-inside-body-content-uf"></div>
-              <div className="modal-content016-inside-body-content-fecha">
-                <p>Horario de disponibilidad:</p>
-                <p className="horarie">
-                  {convertirHora(HoraInicio)} a {convertirHora(HoraFin)}
-                </p>
+              <div className="modal-content016-inside-body-content-uf">
+                <p className="uniforma">{Descripcion}</p>
+                <p>Recursos: {Recursos}</p>
               </div>
               <div className="modal-content016-inside-body-content-detalles">
-                <div className="modal-content016-inside-body-content-detalles-creado"></div>
+                <div className="modal-content016-inside-body-content-detalles-creado">
+                  <p>Disponibilidad:</p>
+                  <p className="creadito">
+                    {convertirHora(HoraInicio)} a {convertirHora(HoraFin)}
+                  </p>
+                </div>
                 <div className="modal-content016-inside-body-content-detalles-cupo">
                   <p>Cupo:</p>
                   <p className="cupito">{Cupo} personas</p>
@@ -71,12 +83,12 @@ const ModalS = ({ data, onClose, imagen }) => {
           </div>
           <div className="modal-content016-inside-body-content-boton">
             <div className="modal-content016-inside-body-content-boton-content">
-              <a href="/reservar" className="botoncito2016">
-                RESERVAR
-              </a>
               <button className="botoncito1016" onClick={onClose}>
                 CERRAR
               </button>
+              <a href="/reservar" className="botoncito2016">
+                RESERVAR
+              </a>
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
 import "../../HU004.css";
 
-const PopUp = ({
+const PopUpProfesor = ({
   onClose,
-  Matricula,
+  Nomina,
   SalaID,
   Dia,
   HoraInicio,
@@ -90,4 +90,4 @@ const PopUp = ({
   );
 };
 
-export default PopUp;
+export default PopUpProfesor;

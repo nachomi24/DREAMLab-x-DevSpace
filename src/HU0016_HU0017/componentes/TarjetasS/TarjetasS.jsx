@@ -6,6 +6,12 @@ import Modal from "../Modal/ModalS";
 const ContenedorTarjetasSalas = ({ datos, onMenuClick, activeMenu }) => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [userType, setUserType] = useState("");
+
+  useEffect(() => {
+    const storedUserType = localStorage.getItem("userType");
+    setUserType(storedUserType);
+  }, []);
 
   const toggleSearch = () => {
     setSearchVisible(!searchVisible);
@@ -20,9 +26,13 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick, activeMenu }) => {
     onMenuClick(index);
   };
 
-  const filteredDatos = datos.filter((dato) =>
-    dato.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredDatos = datos.filter((dato) => {
+    const matchesSearchTerm = dato.Nombre.toLowerCase().includes(
+      searchTerm.toLowerCase()
+    );
+    const isTipoValid = userType === "profesor" ? true : dato.Tipo === "Todos";
+    return matchesSearchTerm && isTipoValid;
+  });
 
   return (
     <div className="contenedor-tarjeta-general-s">
@@ -45,7 +55,17 @@ const ContenedorTarjetasSalas = ({ datos, onMenuClick, activeMenu }) => {
   );
 };
 
-const Tarjeta = ({ SalaID, Nombre, Cupo, HoraInicio, HoraFin, Foto }) => {
+const Tarjeta = ({
+  SalaID,
+  Nombre,
+  Cupo,
+  Recursos,
+  HoraInicio,
+  HoraFin,
+  Foto,
+  Descripcion,
+  Tipo,
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -71,8 +91,11 @@ const Tarjeta = ({ SalaID, Nombre, Cupo, HoraInicio, HoraFin, Foto }) => {
         </div>
         <div className="tarjeta-info-s">
           <h2>{Nombre}</h2>
-          <div className="info-container-s">
+          <div className="info-container016">
             <p>{SalaID}</p>
+            <p>
+              {convertirHora(HoraInicio)} - {convertirHora(HoraFin)}
+            </p>
           </div>
         </div>
       </div>
@@ -82,9 +105,11 @@ const Tarjeta = ({ SalaID, Nombre, Cupo, HoraInicio, HoraFin, Foto }) => {
             SalaID,
             Nombre,
             Cupo,
+            Recursos,
             HoraInicio,
             HoraFin,
             Foto,
+            Descripcion,
           }}
           onClose={handleCloseModal}
         />

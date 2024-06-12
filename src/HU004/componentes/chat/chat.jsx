@@ -4,12 +4,13 @@ import "../../HU004.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
 
-const Chat = ({ setLoggedIn, setMatricula }) => {
+const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
   const [messages, setMessages] = useState(() => {
     const savedMessages = localStorage.getItem("chatMessages");
     return savedMessages ? JSON.parse(savedMessages) : [];
   });
   const [inputText, setInputText] = useState("");
+  const [prevInputText, setPrevInputText] = useState(""); // Estado para almacenar el estado anterior del input
   const messagesEndRef = useRef(null);
   const [showButton, setShowButton] = useState(false);
   const [showMessageInput, setShowMessageInput] = useState(true);
@@ -58,6 +59,9 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
     const loadingMessageIndex = messages.length + 1; // Añadimos +1 porque ya hemos añadido el mensaje del usuario.
     setMessages((messages) => [...messages, loadingMessage]);
 
+    // Cambiar la imagen a dreamyCelular cuando se envía el mensaje
+    setCurrentImage(images.dreamyCelular);
+
     // Enviar solicitud a la API
     try {
       let response;
@@ -86,6 +90,9 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
         text: formattedText,
         side: "left",
       };
+
+      // Cambiar la imagen a dreamyFeliz cuando se recibe la respuesta
+      setCurrentImage(images.dreamyFeliz);
 
       // Reemplazar el mensaje de "Cargando..." con la respuesta del bot
       setMessages((messages) => {
@@ -297,6 +304,16 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
     }
   }, [messages.length]);
 
+  // useEffect para actualizar la imagen en función del estado del inputText
+  useEffect(() => {
+    if (inputText.trim() !== "" && prevInputText.trim() === "") {
+      setCurrentImage(images.dreamyBuscador); // Cambiar la imagen a dreamyBuscador cuando se escribe un mensaje
+    } else if (inputText.trim() === "" && prevInputText.trim() !== "") {
+      setCurrentImage(images.dreamy); // Restablecer la imagen cuando el input esté vacío
+    }
+    setPrevInputText(inputText); // Actualizar el estado anterior del inputText
+  }, [inputText, prevInputText, setCurrentImage, images.dreamyBuscador]);
+
   return (
     <div className="HU004">
       <div className="chat_container">
@@ -305,7 +322,7 @@ const Chat = ({ setLoggedIn, setMatricula }) => {
             <div className="title">RESERVA TU LUGAR</div>
             <div style={{ display: "flex" }}>
               <a href="/reservar_normal" className="reservation-link">
-                Haz click aquí para reservar de otra manera.
+                Haz click aquí para reservar de manera normal
               </a>
             </div>
           </div>

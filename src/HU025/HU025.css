@@ -24,11 +24,12 @@
     font-size: 9vh;
     color: #363968;
     text-align: center;
+    line-height: 1;
   }
 
   
 .dreamy-HU025 {
-  max-width: 90vh;
+  max-width: 45vw;
   height: auto;
   position: fixed;
   padding-right: 10px;
@@ -37,7 +38,7 @@
 } 
 
   .left-HU025 {
-    flex: 1;
+    flex: 1.5;
   }
   
   .right-HU025 {
@@ -45,14 +46,15 @@
   }
   
   .reservation-form-HU025 label {
-    display: block;
+    display: flex;
     margin-bottom: 2vh;
     font-size: 2.5vh;
   }
   
   .reservation-form-HU025 .react-datepicker-wrapper,
   .reservation-form-HU025 .css-2b097c-containerHU025 {
-    width: 100%;
+    margin-left: 15px;
+    width: 50%;
     margin-bottom: 10px;
     border: 1px solid #cccccc00;
   }
@@ -103,14 +105,23 @@
     font-size: 2.5vh;
   }
 
+  .prev-fieldset {
+    display: flex;
+    overflow-x: auto;
+  }
+
   .reservation-form-HU025 fieldset {
+    width: 100%;
     margin-bottom: 20px;
     border: 1px solid #cccccc00;
     padding: 10px;
     background-color: #fefefe;
     border-radius: 4px;
-    margin-left: 12px;
-    margin-top: -13px;
+    display: flex;
+  }
+
+  .reservation-form-HU025 fieldset div label {
+    margin: 7px;
   }
   
   .reservation-form-HU025 .counter-HU025 {
