@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { uploadFile } from "../../../firebase/config";
 import axios from "axios";
+import clockWait from "../../../assets/clock.gif";
 import checkmarkGif from "../../../assets/checkmark.gif";
 import dreamyRegalito from "../../../assets/dreamy_regalito.png";
 
@@ -13,6 +14,7 @@ function Profile({
   TotalPuntos,
 }) {
   const [isUpdatingPhoto, setIsUpdatingPhoto] = useState(false);
+  const [isConfirmingPhoto, setIsConfirmingPhoto] = useState(false);
   const [isUpdatedPhoto, setIsUpdatedPhoto] = useState(false);
   const [newPhoto, setNewPhoto] = useState(null);
   const [fileName, setFileName] = useState("Subir Foto");
@@ -38,6 +40,7 @@ function Profile({
 
   const handleConfirmClick = async () => {
     if (newPhoto) {
+      setIsConfirmingPhoto(true);
       try {
         const photoURL = await uploadFile(newPhoto);
 
@@ -54,6 +57,7 @@ function Profile({
 
         setIsUpdatingPhoto(false);
         setNewPhoto(null);
+        setIsConfirmingPhoto(false);
         setIsUpdatedPhoto(true);
 
         showPopupAndRedirect();
@@ -85,7 +89,11 @@ function Profile({
   return (
     <div className="image-container">
       <div
-        style={{ backgroundImage: `url(${Foto})`, backgroundSize: "cover" }}
+        style={{
+          backgroundImage: `url(${Foto})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
         id="foto-perfil"
         className="image-container"
       ></div>
@@ -138,6 +146,16 @@ function Profile({
           <p className="puntos">{TotalPuntos}</p>
         </button>
       </div>
+      {isConfirmingPhoto && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <div className="loading-indicator">
+              <img style={{ width: "30%" }} src={clockWait} alt="Procesando" />
+              <p>Procesando...</p>
+            </div>
+          </div>
+        </div>
+      )}
       {isUpdatedPhoto && (
         <div className="popup-overlay">
           <div className="popup-content">

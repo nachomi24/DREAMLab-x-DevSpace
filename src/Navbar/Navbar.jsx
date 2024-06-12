@@ -159,6 +159,7 @@ const Navbar = ({ loggedIn }) => {
                   style={{
                     backgroundImage: `url(${Foto})`,
                     backgroundSize: "cover",
+                    backgroundPosition: "center",
                   }}
                   className="foto-perfil"
                 ></div>
@@ -192,7 +193,7 @@ const Navbar = ({ loggedIn }) => {
           </a>
         </li>
         <li>
-          <a href="/secciones" className="mina-bold-2">
+          <a href="/espacios" className="mina-bold-2">
             ESPACIOS
           </a>
         </li>

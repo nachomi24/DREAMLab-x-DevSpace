@@ -8,6 +8,7 @@ import PopUp from "../../HU004/componentes/detalle/Detalle";
 import PopUpProfesor from "../../HU004/componentes/detalle/DetalleProfesor";
 import clockWait from "../../assets/clock.gif";
 import checkmarkGif from "../../assets/checkmark.gif";
+import crossmarkGif from "../../assets/crossmark.gif";
 
 const apiSALAS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 const apiHORARIO = "https://dreamlabapidev.azurewebsites.net/api/horario/";
@@ -34,6 +35,7 @@ const ReservationForm = () => {
   const userType = localStorage.getItem("userType");
   const [isConfirming, setIsConfirming] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isCanceled, setIsCanceled] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -110,10 +112,6 @@ const ReservationForm = () => {
       return;
     }
 
-    const formatTime = (time) => {
-      return `${time}:00`;
-    };
-
     const selectedResources =
       Object.entries(recursosSeleccionados)
         .filter(([recurso, cantidad]) => cantidad > 0)
@@ -132,8 +130,8 @@ const ReservationForm = () => {
         Dia: fechaSeleccionada
           ? fechaSeleccionada.toISOString().split("T")[0]
           : "",
-        HoraInicio: formatTime(horaInicio),
-        HoraFin: formatTime(horaFin),
+        HoraInicio: horaInicio,
+        HoraFin: horaFin,
         Recursos: selectedResources,
         Personas: cantidadPersonas,
         Confirmada: 0,
@@ -153,8 +151,8 @@ const ReservationForm = () => {
         Dia: fechaSeleccionada
           ? fechaSeleccionada.toISOString().split("T")[0]
           : "",
-        HoraInicio: formatTime(horaInicio),
-        HoraFin: formatTime(horaFin),
+        HoraInicio: horaInicio,
+        HoraFin: horaFin,
         Recursos: selectedResources,
         Personas: cantidadPersonas,
         Confirmada: 0,
@@ -184,12 +182,18 @@ const ReservationForm = () => {
       } catch (error) {
         if (error.response) {
           console.error("Error al realizar la reserva:", error.response.data);
-          alert(`Error al realizar la reserva: ${error.response.data.detail}`);
+          setIsConfirming(false);
+          setIsCanceled(true);
+          setTimeout(() => {
+            setIsCanceled(false);
+          }, 3000);
         } else {
           console.error("Error al realizar la reserva:", error.message);
-          alert(
-            "Error al realizar la reserva. Por favor, revise la consola para más detalles."
-          );
+          setIsConfirming(false);
+          setIsCanceled(true);
+          setTimeout(() => {
+            setIsCanceled(false);
+          }, 3000);
         }
       }
     } else {
@@ -488,6 +492,19 @@ const ReservationForm = () => {
                 <p>
                   <b>RESERVACIÓN CONFIRMADA</b>
                 </p>
+              </div>
+            </div>
+          </div>
+        )}
+        {isCanceled && (
+          <div className="popup-overlay">
+            <div className="popup-content">
+              <div className="confirmation-message">
+                <img src={crossmarkGif} alt="Cancelación" />
+                <p>
+                  <b>RESERVACIÓN ERRÓNEA</b>
+                </p>
+                <p>Ya cuentas con una reservación para ese día</p>
               </div>
             </div>
           </div>

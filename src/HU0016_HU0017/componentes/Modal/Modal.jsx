@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import clockWait from "../../../assets/clock.gif";
 import checkmarkGif from "../../../assets/checkmark.gif";
 
 const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
@@ -22,6 +23,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   const [userType, setUserType] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showCancelation, setShowCancelation] = useState(false);
+  const [isConfirming, setIsConfirming] = useState(false);
   const [reservedTaller, setReservedTaller] = useState(false);
   const [canceledTaller, setCanceledTaller] = useState(false);
   const [matricula, setMatricula] = useState("");
@@ -82,6 +84,8 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   };
 
   const handleReservarConfirm = async () => {
+    setShowConfirmation(false);
+    setIsConfirming(true);
     try {
       await axios.post(
         `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/estudiante`,
@@ -93,8 +97,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
           },
         }
       );
-
-      setShowConfirmation(false);
+      setIsConfirming(false);
       setReservedTaller(true);
 
       showPopupAndRedirect();
@@ -104,6 +107,8 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   };
 
   const handleReservarConfirmProfesor = async () => {
+    setShowConfirmation(false);
+    setIsConfirming(true);
     try {
       await axios.post(
         `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/profesor`,
@@ -116,7 +121,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
         }
       );
 
-      setShowConfirmation(false);
+      setIsConfirming(false);
       setReservedTaller(true);
 
       showPopupAndRedirect();
@@ -126,6 +131,8 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   };
 
   const handleCancelarConfirm = async () => {
+    setShowCancelation(false);
+    setIsConfirming(true);
     try {
       await axios.delete(
         `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/estudiante`,
@@ -137,7 +144,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
         }
       );
 
-      setShowCancelation(false);
+      setIsConfirming(false);
       setCanceledTaller(true);
 
       showPopupCancelAndRedirect();
@@ -147,6 +154,8 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   };
 
   const handleCancelarConfirmProfesor = async () => {
+    setShowCancelation(false);
+    setIsConfirming(true);
     try {
       await axios.delete(
         `https://dreamlabapidev.azurewebsites.net/api/talleres/reservacion/profesor`,
@@ -158,7 +167,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
         }
       );
 
-      setShowCancelation(false);
+      setIsConfirming(false);
       setCanceledTaller(true);
 
       showPopupCancelAndRedirect();
@@ -168,6 +177,7 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
   };
 
   const showPopupAndRedirect = () => {
+    setIsConfirming(false);
     setShowConfirmation(false);
 
     setTimeout(() => {
@@ -441,6 +451,16 @@ const Modal = ({ data, onClose, imagen, isReservado, isCancelado }) => {
                   Aceptar
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {isConfirming && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <div className="loading-indicator">
+              <img style={{ width: "30%" }} src={clockWait} alt="Procesando" />
+              <p>Procesando...</p>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import axios, { isCancel } from "axios";
 import "../../HU004.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
-import PopUp from "../detalle/Detalle";
+import PopUpProfesor from "../detalle/DetalleProfesor";
 import clockWait from "../../../assets/clock.gif";
 import checkmarkGif from "../../../assets/checkmark.gif";
 import crossmarkGif from "../../../assets/crossmark.gif";
@@ -225,7 +225,7 @@ const Chat = ({ setCurrentImage, images }) => {
     const savedMatricula = localStorage.getItem("matricula");
 
     fetch(
-      `https://dreamlabapidev.azurewebsites.net/api/perfil_estudiante/${savedMatricula}`
+      `https://dreamlabapidev.azurewebsites.net/api/perfil_profesor/${savedMatricula}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -301,7 +301,7 @@ const Chat = ({ setCurrentImage, images }) => {
   const handleConfirmReservation = () => {
     const reservationData = {
       SalaID: salaID,
-      Matricula: matriculita,
+      Nomina: matriculita,
       Dia: dia,
       HoraInicio: horaInicio,
       HoraFin: horaFin,
@@ -314,7 +314,7 @@ const Chat = ({ setCurrentImage, images }) => {
     setIsConfirming(true);
     axios
       .post(
-        "https://dreamlabapidev.azurewebsites.net/api/reservacion/estudiante",
+        "https://dreamlabapidev.azurewebsites.net/api/reservacion/profesor",
         reservationData
       )
       .then((response) => {
@@ -452,7 +452,7 @@ const Chat = ({ setCurrentImage, images }) => {
           )}
         </div>
         {showPopUp && (
-          <PopUp
+          <PopUpProfesor
             onClose={togglePopUp}
             Matricula={matriculita}
             SalaID={salaID}
