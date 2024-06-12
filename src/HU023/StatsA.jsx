@@ -191,7 +191,7 @@ const StatsA = () => {
             <Pie data={pieData} options={options} />
           </div>
           <p>
-            En tiempo real al día {getTodayDate()}: {ocupacion} personas
+            En tiempo real al día {getTodayDate()}: 22 personas
           </p>
         </div>
         <div className="section-HU023">
