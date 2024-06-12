@@ -292,7 +292,7 @@ nav ul li {
 .dropdown-menu-HU022 {
     display: none;
     position: absolute;
-    right: 12rem;
+    right: 5rem;
     width: 300px;
     height: 0;
     background-color: #363968;
@@ -316,10 +316,6 @@ nav ul li {
 
 .dropdown-menu-HU022 li:nth-child(3) {
     padding-bottom: 20px;
-}
-
-.dropdown-menu-HU022 li:last-child {
-    display: none;
 }
 
 .mina-bold-2-HU022 {
@@ -383,19 +379,6 @@ nav ul li {
 
     .dropdown-menu-HU022 {
         right: 8rem;
-    }
-
-    .dropdown-menu-HU022 li:nth-child(3) {
-        padding-bottom: 0;
-    }
-
-    .dropdown-menu-HU022 li:last-child {
-        display: flex;
-        padding-bottom: 20px;
-    }
-
-    .dropdown-menu-HU022.open {
-        height: 225px;
     }
 }
 

@@ -6,6 +6,8 @@ import "../HU025.css";
 import fotodreamy from "../../assets/dreamy_escritor2.png";
 import PopUp from "../../HU004/componentes/detalle/Detalle";
 import PopUpProfesor from "../../HU004/componentes/detalle/DetalleProfesor";
+import clockWait from "../../assets/clock.gif";
+import checkmarkGif from "../../assets/checkmark.gif";
 
 const apiSALAS = "https://dreamlabapidev.azurewebsites.net/api/salas";
 const apiHORARIO = "https://dreamlabapidev.azurewebsites.net/api/horario/";
@@ -30,6 +32,9 @@ const ReservationForm = () => {
   const [showPopUp, setShowPopUp] = useState(false);
   const [reservaData, setReservaData] = useState({});
   const userType = localStorage.getItem("userType");
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const obtenerSalas = async () => {
@@ -91,9 +96,29 @@ const ReservationForm = () => {
     e.preventDefault();
     const matricula = localStorage.getItem("matricula");
 
+    if (
+      !selectedSala ||
+      !fechaSeleccionada ||
+      !horaInicio ||
+      !horaFin ||
+      !cantidadPersonas
+    ) {
+      setErrorMessage("No has introducido todos los campos");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+      return;
+    }
+
     const formatTime = (time) => {
       return `${time}:00`;
     };
+
+    const selectedResources =
+      Object.entries(recursosSeleccionados)
+        .filter(([recurso, cantidad]) => cantidad > 0)
+        .map(([recurso, cantidad]) => `${cantidad} ${recurso}`)
+        .join(", ") || "Ninguno";
 
     if (userType === "alumno") {
       if (!matricula) {
@@ -109,9 +134,7 @@ const ReservationForm = () => {
           : "",
         HoraInicio: formatTime(horaInicio),
         HoraFin: formatTime(horaFin),
-        Recursos: Object.entries(recursosSeleccionados)
-          .map(([recurso, cantidad]) => `${cantidad} ${recurso}`)
-          .join(", "),
+        Recursos: selectedResources,
         Personas: cantidadPersonas,
         Confirmada: 0,
       };
@@ -132,9 +155,7 @@ const ReservationForm = () => {
           : "",
         HoraInicio: formatTime(horaInicio),
         HoraFin: formatTime(horaFin),
-        Recursos: Object.entries(recursosSeleccionados)
-          .map(([recurso, cantidad]) => `${cantidad} ${recurso}`)
-          .join(", "),
+        Recursos: selectedResources,
         Personas: cantidadPersonas,
         Confirmada: 0,
       };
@@ -145,6 +166,7 @@ const ReservationForm = () => {
   };
 
   const handleConfirmReservation = async () => {
+    setIsConfirming(true);
     if (userType === "alumno") {
       try {
         const response = await axios.post(
@@ -153,7 +175,12 @@ const ReservationForm = () => {
         );
         console.log("Respuesta de la API:", response.data);
         setShowPopUp(false);
-        window.location.href = "/perfil";
+        setIsConfirming(false);
+        setIsConfirmed(true);
+        setTimeout(() => {
+          setIsConfirmed(false);
+          window.location.href = "/perfil";
+        }, 2000);
       } catch (error) {
         if (error.response) {
           console.error("Error al realizar la reserva:", error.response.data);
@@ -170,7 +197,12 @@ const ReservationForm = () => {
         const response = await axios.post(apiRESERVACIONProfesor, reservaData);
         console.log("Respuesta de la API:", response.data);
         setShowPopUp(false);
-        window.location.href = "/perfil";
+        setIsConfirming(false);
+        setIsConfirmed(true);
+        setTimeout(() => {
+          setIsConfirmed(false);
+          window.location.href = "/perfil";
+        }, 2000);
       } catch (error) {
         if (error.response) {
           console.error("Error al realizar la reserva:", error.response.data);
@@ -246,16 +278,14 @@ const ReservationForm = () => {
     return options;
   };
 
-  const timeOptionsStart = generateTimeOptions(
+  const availableStartTimes = generateTimeOptions(
     horarios.HoraInicio,
     horarios.HoraFin
   );
-  const timeOptionsEnd = generateTimeOptions(
-    horarios.HoraInicio,
-    horarios.HoraFin,
-    horaInicio,
-    true
-  );
+
+  const availableEndTimes = horaInicio
+    ? generateTimeOptions(horaInicio, horarios.HoraFin, horaInicio, true)
+    : [];
 
   return (
     <div className="containerHU025">
@@ -283,6 +313,7 @@ const ReservationForm = () => {
           <label className="subtitulo-HU025">
             Sala:
             <select
+              id="sala"
               value={selectedSala}
               onChange={(e) => setSelectedSala(e.target.value)}
             >
@@ -304,6 +335,7 @@ const ReservationForm = () => {
               selected={fechaSeleccionada}
               onChange={(date) => setFechaSeleccionada(date)}
               filterDate={(date) => !isWeekend(date)}
+              closeOnScroll={true}
             />
           </label>
           <label className="subtitulo-HU025">
@@ -312,7 +344,7 @@ const ReservationForm = () => {
               value={horaInicio}
               onChange={(e) => setHoraInicio(e.target.value)}
             >
-              {timeOptionsStart.map((time) => (
+              {availableStartTimes.map((time) => (
                 <option key={time} value={time}>
                   {time}
                 </option>
@@ -325,7 +357,7 @@ const ReservationForm = () => {
               value={horaFin}
               onChange={(e) => setHoraFin(e.target.value)}
             >
-              {timeOptionsEnd.map((time) => (
+              {availableEndTimes.map((time) => (
                 <option key={time} value={time}>
                   {time}
                 </option>
@@ -387,6 +419,11 @@ const ReservationForm = () => {
               max={cupo}
             />
           </label>
+          {errorMessage && (
+            <div className="errorHU004 show">
+              <div className="title">{errorMessage}</div>
+            </div>
+          )}
           <button className="submit-button-HU025" type="submit">
             RESERVAR
           </button>
@@ -418,6 +455,32 @@ const ReservationForm = () => {
             Confirmada={reservaData.Confirmada}
             onConfirm={handleConfirmReservation}
           />
+        )}
+        {isConfirming && (
+          <div className="popup-overlay">
+            <div className="popup-content">
+              <div className="loading-indicator">
+                <img
+                  style={{ width: "30%" }}
+                  src={clockWait}
+                  alt="Procesando"
+                />
+                <p>Procesando...</p>
+              </div>
+            </div>
+          </div>
+        )}
+        {isConfirmed && (
+          <div className="popup-overlay">
+            <div className="popup-content">
+              <div className="confirmation-message">
+                <img src={checkmarkGif} alt="Confirmación" />
+                <p>
+                  <b>RESERVACIÓN CONFIRMADA</b>
+                </p>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>

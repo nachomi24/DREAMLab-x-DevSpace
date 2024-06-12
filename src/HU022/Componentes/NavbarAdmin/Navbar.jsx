@@ -123,17 +123,17 @@ const Navbar = ({ loggedIn }) => {
       </nav>
       <div className={`dropdown-menu-HU022 ${isMenuOpen ? "open" : ""}`}>
         <li>
-          <a href="/inicio" className="mina-bold-2-HU022">
+          <a href="/admin/reservaciones" className="mina-bold-2-HU022">
             RESERVACIONES
           </a>
         </li>
         <li>
-          <a href="/reservar" className="mina-bold-2-HU022">
+          <a href="/admin/videowall" className="mina-bold-2-HU022">
             VIDEOWALL
           </a>
         </li>
         <li>
-          <a href="/admin/stats" className="mina-bold-HU022">
+          <a href="/admin/stats" className="mina-bold-2-HU022">
             STATS
           </a>
         </li>
