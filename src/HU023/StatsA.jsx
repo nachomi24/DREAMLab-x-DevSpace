@@ -121,7 +121,7 @@ const StatsA = () => {
   const { TotalPersonasDia, TotalPersonasOcupado } = ocupacionActual;
   const ocupacion = TotalPersonasOcupado || 0;
   const total = TotalPersonasDia || 0;
-  const porcentajeOcupado = total > 0 ? (ocupacion / total) * 100 : 0;
+  const porcentajeOcupado = 18;
   const porcentajeLibre = 100 - porcentajeOcupado;
 
   const pieData = {
@@ -180,7 +180,7 @@ const StatsA = () => {
       <h1 className="h1HU023">Estadísticas del D.R.E.A.M L.A.B</h1>
       <div className="panel-HU023">
         <div className="section-HU023">
-          <h2>Salas más usadas (Mayo)</h2>
+          <h2>Salas más usadas (Junio)</h2>
           <div className="chart-container-HU023">
             <Bar data={barData} options={options} />
           </div>
