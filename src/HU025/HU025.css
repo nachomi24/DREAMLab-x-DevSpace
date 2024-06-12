@@ -137,6 +137,30 @@
     border: none;
     background-color: #e0e0e0;
     cursor: pointer;
+    margin-right: 8px;
+  }
+
+  .reservation-form-HU025 .counter-HU025 button:first-child {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 2.5vh;
+    border: none;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+
+  .reservation-form-HU025 .counter-HU025 button:last-child {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 2.5vh;
+    border: none;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    margin-left: 8px;
   }
   
   .reservation-form-HU025 .counter span {
@@ -155,6 +179,23 @@
     cursor: pointer;
     box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
     transition: box-shadow 0.3s;
+  }
+
+  .calendar-button-custom-input {
+    padding: 5px 15px 5px 15px;
+    font-size: 3vh;
+    background-color: #363968;
+    color: #eff0ff;
+    border-radius: 25px;
+    border: none;
+    line-height: 1.6;
+    cursor: pointer;
+    box-shadow: 1.5px 3px rgb(0, 0, 0), -1.5px 3px rgb(0, 0, 0);
+    transition: box-shadow 0.3s;
+  }
+
+  .calendar-button-custom-input:hover {
+    background-color: #1b1e4b;
   }
   
   .reservation-form-HU025 button[type="submit"]:hover {
@@ -205,7 +246,6 @@ select {
   font-size: 2.5vh;
   border: 0px;
   padding: 0.8vh;
-  width: 35%;
   border-radius: 5px;
   margin-left: 1.5vh;
 }
@@ -226,6 +266,19 @@ select {
   padding: 0.8vh;
   width: 100%;
   border-radius: 5px;
+}
+
+.modal-overlayHU004 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 @media (max-width: 480px) {
@@ -290,7 +343,7 @@ select {
     font-size: 2.5vh;
     border: 0px;
     padding: 0.8vh;
-    width: 35%;
+    width: 100%;
     border-radius: 5px;
     margin-left: 1.5vh;
   }
@@ -441,7 +494,6 @@ select {
     font-size: 2.5vh;
     border: 0px;
     padding: 0.8vh;
-    width: 35%;
     border-radius: 5px;
     margin-left: 1.5vh;
   }

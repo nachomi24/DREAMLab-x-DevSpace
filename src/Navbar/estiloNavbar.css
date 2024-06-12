@@ -61,6 +61,7 @@ nav {
     margin-right: 20px;
     transition: 0.3s;
     text-align: center;
+    text-wrap: nowrap;
 }
 
 .karen img {

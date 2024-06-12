@@ -809,6 +809,7 @@
     }
 
     .tablaestilo td {
+        width: 100%;
         height: auto;
     }
 
@@ -838,6 +839,11 @@
 
   /* Media queries para pantallas pequeñas */
 @media (max-width: 768px) {
+
+    .tablaestilo td {
+        width: 100%;
+        height: auto;
+    }
 
     .cuerpoHU0019 {
         background-size: cover;

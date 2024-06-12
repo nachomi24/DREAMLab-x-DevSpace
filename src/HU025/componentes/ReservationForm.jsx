@@ -409,15 +409,25 @@ const ReservationForm = () => {
           </div>
           <label className="subtitulo-HU025">
             Cantidad de Personas:
-            <input
-              type="number"
-              value={cantidadPersonas}
-              onChange={(e) =>
-                setCantidadPersonas(Math.min(Math.max(e.target.value, 1), cupo))
-              }
-              min="1"
-              max={cupo}
-            />
+            <div className="counter-HU025">
+              <button
+                type="button"
+                onClick={() =>
+                  setCantidadPersonas((prev) => Math.max(prev - 1, 1))
+                }
+              >
+                -
+              </button>
+              <span>{cantidadPersonas}</span>
+              <button
+                type="button"
+                onClick={() =>
+                  setCantidadPersonas((prev) => Math.min(prev + 1, cupo))
+                }
+              >
+                +
+              </button>
+            </div>
           </label>
           {errorMessage && (
             <div className="errorHU004 show">

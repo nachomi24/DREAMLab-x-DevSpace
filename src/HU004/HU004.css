@@ -114,6 +114,8 @@
   font-weight: bolder;
   line-height: 50px;
   margin-bottom: 2vh;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .errorHU004 {
@@ -139,7 +141,7 @@
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 20vw;
+  height: 360px;
   overflow-y: scroll;
 }
 
@@ -223,7 +225,7 @@
   margin-top: -2px;
 }
 .messages .message .text_wrapper .text {
-  font-size: 18px;
+  font-size: 1.25vw;
   font-weight: 300;
 }
   
@@ -261,13 +263,13 @@
   font-family: "Mina", sans-serif;
   float: right;
   text-align: left;
-  font-size: 18px;
+  font-size: 1.25vw;
   line-height: 25px;
   padding-top: 12px;
 }
 
-.message_input::-webkit-scrollbar {
-  width: 0; /* oculta la barra de desplazamiento */
+textarea {
+  resize: none;
 }
 
 .bottom_wrapperHU004 .send_message {
@@ -522,7 +524,38 @@
   max-height: 100%;
 }
 
+@media (max-width: 1220px) {
+  .messages {
+    position: relative;
+    list-style: none;
+    padding: 20px 10px 0 10px;
+    margin: 0;
+    height: 310px;
+    overflow-y: scroll;
+  }
+}
+
+@media (max-width: 1139.2px) {
+  .messages .message .text_wrapper .text {
+    font-size: 1.75vw;
+    font-weight: 300;
+  }
+
+  .message_input_wrapper .message_input {
+    font-size: 1.75vw;
+  }
+}
+
 @media (max-width: 768px) {
+  .messages .message .text_wrapper .text {
+    font-size: 2.25vw;
+    font-weight: 300;
+  }
+
+  .message_input_wrapper .message_input {
+    font-size: 2.25vw;
+  }
+
   .bot-containerHU004 {
     display: none;
     width: 0px;
@@ -558,7 +591,38 @@
 
 }
 
+@media (max-width: 600px) {
+  .messages {
+    position: relative;
+    list-style: none;
+    padding: 20px 10px 0 10px;
+    margin: 0;
+    height: 330px;
+    overflow-y: scroll;
+  }
+}
+
+@media (max-width: 560px) {
+  .messages .message .text_wrapper .text {
+    font-size: 2.75vw;
+    font-weight: 300;
+  }
+
+  .message_input_wrapper .message_input {
+    font-size: 2.75vw;
+  }
+}
+
 @media (max-width: 480px) {
+  .messages .message .text_wrapper .text {
+    font-size: 3.25vw;
+    font-weight: 300;
+  }
+
+  .message_input_wrapper .message_input {
+    font-size: 3.25vw;
+  }
+
   .cuerpoHU004 {
     overflow: scroll;
   }
@@ -584,7 +648,12 @@
   }
 
   .messages {
-    height:calc(80% - 100px);
+    position: relative;
+    list-style: none;
+    padding: 20px 10px 0 10px;
+    margin: 0;
+    height: 330px;
+    overflow-y: scroll;
   }
 
   .message_input_wrapper {
@@ -594,4 +663,15 @@
   .bottom_wrapperHU004 .message_input_wrapper {
     width: calc(100% - 100px);
     bottom: 0;}
+}
+
+@media (max-width: 321.6px) {
+  .messages {
+    position: relative;
+    list-style: none;
+    padding: 20px 10px 0 10px;
+    margin: 0;
+    height: 270px;
+    overflow-y: scroll;
+  }
 }

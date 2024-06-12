@@ -4,7 +4,7 @@ import "../../HU004.css";
 import loadingChat from "../../../assets/chat_loading_4.gif";
 import PopUp from "../detalle/Detalle";
 
-const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
+const Chat = ({ setCurrentImage, images }) => {
   const [messages, setMessages] = useState(() => {
     const savedMessages = localStorage.getItem("chatMessages");
     return savedMessages ? JSON.parse(savedMessages) : [];
@@ -15,7 +15,7 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
   const [showButton, setShowButton] = useState(false);
   const [showMessageInput, setShowMessageInput] = useState(true);
 
-  const [matriculita, setMatriculita] = useState("");
+  const matriculita = localStorage.getItem("matricula");
   const [salaID, setSalaID] = useState("");
   const [dia, setDia] = useState("");
   const [horaInicio, setHoraInicio] = useState("");
@@ -25,10 +25,6 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
   const confirmada = 0;
   const [showPopUp, setShowPopUp] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    const savedLoginStatus = localStorage.getItem("isLoggedIn");
-    return savedLoginStatus === "true";
-  });
   const [threadID, setThreadID] = useState("");
   const [inputError, setInputError] = useState("");
 
@@ -53,7 +49,7 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
 
     // Mostrar mensaje de carga
     const loadingMessage = {
-      text: <img src={loadingChat} alt="Loading" />,
+      text: <img style={{ width: "40px" }} src={loadingChat} alt="Loading" />,
       side: "left",
     };
     const loadingMessageIndex = messages.length + 1; // Añadimos +1 porque ya hemos añadido el mensaje del usuario.
@@ -113,7 +109,8 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
           const salaMatch = botResponse.text.match(salaRegex);
           const fechaMatch = botResponse.text.match(fechaRegex);
           const horaMatch = botResponse.text.match(horaRegex);
-          const recursosMatch = botResponse.text.match(recursosRegex);
+          const recursosMatch =
+            botResponse.text.match(recursosRegex) || "Ninguno";
           const personasMatch = botResponse.text.match(personasRegex);
 
           console.log(
@@ -134,7 +131,10 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
             const horaInicio = horaMatch[1] || horaMatch[6] || horaMatch[4];
             const horaFin = horaMatch[2] || horaMatch[7] || horaMatch[5];
             const recursos =
-              recursosMatch[1] || recursosMatch[2] || recursosMatch[3];
+              recursosMatch[1] ||
+              recursosMatch[2] ||
+              recursosMatch[3] ||
+              "Ninguno";
 
             setSalaID(salaMatch[1]);
             setDia(convertirFecha(fechaMatch[1]));
@@ -170,7 +170,7 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
     const savedMatricula = localStorage.getItem("matricula");
 
     fetch(
-      `https://dreamlabapidev.azurewebsites.net/api/perfil/${savedMatricula}`
+      `https://dreamlabapidev.azurewebsites.net/api/perfil_estudiante/${savedMatricula}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -331,17 +331,19 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
               <div className="title">{inputError}</div>
             </div>
           )}
-          <ul id="all_messages" className="messages">
-            {messages.map((msg, index) => (
-              <li key={index} className={`message ${msg.side} appeared`}>
-                <div className={`avatar ${msg.side}`}></div>
-                <div className="text_wrapper">
-                  <div className="text">{msg.text}</div>
-                </div>
-              </li>
-            ))}
-            <div ref={messagesEndRef} />
-          </ul>
+          <div className="messages">
+            <ul id="all_messages">
+              {messages.map((msg, index) => (
+                <li key={index} className={`message ${msg.side} appeared`}>
+                  <div className={`avatar ${msg.side}`}></div>
+                  <div className="text_wrapper">
+                    <div className="text">{msg.text}</div>
+                  </div>
+                </li>
+              ))}
+              <div ref={messagesEndRef} />
+            </ul>
+          </div>
           {showButton && (
             <div className="bottom_wrapperHU004">
               <button className="send_message2" onClick={togglePopUp}>
@@ -355,7 +357,7 @@ const Chat = ({ setLoggedIn, setMatricula, setCurrentImage, images }) => {
                 <textarea
                   id="message_input"
                   className="message_input"
-                  placeholder="Escribe tu mensaje aquí..."
+                  placeholder="Escribe tu mensaje"
                   value={inputText}
                   onChange={handleMessageChange}
                   onKeyPress={handleKeyPress}
