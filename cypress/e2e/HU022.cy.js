@@ -1,34 +1,32 @@
-//Para probar inicio de sesión como profesor
+//Gestionar reservaciones
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/')
-    })
-
-
-    it('Ingresar nomina de profesor',()=>{
-        cy.get('.fa-bars').click()
-        cy.get(':nth-child(2) > .mina-bold-2').click()
-        cy.get(':nth-child(1) > input').type('L00000002');
-
-    })
-
-    it('Ingresar contraseña',()=>{
-        cy.get('.fa-bars').click()
-        cy.get(':nth-child(2) > .mina-bold-2').click()
-        cy.get(':nth-child(1) > input').type('L00000002');
-        cy.get(':nth-child(2) > input').type('Rolando123');
-    })
-
-    it('Iniciar sesión',()=>{
-        cy.get('.fa-bars').click()
-        cy.get(':nth-child(2) > .mina-bold-2').click()
-        cy.get(':nth-child(1) > input').type('L00000003');
-        cy.get(':nth-child(2) > input').type('Roberto123');
+        cy.visit('www.dreamlabspace.world')
+        cy.get('.perfil-icono').click()
+        cy.get('.perfil-dropdown-menu > .mina-bold-2').click()
+        cy.get(':nth-child(1) > input').type('L00000040')
+        cy.get(':nth-child(2) > input').type('LuiRi123')
         cy.get('form > button').click()
-        cy.wait(200)
-        cy.get('.foto-perfil').should('be.visible') 
-        cy.get('.contenedor-principal-tarjetas026').should('be.visible')
     })
 
-   
+    it('Ver detalles',()=>{
+        cy.get(':nth-child(3) > .info-container-HU022 > .tarjeta-reserva-botones-HU022 > :nth-child(1)').click()
+        cy.get('.modal-content-inside-cuerpoHU022-content-2-HU022 > :nth-child(1)').should('be.visible')
+        cy.get('.modal-content-inside-cuerpoHU022-content-2-HU022 > :nth-child(2)').should('be.visible')
+        cy.get('.modal-content-inside-cuerpoHU022-content-2-HU022 > :nth-child(3)').should('be.visible')
+        cy.get('.modal-content-inside-cuerpoHU022-content-2-HU022 > :nth-child(3)').should('be.visible')
+        cy.get('.modal-content-inside-cuerpoHU022-content-2-HU022 > :nth-child(4)').should('be.visible')
+        cy.get('.modal-content-inside-cuerpoHU022-content-2-HU022 > :nth-child(5)').should('be.visible')
+        cy.get('.close-button-HU022').click()
+    })
+
+    it('Confirmar solicitud de reserva',()=>{
+        cy.get(':nth-child(3) > .info-container-HU022 > .tarjeta-reserva-botones-HU022 > :nth-child(2)').click()
+        cy.get('.popup-button-aceptar').click()
+    })
+
+    it('Rechazar solicitud de reserva',()=>{
+        cy.get(':nth-child(3) > .info-container-HU022 > .tarjeta-reserva-botones-HU022 > :nth-child(2)').click()
+        cy.get('.popup-button-cerrar').click()
+    })
 })
