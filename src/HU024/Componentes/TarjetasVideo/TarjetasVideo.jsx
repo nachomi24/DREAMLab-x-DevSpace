@@ -3,12 +3,15 @@ import axios from "axios";
 import "../../HU0024.css";
 import Modal from "../Modal/Modal";
 import EditModal from "../EditModal/EditModal";
+import CancelPopUp from "../PopUpCancelar/PopUpCancelar"; // Asegúrate de ajustar la ruta según tu estructura de archivos
 
 function TarjetasPublicaciones({ datos }) {
   const [publicacionesPendientes, setPublicacionesPendientes] = useState([]);
   const [selectedPublicacion, setSelectedPublicacion] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isCancelPopUpOpen, setIsCancelPopUpOpen] = useState(false);
+  const [publicacionAEliminar, setPublicacionAEliminar] = useState(null);
 
   useEffect(() => {
     console.log("Datos iniciales:", datos);
@@ -83,7 +86,7 @@ function TarjetasPublicaciones({ datos }) {
       setPublicacionesPendientes((prev) =>
         prev.filter((pub) => pub._id !== id)
       );
-      handleCloseModal();
+      handleCloseCancelPopUp();
     } catch (error) {
       console.error("Error al rechazar la publicación", error);
       if (error.response) {
@@ -136,6 +139,16 @@ function TarjetasPublicaciones({ datos }) {
         console.error("Detalles del error:", error.response.data);
       }
     }
+  };
+
+  const handleOpenCancelPopUp = (publicacion) => {
+    setPublicacionAEliminar(publicacion);
+    setIsCancelPopUpOpen(true);
+  };
+
+  const handleCloseCancelPopUp = () => {
+    setPublicacionAEliminar(null);
+    setIsCancelPopUpOpen(false);
   };
 
   const Tarjeta = ({
@@ -194,10 +207,14 @@ function TarjetasPublicaciones({ datos }) {
             >
               EDITAR
             </button>
+
+            <button onClick={() => handleOpenCancelPopUp({ _id })}>
+
             <button
               style={{ backgroundColor: "#E8ADA9" }}
               onClick={() => rechazarPublicacion(_id)}
             >
+
               ELIMINAR
             </button>
           </div>
@@ -248,6 +265,12 @@ function TarjetasPublicaciones({ datos }) {
           publicacion={selectedPublicacion}
           onClose={handleCloseModal}
           onUpdate={handleUpdatePublication}
+        />
+      )}
+      {isCancelPopUpOpen && (
+        <CancelPopUp
+          onClose={handleCloseCancelPopUp}
+          onConfirm={() => rechazarPublicacion(publicacionAEliminar._id)}
         />
       )}
     </div>
