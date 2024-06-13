@@ -62,21 +62,41 @@ const Login = ({ setLoggedIn, setMatricula }) => {
   };
 
   useEffect(() => {
-    if (isLoggedIn && matriculita) {
-      fetch(
-        `https://dreamlabapidev.azurewebsites.net/api/perfil/${matriculita}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          const fotoUrl = data.Foto;
-          document.documentElement.style.setProperty(
-            "--right-avatar",
-            `url(${fotoUrl})`
-          );
-        })
-        .catch((error) => {
-          console.error("Error al obtener la foto del perfil:", error);
-        });
+    const userType = localStorage.getItem("userType");
+    if (userType === "alumno") {
+      if (isLoggedIn && matriculita) {
+        fetch(
+          `https://dreamlabapidev.azurewebsites.net/api/perfil_estudiante/${matriculita}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const fotoUrl = data.Foto;
+            document.documentElement.style.setProperty(
+              "--right-avatar",
+              `url(${fotoUrl})`
+            );
+          })
+          .catch((error) => {
+            console.error("Error al obtener la foto del perfil:", error);
+          });
+      }
+    } else {
+      if (isLoggedIn && matriculita) {
+        fetch(
+          `https://dreamlabapidev.azurewebsites.net/api/perfil_profesor/${matriculita}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const fotoUrl = data.Foto;
+            document.documentElement.style.setProperty(
+              "--right-avatar",
+              `url(${fotoUrl})`
+            );
+          })
+          .catch((error) => {
+            console.error("Error al obtener la foto del perfil:", error);
+          });
+      }
     }
   }, [isLoggedIn, matriculita]);
 

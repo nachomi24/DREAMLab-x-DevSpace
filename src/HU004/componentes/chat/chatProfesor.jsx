@@ -110,37 +110,94 @@ const Chat = ({ setCurrentImage, images }) => {
 
         // Verificar si la respuesta contiene "enviada para ser procesada"
         if (botResponse.text.toLowerCase().includes("enviada")) {
+          const recursos = [
+            "Mouse",
+            "mouse",
+            "Mouses",
+            "mouses",
+            "Apple Vision Pro",
+            "Lectores de huella",
+            "lectores de huella",
+            "Lector de huella",
+            "lector de huella",
+            "Lectores",
+            "lectores",
+            "Lector",
+            "lector",
+            "Robots",
+            "robots",
+            "Robot",
+            "robot",
+            "Routers",
+            "routers",
+            "Router",
+            "router",
+            "Cautines",
+            "Cautin",
+            "cautin",
+            "cautines",
+            "Cautín",
+            "cautín",
+            "Computadoras",
+            "computadoras",
+            "Computadora",
+            "computadora",
+            "Switches",
+            "Switch",
+            "switches",
+            "switch",
+            "Diodos Led",
+            "Diodo Led",
+            "diodos led",
+            "diodo led",
+            "diodos",
+            "Diodos",
+            "diodo",
+            "Diodo",
+            "Laptops",
+            "laptops",
+            "Laptop",
+            "laptop",
+            "Calculadoras",
+            "calculadoras",
+            "Calculadora",
+            "calculadora",
+          ];
+          // Crear una expresión regular para buscar recursos y cantidades
+          const recursoRegex = new RegExp(
+            `(\\d+)\\s+(${recursos.join("|")})`,
+            "gi"
+          );
+
+          // Buscar coincidencias en el texto de la respuesta del bot
+          const recursosEncontrados = [];
+          let match;
+          while ((match = recursoRegex.exec(botResponse.text)) !== null) {
+            recursosEncontrados.push(`${match[1]} ${match[2]}`);
+          }
+
+          // Set recursos o "Ninguno" si no se encontraron
+          setRecursos(
+            recursosEncontrados.length > 0
+              ? recursosEncontrados.join(", ")
+              : "Ninguno"
+          );
+
           // Usar expresiones regulares para extraer la información
           const salaRegex = /sala (\w+)/i;
           const fechaRegex = /(\d+ de \w+ de \d+)/i;
           const horaRegex =
             /(\d{1,2}(?::\d{2})?\w{2}) a (\d{1,2}(?::\d{2})?\w{2})|(\d{1,2}(?::\d{2})?)\s*:\s*(\d{2}) hasta las (\d{1,2}(?::\d{2})?)|(?:desde las\s*)?(\d{1,2}(?::\d{2})?\s*(?:am|pm))\s*hasta las\s*(\d{1,2}(?::\d{2})?\s*(?:am|pm))/i;
-          const recursosRegex =
-            /con (\d+ \w+(?:,|\sy\s)\d+ \w+)|(\d+ \w+(?:,|\sy\s)\d+ \w+)|con los recursos de ([^,]+(?:, [^,]+)* y [^,]+)|con los recursos de ([^,]+(?:, [^,]+)*(?: y [^,]+)?)/i;
           const personasRegex = /(\d+) personas/i;
 
           const salaMatch = botResponse.text.match(salaRegex);
           const fechaMatch = botResponse.text.match(fechaRegex);
           const horaMatch = botResponse.text.match(horaRegex);
-          const recursosMatch =
-            botResponse.text.match(recursosRegex) || "Ninguno";
           const personasMatch = botResponse.text.match(personasRegex);
 
-          console.log(
-            salaMatch,
-            fechaMatch,
-            horaMatch,
-            recursosMatch,
-            personasMatch
-          );
+          console.log(salaMatch, fechaMatch, horaMatch, personasMatch);
 
-          if (
-            salaMatch &&
-            fechaMatch &&
-            horaMatch &&
-            recursosMatch &&
-            personasMatch
-          ) {
+          if (salaMatch && fechaMatch && horaMatch && personasMatch) {
             const horaInicio = horaMatch[1] || horaMatch[6] || horaMatch[4];
             const horaFin = horaMatch[2] || horaMatch[7] || horaMatch[5];
             const recursos =
