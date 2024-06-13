@@ -15,6 +15,7 @@ Bienvenido al desarrollo del software del D.R.E.A.M Lab diseñado por y para est
 -  OpenAI
 -  MySQL
 -  Azure 
+-  Cypress
 
 ## Equipo de Desarrollo
 * Eugenio Turcott Estrada - Fullstack Developer - 
