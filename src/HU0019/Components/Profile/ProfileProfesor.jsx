@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { uploadFile } from "../../../firebase/config";
 import axios from "axios";
+import clockWait from "../../../assets/clock.gif";
 import checkmarkGif from "../../../assets/checkmark.gif";
 import dreamyRegalito from "../../../assets/dreamy_regalito.png";
 
@@ -12,10 +13,28 @@ function ProfileProfesor({
   TotalPuntos,
 }) {
   const [isUpdatingPhoto, setIsUpdatingPhoto] = useState(false);
+  const [isConfirmingPhoto, setIsConfirmingPhoto] = useState(false);
   const [isUpdatedPhoto, setIsUpdatedPhoto] = useState(false);
   const [newPhoto, setNewPhoto] = useState(null);
   const [fileName, setFileName] = useState("Subir Foto");
   const [puntos, setPuntos] = useState(false);
+  const [error, setError] = useState("");
+
+  const allowedExtensions = [
+    ".jpe",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".png",
+    ".bmp",
+    ".ico",
+    ".svg",
+    ".svgz",
+    ".tif",
+    ".tiff",
+    ".ai",
+    ".drw",
+  ];
 
   const handlePuntosClick = () => {
     setPuntos(true);
@@ -33,10 +52,12 @@ function ProfileProfesor({
     setIsUpdatingPhoto(false);
     setNewPhoto(null);
     setFileName("Subir Foto");
+    setError("");
   };
 
   const handleConfirmClick = async () => {
     if (newPhoto) {
+      setIsConfirmingPhoto(true);
       try {
         const photoURL = await uploadFile(newPhoto);
 
@@ -53,6 +74,7 @@ function ProfileProfesor({
 
         setIsUpdatingPhoto(false);
         setNewPhoto(null);
+        setIsConfirmingPhoto(false);
         setIsUpdatedPhoto(true);
 
         showPopupAndRedirect();
@@ -67,8 +89,19 @@ function ProfileProfesor({
 
   const handlePhotoChange = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setNewPhoto(event.target.files[0]);
-      setFileName(event.target.files[0].name);
+      const file = event.target.files[0];
+      const fileExtension = file.name.split(".").pop().toLowerCase();
+      const isValidExtension = allowedExtensions.includes(`.${fileExtension}`);
+
+      if (!isValidExtension) {
+        setError("El formato de esa imagen no está permitido");
+        setNewPhoto(null);
+        setFileName("Subir Foto");
+      } else {
+        setError("");
+        setNewPhoto(file);
+        setFileName(file.name);
+      }
     }
   };
 
@@ -98,10 +131,11 @@ function ProfileProfesor({
               onChange={handlePhotoChange}
               style={{ display: "none" }}
             />
-            <label htmlFor="fileInput" className="custom-file-upload">
+            <label htmlFor="fileInput" className="custom-file-upload-label">
               {fileName}
             </label>
           </div>
+          {error && <div className="error-message">{error}</div>}
           <div className="photo-update-section">
             <button
               style={{ marginRight: "1vh" }}
@@ -133,10 +167,20 @@ function ProfileProfesor({
       <div className="puntos-perfil">
         <p className="puntos-text">Puntos de prioridad</p>
         <button className="boton-puntos-prioridad" onClick={handlePuntosClick}>
-          <i class="fa-solid fa-circle-question button-question"></i>
+          <i className="fa-solid fa-circle-question button-question"></i>
           <p className="puntos">{TotalPuntos}</p>
         </button>
       </div>
+      {isConfirmingPhoto && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <div className="loading-indicator">
+              <img style={{ width: "30%" }} src={clockWait} alt="Procesando" />
+              <p>Procesando...</p>
+            </div>
+          </div>
+        </div>
+      )}
       {isUpdatedPhoto && (
         <div className="popup-overlay">
           <div className="popup-content">

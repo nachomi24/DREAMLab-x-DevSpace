@@ -208,6 +208,14 @@
     margin-left: 10px;
 }
 
+.error-message {
+    margin-top: 10px;
+    color: darkred;
+    font-size: 1vw;
+    font-weight: bolder;
+    text-align: center;
+}
+
 /* Tabla.css */
 
 
@@ -246,6 +254,7 @@
     font-size: 2vw;
     margin-right: 4vh;
     color: black;
+    
 }
 
 .uf_curso {
@@ -416,6 +425,22 @@
 
   .botoncitofotitoconfirmar:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-file-upload-label {
+    margin-top: 3vh;
+    width: 300px;
+    display: inline-block;
+    font-weight: bold;
+    padding: 5px 15px 5px 15px ;
+    cursor: pointer;
+    color: #eff0ff;
+    border: none;
+    background-color: #363968;
+    box-shadow: 1.5px 3px rgb(185, 185, 185), -1.5px 3px rgb(185, 185, 185);
+    border-radius: 4px;
+    transition: box-shadow 0.3s;
+    overflow-x: scroll;
   }
 
 .custom-file-upload {
@@ -630,6 +655,14 @@
 }
   
   @media (max-width: 480px) {
+    .error-message {
+        margin-top: 10px;
+        color: darkred;
+        font-size: 3vw;
+        font-weight: bolder;
+        text-align: center;
+    }
+
     .cuerpoHU0019 {
         background-size: cover;
         background-position: left;
@@ -839,6 +872,13 @@
 
   /* Media queries para pantallas pequeñas */
 @media (max-width: 768px) {
+    .error-message {
+        margin-top: 10px;
+        color: darkred;
+        font-size: 2.5vw;
+        font-weight: bolder;
+        text-align: center;
+    }
 
     .tablaestilo td {
         width: 100%;
@@ -939,6 +979,7 @@
 
     .p_uf_curso {
         font-size: 5vw;
+        text-align: left;
     }
 
     .uf_curso {

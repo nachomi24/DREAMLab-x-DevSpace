@@ -19,6 +19,23 @@ function Profile({
   const [newPhoto, setNewPhoto] = useState(null);
   const [fileName, setFileName] = useState("Subir Foto");
   const [puntos, setPuntos] = useState(false);
+  const [error, setError] = useState("");
+
+  const allowedExtensions = [
+    ".jpe",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".png",
+    ".bmp",
+    ".ico",
+    ".svg",
+    ".svgz",
+    ".tif",
+    ".tiff",
+    ".ai",
+    ".drw",
+  ];
 
   const handlePuntosClick = () => {
     setPuntos(true);
@@ -36,6 +53,7 @@ function Profile({
     setIsUpdatingPhoto(false);
     setNewPhoto(null);
     setFileName("Subir Foto");
+    setError("");
   };
 
   const handleConfirmClick = async () => {
@@ -72,8 +90,19 @@ function Profile({
 
   const handlePhotoChange = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setNewPhoto(event.target.files[0]);
-      setFileName(event.target.files[0].name);
+      const file = event.target.files[0];
+      const fileExtension = file.name.split(".").pop().toLowerCase();
+      const isValidExtension = allowedExtensions.includes(`.${fileExtension}`);
+
+      if (!isValidExtension) {
+        setError("El formato de esa imagen no está permitido");
+        setNewPhoto(null);
+        setFileName("Subir Foto");
+      } else {
+        setError("");
+        setNewPhoto(file);
+        setFileName(file.name);
+      }
     }
   };
 
@@ -107,10 +136,11 @@ function Profile({
               onChange={handlePhotoChange}
               style={{ display: "none" }}
             />
-            <label htmlFor="fileInput" className="custom-file-upload">
+            <label htmlFor="fileInput" className="custom-file-upload-label">
               {fileName}
             </label>
           </div>
+          {error && <div className="error-message">{error}</div>}
           <div className="photo-update-section">
             <button
               style={{ marginRight: "1vh" }}
@@ -142,7 +172,7 @@ function Profile({
       <div className="puntos-perfil">
         <p className="puntos-text">Puntos de prioridad</p>
         <button className="boton-puntos-prioridad" onClick={handlePuntosClick}>
-          <i class="fa-solid fa-circle-question button-question"></i>
+          <i className="fa-solid fa-circle-question button-question"></i>
           <p className="puntos">{TotalPuntos}</p>
         </button>
       </div>

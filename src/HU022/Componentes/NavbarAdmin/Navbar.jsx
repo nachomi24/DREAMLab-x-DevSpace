@@ -15,7 +15,7 @@ const Navbar = ({ loggedIn }) => {
   const matricula = localStorage.getItem("matricula");
 
   const apiURLPerfilCarrera =
-    "https://dreamlabapidev.azurewebsites.net/api/perfil/" + matricula;
+    "https://dreamlabapidev.azurewebsites.net/api/perfil_profesor/" + matricula;
 
   const obtencionFotoPerfil = async () => {
     try {

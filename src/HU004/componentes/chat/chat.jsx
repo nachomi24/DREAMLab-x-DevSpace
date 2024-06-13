@@ -6,6 +6,8 @@ import PopUp from "../detalle/Detalle";
 import clockWait from "../../../assets/clock.gif";
 import checkmarkGif from "../../../assets/checkmark.gif";
 import crossmarkGif from "../../../assets/crossmark.gif";
+import envioDreamy from "../../../assets/envio_dreamy.mp3";
+import notificacionDreamy from "../../../assets/notificacion_dreamy.mp3";
 
 const Chat = ({ setCurrentImage, images }) => {
   const [messages, setMessages] = useState(() => {
@@ -35,6 +37,9 @@ const Chat = ({ setCurrentImage, images }) => {
   const [threadID, setThreadID] = useState("");
   const [inputError, setInputError] = useState("");
 
+  const envioSound = new Audio(envioDreamy);
+  const notificacionSound = new Audio(notificacionDreamy);
+
   const togglePopUp = () => {
     setShowPopUp(!showPopUp);
   };
@@ -58,6 +63,9 @@ const Chat = ({ setCurrentImage, images }) => {
     const newMessage = { text, side };
     setMessages((messages) => [...messages, newMessage]);
     setInputText("");
+
+    // Reproducir el sonido de envío
+    envioSound.play();
 
     // Mostrar mensaje de carga
     const loadingMessage = {
@@ -99,6 +107,9 @@ const Chat = ({ setCurrentImage, images }) => {
         text: formattedText,
         side: "left",
       };
+
+      // Reproducir el sonido de notificación
+      notificacionSound.play();
 
       // Cambiar la imagen a dreamyFeliz cuando se recibe la respuesta
       setCurrentImage(images.dreamyFeliz);

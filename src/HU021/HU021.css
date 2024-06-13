@@ -74,8 +74,20 @@
   }
 
   .bot-containerDreamyLogin img {
-    width: 40vw;
+    width: 80vh;
     position: absolute;
     left: 65%;
     top: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .login_formHU021 {
+      width: 70%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .bot-containerDreamyLogin img {
+      display: none;
+    }
   }

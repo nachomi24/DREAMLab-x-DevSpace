@@ -66,7 +66,19 @@ const ReservationForm = () => {
           const responseHorario = await axios.get(
             `${apiHORARIO}${selectedSala}`
           );
-          setHorarios(responseHorario.data);
+
+          // Transformar el horario de HH:MM:SS a HH:MM
+          const horariosTransformados = {
+            HoraInicio: responseHorario.data.HoraInicio.slice(0, 5),
+            HoraFin: responseHorario.data.HoraFin.slice(0, 5),
+          };
+
+          const horaInicioSplit = responseHorario.data.HoraInicio.slice(0, 5);
+          const horaFinSplit = responseHorario.data.HoraFin.slice(0, 5);
+
+          console.log(horariosTransformados);
+
+          setHorarios(horariosTransformados);
 
           const responseRecursos = await axios.get(
             `${apiRECURSOS}${selectedSala}`
@@ -82,8 +94,8 @@ const ReservationForm = () => {
           const responseCupo = await axios.get(`${apiCUPO}${selectedSala}`);
           setCupo(responseCupo.data.Cupo);
 
-          setHoraInicio(responseHorario.data.HoraInicio);
-          setHoraFin(responseHorario.data.HoraFin);
+          setHoraInicio(horaInicioSplit);
+          setHoraFin(horaFinSplit);
           setRecursosSeleccionados({});
         } catch (error) {
           console.error("Error al obtener detalles de la sala:", error);
@@ -167,6 +179,7 @@ const ReservationForm = () => {
     setIsConfirming(true);
     if (userType === "alumno") {
       try {
+        console.log("Data de la reserva:", reservaData);
         const response = await axios.post(
           apiRESERVACIONEstudiante,
           reservaData
@@ -198,6 +211,7 @@ const ReservationForm = () => {
       }
     } else {
       try {
+        console.log("Data de la reserva:", reservaData);
         const response = await axios.post(apiRESERVACIONProfesor, reservaData);
         console.log("Respuesta de la API:", response.data);
         setShowPopUp(false);
