@@ -1,7 +1,7 @@
 //Para probar inicio de sesión módulo HU0011
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('http://localhost:5173/')
+        cy.visit('www.dreamlabspace.world')
     })
  
     it('Especificar hora válida',()=>{

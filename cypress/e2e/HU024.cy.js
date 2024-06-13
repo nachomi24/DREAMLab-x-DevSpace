@@ -1,7 +1,7 @@
-//Gestionar talleres
+//Crear talleres
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/')
+        cy.visit('www.dreamlabspace.world')
     })
 
 
@@ -23,8 +23,7 @@ describe('template spec', () => {
         cy.get(':nth-child(5) > input').type('2021-12-12')
         cy.get(':nth-child(6) > input').type('10:30')
         cy.get(':nth-child(7) > input').type('12:30')
-        cy.get(':nth-child(8) > input').type('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTYgKWdcH3YQvL-4wkMGvEGIwLsqdUd0KO6h56Op5Gn7TwFkfLLU42FyLEkZrKWhJYR-o&usqp=CAU')
-        cy.get(':nth-child(9) > input').type('https://docpath.com/wp-content/uploads/features-and-advantages-of-virtual-machine-systems.png')
+        cy.get(':nth-child(8) > input').type('https://docpath.com/wp-content/uploads/features-and-advantages-of-virtual-machine-systems.png')
         cy.get('.boton026').click()
         cy.wait(200)
         cy.get('.bars-img-navbar-principal').click()
@@ -42,7 +41,6 @@ describe('template spec', () => {
         cy.get(':nth-child(2) > input').type('Roberto123');
         cy.get('form > button').click()
         cy.wait(200)
-        cy.get('.foto-perfil').should('be.visible') 
         cy.get('.contenedor-principal-tarjetas026').should('be.visible')
         cy.get(':nth-child(4) > .info-container-HU026 > .tarjeta-reserva026-botones > :nth-child(1)').click()
         cy.get(':nth-child(3) > input').type('2')

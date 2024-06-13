@@ -1,6 +1,6 @@
 describe('Prueba de visualizacion de Garage Valley', () => {
     beforeEach(() => {  
-      cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/secciones')
+      cy.visit('www.dreamlabspace.world')
     })
     
     it('Visualizar el titulo de garage valley', () => {
