@@ -208,9 +208,10 @@ function TarjetasPublicaciones({ datos }) {
               EDITAR
             </button>
 
-            <button onClick={() => handleOpenCancelPopUp({ _id })}>
-
-
+            <button
+              style={{ backgroundColor: "#E8ADA9" }}
+              onClick={() => handleOpenCancelPopUp({ _id })}
+            >
               ELIMINAR
             </button>
           </div>

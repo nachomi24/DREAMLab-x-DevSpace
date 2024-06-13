@@ -6,18 +6,15 @@ const Card = () => {
   const cards = [
     {
       title: "VIDEO WALL",
-      description:
-        "MANTENTE AL DÍA CON NUESTRA PANTALLA INTERACTIVA.",
+      description: "MANTENTE AL DÍA CON NUESTRA PANTALLA INTERACTIVA.",
     },
     {
       title: "SOCIAL NETWORKING",
-      description:
-        "EL ESPACIO IDEAL PARA HACER CONECCIONES.",
+      description: "EL ESPACIO IDEAL PARA HACER CONECCIONES.",
     },
     {
       title: "NO REQUIERE RESRVACIÓN",
-      description:
-        "ACCEDE AL ESPACIO SIN NINGÚN PERCANCE",
+      description: "ACCEDE AL ESPACIO SIN NINGÚN PERCANCE",
     },
   ];
 
@@ -45,8 +42,8 @@ const Card = () => {
           {">"}
         </button>
       </div>
-      <a href="/reservar" className="ReservarAhoraHU010">
-        RESERVAR AHORA
+      <a href="/" className="ReservarAhoraHU010">
+        INICIO
       </a>
     </div>
   );
