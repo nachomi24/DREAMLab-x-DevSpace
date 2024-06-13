@@ -1,7 +1,7 @@
 //Para probar inicio de sesión módulo HU004
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/')
+        cy.visit('www.dreamlabspace.world')
     })
 
     it('matrícula correcta',()=>{

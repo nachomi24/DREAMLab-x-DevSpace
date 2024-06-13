@@ -1,7 +1,7 @@
 //Para probar la visibilidad de los talleres
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/')
+        cy.visit('www.dreamlabspace.world')
     })
 
     it('probar que se puede ver el tab de talleres',()=>{

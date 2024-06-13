@@ -1,7 +1,7 @@
 //Para probar la confirmación de una reservación
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('http://localhost:5173/')
+        cy.visit('www.dreamlabspace.world')
     })
 
     it('probar que se puede visualizar el detalle de confirmación de una reservación',()=>{
