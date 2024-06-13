@@ -15,6 +15,7 @@ const EditTallerModal = ({ taller, onClose, onUpdate }) => {
   const [horaInicio, setHoraInicio] = useState("");
   const [horaFin, setHoraFin] = useState("");
   //const [horaCreado, setHoraCreado] = useState("");
+  const [imagen, setImagen] = useState("");
 
   useEffect(() => {
     if (taller) {
@@ -30,6 +31,7 @@ const EditTallerModal = ({ taller, onClose, onUpdate }) => {
       setHoraInicio(taller.HoraInicio);
       setHoraFin(taller.HoraFin);
       //setHoraCreado(taller.HoraCreado);
+      setImagen(taller.Imagen);
       
     }
   }, [taller]);
@@ -46,7 +48,8 @@ const handleUpdate = async () => {
     SalaID: salaID,
     Fecha: new Date(fecha).toISOString().split('T')[0], // Formato YYYY-MM-DD
     HoraInicio: horaInicio,
-    HoraFin: horaFin
+    HoraFin: horaFin,
+    Imagen: imagen
   };
 
   
@@ -163,6 +166,14 @@ const handleUpdate = async () => {
                   type="text"
                   value={horaFin}
                   onChange={(e) => setHoraFin(e.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label className="titulito026">Imagen:</label>
+                <input
+                  type="text"
+                  value={imagen}
+                  onChange={(e) => setImagen(e.target.value)}
                 />
               </div>
               {/*<div className="field">

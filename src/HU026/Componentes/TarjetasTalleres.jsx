@@ -150,6 +150,7 @@ function TarjetasTalleres({ datos }) {
     Fecha,
     HoraInicio,
     HoraFin,
+    Imagen,
     HoraCreado
   }) => {
     const handleToggleActiva = () => {
@@ -164,6 +165,7 @@ function TarjetasTalleres({ datos }) {
         Fecha,
         HoraInicio,
         HoraFin,
+        Imagen,
         HoraCreado
       });
     };
@@ -190,6 +192,7 @@ function TarjetasTalleres({ datos }) {
                   Fecha,
                   HoraInicio,
                   HoraFin,
+                  Imagen,
                   HoraCreado
                 })
               }
