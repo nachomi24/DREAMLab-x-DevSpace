@@ -1,7 +1,7 @@
 //Para probar visualizar secciones HU008
 describe('template spec', () => {
     beforeEach(()=>{
-        cy.visit('https://green-ground-02320f30f.5.azurestaticapps.net/')
+        cy.visit('www.dreamlabspace.world')
     })
 
     it('probar que pueda visualizar las secciones',()=>{
