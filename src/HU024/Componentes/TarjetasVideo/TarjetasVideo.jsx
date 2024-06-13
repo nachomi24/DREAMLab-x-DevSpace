@@ -210,10 +210,6 @@ function TarjetasPublicaciones({ datos }) {
 
             <button onClick={() => handleOpenCancelPopUp({ _id })}>
 
-            <button
-              style={{ backgroundColor: "#E8ADA9" }}
-              onClick={() => rechazarPublicacion(_id)}
-            >
 
               ELIMINAR
             </button>
