@@ -275,7 +275,7 @@ const HU024_1 = () => {
           const qrLink =
             numReservaciones === 0
               ? "https://www.dreamlabspace.world/reservar"
-              : "https://www.dreamlabspace.world/perfil";
+              : "https://www.dreamlabspace.world/login";
           setMensaje(
             <>
               <p style={{ color: "lightpink" }} className="bienvenida">
@@ -319,7 +319,7 @@ const HU024_1 = () => {
           const qrLink =
             numReservaciones === 0
               ? "https://www.dreamlabspace.world/reservar"
-              : "https://www.dreamlabspace.world/perfil";
+              : "https://www.dreamlabspace.world/login";
           setMensaje(
             <>
               <p style={{ color: "yellow" }} className="bienvenida">
