@@ -67,9 +67,9 @@ function TarjetasTalleres({ datos }) {
       console.error("Taller no seleccionado");
       return Promise.reject(new Error("Taller no seleccionado"));
     }
-  
+
     const id = selectedTaller.TallerID;
-  
+
     try {
       console.log("Datos enviados para rechazar:", { tallerId: id });
       const response = await axios.delete(
@@ -91,13 +91,15 @@ function TarjetasTalleres({ datos }) {
       if (error.response) {
         console.error("Detalles del error:", error.response.data);
         if (error.response.data.detail) {
-          console.error("Detalles específicos del error:", error.response.data.detail);
+          console.error(
+            "Detalles específicos del error:",
+            error.response.data.detail
+          );
         }
       }
       return Promise.reject(error);
     }
   };
-  
 
   const formatearFecha = (fecha) => {
     const opciones = {
@@ -151,7 +153,7 @@ function TarjetasTalleres({ datos }) {
     HoraInicio,
     HoraFin,
     Imagen,
-    HoraCreado
+    HoraCreado,
   }) => {
     const handleToggleActiva = () => {
       toggleActiva({
@@ -166,7 +168,7 @@ function TarjetasTalleres({ datos }) {
         HoraInicio,
         HoraFin,
         Imagen,
-        HoraCreado
+        HoraCreado,
       });
     };
 
@@ -174,8 +176,10 @@ function TarjetasTalleres({ datos }) {
       <div className="tarjeta-reserva026">
         <div className="info-container-HU026">
           <div className="tarjeta-reserva026-info">
-            <h2 className="h2-titulo">{NombreUF}</h2>
-            <p>{Nombre}</p>
+            <h2 className="h2-titulo">
+              <b>{Nombre}</b>
+            </h2>
+            <p>{NombreUF}</p>
             <p className="desc-2">{formatearFecha(Fecha)}</p>
           </div>
           <div className="tarjeta-reserva026-botones">
@@ -193,25 +197,33 @@ function TarjetasTalleres({ datos }) {
                   HoraInicio,
                   HoraFin,
                   Imagen,
-                  HoraCreado
+                  HoraCreado,
                 })
               }
             >
               EDITAR
             </button>
-            <button onClick={() => { setSelectedTaller({
-                TallerID,
-                NombreProfesor,
-                UFID,
-                NombreUF,
-                Nombre,
-                Cupo,
-                SalaID,
-                Fecha,
-                HoraInicio,
-                HoraFin,
-                HoraCreado
-              }); setIsCancelPopUpOpen(true); }}>ELIMINAR</button>
+            <button
+              style={{ backgroundColor: "#E8ADA9" }}
+              onClick={() => {
+                setSelectedTaller({
+                  TallerID,
+                  NombreProfesor,
+                  UFID,
+                  NombreUF,
+                  Nombre,
+                  Cupo,
+                  SalaID,
+                  Fecha,
+                  HoraInicio,
+                  HoraFin,
+                  HoraCreado,
+                });
+                setIsCancelPopUpOpen(true);
+              }}
+            >
+              ELIMINAR
+            </button>
           </div>
         </div>
       </div>
@@ -235,9 +247,7 @@ function TarjetasTalleres({ datos }) {
               AGREGAR TALLER
             </button>
           </div>
-          <div className="contenedor-filtros026">
-            {/* Puedes agregar filtros aquí si es necesario */}
-          </div>
+          <div className="contenedor-filtros026"></div>
           {talleresPendientes.map((dato) => (
             <Tarjeta key={dato._id} {...dato} />
           ))}

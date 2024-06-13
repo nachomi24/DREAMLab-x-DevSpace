@@ -524,6 +524,22 @@ textarea {
   max-height: 100%;
 }
 
+.labelDetalleDreamy {
+  display: flex;
+}
+
+.inputDetalleDreamy {
+  margin-bottom: 10px;
+  padding: 9px;
+  border: 1px solid #d9d9d9;
+  border-radius: 9px;
+  outline: none;
+  font-family: "Mina", sans-serif;
+  font-size: 18px;
+  color: #363968;
+  width: 100%;
+}
+
 @media (max-width: 1220px) {
   .messages {
     position: relative;
