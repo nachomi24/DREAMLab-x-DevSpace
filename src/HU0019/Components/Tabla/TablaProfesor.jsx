@@ -121,7 +121,7 @@ function TablaProfesor({
   const cancelarReservacion = async (reservacionId) => {
     try {
       const response = await fetch(
-        `https://dreamlabapidev.azurewebsites.net/api/rechazar_reservacion?reservacionId=${reservacionId}`,
+        `https://dreamlabapidev.azurewebsites.net/api/rechazar_reservacion_profesor?reservacionId=${reservacionId}`,
         {
           method: "DELETE",
         }
