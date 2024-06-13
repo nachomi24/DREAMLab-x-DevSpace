@@ -24,6 +24,7 @@ describe('template spec', () => {
         cy.get(':nth-child(6) > input').type('10:30')
         cy.get(':nth-child(7) > input').type('12:30')
         cy.get(':nth-child(8) > input').type('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTYgKWdcH3YQvL-4wkMGvEGIwLsqdUd0KO6h56Op5Gn7TwFkfLLU42FyLEkZrKWhJYR-o&usqp=CAU')
+        cy.get(':nth-child(9) > input').type('https://docpath.com/wp-content/uploads/features-and-advantages-of-virtual-machine-systems.png')
         cy.get('.boton026').click()
         cy.wait(200)
         cy.get('.bars-img-navbar-principal').click()
