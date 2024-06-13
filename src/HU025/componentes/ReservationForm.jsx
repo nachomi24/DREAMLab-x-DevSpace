@@ -73,8 +73,20 @@ const ReservationForm = () => {
             HoraFin: responseHorario.data.HoraFin.slice(0, 5),
           };
 
-          const horaInicioSplit = responseHorario.data.HoraInicio.slice(0, 5);
-          const horaFinSplit = responseHorario.data.HoraFin.slice(0, 5);
+          const procesarHora = (hora) => {
+            // Obtener los primeros dos caracteres para comparar la hora
+            const horaNum = parseInt(hora.slice(0, 2), 10);
+          
+            // Si la hora es menor a 10, usar slice(0, 4), si no, usar slice(0, 5)
+            if (horaNum < 10) {
+              return hora.slice(0, 4);
+            } else {
+              return hora.slice(0, 5);
+            }
+          };
+
+          const horaInicioSplit = procesarHora(responseHorario.data.HoraInicio);
+          const horaFinSplit = procesarHora(responseHorario.data.HoraFin);
 
           console.log(horariosTransformados);
 
