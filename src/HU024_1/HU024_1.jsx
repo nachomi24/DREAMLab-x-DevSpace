@@ -188,7 +188,7 @@ const HU024_1 = () => {
         className="mySwiper"
       >
         {reservaciones.map((reservacion, index) => {
-          const textLength = reservacion.NombreEstudiante.length;
+          const textLength = reservacion.NombreUsuario.length;
           const percentage = Math.min(textLength * 0.55, 100); // Porcentaje máximo de 100%
           const duration = Math.min(textLength * 0.2, 10); // Duración mínima de 10 segundos
 
@@ -202,7 +202,7 @@ const HU024_1 = () => {
                     "--percentage": `${percentage}%`,
                   }}
                 >
-                  {reservacion.NombreEstudiante}
+                  {reservacion.NombreUsuario}
                 </p>
                 <p className="room-name">{reservacion.NombreSala}</p>
                 <p className="time-range">
@@ -240,7 +240,7 @@ const HU024_1 = () => {
                 Para conocer más sobre D.R.E.A.M. LAB consulta el siguiente QR
               </p>
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?data=https://dreamlabspace.world/open_spaces&size=150x150`}
+                src={`https://api.qrserver.com/v1/create-qr-code/?data=https://www.dreamlabspace.world/open_spaces&size=150x150`}
                 alt="QR Code"
                 className="qr-code-2"
               />
@@ -274,8 +274,8 @@ const HU024_1 = () => {
           const numReservaciones = data.Reservaciones.length;
           const qrLink =
             numReservaciones === 0
-              ? "https://dreamlabspace.world/reservar"
-              : "https://dreamlabspace.world/perfil";
+              ? "https://www.dreamlabspace.world/reservar"
+              : "https://www.dreamlabspace.world/perfil";
           setMensaje(
             <>
               <p style={{ color: "lightpink" }} className="bienvenida">
@@ -318,8 +318,8 @@ const HU024_1 = () => {
           const numReservaciones = data.Reservaciones.length;
           const qrLink =
             numReservaciones === 0
-              ? "https://dreamlabspace.world/reservar"
-              : "https://dreamlabspace.world/perfil";
+              ? "https://www.dreamlabspace.world/reservar"
+              : "https://www.dreamlabspace.world/perfil";
           setMensaje(
             <>
               <p style={{ color: "yellow" }} className="bienvenida">

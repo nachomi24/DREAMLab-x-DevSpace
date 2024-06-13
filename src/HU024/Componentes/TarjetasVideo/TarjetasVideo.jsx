@@ -171,7 +171,9 @@ function TarjetasPublicaciones({ datos }) {
         ></div>
         <div className="info-container-HU024">
           <div className="tarjeta-reserva024-info">
-            <h2 className="h2-titulo">{titulo}</h2>
+            <h2 className="h2-titulo">
+              <b>{titulo}</b>
+            </h2>
             <p>{autor}</p>
             <p className="desc-2">{formatearFecha(fecha)}</p>
           </div>
@@ -192,7 +194,12 @@ function TarjetasPublicaciones({ datos }) {
             >
               EDITAR
             </button>
-            <button onClick={() => rechazarPublicacion(_id)}>ELIMINAR</button>
+            <button
+              style={{ backgroundColor: "#E8ADA9" }}
+              onClick={() => rechazarPublicacion(_id)}
+            >
+              ELIMINAR
+            </button>
           </div>
         </div>
       </div>
@@ -217,15 +224,17 @@ function TarjetasPublicaciones({ datos }) {
             </button>
             <a className="videowall-link" href="/videowall" target="_blank">
               <i
-                style={{ marginRight: "8px", fontSize: "3vh", marginTop: "-7px"}}
+                style={{
+                  marginRight: "8px",
+                  fontSize: "3vh",
+                  marginTop: "-7px",
+                }}
                 className="fas fa-eye"
               ></i>
               <p>Visualizar Videowall</p>
             </a>
           </div>
-          <div className="contenedor-filtros024">
-            {/* Puedes agregar filtros aquí si es necesario */}
-          </div>
+          <div className="contenedor-filtros024"></div>
           {publicacionesPendientes.map((dato) => (
             <Tarjeta key={dato._id} {...dato} />
           ))}
